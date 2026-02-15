@@ -11,6 +11,10 @@ Route::get('/service', function () {
     return view('service');
 })->name('service');
 
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
 Route::get('/service/brake-discs-and-pads', function () {
     return view('services.brake-discs-and-pads');
 })->name('service.brake-discs-and-pads');

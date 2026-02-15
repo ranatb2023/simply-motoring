@@ -77,8 +77,10 @@
 </head>
 
 <body class="antialiased bg-white">
-    @if (request()->routeIs('service') || request()->routeIs('service.brake-discs-and-pads') || request()->routeIs('service.brake-fluid-change'))
+    @if (request()->routeIs('service') || request()->routeIs('service.brake-discs-and-pads') || request()->routeIs('service.brake-fluid-change') || request()->routeIs('service.full-service') || request()->routeIs('service.interim-service') || request()->routeIs('service.major-service'))
         @include('partials.service-header')
+    @elseif (request()->routeIs('contact'))
+        @include('partials.page-header')
     @else
         @include('partials.header')
     @endif

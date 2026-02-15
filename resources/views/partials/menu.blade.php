@@ -39,8 +39,9 @@
                     class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter text-white/20 hover:text-primary transition-colors duration-300 uppercase block">FAQs</a>
                 <a href="#"
                     class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter text-white/20 hover:text-primary transition-colors duration-300 uppercase block">Blogs</a>
-                <a href="#"
-                    class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter text-white/20 hover:text-primary transition-colors duration-300 uppercase block">Contact
+                <a href="{{ route('contact') }}"
+                    class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('contact') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block"
+                    data-active="{{ request()->routeIs('contact') ? 'true' : 'false' }}">Contact
                     Us</a>
             </nav>
 
