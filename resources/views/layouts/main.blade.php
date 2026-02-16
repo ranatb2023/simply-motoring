@@ -81,7 +81,7 @@
     <div id="splash-screen"
         class="fixed inset-0 bg-dark flex flex-col justify-end p-8 sm:p-12 transition-opacity duration-700 ease-out"
         style="z-index: 9999;">
-        <div class="flex justify-between items-end w-full max-w-[1920px] mx-auto">
+        <div class="flex justify-between items-end w-full max-w-[1440px] mx-auto">
             <h1 class="text-primary text-6xl sm:text-8xl font-bold tracking-tighter leading-none"
                 style="font-family: 'Geist', sans-serif;">MOT</h1>
             <div class="text-primary">
