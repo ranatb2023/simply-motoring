@@ -20,7 +20,7 @@
 
             <!-- Background Image -->
             <div class="absolute inset-0 z-0 bg-black">
-                <img src="{{ asset('images/d2d51f5843582c2813015b713901596c625b5333.jpg') }}" alt="Expert Servicing"
+                <img src="{{ asset('images/e1fb2bc84fe01e7d1b967e474c3adf19a7403436.jpg') }}" alt="Expert Servicing"
                     class="w-full h-full object-cover">
                 <!-- Gradient Overlay -->
                 <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
@@ -88,34 +88,35 @@
 
             <!-- Carousel Container -->
             <div x-data="{
-                    active: 0,
-                    cardWidth: 0,
-                    gap: 24,
-                    transitioning: true,
-                    paused: false,
-                    updateWidth() {
-                        const card = this.$el.querySelector('.service-card');
-                        if (card) this.cardWidth = card.offsetWidth;
-                    },
-                    init() {
-                        // Small delay to ensure DOM is ready
-                        setTimeout(() => this.updateWidth(), 100);
-                        window.addEventListener('resize', () => this.updateWidth());
-                        setInterval(() => {
-                            if (!this.paused) this.next();
-                        }, 3000);
-                    },
-                    next() {
-                        this.transitioning = true;
-                        this.active++;
-                        if (this.active === 5) {
-                            setTimeout(() => {
-                                this.transitioning = false;
-                                this.active = 0;
-                            }, 700);
+                        active: 0,
+                        cardWidth: 0,
+                        gap: 24,
+                        transitioning: true,
+                        paused: false,
+                        updateWidth() {
+                            const card = this.$el.querySelector('.service-card');
+                            if (card) this.cardWidth = card.offsetWidth;
+                        },
+                        init() {
+                            // Small delay to ensure DOM is ready
+                            setTimeout(() => this.updateWidth(), 100);
+                            window.addEventListener('resize', () => this.updateWidth());
+                            setInterval(() => {
+                                if (!this.paused) this.next();
+                            }, 3000);
+                        },
+                        next() {
+                            this.transitioning = true;
+                            this.active++;
+                            if (this.active === 5) {
+                                setTimeout(() => {
+                                    this.transitioning = false;
+                                    this.active = 0;
+                                }, 700);
+                            }
                         }
-                    }
-                }" class="w-[calc(100vw-3rem)] overflow-hidden" @mouseenter="paused = true" @mouseleave="paused = false">
+                    }" class="w-[calc(100vw-3rem)] overflow-hidden" @mouseenter="paused = true"
+                @mouseleave="paused = false">
                 <div class="flex gap-6" :class="transitioning ? 'transition-transform duration-700 ease-in-out' : ''"
                     :style="'transform: translateX(-' + (active * (cardWidth + gap)) + 'px)'">
 
@@ -662,7 +663,6 @@
                 <!-- Dark Overlay -->
                 <div class="absolute inset-0 bg-black/50 z-10"></div>
 
-                <!-- Content Container -->
                 <!-- Content Container -->
                 <div
                     class="bg-white/10 backdrop-blur-sm lg:backdrop-blur-xl relative z-20 w-full max-w-[90%] lg:max-w-[80%] mx-auto h-full flex flex-col lg:flex-row justify-between p-6 lg:p-8 gap-10 lg:gap-20 rounded-[20px]">

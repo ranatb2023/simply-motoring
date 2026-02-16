@@ -20,7 +20,7 @@
 
             <!-- Background Image -->
             <div class="absolute inset-0 z-0 bg-black">
-                <img src="{{ asset('images/d2d51f5843582c2813015b713901596c625b5333.jpg') }}" alt="Expert Servicing"
+                <img src="{{ asset('images/59f5bde5f8dbc049f0ea8fe3ee740eb33ccb6059.jpg') }}" alt="Expert Servicing"
                     class="w-full h-full object-cover">
                 <!-- Gradient Overlay -->
                 <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>

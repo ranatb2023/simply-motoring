@@ -77,6 +77,31 @@
 </head>
 
 <body class="antialiased bg-white">
+    <!-- Splash Screen -->
+    <div id="splash-screen"
+        class="fixed inset-0 bg-dark flex flex-col justify-end p-8 sm:p-12 transition-opacity duration-700 ease-out"
+        style="z-index: 9999;">
+        <div class="flex justify-between items-end w-full max-w-[1920px] mx-auto">
+            <h1 class="text-primary text-6xl sm:text-8xl font-bold tracking-tighter leading-none"
+                style="font-family: 'Geist', sans-serif;">MOT</h1>
+            <div class="text-primary">
+                <i class="fa-solid fa-tire text-6xl sm:text-8xl" style="animation: spin 10s linear infinite;"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            const splash = document.getElementById('splash-screen');
+            if (splash) {
+                setTimeout(() => {
+                    splash.classList.add('opacity-0', 'pointer-events-none');
+                    setTimeout(() => {
+                        splash.remove();
+                    }, 700);
+                }, 500);
+            }
+        });
+    </script>
     @if (request()->routeIs('service') || request()->routeIs('service.brake-discs-and-pads') || request()->routeIs('service.brake-fluid-change') || request()->routeIs('service.full-service') || request()->routeIs('service.interim-service') || request()->routeIs('service.major-service'))
         @include('partials.service-header')
     @elseif (request()->routeIs('contact'))
