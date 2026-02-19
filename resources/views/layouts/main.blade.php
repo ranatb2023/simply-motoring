@@ -102,9 +102,9 @@
             }
         });
     </script>
-    @if (request()->routeIs('service') || request()->routeIs('service.brake-discs-and-pads') || request()->routeIs('service.brake-fluid-change') || request()->routeIs('service.full-service') || request()->routeIs('service.interim-service') || request()->routeIs('service.major-service'))
+    @if (request()->routeIs('service') || request()->routeIs('service.brake-discs-and-pads') || request()->routeIs('service.brake-fluid-change') || request()->routeIs('service.full-service') || request()->routeIs('service.interim-service') || request()->routeIs('service.major-service') || request()->routeIs('blog.show') || request()->routeIs('blog.post'))
         @include('partials.service-header')
-    @elseif (request()->routeIs('contact'))
+    @elseif (request()->routeIs('contact') || request()->routeIs('blogs'))
         @include('partials.page-header')
     @else
         @include('partials.header')

@@ -13,7 +13,7 @@
                 </div>
 
                 <!-- Newsletter Box -->
-                <div class="bg-primary rounded-[32px] p-8 lg:p-12 mt-20 lg:mt-0 shadow-lg">
+                <div class="bg-primary rounded-xl p-8 lg:p-12 mt-20 lg:mt-0 shadow-lg">
                     <h3
                         class="font-geist font-bold text-[28px] lg:text-[40px] leading-[1.1] tracking-tight mb-4 text-white typewriter-effect lg:max-w-[80%]">
                         Subscribe to our monthly newsletter
@@ -49,17 +49,22 @@
 
                     <!-- Services -->
                     <div class="flex flex-col gap-1">
-                        <a href="#" class="font-geist font-medium text-lg hover:text-primary transition-colors">Brake
+                        <a href="{{ route('service.brake-discs-and-pads') }}"
+                            class="font-geist font-medium text-lg hover:text-primary transition-colors">Brake
                             discs
                             & Pads</a>
-                        <a href="#" class="font-geist font-medium text-lg hover:text-primary transition-colors">Brake
+                        <a href="{{ route('service.brake-fluid-change') }}"
+                            class="font-geist font-medium text-lg hover:text-primary transition-colors">Brake
                             Fluid
                             Change</a>
-                        <a href="#" class="font-geist font-medium text-lg hover:text-primary transition-colors">Full
+                        <a href="{{ route('service.full-service') }}"
+                            class="font-geist font-medium text-lg hover:text-primary transition-colors">Full
                             Service</a>
-                        <a href="#" class="font-geist font-medium text-lg hover:text-primary transition-colors">Interim
+                        <a href="{{ route('service.interim-service') }}"
+                            class="font-geist font-medium text-lg hover:text-primary transition-colors">Interim
                             Service</a>
-                        <a href="#" class="font-geist font-medium text-lg hover:text-primary transition-colors">Major
+                        <a href="{{ route('service.major-service') }}"
+                            class="font-geist font-medium text-lg hover:text-primary transition-colors">Major
                             Service</a>
                     </div>
                 </div>

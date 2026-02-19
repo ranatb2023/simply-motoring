@@ -11,8 +11,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Scripts -->
+    <style>[x-cloak] { display: none !important; }</style>
     <script>
         window.gbsAdminData = {
             apiUrl: '/api/admin/',
@@ -97,6 +99,46 @@
                         </svg>
                         Google Reviews
                     </a>
+
+                    <!-- Blog Dropdown -->
+                    <div x-data="{ open: {{ request()->routeIs('admin.blog.*') ? 'true' : 'false' }} }">
+                        <button @click="open = !open"
+                            class="w-full flex items-center justify-between px-2 py-2.5 rounded-lg {{ request()->routeIs('admin.blog.*') ? 'bg-primary text-white' : 'text-gray-400 hover:text-white hover:bg-gray-900' }} group transition-colors">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                                    </path>
+                                </svg>
+                                Blog
+                            </div>
+                            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        <div x-show="open" style="display: none;" class="ml-8 mt-1 space-y-1">
+                            <a href="{{ route('admin.blog.posts.index') }}"
+                                class="flex items-center px-2 py-2 rounded-lg text-sm {{ request()->routeIs('admin.blog.posts.*') ? 'text-primary' : 'text-gray-400 hover:text-white' }} transition-colors">
+                                Posts
+                            </a>
+                            <a href="{{ route('admin.blog.categories.index') }}"
+                                class="flex items-center px-2 py-2 rounded-lg text-sm {{ request()->routeIs('admin.blog.categories.*') ? 'text-primary' : 'text-gray-400 hover:text-white' }} transition-colors">
+                                Categories
+                            </a>
+                            <a href="{{ route('admin.blog.tags.index') }}"
+                                class="flex items-center px-2 py-2 rounded-lg text-sm {{ request()->routeIs('admin.blog.tags.*') ? 'text-primary' : 'text-gray-400 hover:text-white' }} transition-colors">
+                                Tags
+                            </a>
+                            <a href="{{ route('admin.blog.comments.index') }}"
+                                class="flex items-center px-2 py-2 rounded-lg text-sm {{ request()->routeIs('admin.blog.comments.*') ? 'text-primary' : 'text-gray-400 hover:text-white' }} transition-colors">
+                                Comments
+                            </a>
+                        </div>
+                    </div>
+
                     <a href="#"
                         class="flex items-center px-2 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-900 group transition-colors">
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -219,29 +261,12 @@
                                     <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                            d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z">
                                         </path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
                                     Account Settings
                                 </a>
 
-                                <a href="#"
-                                    class="flex items-center px-5 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-primary transition">
-                                    <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                            d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z">
-                                        </path>
-                                    </svg>
-                                    Support Center
-                                </a>
-                            </div>
-
-                            <div class="border-t border-gray-100 my-1"></div>
-
-                            <div class="py-1">
                                 <a href="#"
                                     class="flex items-center px-5 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-primary transition">
                                     <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor"
@@ -274,6 +299,13 @@
 
             <!-- Page Content -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50">
+                @if (isset($header))
+                    <div class="bg-white shadow-sm border-b border-gray-100">
+                        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+                            {{ $header }}
+                        </div>
+                    </div>
+                @endif
                 {{ $slot }}
             </main>
         </div>

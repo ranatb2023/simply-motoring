@@ -7,7 +7,7 @@
 
     <!-- Menu Trigger -->
     <button id="menu-trigger"
-        class="flex items-center gap-3 text-white font-bold uppercase tracking-wider text-xs hover:text-primary transition-colors bg-black/50 backdrop-blur-md px-5 py-2.5 rounded-full ">
+        class="flex items-center gap-3 text-white font-bold uppercase tracking-wider text-xs lg:text-md hover:bg-primary transition-colors bg-black/50 backdrop-blur-md px-5 py-2.5 rounded-full ">
         <span>MENU</span>
         <div class="flex flex-col gap-[4px] w-5 items-end">
             <div class="w-full h-[2px] bg-white rounded-full"></div>

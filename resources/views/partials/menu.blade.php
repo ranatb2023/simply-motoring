@@ -14,9 +14,8 @@
             </div>
 
             <button id="menu-close"
-                class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-5 py-2.5 rounded-full transition-colors group">
-                <span
-                    class="font-bold text-xs tracking-widest uppercase transition-colors group-hover:text-primary">Menu</span>
+                class="flex items-center gap-2 bg-white/10 px-5 py-2.5 rounded-full transition-colors hover:bg-primary group">
+                <span class="font-bold text-xs lg:text-md tracking-widest uppercase transition-colors">Menu</span>
                 <i
                     class="fa-solid fa-xmark text-lg transform group-hover:rotate-90 transition-transform duration-300"></i>
             </button>
@@ -35,10 +34,9 @@
                     class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('service') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase relative block"
                     data-active="{{ request()->routeIs('service') ? 'true' : 'false' }}">Services
                 </a>
-                <a href="#"
-                    class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter text-white/20 hover:text-primary transition-colors duration-300 uppercase block">FAQs</a>
-                <a href="#"
-                    class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter text-white/20 hover:text-primary transition-colors duration-300 uppercase block">Blogs</a>
+                <a href="{{ route('blogs') }}   "
+                    class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('blogs') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block"
+                    data-active="{{ request()->routeIs('blogs') ? 'true' : 'false' }}">Blogs</a>
                 <a href="{{ route('contact') }}"
                     class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('contact') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block"
                     data-active="{{ request()->routeIs('contact') ? 'true' : 'false' }}">Contact

@@ -2285,7 +2285,11 @@
     }
 
     // Call init immediately
-    initTimePicker();
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTimePicker);
+    } else {
+        initTimePicker();
+    }
 
     function renderCopyButton(idx) {
         return `

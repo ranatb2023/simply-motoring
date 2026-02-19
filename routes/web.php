@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BlogCommentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,6 +37,29 @@ Route::get('/service/major-service', function () {
     return view('services.major-service');
 })->name('service.major-service');
 
+Route::get('/blogs', function () {
+    $featuredPost = \App\Models\BlogPost::published()
+        ->featured()
+        ->latest('published_at')
+        ->first();
+
+    // If no featured post manually selected, take the very latest one
+    if (!$featuredPost) {
+        $featuredPost = \App\Models\BlogPost::published()
+            ->latest('published_at')
+            ->first();
+    }
+
+    $posts = \App\Models\BlogPost::published()
+        ->when($featuredPost, function ($query) use ($featuredPost) {
+            return $query->where('id', '!=', $featuredPost->id);
+        })
+        ->latest('published_at')
+        ->paginate(9); // 3 columns x 3 rows = 9 posts per page looks good
+
+    return view('blogs', compact('featuredPost', 'posts'));
+})->name('blogs');
+
 Route::get('/dashboard', function () {
     return redirect()->route('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -55,9 +80,60 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('bookings', \App\Http\Controllers\Admin\BookingController::class);
     Route::get('/availability', [\App\Http\Controllers\Admin\AvailabilityController::class, 'index'])->name('availability.index');
     Route::get('/google-reviews', [\App\Http\Controllers\Admin\GoogleReviewsController::class, 'index'])->name('google-reviews.index');
+
+    // Blog Management Routes
+    Route::prefix('blog')->name('blog.')->group(function () {
+        // Posts
+        Route::resource('posts', \App\Http\Controllers\Admin\BlogPostController::class);
+        Route::post('posts/bulk-action', [\App\Http\Controllers\Admin\BlogPostController::class, 'bulkAction'])
+            ->name('posts.bulk-action');
+
+        // Categories
+        Route::post('categories/bulk-action', [\App\Http\Controllers\Admin\BlogCategoryController::class, 'bulkAction'])
+            ->name('categories.bulk-action');
+        Route::resource('categories', \App\Http\Controllers\Admin\BlogCategoryController::class);
+
+
+        // Tags
+        Route::post('tags/bulk-action', [\App\Http\Controllers\Admin\BlogTagController::class, 'bulkAction'])
+            ->name('tags.bulk-action');
+        Route::resource('tags', \App\Http\Controllers\Admin\BlogTagController::class);
+        Route::post('tags/sync-usage', [\App\Http\Controllers\Admin\BlogTagController::class, 'syncUsageCounts'])
+            ->name('tags.sync-usage');
+        Route::post('tags/delete-unused', [\App\Http\Controllers\Admin\BlogTagController::class, 'deleteUnused'])
+            ->name('tags.delete-unused');
+
+        // Comments
+        Route::get('comments', [\App\Http\Controllers\Admin\BlogCommentController::class, 'index'])
+            ->name('comments.index');
+        Route::get('comments/{comment}', [\App\Http\Controllers\Admin\BlogCommentController::class, 'show'])
+            ->name('comments.show');
+        Route::post('comments/{comment}/approve', [\App\Http\Controllers\Admin\BlogCommentController::class, 'approve'])
+            ->name('comments.approve');
+        Route::post('comments/{comment}/spam', [\App\Http\Controllers\Admin\BlogCommentController::class, 'spam'])
+            ->name('comments.spam');
+        Route::post('comments/{comment}/trash', [\App\Http\Controllers\Admin\BlogCommentController::class, 'trash'])
+            ->name('comments.trash');
+        Route::post('comments/{comment}/restore', [\App\Http\Controllers\Admin\BlogCommentController::class, 'restore'])
+            ->name('comments.restore');
+        Route::delete('comments/{comment}', [\App\Http\Controllers\Admin\BlogCommentController::class, 'destroy'])
+            ->name('comments.destroy');
+        Route::post('comments/{comment}/unflag', [\App\Http\Controllers\Admin\BlogCommentController::class, 'unflag'])
+            ->name('comments.unflag');
+        Route::post('comments/bulk-action', [\App\Http\Controllers\Admin\BlogCommentController::class, 'bulkAction'])
+            ->name('comments.bulk-action');
+        Route::delete('comments/empty-trash', [\App\Http\Controllers\Admin\BlogCommentController::class, 'emptyTrash'])
+            ->name('comments.empty-trash');
+        Route::delete('comments/delete-spam', [\App\Http\Controllers\Admin\BlogCommentController::class, 'deleteSpam'])
+            ->name('comments.delete-spam');
+    });
 });
 
+
+require __DIR__ . '/auth.php';
+
 // --- API Routes (Consumed by Admin JS) ---
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('api/admin')->group(function () {
         Route::get('services', [\App\Http\Controllers\Api\Admin\ServicesController::class, 'index']);
@@ -136,6 +212,48 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 });
 
+// --- Blog Routes ---
+Route::prefix('blog')->name('blog.')->group(function () {
+    // Main blog listing
+    Route::get('/', [BlogController::class, 'index'])->name('index');
+
+    // Search
+    Route::get('/search', [BlogController::class, 'search'])->name('search');
+
+    // Category archive
+    Route::get('/category/{category}', [BlogController::class, 'category'])->name('category');
+
+    // Tag archive
+    Route::get('/tag/{tag}', [BlogController::class, 'tag'])->name('tag');
+
+    // Single post with category (Legacy/Alternate)
+    Route::get('/{category}/{post}', [BlogController::class, 'show'])->name('show');
+});
+
+// Single post (Root URL)
+Route::get('/{post}', [BlogController::class, 'post'])->name('blog.post');
+
+// --- Blog Comment Routes ---
+Route::prefix('blog')->name('blog.comments.')->group(function () {
+    // Submit comment
+    Route::post('/{post}/comments', [BlogCommentController::class, 'store'])->name('store');
+
+    // Like/Dislike comments (AJAX)
+    Route::post('/comments/{comment}/like', [BlogCommentController::class, 'like'])->name('like');
+    Route::post('/comments/{comment}/dislike', [BlogCommentController::class, 'dislike'])->name('dislike');
+
+    // Flag comment (AJAX)
+    Route::post('/comments/{comment}/flag', [BlogCommentController::class, 'flag'])->name('flag');
+
+    // Delete own comment (authenticated users)
+    Route::delete('/comments/{comment}', [BlogCommentController::class, 'destroy'])
+        ->middleware('auth')
+        ->name('destroy');
+});
+
+// --- Blog Share Tracking (AJAX) ---
+Route::post('/blog/{post}/share', [BlogController::class, 'share'])->name('blog.share');
+
 Route::get('/api/reviews', [\App\Http\Controllers\Admin\GoogleReviewsController::class, 'getReviews']);
 
-require __DIR__ . '/auth.php';
+
