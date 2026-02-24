@@ -72,37 +72,79 @@
 
             <!-- Carousel Container -->
             <div x-data="{
-                                                        active: 0,
-                                                        cardWidth: 0,
-                                                        gap: 24,
-                                                        transitioning: true,
-                                                        paused: false,
-                                                        updateWidth() {
-                                                            const card = this.$el.querySelector('.service-card');
-                                                            if (card) this.cardWidth = card.offsetWidth;
-                                                        },
-                                                        init() {
-                                                            // Small delay to ensure DOM is ready
-                                                            setTimeout(() => this.updateWidth(), 100);
-                                                            window.addEventListener('resize', () => this.updateWidth());
-                                                            setInterval(() => {
-                                                                if (!this.paused) this.next();
-                                                            }, 3000);
-                                                        },
-                                                        next() {
-                                                            this.transitioning = true;
-                                                            this.active++;
-                                                            if (this.active === 5) {
-                                                                setTimeout(() => {
-                                                                    this.transitioning = false;
-                                                                    this.active = 0;
-                                                                }, 700);
-                                                            }
-                                                        }
-                                                    }" class="w-[calc(100vw-3rem)] overflow-hidden"
-                @mouseenter="paused = true" @mouseleave="paused = false">
-                <div class="flex gap-6" :class="transitioning ? 'transition-transform duration-700 ease-in-out' : ''"
-                    :style="'transform: translateX(-' + (active * (cardWidth + gap)) + 'px)'">
+                            active: 0,
+                            cardWidth: 0,
+                            gap: 24,
+                            transitioning: true,
+                            paused: false,
+                            startX: 0,
+                            currentX: 0,
+                            isDragging: false,
+                            updateWidth() {
+                                const card = this.$el.querySelector('.service-card');
+                                if (card) this.cardWidth = card.offsetWidth;
+                            },
+                            init() {
+                                setTimeout(() => this.updateWidth(), 100);
+                                window.addEventListener('resize', () => this.updateWidth());
+                                setInterval(() => {
+                                    if (!this.paused && !this.isDragging) this.next();
+                                }, 3000);
+                            },
+                            next() {
+                                if (this.active < 4) {
+                                    this.transitioning = true;
+                                    this.active++;
+                                } else {
+                                    this.transitioning = true;
+                                    this.active = 0;
+                                }
+                            },
+                            prev() {
+                                if (this.active > 0) {
+                                    this.transitioning = true;
+                                    this.active--;
+                                } else {
+                                    this.transitioning = true;
+                                    this.active = 4;
+                                }
+                            },
+                            goTo(index) {
+                                this.transitioning = true;
+                                this.active = index;
+                            },
+                            startDrag(e) {
+                                this.isDragging = true;
+                                this.transitioning = false;
+                                this.paused = true;
+                                this.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+                            },
+                            onDrag(e) {
+                                if (!this.isDragging) return;
+                                const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                                this.currentX = x - this.startX;
+                            },
+                            endDrag() {
+                                if (!this.isDragging) return;
+                                this.isDragging = false;
+                                this.transitioning = true;
+                                this.paused = false;
+
+                                if (this.currentX < -50) {
+                                    this.next();
+                                } else if (this.currentX > 50) {
+                                    this.prev();
+                                }
+
+                                this.currentX = 0;
+                            }
+                        }" class="w-[calc(100vw-3rem)] overflow-hidden relative cursor-grab active:cursor-grabbing pb-2"
+                @mouseenter="paused = true" @mouseleave="paused = false; endDrag()" @mousedown="startDrag"
+                @touchstart.passive="startDrag" @mousemove="onDrag" @touchmove.passive="onDrag" @mouseup="endDrag"
+                @touchend="endDrag">
+                <div class="flex gap-6 select-none w-full"
+                    :class="transitioning ? 'transition-transform duration-700 ease-in-out' : ''"
+                    :style="`transform: translateX(calc(-${active * (cardWidth + gap)}px + ${currentX}px))`">
 
                     <!-- Group 1 -->
                     <div class="flex gap-6 shrink-0">
@@ -447,6 +489,16 @@
                         </div>
                     </div>
 
+                </div>
+
+                <!-- Navigation Dots -->
+                <div class="flex justify-center gap-3 mt-8 pb-4">
+                    <template x-for="i in 5">
+                        <button @click="goTo(i - 1)" class="h-2 rounded-sm transition-all duration-300"
+                            :class="(active === 5 ? 0 : active) === (i - 1) ? 'w-10 bg-primary' : 'w-6 bg-gray-300 hover:bg-gray-400'"
+                            :aria-label="'Go to slide ' + i">
+                        </button>
+                    </template>
                 </div>
             </div>
 

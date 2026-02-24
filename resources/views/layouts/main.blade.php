@@ -69,6 +69,12 @@
         .marquee-content:hover {
             animation-play-state: paused;
         }
+
+        @media (min-width: 1024px) {
+            #submenu-container {
+                max-height: none !important;
+            }
+        }
     </style>
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/92041d487f.js" crossorigin="anonymous"></script>
@@ -128,15 +134,20 @@
             menuTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     menu.classList.remove('translate-x-full');
-                    // Reset state on open
-                    submenuContainer.classList.add('opacity-0', 'pointer-events-none');
+
+                    // Reset submenu state on open
+                    submenuContainer.style.maxHeight = null;
+                    submenuContainer.classList.remove('opacity-100');
+                    submenuContainer.classList.add('opacity-0', 'pointer-events-none', 'max-h-0');
+
+                    // Reset links color
                     links.forEach(l => {
                         if (l.dataset.active === 'true') {
-                            l.classList.remove('text-[#333]');
+                            l.classList.remove('text-[#333]', 'text-white/20');
                             l.classList.add('text-primary');
                         } else {
                             l.classList.remove('text-primary');
-                            l.classList.add('text-[#333]');
+                            l.classList.add('text-white/20'); // Ensure it returns to default non-active color rather than #333 on mobile
                         }
                     });
                 });
@@ -156,34 +167,43 @@
                 // If mobile view (<1024px)
                 if (window.innerWidth < 1024) {
                     e.preventDefault();
-                    // Toggle visibility classes for mobile accordion effect
-                    submenuContainer.classList.toggle('max-h-0');
-                    submenuContainer.classList.toggle('max-h-[1000px]'); // Arbitrary large height for transition
-                    submenuContainer.classList.toggle('opacity-0');
-                    submenuContainer.classList.toggle('opacity-100');
-                    submenuContainer.classList.toggle('pointer-events-none');
-                    submenuContainer.classList.toggle('mt-10');
-                    submenuContainer.classList.toggle('pb-10');
+                    // Toggle visibility using inline max-height for smooth accordion flow
+                    if (submenuContainer.classList.contains('pointer-events-none')) {
+                        // Open
+                        submenuContainer.style.maxHeight = submenuContainer.scrollHeight + 'px';
+                        submenuContainer.classList.remove('opacity-0', 'pointer-events-none', 'max-h-0');
+                        submenuContainer.classList.add('opacity-100');
+                    } else {
+                        // Close
+                        submenuContainer.style.maxHeight = '0px';
+                        submenuContainer.classList.remove('opacity-100');
+                        submenuContainer.classList.add('opacity-0', 'pointer-events-none');
+
+                        // We do not add max-h-0 immediately to allow the transition to animate,
+                        // but setting style.maxHeight to '0px' triggers the transition.
+                    }
                 }
             });
 
             links.forEach(link => {
                 link.addEventListener('mouseenter', () => {
-                    // Reset all links color except hovered
-                    links.forEach(l => {
-                        l.classList.remove('text-primary');
-                        l.classList.add('text-[#333]');
-                    });
+                    if (window.innerWidth >= 1024) {
+                        // Reset all links color except hovered
+                        links.forEach(l => {
+                            l.classList.remove('text-primary');
+                            l.classList.add('text-[#333]');
+                        });
 
-                    // Highlight hovered
-                    link.classList.remove('text-[#333]');
-                    link.classList.add('text-primary');
+                        // Highlight hovered
+                        link.classList.remove('text-[#333]');
+                        link.classList.add('text-primary');
 
-                    // Show submenu only if Services is hovered
-                    if (link === servicesLink) {
-                        submenuContainer.classList.remove('opacity-0', 'pointer-events-none');
-                    } else {
-                        submenuContainer.classList.add('opacity-0', 'pointer-events-none');
+                        // Show submenu only if Services is hovered
+                        if (link === servicesLink) {
+                            submenuContainer.classList.remove('opacity-0', 'pointer-events-none');
+                        } else {
+                            submenuContainer.classList.add('opacity-0', 'pointer-events-none');
+                        }
                     }
                 });
             });
