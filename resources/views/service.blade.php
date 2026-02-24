@@ -16,7 +16,7 @@
     <div class="max-w-[1440px] mx-auto p-0 lg:p-6 w-full">
 
         <!-- Hero Section with Rounded Corners and Clip -->
-        <section class="relative w-full h-[100vh] min-h-[700px] overflow-hidden lg:rounded-2xl hero-image-clip">
+        <section class="relative w-full h-[80vh] lg:h-[100vh] overflow-hidden lg:rounded-2xl hero-image-clip">
 
             <!-- Background Image -->
             <div class="absolute inset-0 z-0 bg-black">
@@ -33,32 +33,20 @@
                 <div class="mt-20 lg:mt-10 max-w-5xl">
                     <!-- Heading -->
                     <h1
-                        class="text-white font-geist font-semibold text-[48px] lg:text-[110px] leading-[0.86] tracking-[-0.07em] uppercase mb-4 lg:mb-6 typewriter-effect opacity-0">
+                        class="text-white font-geist font-semibold text-[56px] xl:text-[110px] leading-[0.86] tracking-[-0.07em] uppercase mb-4 lg:mb-6">
                         Servicing<br>
                         Built Around<br>
                         Your Car
                     </h1>
 
                     <!-- Subheading -->
-                    <p class="text-white text-2xl lg:text-[36px] font-medium font-geist tracking-tight lg:mt-4">
+                    <p class="text-white text-2xl xl:text-[36px] font-medium font-geist tracking-tight lg:mt-4">
                         Stay confident every time you drive
                     </p>
                 </div>
 
                 <!-- Bottom Section -->
-                <div
-                    class="absolute bottom-12 lg:bottom-16 left-0 right-0 px-6 lg:px-20 w-full flex flex-col lg:flex-row justify-between items-end gap-8 lg:gap-0">
-
-                    <!-- Bottom Left Text -->
-                    <div class="flex gap-4 max-w-[500px]">
-                        <div class="w-5 h-5 mt-1.5 bg-primary shrink-0"></div> <!-- Orange Square -->
-                        <p class="text-white/80 text-base lg:text-[20px] leading-[1.3] font-geist font-medium">
-                            From routine maintenance to essential safety work, Simply Motoring delivers expert vehicle care
-                            with
-                            honest advice, clear communication, and transparent pricing.
-                        </p>
-                    </div>
-
+                <div class="absolute bottom-12 lg:bottom-20 left-0 right-0 px-6 lg:px-20 w-full">
                     <!-- Bottom Right Button -->
                     <div
                         class="inline-block p-[1px] bg-white/40 hero-btn-clip transform rounded-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group">
@@ -76,15 +64,14 @@
     <!-- About Section -->
     <section class="bg-white py-10 lg:py-32 relative z-10">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-2 gap-32 lg:gap-24 items-start">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-24 items-start">
 
                 <!-- Left Column: Headline -->
                 <div class="flex flex-col gap-6">
                     <span class="text-lg font-semibold uppercase tracking-tight text-[#0A0A0Ac2] font-geist">About
                         Simply Motoring</span>
 
-                    <h2
-                        class="text-[48px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter uppercase font-geist opacity-0 typewriter-effect">
+                    <h2 class="text-[48px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter uppercase font-geist">
                         <span class="text-primary">Keeping<br>Your Car</span><br>
                         <span class="text-black">Road-Ready!</span>
                     </h2>
@@ -92,7 +79,7 @@
 
                 <!-- Right Column: Content -->
                 <div class="flex flex-col gap-8 text-lg font-medium leading-relaxed text-[#0A0A0A] lg:pt-14">
-                    <p>
+                    <p class="hidden lg:block">
                         Regular servicing is one of the most effective ways to protect your vehicle and avoid unexpected
                         breakdowns. It helps maintain engine performance, supports fuel efficiency, and ensures key safety
                         systems as they should.
@@ -112,14 +99,14 @@
     <section class="py-10 lg:py-20 bg-white relative z-10 overflow-hidden border-t border-black/10">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-10">
             <!-- Header -->
-            <div class="flex flex-col items-center text-center mb-16">
+            <div class="flex flex-col items-start lg:items-center lg:text-center mb-4 lg:mb-16">
                 <span
                     class="bg-primary text-white px-4 py-1.5 rounded-full mb-6 font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT]">Services</span>
                 <h2
-                    class="font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.83] tracking-[-0.06em] text-center uppercase [leading-trim:CAP_HEIGHT] text-primary mb-8 typewriter-effect">
+                    class="font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.83] tracking-[-0.06em] lg:text-center uppercase [leading-trim:CAP_HEIGHT] text-primary mb-8">
                     Our vehicle<br>servicing options
                 </h2>
-                <p class="text-[#0A0A0A] font-medium text-lg leading-[1.26] max-w-sm">
+                <p class="text-[#0A0A0A] font-medium text-lg leading-[1.26] max-w-sm hidden lg:block">
                     We offer clearly defined service levels to suit different driving habits, mileages, and vehicle needs.
                 </p>
             </div>
@@ -284,12 +271,12 @@
                 <!-- Decor Background (Optional subtle gradient or effect if needed, keeping it simple for now) -->
 
                 <!-- Header -->
-                <div class="flex flex-col items-center text-center mb-12 lg:mb-16 max-w-2xl mx-auto">
+                <div class="flex flex-col items-start lg:items-center lg:text-center mb-4 lg:mb-16 max-w-2xl mx-auto">
                     <h2
-                        class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.9] tracking-[-0.04em] uppercase mb-6 typewriter-effect">
+                        class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.9] tracking-[-0.04em] uppercase mb-6">
                         Brake Services
                     </h2>
-                    <p class="text-white/80 font-medium text-[16px] lg:text-[18px] leading-[1.4]">
+                    <p class="text-white/80 font-medium text-[16px] lg:text-[18px] leading-[1.4] hidden lg:block">
                         Your braking system is one of the most important safety features on your vehicle. We focus on
                         thorough inspections and honest recommendations.
                     </p>
@@ -399,6 +386,7 @@
         </div>
     </section>
 
+    <!-- Why Choose Simply Motoring -->
     <section
         class="bg-black relative z-10 w-full lg:rounded-bl-[32px] lg:[clip-path:polygon(0_0,100%_0,100%_calc(100%_-_80px),calc(100%_-_80px)_100%,0_100%,0_0)]">
         <div class="w-full">
@@ -423,7 +411,7 @@
                     <div class="w-full lg:w-1/2 flex flex-col items-start justify-between text-left">
                         <div>
                             <h2
-                                class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.83] tracking-[-0.06em] uppercase text-white mb-4 lg:mb-10 typewriter-effect">
+                                class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.83] tracking-[-0.06em] uppercase text-white mb-4 lg:mb-10">
                                 WHY CHOOSE<br>SIMPLY<br>MOTORING
                             </h2>
                             <p class="text-white font-medium text-[20px] lg:text-[20px] leading-[1.3] mb-10">
@@ -498,19 +486,18 @@
         </div>
     </section>
 
-
     <!-- Pricing Section -->
     <section class="py-10 lg:py-20 bg-white relative z-10 overflow-hidden">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-10">
             <!-- Header -->
-            <div class="flex flex-col items-center text-center mb-16">
+            <div class="flex flex-col items-start lg:items-center lg:text-center mb-4 lg:mb-16">
                 <span
                     class="bg-primary text-white px-4 py-1.5 rounded-full mb-6 font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT]">Pricing</span>
                 <h2
-                    class="font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.83] tracking-[-0.06em] text-center uppercase [leading-trim:CAP_HEIGHT] text-primary mb-8 typewriter-effect">
+                    class="font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.83] tracking-[-0.06em] lg:text-center uppercase [leading-trim:CAP_HEIGHT] text-primary mb-8">
                     Service Worth<br>Every Penny
                 </h2>
-                <p class="text-[#0A0A0A] font-medium text-lg leading-[1.26] max-w-sm">
+                <p class="text-[#0A0A0A] font-medium text-lg leading-[1.26] max-w-sm hidden lg:block">
                     Upfront pricing with no hidden fees. Simply Motoring is your go-to car services and MOT testing
                     centre.
                 </p>
@@ -518,37 +505,86 @@
 
             <!-- Carousel Container -->
             <div x-data="{
-                                                                                                                                                                                                                                                                                                                                        active: 0,
-                                                                                                                                                                                                                                                                                                                                        cardWidth: 0,
-                                                                                                                                                                                                                                                                                                                                        gap: 24,
-                                                                                                                                                                                                                                                                                                                                        transitioning: true,
-                                                                                                                                                                                                                                                                                                                                        paused: false,
-                                                                                                                                                                                                                                                                                                                                        updateWidth() {
-                                                                                                                                                                                                                                                                                                                                            const card = this.$el.querySelector('.pricing-card');
-                                                                                                                                                                                                                                                                                                                                            if (card) this.cardWidth = card.offsetWidth;
-                                                                                                                                                                                                                                                                                                                                        },
-                                                                                                                                                                                                                                                                                                                                        init() {
-                                                                                                                                                                                                                                                                                                                                            // Small delay to ensure DOM is ready
-                                                                                                                                                                                                                                                                                                                                            setTimeout(() => this.updateWidth(), 100);
-                                                                                                                                                                                                                                                                                                                                            window.addEventListener('resize', () => this.updateWidth());
-                                                                                                                                                                                                                                                                                                                                            setInterval(() => {
-                                                                                                                                                                                                                                                                                                                                                if (!this.paused) this.next();
-                                                                                                                                                                                                                                                                                                                                            }, 3000);
-                                                                                                                                                                                                                                                                                                                                        },
-                                                                                                                                                                                                                                                                                                                                        next() {
-                                                                                                                                                                                                                                                                                                                                            this.transitioning = true;
-                                                                                                                                                                                                                                                                                                                                            this.active++;
-                                                                                                                                                                                                                                                                                                                                            if (this.active === 4) {
-                                                                                                                                                                                                                                                                                                                                                setTimeout(() => {
-                                                                                                                                                                                                                                                                                                                                                    this.transitioning = false;
-                                                                                                                                                                                                                                                                                                                                                    this.active = 0;
-                                                                                                                                                                                                                                                                                                                                                }, 700);
-                                                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                                                    }"
-                class="w-[calc(100vw-3rem)] overflow-hidden" @mouseenter="paused = true" @mouseleave="paused = false">
-                <div class="flex gap-6" :class="transitioning ? 'transition-transform duration-700 ease-in-out' : ''"
-                    :style="'transform: translateX(-' + (active * (cardWidth + gap)) + 'px)'">
+                                                                                                                        active: 0,
+                                                                                                                        cardWidth: 0,
+                                                                                                                        gap: 24,
+                                                                                                                        transitioning: true,
+                                                                                                                        paused: false,
+                                                                                                                        startX: 0,
+                                                                                                                        currentX: 0,
+                                                                                                                        isDragging: false,
+                                                                                                                        updateWidth() {
+                                                                                                                            const card = this.$el.querySelector('.pricing-card');
+                                                                                                                            if (card) this.cardWidth = card.offsetWidth;
+                                                                                                                        },
+                                                                                                                        init() {
+                                                                                                                            // Small delay to ensure DOM is ready
+                                                                                                                            setTimeout(() => this.updateWidth(), 100);
+                                                                                                                            window.addEventListener('resize', () => this.updateWidth());
+                                                                                                                            setInterval(() => {
+                                                                                                                                if (!this.paused && !this.isDragging) this.next();
+                                                                                                                            }, 3000);
+                                                                                                                        },
+                                                                                                                        next() {
+                                                                                                                            this.transitioning = true;
+                                                                                                                            this.active++;
+                                                                                                                            if (this.active >= 4) {
+                                                                                                                                setTimeout(() => {
+                                                                                                                                    this.transitioning = false;
+                                                                                                                                    this.active = 0;
+                                                                                                                                }, 700);
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        prev() {
+                                                                                                                            if (this.active === 0) {
+                                                                                                                                this.transitioning = false;
+                                                                                                                                this.active = 4;
+                                                                                                                                setTimeout(() => {
+                                                                                                                                    this.transitioning = true;
+                                                                                                                                    this.active = 3;
+                                                                                                                                }, 50);
+                                                                                                                            } else {
+                                                                                                                                this.transitioning = true;
+                                                                                                                                this.active--;
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        goTo(index) {
+                                                                                                                            this.transitioning = true;
+                                                                                                                            this.active = index;
+                                                                                                                        },
+                                                                                                                        startDrag(e) {
+                                                                                                                            this.isDragging = true;
+                                                                                                                            this.transitioning = false;
+                                                                                                                            this.paused = true;
+                                                                                                                            this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+                                                                                                                        },
+                                                                                                                        onDrag(e) {
+                                                                                                                            if (!this.isDragging) return;
+                                                                                                                            const x = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+                                                                                                                            this.currentX = x - this.startX;
+                                                                                                                        },
+                                                                                                                        endDrag() {
+                                                                                                                            if (!this.isDragging) return;
+                                                                                                                            this.isDragging = false;
+                                                                                                                            this.transitioning = true;
+                                                                                                                            this.paused = false;
+
+                                                                                                                            if (this.currentX < -50) {
+                                                                                                                                this.next();
+                                                                                                                            } else if (this.currentX > 50) {
+                                                                                                                                this.prev();
+                                                                                                                            }
+
+                                                                                                                            this.currentX = 0;
+                                                                                                                        }
+                                                                                                                    }"
+                class="w-[calc(100vw-3rem)] overflow-hidden relative cursor-grab active:cursor-grabbing pb-2"
+                @mouseenter="paused = true" @mouseleave="paused = false; endDrag()" @mousedown="startDrag"
+                @touchstart.passive="startDrag" @mousemove="onDrag" @touchmove.passive="onDrag" @mouseup="endDrag"
+                @touchend="endDrag">
+                <div class="flex gap-6 select-none w-full"
+                    :class="transitioning ? 'transition-transform duration-700 ease-in-out' : ''"
+                    :style="'transform: translateX(calc(-' + (active * (cardWidth + gap)) + 'px + ' + currentX + 'px))'">
                     <!-- Group 1 -->
                     <div class="flex gap-6 shrink-0">
                         <!-- Card 1: Interim + MOT (Orange) -->
@@ -895,70 +931,79 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Navigation Dots -->
+                <div class="flex justify-center gap-3 mt-8 pb-4">
+                    <template x-for="i in 4">
+                        <button @click="goTo(i - 1)" class="h-2 rounded-sm transition-all duration-300"
+                            :class="(active === 4 ? 0 : active) === (i - 1) ? 'w-10 bg-primary' : 'w-6 bg-gray-300 hover:bg-gray-400'"
+                            :aria-label="'Go to slide ' + i">
+                        </button>
+                    </template>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Reviews Section -->
     <section class="bg-white py-10 lg:py-20 relative z-10 w-full overflow-hidden border-t border-black/10">
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-20"
-            x-data="{
-                                                                                                                                                                                                                                                                                                                                        activeReview: 0,
-                                                                                                                                                                                                                                                                                                                                        isLoading: true,
-                                                                                                                                                                                                                                                                                                                                        reviews: [
-                                                                                                                                                                                                                                                                                                                                            {    
-                                                                                                                                                                                                                                                                                                                                                quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
-                                                                                                                                                                                                                                                                                                                                                name: 'Jason Adams',
-                                                                                                                                                                                                                                                                                                                                                image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
-                                                                                                                                                                                                                                                                                                                                                stars: 5,
-                                                                                                                                                                                                                                                                                                                                                location: 'Local Customer'
-                                                                                                                                                                                                                                                                                                                                            },    
-                                                                                                                                                                                                                                                                                                                                            {    
-                                                                                                                                                                                                                                                                                                                                                quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
-                                                                                                                                                                                                                                                                                                                                                name: 'Sarah Jenkins',
-                                                                                                                                                                                                                                                                                                                                                image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
-                                                                                                                                                                                                                                                                                                                                                stars: 5,
-                                                                                                                                                                                                                                                                                                                                                location: 'Verified Review'
-                                                                                                                                                                                                                                                                                                                                            },    
-                                                                                                                                                                                                                                                                                                                                            {    
-                                                                                                                                                                                                                                                                                                                                                quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
-                                                                                                                                                                                                                                                                                                                                                name: 'Mike Thompson',
-                                                                                                                                                                                                                                                                                                                                                image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
-                                                                                                                                                                                                                                                                                                                                                stars: 5,
-                                                                                                                                                                                                                                                                                                                                                location: 'Local Customer'
-                                                                                                                                                                                                                                                                                                                                            }    
-                                                                                                                                                                                                                                                                                                                                        ],    
-                                                                                                                                                                                                                                                                                                                                        next() {
-                                                                                                                                                                                                                                                                                                                                            this.activeReview = (this.activeReview + 1) % this.reviews.length;
-                                                                                                                                                                                                                                                                                                                                        },    
-                                                                                                                                                                                                                                                                                                                                        prev() {
-                                                                                                                                                                                                                                                                                                                                            this.activeReview = (this.activeReview - 1 + this.reviews.length) % this.reviews.length;
-                                                                                                                                                                                                                                                                                                                                        },    
-                                                                                                                                                                                                                                                                                                                                        async init() {
-                                                                                                                                                                                                                                                                                                                                            try {
-                                                                                                                                                                                                                                                                                                                                                const response = await fetch('/api/reviews');
-                                                                                                                                                                                                                                                                                                                                                if (!response.ok) throw new Error('API fetch failed');
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-20" x-data="{
+                                                                                                            activeReview: 0,
+                                                                                                            isLoading: true,
+                                                                                                            reviews: [
+                                                                                                                {    
+                                                                                                                    quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
+                                                                                                                    name: 'Jason Adams',
+                                                                                                                    image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
+                                                                                                                    stars: 5,
+                                                                                                                    location: 'Local Customer'
+                                                                                                                },    
+                                                                                                                {    
+                                                                                                                    quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
+                                                                                                                    name: 'Sarah Jenkins',
+                                                                                                                    image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
+                                                                                                                    stars: 5,
+                                                                                                                    location: 'Verified Review'
+                                                                                                                },    
+                                                                                                                {    
+                                                                                                                    quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
+                                                                                                                    name: 'Mike Thompson',
+                                                                                                                    image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
+                                                                                                                    stars: 5,
+                                                                                                                    location: 'Local Customer'
+                                                                                                                }    
+                                                                                                            ],    
+                                                                                                            next() {
+                                                                                                                this.activeReview = (this.activeReview + 1) % this.reviews.length;
+                                                                                                            },    
+                                                                                                            prev() {
+                                                                                                                this.activeReview = (this.activeReview - 1 + this.reviews.length) % this.reviews.length;
+                                                                                                            },    
+                                                                                                            async init() {
+                                                                                                                try {
+                                                                                                                    const response = await fetch('/api/reviews');
+                                                                                                                    if (!response.ok) throw new Error('API fetch failed');
 
-                                                                                                                                                                                                                                                                                                                                                const data = await response.json();
-                                                                                                                                                                                                                                                                                                                                                // Assuming API returns { reviews: [...] } or just [...]
-                                                                                                                                                                                                                                                                                                                                                const reviewList = data.reviews || data; 
+                                                                                                                    const data = await response.json();
+                                                                                                                    // Assuming API returns { reviews: [...] } or just [...]
+                                                                                                                    const reviewList = data.reviews || data; 
 
-                                                                                                                                                                                                                                                                                                                                                if (Array.isArray(reviewList) && reviewList.length > 0) {
-                                                                                                                                                                                                                                                                                                                                                    this.reviews = reviewList.map(r => ({
-                                                                                                                                                                                                                                                                                                                                                        quote: r.text || r.quote || 'No review text provided.',
-                                                                                                                                                                                                                                                                                                                                                        name: r.author_name || r.name || 'Anonymous',
-                                                                                                                                                                                                                                                                                                                                                        image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
-                                                                                                                                                                                                                                                                                                                                                        stars: r.rating || r.stars || 5,
-                                                                                                                                                                                                                                                                                                                                                        location: r.relative_time_description || 'Google Review'
-                                                                                                                                                                                                                                                                                                                                                    }));    
-                                                                                                                                                                                                                                                                                                                                                }    
-                                                                                                                                                                                                                                                                                                                                            } catch (error) {
-                                                                                                                                                                                                                                                                                                                                                console.warn('Using static reviews fallback:', error);
-                                                                                                                                                                                                                                                                                                                                            } finally {
-                                                                                                                                                                                                                                                                                                                                                this.isLoading = false;
-                                                                                                                                                                                                                                                                                                                                            }    
-                                                                                                                                                                                                                                                                                                                                        }    
-                                                                                                                                                                                                                                                                                                                                    }">
+                                                                                                                    if (Array.isArray(reviewList) && reviewList.length > 0) {
+                                                                                                                        this.reviews = reviewList.map(r => ({
+                                                                                                                            quote: r.text || r.quote || 'No review text provided.',
+                                                                                                                            name: r.author_name || r.name || 'Anonymous',
+                                                                                                                            image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
+                                                                                                                            stars: r.rating || r.stars || 5,
+                                                                                                                            location: r.relative_time_description || 'Google Review'
+                                                                                                                        }));    
+                                                                                                                    }    
+                                                                                                                } catch (error) {
+                                                                                                                    console.warn('Using static reviews fallback:', error);
+                                                                                                                } finally {
+                                                                                                                    this.isLoading = false;
+                                                                                                                }    
+                                                                                                            }    
+                                                                                                        }">
             <!-- Badge -->
             <div class="mb-16">
                 <span

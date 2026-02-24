@@ -170,61 +170,61 @@
 
                     <!-- Right Column: Services List -->
                     <div class="flex flex-col gap-3 lg:gap-2 w-full lg:max-w-xl ml-auto" x-data="{ 
-                                    active: null, 
-                                    shown: false,
-                                    services: [
-                                        { 
-                                            id: 1, 
-                                            title: 'Full Service', 
-                                            desc: 'A comprehensive yearly service that checks key systems, refreshes essentials, and helps keep your car reliable all year round.', 
-                                            cta: 'Book Full Service' 
-                                        },
-                                        { 
-                                            id: 2, 
-                                            title: 'Interim Service', 
-                                            desc: 'A lighter service focused on the main safety and maintenance essentials, ideal for mid-year checkups or higher mileage drivers.', 
-                                            cta: 'Book Interim Service' 
-                                        },
-                                        { 
-                                            id: 3, 
-                                            title: 'Major Service', 
-                                            desc: 'Our most in-depth service with extra checks and maintenance, designed for maximum peace of mind and long-term performance.', 
-                                            cta: 'Book Major Service' 
-                                        },
-                                        { 
-                                            id: 4, 
-                                            title: 'Brake Discs & Pads', 
-                                            desc: 'Inspection and replacement of worn brake discs and pads to restore safe, smooth stopping power and reduce brake noise or vibration.', 
-                                            cta: 'Check Your Brakes' 
-                                        },
-                                        { 
-                                            id: 5, 
-                                            title: 'Brake Fluid Change', 
-                                            desc: 'Replacement of old brake fluid to help maintain braking response, protect components, and keep the braking system performing properly.', 
-                                            cta: 'Book Brake Fluid Change' 
-                                        }
-                                    ]
-                                }" x-init="
-                                    const observer = new IntersectionObserver((entries) => {
-                                        if (entries[0].isIntersecting) {
-                                            shown = true;
-                                            if (window.innerWidth >= 1024) {
-                                                setTimeout(() => {
-                                                    if (shown) active = 1;
-                                                }, 800);
-                                            }
-                                        }
-                                    }, { threshold: 0.1 });
-                                    observer.observe($el);
-                                ">
+                                            active: null, 
+                                            shown: false,
+                                            services: [
+                                                { 
+                                                    id: 1, 
+                                                    title: 'Full Service', 
+                                                    desc: 'A comprehensive yearly service that checks key systems, refreshes essentials, and helps keep your car reliable all year round.', 
+                                                    cta: 'Book Full Service' 
+                                                },
+                                                { 
+                                                    id: 2, 
+                                                    title: 'Interim Service', 
+                                                    desc: 'A lighter service focused on the main safety and maintenance essentials, ideal for mid-year checkups or higher mileage drivers.', 
+                                                    cta: 'Book Interim Service' 
+                                                },
+                                                { 
+                                                    id: 3, 
+                                                    title: 'Major Service', 
+                                                    desc: 'Our most in-depth service with extra checks and maintenance, designed for maximum peace of mind and long-term performance.', 
+                                                    cta: 'Book Major Service' 
+                                                },
+                                                { 
+                                                    id: 4, 
+                                                    title: 'Brake Discs & Pads', 
+                                                    desc: 'Inspection and replacement of worn brake discs and pads to restore safe, smooth stopping power and reduce brake noise or vibration.', 
+                                                    cta: 'Check Your Brakes' 
+                                                },
+                                                { 
+                                                    id: 5, 
+                                                    title: 'Brake Fluid Change', 
+                                                    desc: 'Replacement of old brake fluid to help maintain braking response, protect components, and keep the braking system performing properly.', 
+                                                    cta: 'Book Brake Fluid Change' 
+                                                }
+                                            ]
+                                        }" x-init="
+                                            const observer = new IntersectionObserver((entries) => {
+                                                if (entries[0].isIntersecting) {
+                                                    shown = true;
+                                                    if (window.innerWidth >= 1024) {
+                                                        setTimeout(() => {
+                                                            if (shown) active = 1;
+                                                        }, 800);
+                                                    }
+                                                }
+                                            }, { threshold: 0.1 });
+                                            observer.observe($el);
+                                        ">
                         <template x-for="(service, index) in services" :key="service.id">
                             <div @mouseenter="window.innerWidth >= 1024 ? active = service.id : null"
                                 @click="window.innerWidth < 1024 ? (active === service.id ? active = null : active = service.id) : null"
                                 class="rounded-xl overflow-hidden transition-all duration-700 ease-out border border-white/5 backdrop-blur-md"
                                 :class="[
-                                                                                                                                                                                                                                                    active === service.id ? 'bg-black/40 lg:bg-white/10' : 'bg-white/10 hover:bg-white/20 hover:border-white/10 cursor-pointer',
-                                                                                                                                                                                                                                                    shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'
-                                                                                                                                                                                                                                                ]"
+                                                                                                                                                                                                                                                            active === service.id ? 'bg-black/40 lg:bg-white/10' : 'bg-white/10 hover:bg-white/20 hover:border-white/10 cursor-pointer',
+                                                                                                                                                                                                                                                            shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'
+                                                                                                                                                                                                                                                        ]"
                                 :style="`transition-delay: ${shown ? index * 100 : 0}ms`">
 
                                 <div class="flex items-center px-6 py-5 lg:p-5 transition-all duration-500 ease-in-out"
@@ -270,11 +270,11 @@
     <section class="py-10 lg:py-20 bg-white relative z-10 overflow-hidden">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-10">
             <!-- Header -->
-            <div class="flex flex-col items-center text-center mb-16">
+            <div class="flex flex-col items-start lg:items-center lg:text-center mb-4 lg:mb-16">
                 <span
                     class="bg-primary text-white px-4 py-1.5 rounded-full mb-6 font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT]">Pricing</span>
                 <h2
-                    class="font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.83] tracking-[-0.06em] text-center uppercase [leading-trim:CAP_HEIGHT] text-primary mb-8">
+                    class="font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.83] tracking-[-0.06em] lg:text-center uppercase [leading-trim:CAP_HEIGHT] text-primary mb-8">
                     Service Worth<br>Every Penny
                 </h2>
                 <p class="text-[#0A0A0A] font-medium text-lg leading-[1.26] max-w-sm hidden lg:block">
@@ -285,79 +285,80 @@
 
             <!-- Carousel Container -->
             <div x-data="{
-                        active: 0,
-                        cardWidth: 0,
-                        gap: 24,
-                        transitioning: true,
-                        paused: false,
-                        startX: 0,
-                        currentX: 0,
-                        isDragging: false,
-                        updateWidth() {
-                            const card = this.$el.querySelector('.pricing-card');
-                            if (card) this.cardWidth = card.offsetWidth;
-                        },
-                        init() {
-                            // Small delay to ensure DOM is ready
-                            setTimeout(() => this.updateWidth(), 100);
-                            window.addEventListener('resize', () => this.updateWidth());
-                            setInterval(() => {
-                                if (!this.paused && !this.isDragging) this.next();
-                            }, 3000);
-                        },
-                        next() {
-                            this.transitioning = true;
-                            this.active++;
-                            if (this.active >= 4) {
-                                setTimeout(() => {
-                                    this.transitioning = false;
-                                    this.active = 0;
-                                }, 700);
-                            }
-                        },
-                        prev() {
-                            if (this.active === 0) {
-                                this.transitioning = false;
-                                this.active = 4;
-                                setTimeout(() => {
+                                active: 0,
+                                cardWidth: 0,
+                                gap: 24,
+                                transitioning: true,
+                                paused: false,
+                                startX: 0,
+                                currentX: 0,
+                                isDragging: false,
+                                updateWidth() {
+                                    const card = this.$el.querySelector('.pricing-card');
+                                    if (card) this.cardWidth = card.offsetWidth;
+                                },
+                                init() {
+                                    // Small delay to ensure DOM is ready
+                                    setTimeout(() => this.updateWidth(), 100);
+                                    window.addEventListener('resize', () => this.updateWidth());
+                                    setInterval(() => {
+                                        if (!this.paused && !this.isDragging) this.next();
+                                    }, 3000);
+                                },
+                                next() {
                                     this.transitioning = true;
-                                    this.active = 3;
-                                }, 50);
-                            } else {
-                                this.transitioning = true;
-                                this.active--;
-                            }
-                        },
-                        goTo(index) {
-                            this.transitioning = true;
-                            this.active = index;
-                        },
-                        startDrag(e) {
-                            this.isDragging = true;
-                            this.transitioning = false;
-                            this.paused = true;
-                            this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-                        },
-                        onDrag(e) {
-                            if (!this.isDragging) return;
-                            const x = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-                            this.currentX = x - this.startX;
-                        },
-                        endDrag() {
-                            if (!this.isDragging) return;
-                            this.isDragging = false;
-                            this.transitioning = true;
-                            this.paused = false;
+                                    this.active++;
+                                    if (this.active >= 4) {
+                                        setTimeout(() => {
+                                            this.transitioning = false;
+                                            this.active = 0;
+                                        }, 700);
+                                    }
+                                },
+                                prev() {
+                                    if (this.active === 0) {
+                                        this.transitioning = false;
+                                        this.active = 4;
+                                        setTimeout(() => {
+                                            this.transitioning = true;
+                                            this.active = 3;
+                                        }, 50);
+                                    } else {
+                                        this.transitioning = true;
+                                        this.active--;
+                                    }
+                                },
+                                goTo(index) {
+                                    this.transitioning = true;
+                                    this.active = index;
+                                },
+                                startDrag(e) {
+                                    this.isDragging = true;
+                                    this.transitioning = false;
+                                    this.paused = true;
+                                    this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+                                },
+                                onDrag(e) {
+                                    if (!this.isDragging) return;
+                                    const x = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+                                    this.currentX = x - this.startX;
+                                },
+                                endDrag() {
+                                    if (!this.isDragging) return;
+                                    this.isDragging = false;
+                                    this.transitioning = true;
+                                    this.paused = false;
 
-                            if (this.currentX < -50) {
-                                this.next();
-                            } else if (this.currentX > 50) {
-                                this.prev();
-                            }
+                                    if (this.currentX < -50) {
+                                        this.next();
+                                    } else if (this.currentX > 50) {
+                                        this.prev();
+                                    }
 
-                            this.currentX = 0;
-                        }
-                    }" class="w-[calc(100vw-3rem)] overflow-hidden relative cursor-grab active:cursor-grabbing pb-2"
+                                    this.currentX = 0;
+                                }
+                            }"
+                class="w-[calc(100vw-3rem)] overflow-hidden relative cursor-grab active:cursor-grabbing pb-2"
                 @mouseenter="paused = true" @mouseleave="paused = false; endDrag()" @mousedown="startDrag"
                 @touchstart.passive="startDrag" @mousemove="onDrag" @touchmove.passive="onDrag" @mouseup="endDrag"
                 @touchend="endDrag">
@@ -760,16 +761,16 @@
 
             <!-- Cards Grid -->
             <div x-data="{
-                                                                                                                                                                                                                                show: false,
-                                                                                                                                                                                                                                init() {
-                                                                                                                                                                                                                                    const observer = new IntersectionObserver((entries) => {
-                                                                                                                                                                                                                                        entries.forEach(entry => {
-                                                                                                                                                                                                                                            this.show = entry.isIntersecting;
-                                                                                                                                                                                                                                        });
-                                                                                                                                                                                                                                    }, { threshold: 0.2 });
-                                                                                                                                                                                                                                    observer.observe(this.$el);
-                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                            }"
+                                                                                                                                                                                                                                        show: false,
+                                                                                                                                                                                                                                        init() {
+                                                                                                                                                                                                                                            const observer = new IntersectionObserver((entries) => {
+                                                                                                                                                                                                                                                entries.forEach(entry => {
+                                                                                                                                                                                                                                                    this.show = entry.isIntersecting;
+                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                            }, { threshold: 0.2 });
+                                                                                                                                                                                                                                            observer.observe(this.$el);
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                    }"
                 class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10 h-full items-stretch">
                 <!-- Card 1: Pick Your Service -->
                 <div class="bg-[#1A103C] rounded-[24px] p-6 lg:p-10 min-h-[200px] lg:min-h-[300px] flex flex-col justify-between group hover:bg-[#241654] transition-all duration-700 ease-out relative overflow-hidden"
@@ -839,62 +840,62 @@
                     <div
                         class="bg-white/10 backdrop-blur-sm lg:backdrop-blur-xl p-6 lg:p-8 rounded-[20px] max-w-[586px] w-full">
                         <div x-data="{
-                                                activeReview: 0,
-                                                isLoading: true,
-                                                reviews: [
-                                                    {
-                                                        quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
-                                                        name: 'Jason Adams',
-                                                        image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
-                                                        stars: 5,
-                                                        location: 'Local Customer'
-                                                    },
-                                                    {
-                                                        quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
-                                                        name: 'Sarah Jenkins',
-                                                        image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
-                                                        stars: 5,
-                                                        location: 'Verified Review'
-                                                    },
-                                                    {
-                                                        quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
-                                                        name: 'Mike Thompson',
-                                                        image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
-                                                        stars: 5,
-                                                        location: 'Local Customer'
-                                                    }
-                                                ],
-                                                next() {
-                                                    this.activeReview = (this.activeReview + 1) % this.reviews.length;
-                                                },
-                                                prev() {
-                                                    this.activeReview = (this.activeReview - 1 + this.reviews.length) % this.reviews.length;
-                                                },
-                                                async init() {
-                                                    try {
-                                                        const response = await fetch('/api/reviews');
-                                                        if (!response.ok) throw new Error('API fetch failed');
+                                                        activeReview: 0,
+                                                        isLoading: true,
+                                                        reviews: [
+                                                            {
+                                                                quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
+                                                                name: 'Jason Adams',
+                                                                image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
+                                                                stars: 5,
+                                                                location: 'Local Customer'
+                                                            },
+                                                            {
+                                                                quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
+                                                                name: 'Sarah Jenkins',
+                                                                image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
+                                                                stars: 5,
+                                                                location: 'Verified Review'
+                                                            },
+                                                            {
+                                                                quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
+                                                                name: 'Mike Thompson',
+                                                                image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
+                                                                stars: 5,
+                                                                location: 'Local Customer'
+                                                            }
+                                                        ],
+                                                        next() {
+                                                            this.activeReview = (this.activeReview + 1) % this.reviews.length;
+                                                        },
+                                                        prev() {
+                                                            this.activeReview = (this.activeReview - 1 + this.reviews.length) % this.reviews.length;
+                                                        },
+                                                        async init() {
+                                                            try {
+                                                                const response = await fetch('/api/reviews');
+                                                                if (!response.ok) throw new Error('API fetch failed');
 
-                                                        const data = await response.json();
-                                                        // Assuming API returns { reviews: [...] } or just [...]
-                                                        const reviewList = data.reviews || data; 
+                                                                const data = await response.json();
+                                                                // Assuming API returns { reviews: [...] } or just [...]
+                                                                const reviewList = data.reviews || data; 
 
-                                                        if (Array.isArray(reviewList) && reviewList.length > 0) {
-                                                            this.reviews = reviewList.map(r => ({
-                                                                quote: r.text || r.quote || 'No review text provided.',
-                                                                name: r.author_name || r.name || 'Anonymous',
-                                                                image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
-                                                                stars: r.rating || r.stars || 5,
-                                                                location: r.relative_time_description || 'Google Review'
-                                                            }));
+                                                                if (Array.isArray(reviewList) && reviewList.length > 0) {
+                                                                    this.reviews = reviewList.map(r => ({
+                                                                        quote: r.text || r.quote || 'No review text provided.',
+                                                                        name: r.author_name || r.name || 'Anonymous',
+                                                                        image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
+                                                                        stars: r.rating || r.stars || 5,
+                                                                        location: r.relative_time_description || 'Google Review'
+                                                                    }));
+                                                                }
+                                                            } catch (error) {
+                                                                console.warn('Using static reviews fallback:', error);
+                                                            } finally {
+                                                                this.isLoading = false;
+                                                            }
                                                         }
-                                                    } catch (error) {
-                                                        console.warn('Using static reviews fallback:', error);
-                                                    } finally {
-                                                        this.isLoading = false;
-                                                    }
-                                                }
-                                            }">
+                                                    }">
                             <!-- Badge -->
                             <div class="mb-8">
                                 <span
@@ -1005,155 +1006,155 @@
     </section>
 
     <!-- <section class="bg-white py-10 lg:py-20 relative z-10 w-full overflow-hidden border-b border-black/10">
-                        <div class="max-w-[1440px] mx-auto px-6 lg:px-20" x-data="{
-                                    activeReview: 0,
-                                    isLoading: true,
-                                    reviews: [
-                                        {
-                                            quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
-                                            name: 'Jason Adams',
-                                            image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
-                                            stars: 5,
-                                            location: 'Local Customer'
-                                        },
-                                        {
-                                            quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
-                                            name: 'Sarah Jenkins',
-                                            image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
-                                            stars: 5,
-                                            location: 'Verified Review'
-                                        },
-                                        {
-                                            quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
-                                            name: 'Mike Thompson',
-                                            image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
-                                            stars: 5,
-                                            location: 'Local Customer'
-                                        }
-                                    ],
-                                    next() {
-                                        this.activeReview = (this.activeReview + 1) % this.reviews.length;
-                                    },
-                                    prev() {
-                                        this.activeReview = (this.activeReview - 1 + this.reviews.length) % this.reviews.length;
-                                    },
-                                    async init() {
-                                        try {
-                                            const response = await fetch('/api/reviews');
-                                            if (!response.ok) throw new Error('API fetch failed');
+                                <div class="max-w-[1440px] mx-auto px-6 lg:px-20" x-data="{
+                                            activeReview: 0,
+                                            isLoading: true,
+                                            reviews: [
+                                                {
+                                                    quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
+                                                    name: 'Jason Adams',
+                                                    image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
+                                                    stars: 5,
+                                                    location: 'Local Customer'
+                                                },
+                                                {
+                                                    quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
+                                                    name: 'Sarah Jenkins',
+                                                    image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
+                                                    stars: 5,
+                                                    location: 'Verified Review'
+                                                },
+                                                {
+                                                    quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
+                                                    name: 'Mike Thompson',
+                                                    image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
+                                                    stars: 5,
+                                                    location: 'Local Customer'
+                                                }
+                                            ],
+                                            next() {
+                                                this.activeReview = (this.activeReview + 1) % this.reviews.length;
+                                            },
+                                            prev() {
+                                                this.activeReview = (this.activeReview - 1 + this.reviews.length) % this.reviews.length;
+                                            },
+                                            async init() {
+                                                try {
+                                                    const response = await fetch('/api/reviews');
+                                                    if (!response.ok) throw new Error('API fetch failed');
 
-                                            const data = await response.json();
-                                            // Assuming API returns { reviews: [...] } or just [...]
-                                            const reviewList = data.reviews || data; 
+                                                    const data = await response.json();
+                                                    // Assuming API returns { reviews: [...] } or just [...]
+                                                    const reviewList = data.reviews || data; 
 
-                                            if (Array.isArray(reviewList) && reviewList.length > 0) {
-                                                this.reviews = reviewList.map(r => ({
-                                                    quote: r.text || r.quote || 'No review text provided.',
-                                                    name: r.author_name || r.name || 'Anonymous',
-                                                    image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
-                                                    stars: r.rating || r.stars || 5,
-                                                    location: r.relative_time_description || 'Google Review'
-                                                }));
+                                                    if (Array.isArray(reviewList) && reviewList.length > 0) {
+                                                        this.reviews = reviewList.map(r => ({
+                                                            quote: r.text || r.quote || 'No review text provided.',
+                                                            name: r.author_name || r.name || 'Anonymous',
+                                                            image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
+                                                            stars: r.rating || r.stars || 5,
+                                                            location: r.relative_time_description || 'Google Review'
+                                                        }));
+                                                    }
+                                                } catch (error) {
+                                                    console.warn('Using static reviews fallback:', error);
+                                                } finally {
+                                                    this.isLoading = false;
+                                                }
                                             }
-                                        } catch (error) {
-                                            console.warn('Using static reviews fallback:', error);
-                                        } finally {
-                                            this.isLoading = false;
-                                        }
-                                    }
-                                }">
-                            <div class="mb-16">
-                                <span
-                                    class="bg-primary text-white px-5 py-2 rounded-full font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT] inline-block">
-                                    Driven By Great Reviews
-                                </span>
-                            </div>
-
-                            <div class="relative min-h-[400px] flex flex-col justify-between">
-
-                                <div class="relative">
-                                    <i class="fa-solid fa-quote-left text-black text-[48px] mb-8 block leading-none"></i>
-
-                                    <style>
-                                        .custom-scrollbar::-webkit-scrollbar {
-                                            width: 6px;
-                                            background-color: transparent;
-                                        }
-
-                                        .custom-scrollbar:hover::-webkit-scrollbar {
-                                            background-color: #f1f1f1;
-                                        }
-
-                                        .custom-scrollbar::-webkit-scrollbar-thumb {
-                                            background-color: transparent;
-                                            border-radius: 9999px;
-                                        }
-
-                                        .custom-scrollbar:hover::-webkit-scrollbar-thumb {
-                                            background-color: #FB5200;
-                                        }
-                                    </style>
-                                    <div class="relative h-[200px] lg:h-[220px] overflow-y-auto custom-scrollbar scroll-smooth pr-4">
-                                        <template x-for="(review, index) in reviews" :key="index">
-                                            <div x-show="activeReview === index"
-                                                x-transition:enter="transition ease-out duration-500 delay-100"
-                                                x-transition:enter-start="opacity-0 translate-y-8"
-                                                x-transition:enter-end="opacity-100 translate-y-0"
-                                                x-transition:leave="transition ease-in duration-300 absolute top-0 w-full"
-                                                x-transition:leave-start="opacity-100 translate-y-0"
-                                                x-transition:leave-end="opacity-0 -translate-y-8" class="absolute w-full top-0 left-0">
-                                                <p class="font-geist font-medium text-[28px] lg:text-[48px] leading-[1.2] tracking-[-0.06em] text-[0A0A0A] max-w-full cursor-default"
-                                                    x-text="review.quote">
-                                                </p>
-                                            </div>
-                                        </template>
+                                        }">
+                                    <div class="mb-16">
+                                        <span
+                                            class="bg-primary text-white px-5 py-2 rounded-full font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT] inline-block">
+                                            Driven By Great Reviews
+                                        </span>
                                     </div>
-                                </div>
 
-                                <div class="flex items-end justify-between mt-8 pt-8 relative z-20">
+                                    <div class="relative min-h-[400px] flex flex-col justify-between">
 
-                                    <div class="flex lg:flex-row flex-col lg:items-center lg:gap-6 gap-2">
-                                        <div class="w-16 h-16 relative rounded-[16px] overflow-hidden bg-gray-100">
-                                            <template x-for="(review, index) in reviews" :key="index">
-                                                <img x-show="activeReview === index" :src="review.image" alt="Reviewer"
-                                                    class="absolute w-full h-full object-cover transition-opacity duration-500"
-                                                    x-transition:enter="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
-                                                    x-transition:leave="opacity-0 scale-90 absolute">
-                                            </template>
-                                        </div>
+                                        <div class="relative">
+                                            <i class="fa-solid fa-quote-left text-black text-[48px] mb-8 block leading-none"></i>
 
-                                        <div class="flex flex-col">
-                                            <template x-for="(review, index) in reviews" :key="index">
-                                                <div x-show="activeReview === index"
-                                                    x-transition:enter="transition ease-out duration-500 delay-100"
-                                                    x-transition:enter-start="opacity-0 translate-x-4"
-                                                    x-transition:enter-end="opacity-100 translate-x-0" class="flex flex-col">
-                                                    <h4 class="font-geist font-bold text-lg text-black mb-1" x-text="review.name"></h4>
-                                                    <div class="flex gap-1 text-[#FB5200] text-sm">
-                                                        <template x-for="i in 5">
-                                                            <i class="fa-solid fa-star text-xs"></i>
-                                                        </template>
+                                            <style>
+                                                .custom-scrollbar::-webkit-scrollbar {
+                                                    width: 6px;
+                                                    background-color: transparent;
+                                                }
+
+                                                .custom-scrollbar:hover::-webkit-scrollbar {
+                                                    background-color: #f1f1f1;
+                                                }
+
+                                                .custom-scrollbar::-webkit-scrollbar-thumb {
+                                                    background-color: transparent;
+                                                    border-radius: 9999px;
+                                                }
+
+                                                .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+                                                    background-color: #FB5200;
+                                                }
+                                            </style>
+                                            <div class="relative h-[200px] lg:h-[220px] overflow-y-auto custom-scrollbar scroll-smooth pr-4">
+                                                <template x-for="(review, index) in reviews" :key="index">
+                                                    <div x-show="activeReview === index"
+                                                        x-transition:enter="transition ease-out duration-500 delay-100"
+                                                        x-transition:enter-start="opacity-0 translate-y-8"
+                                                        x-transition:enter-end="opacity-100 translate-y-0"
+                                                        x-transition:leave="transition ease-in duration-300 absolute top-0 w-full"
+                                                        x-transition:leave-start="opacity-100 translate-y-0"
+                                                        x-transition:leave-end="opacity-0 -translate-y-8" class="absolute w-full top-0 left-0">
+                                                        <p class="font-geist font-medium text-[28px] lg:text-[48px] leading-[1.2] tracking-[-0.06em] text-[0A0A0A] max-w-full cursor-default"
+                                                            x-text="review.quote">
+                                                        </p>
                                                     </div>
+                                                </template>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex items-end justify-between mt-8 pt-8 relative z-20">
+
+                                            <div class="flex lg:flex-row flex-col lg:items-center lg:gap-6 gap-2">
+                                                <div class="w-16 h-16 relative rounded-[16px] overflow-hidden bg-gray-100">
+                                                    <template x-for="(review, index) in reviews" :key="index">
+                                                        <img x-show="activeReview === index" :src="review.image" alt="Reviewer"
+                                                            class="absolute w-full h-full object-cover transition-opacity duration-500"
+                                                            x-transition:enter="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                                                            x-transition:leave="opacity-0 scale-90 absolute">
+                                                    </template>
                                                 </div>
-                                            </template>
+
+                                                <div class="flex flex-col">
+                                                    <template x-for="(review, index) in reviews" :key="index">
+                                                        <div x-show="activeReview === index"
+                                                            x-transition:enter="transition ease-out duration-500 delay-100"
+                                                            x-transition:enter-start="opacity-0 translate-x-4"
+                                                            x-transition:enter-end="opacity-100 translate-x-0" class="flex flex-col">
+                                                            <h4 class="font-geist font-bold text-lg text-black mb-1" x-text="review.name"></h4>
+                                                            <div class="flex gap-1 text-[#FB5200] text-sm">
+                                                                <template x-for="i in 5">
+                                                                    <i class="fa-solid fa-star text-xs"></i>
+                                                                </template>
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex lg:gap-10 gap-4 items-center">
+                                                <button @click="prev()"
+                                                    class="font-geist font-bold text-sm tracking-widest uppercase text-black/40 hover:text-black transition-colors">
+                                                    Prev
+                                                </button>
+                                                <button @click="next()"
+                                                    class="font-geist font-bold text-sm tracking-widest uppercase text-black hover:text-black transition-colors">
+                                                    Next
+                                                </button>
+                                            </div>
+
                                         </div>
                                     </div>
-
-                                    <div class="flex lg:gap-10 gap-4 items-center">
-                                        <button @click="prev()"
-                                            class="font-geist font-bold text-sm tracking-widest uppercase text-black/40 hover:text-black transition-colors">
-                                            Prev
-                                        </button>
-                                        <button @click="next()"
-                                            class="font-geist font-bold text-sm tracking-widest uppercase text-black hover:text-black transition-colors">
-                                            Next
-                                        </button>
-                                    </div>
-
                                 </div>
-                            </div>
-                        </div>
-                    </section> -->
+                            </section> -->
 
     <!-- FAQ Section -->
     <section class="bg-white py-10 lg:py-20 w-full relative overflow-hidden">
