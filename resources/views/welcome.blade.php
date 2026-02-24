@@ -3,7 +3,7 @@
 @section('content')
     <!-- Main Wrapper: 1440px max-width, 40px padding -->
     <!-- Hero Section -->
-    <section class="relative w-full h-screen overflow-hidden">
+    <section class="relative w-full h-[80vh] overflow-hidden">
 
         <!-- Mobile Background Image (Absolute Fullscreen) -->
         <div class="absolute inset-0 z-0 lg:hidden">
@@ -22,11 +22,10 @@
                 <!-- Headlines -->
                 <div>
                     <!-- Desktop Headline -->
-                    <h1 id="hero-title"
-                        style="font-family: 'Geist', sans-serif; font-weight: 600; font-size: 96px; line-height: 0.83; letter-spacing: -0.06em; text-transform: uppercase; leading-trim: CAP_HEIGHT;"
-                        class="mt-32 text-black opacity-0 typewriter-effect hidden lg:block">
-                        MOT TESTING<br>
-                        & SERVICING<br>
+                    <h1
+                        class="font-geist font-semibold text-[56px] xl:text-[96px] leading-[0.83] tracking-tighter text-black uppercase mt-32 text-black hidden lg:block">
+                        MOT TESTING
+                        & SERVICING
                         <span class="flex items-baseline gap-3 flex-wrap">
                             <span class="text-black">IN</span>
                             <span class="text-primary">DONCASTER</span>
@@ -35,27 +34,13 @@
 
                     <!-- Mobile Headline -->
                     <h1
-                        class="font-geist font-semibold text-[48px] leading-[1.06] tracking-tighter text-white uppercase lg:hidden typewriter-effect opacity-0 mt-20">
+                        class="font-geist font-semibold text-[48px] leading-[1.06] tracking-tighter text-white uppercase lg:hidden mt-20">
                         MOT TESTING<br>& SERVICING<br>IN <span class="text-primary">DONCASTER</span>
                     </h1>
                 </div>
 
                 <!-- Info Box & CTA (Desktop) -->
                 <div class="hidden lg:flex flex-col gap-8">
-                    <div class="bg-black text-white p-6 rounded-2xl max-w-lg shadow-xl flex items-start gap-5">
-                        <div class="bg-primary aspect-square w-12 h-12 flex items-center justify-center rounded shrink-0">
-                            <!-- Wrench Icon -->
-                            <svg class="w-6 h-6 text-black transform rotate-45" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
-                            </svg>
-                        </div>
-                        <p class="text-sm font-medium opacity-90 leading-relaxed font-geist text-gray-300">
-                            Simply Motoring focuses on safety, performance, and long-term reliability.
-                            From quick MOT checks to full car servicing, we treat every vehicle with care, delivering
-                            service you can depend on.
-                        </p>
-                    </div>
 
                     <!-- Desktop Button -->
                     <div>
@@ -65,16 +50,6 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Mobile Info Text -->
-                <div class="flex gap-4 lg:hidden">
-                    <div class="w-5 h-5 bg-primary shrink-0 mt-1"></div>
-                    <p class="text-white/90 text-lg leading-relaxed font-geist font-medium">
-                        Simply Motoring focuses on safety, performance, and long-term reliability.
-                        From quick MOT checks to full car servicing, we treat every vehicle with care, delivering
-                        service you can depend on.
-                    </p>
-                </div>
             </div>
 
             <!-- Right Image Section (Desktop Only) -->
@@ -82,17 +57,6 @@
                 <div class="w-full h-full relative overflow-hidden hero-image-clip bg-gray-100 rounded-[20px]">
                     <img src="{{ asset('images/ab7a55c40020dbf18750f61e6987c734559524fb.png') }}" alt="Mechanic Garage"
                         class="absolute inset-0 w-full h-full object-cover">
-
-                    <!-- Secondary Button (Bottom Right of Image) -->
-                    <div class="absolute bottom-0 right-10 z-20">
-                        <div
-                            class="inline-block p-[1px] bg-white/60 hero-btn-clip rounded-md shadow-xl transition-all duration-300 hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl">
-                            <a href="#book"
-                                class="inline-flex items-center justify-center w-full h-full bg-black/30 text-white text-sm font-semibold uppercase tracking-widest px-10 py-5 hover:bg-white hover:text-black transition-colors hero-btn-clip rounded-md">
-                                BOOK YOUR CAR SERVICE
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -139,15 +103,14 @@
     <!-- About Section -->
     <section class="bg-white py-16 lg:py-32 relative z-10">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-2 gap-32 lg:gap-24 items-start">
+            <div class="grid lg:grid-cols-2 gap-6 lg:gap-24 items-start">
 
                 <!-- Left Column: Headline -->
                 <div class="flex flex-col gap-6">
                     <span class="text-lg font-semibold uppercase tracking-tight text-[#0A0A0Ac2] font-geist">About
                         Simply Motoring</span>
 
-                    <h2
-                        class="text-[48px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter uppercase font-geist opacity-0 typewriter-effect">
+                    <h2 class="text-[48px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter uppercase font-geist">
                         <span class="text-black">Car Care<br>Made Easy,</span><br>
                         <span class="text-primary">Hassle Free</span>
                     </h2>
@@ -193,7 +156,7 @@
                     <!-- Left Column: Heading & Text -->
                     <div class="flex flex-col justify-between h-auto lg:h-[80%] gap-6 lg:gap-10">
                         <h2
-                            class="text-white text-[48px] lg:text-[96px] font-bold uppercase leading-[0.9] font-geist tracking-tighter opacity-0 typewriter-effect">
+                            class="text-white text-[48px] lg:text-[96px] font-bold uppercase leading-[0.9] font-geist tracking-tighter">
                             Complete<br>Services<br>Under One<br>Roof
                         </h2>
 
@@ -259,9 +222,10 @@
                                 @click="window.innerWidth < 1024 ? (active === service.id ? active = null : active = service.id) : null"
                                 class="rounded-xl overflow-hidden transition-all duration-700 ease-out border border-white/5 backdrop-blur-md"
                                 :class="[
-                                            active === service.id ? 'bg-black/40 lg:bg-white/10' : 'bg-white/10 hover:bg-white/20 hover:border-white/10 cursor-pointer',
-                                            shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'
-                                        ]" :style="`transition-delay: ${shown ? index * 100 : 0}ms`">
+                                                                                                                                                                                                                                                active === service.id ? 'bg-black/40 lg:bg-white/10' : 'bg-white/10 hover:bg-white/20 hover:border-white/10 cursor-pointer',
+                                                                                                                                                                                                                                                shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'
+                                                                                                                                                                                                                                            ]"
+                                :style="`transition-delay: ${shown ? index * 100 : 0}ms`">
 
                                 <div class="flex items-center px-6 py-5 lg:p-5 transition-all duration-500 ease-in-out"
                                     :class="active === service.id ? 'lg:px-8 lg:py-4 lg:mb-3 gap-4 lg:gap-0' : 'justify-between'">
@@ -310,7 +274,7 @@
                 <span
                     class="bg-primary text-white px-4 py-1.5 rounded-full mb-6 font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT]">Pricing</span>
                 <h2
-                    class="font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.83] tracking-[-0.06em] text-center uppercase [leading-trim:CAP_HEIGHT] text-primary mb-8 typewriter-effect">
+                    class="font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.83] tracking-[-0.06em] text-center uppercase [leading-trim:CAP_HEIGHT] text-primary mb-8">
                     Service Worth<br>Every Penny
                 </h2>
                 <p class="text-[#0A0A0A] font-medium text-lg leading-[1.26] max-w-sm">
@@ -321,37 +285,85 @@
 
             <!-- Carousel Container -->
             <div x-data="{
-                        active: 0,
-                        cardWidth: 0,
-                        gap: 24,
-                        transitioning: true,
-                        paused: false,
-                        updateWidth() {
-                            const card = this.$el.querySelector('.pricing-card');
-                            if (card) this.cardWidth = card.offsetWidth;
-                        },
-                        init() {
-                            // Small delay to ensure DOM is ready
-                            setTimeout(() => this.updateWidth(), 100);
-                            window.addEventListener('resize', () => this.updateWidth());
-                            setInterval(() => {
-                                if (!this.paused) this.next();
-                            }, 3000);
-                        },
-                        next() {
-                            this.transitioning = true;
-                            this.active++;
-                            if (this.active === 4) {
-                                setTimeout(() => {
-                                    this.transitioning = false;
-                                    this.active = 0;
-                                }, 700);
-                            }
+                    active: 0,
+                    cardWidth: 0,
+                    gap: 24,
+                    transitioning: true,
+                    paused: false,
+                    startX: 0,
+                    currentX: 0,
+                    isDragging: false,
+                    updateWidth() {
+                        const card = this.$el.querySelector('.pricing-card');
+                        if (card) this.cardWidth = card.offsetWidth;
+                    },
+                    init() {
+                        // Small delay to ensure DOM is ready
+                        setTimeout(() => this.updateWidth(), 100);
+                        window.addEventListener('resize', () => this.updateWidth());
+                        setInterval(() => {
+                            if (!this.paused && !this.isDragging) this.next();
+                        }, 3000);
+                    },
+                    next() {
+                        this.transitioning = true;
+                        this.active++;
+                        if (this.active >= 4) {
+                            setTimeout(() => {
+                                this.transitioning = false;
+                                this.active = 0;
+                            }, 700);
                         }
-                    }" class="w-[calc(100vw-3rem)] overflow-hidden" @mouseenter="paused = true"
-                @mouseleave="paused = false">
-                <div class="flex gap-6" :class="transitioning ? 'transition-transform duration-700 ease-in-out' : ''"
-                    :style="'transform: translateX(-' + (active * (cardWidth + gap)) + 'px)'">
+                    },
+                    prev() {
+                        if (this.active === 0) {
+                            this.transitioning = false;
+                            this.active = 4;
+                            setTimeout(() => {
+                                this.transitioning = true;
+                                this.active = 3;
+                            }, 50);
+                        } else {
+                            this.transitioning = true;
+                            this.active--;
+                        }
+                    },
+                    goTo(index) {
+                        this.transitioning = true;
+                        this.active = index;
+                    },
+                    startDrag(e) {
+                        this.isDragging = true;
+                        this.transitioning = false;
+                        this.paused = true;
+                        this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+                    },
+                    onDrag(e) {
+                        if (!this.isDragging) return;
+                        const x = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+                        this.currentX = x - this.startX;
+                    },
+                    endDrag() {
+                        if (!this.isDragging) return;
+                        this.isDragging = false;
+                        this.transitioning = true;
+                        this.paused = false;
+
+                        if (this.currentX < -50) {
+                            this.next();
+                        } else if (this.currentX > 50) {
+                            this.prev();
+                        }
+
+                        this.currentX = 0;
+                    }
+                }" class="w-[calc(100vw-3rem)] overflow-hidden relative cursor-grab active:cursor-grabbing pb-2"
+                @mouseenter="paused = true" @mouseleave="paused = false; endDrag()" @mousedown="startDrag"
+                @touchstart.passive="startDrag" @mousemove="onDrag" @touchmove.passive="onDrag" @mouseup="endDrag"
+                @touchend="endDrag">
+                <div class="flex gap-6 select-none w-full"
+                    :class="transitioning ? 'transition-transform duration-700 ease-in-out' : ''"
+                    :style="'transform: translateX(calc(-' + (active * (cardWidth + gap)) + 'px + ' + currentX + 'px))'">
                     <!-- Group 1 -->
                     <div class="flex gap-6 shrink-0">
                         <!-- Card 1: Interim + MOT (Orange) -->
@@ -698,6 +710,16 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Navigation Dots -->
+                <div class="flex justify-center gap-3 mt-8 pb-4">
+                    <template x-for="i in 4">
+                        <button @click="goTo(i - 1)" class="h-2 rounded-sm transition-all duration-300"
+                            :class="(active === 4 ? 0 : active) === (i - 1) ? 'w-10 bg-primary' : 'w-6 bg-gray-300 hover:bg-gray-400'"
+                            :aria-label="'Go to slide ' + i">
+                        </button>
+                    </template>
+                </div>
             </div>
         </div>
     </section>
@@ -705,11 +727,6 @@
     <!-- Process Section -->
     <section class="bg-black py-10 lg:py-20 relative overflow-hidden">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-10 relative z-10 w-full">
-            <!-- Top Badge -->
-            <div class="flex justify-center relative mb-8 z-10">
-                <span
-                    class="bg-primary text-white px-5 py-2 rounded-full font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT] inline-block">Process</span>
-            </div>
 
             <!-- Header Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end relative mb-10 lg:mb-20">
@@ -717,7 +734,7 @@
                 <!-- Left Title -->
                 <div class="col-span-12 lg:col-span-5 relative z-10">
                     <h2
-                        class="font-geist font-bold lg:text-[96px] text-[48px] leading-[0.85] tracking-[-0.04em] uppercase text-white mb-2 typewriter-effect">
+                        class="font-geist font-bold lg:text-[96px] text-[48px] leading-[0.85] tracking-[-0.04em] uppercase text-white mb-2">
                         <span class="text-primary block">Book It.</span>
                         <span class="text-primary block">Bring It.</span>
                         <span class="block">Drive Away</span>
@@ -743,16 +760,17 @@
 
             <!-- Cards Grid -->
             <div x-data="{
-                        show: false,
-                        init() {
-                            const observer = new IntersectionObserver((entries) => {
-                                entries.forEach(entry => {
-                                    this.show = entry.isIntersecting;
-                                });
-                            }, { threshold: 0.2 });
-                            observer.observe(this.$el);
-                        }
-                    }" class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10 h-full items-stretch">
+                                                                                                                                                                                                                            show: false,
+                                                                                                                                                                                                                            init() {
+                                                                                                                                                                                                                                const observer = new IntersectionObserver((entries) => {
+                                                                                                                                                                                                                                    entries.forEach(entry => {
+                                                                                                                                                                                                                                        this.show = entry.isIntersecting;
+                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                }, { threshold: 0.2 });
+                                                                                                                                                                                                                                observer.observe(this.$el);
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                        }"
+                class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10 h-full items-stretch">
                 <!-- Card 1: Pick Your Service -->
                 <div class="bg-[#1A103C] rounded-[24px] p-6 lg:p-10 min-h-[200px] lg:min-h-[300px] flex flex-col justify-between group hover:bg-[#241654] transition-all duration-700 ease-out relative overflow-hidden"
                     :class="show ? 'translate-x-0 opacity-100' : '-translate-x-[10%] opacity-0'">
@@ -820,178 +838,165 @@
                     <!-- Glass Content Card -->
                     <div
                         class="bg-white/10 backdrop-blur-sm lg:backdrop-blur-xl p-6 lg:p-8 rounded-[20px] max-w-[586px] w-full">
-                        <h2
-                            class="font-geist font-bold text-[36px] lg:text-[90px] leading-[0.85] tracking-[-0.04em] uppercase text-white mb-10 lg:mb-20 typewriter-effect">
-                            Quality In Every Check
-                        </h2>
+                        <div x-data="{
+                                            activeReview: 0,
+                                            isLoading: true,
+                                            reviews: [
+                                                {
+                                                    quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
+                                                    name: 'Jason Adams',
+                                                    image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
+                                                    stars: 5,
+                                                    location: 'Local Customer'
+                                                },
+                                                {
+                                                    quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
+                                                    name: 'Sarah Jenkins',
+                                                    image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
+                                                    stars: 5,
+                                                    location: 'Verified Review'
+                                                },
+                                                {
+                                                    quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
+                                                    name: 'Mike Thompson',
+                                                    image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
+                                                    stars: 5,
+                                                    location: 'Local Customer'
+                                                }
+                                            ],
+                                            next() {
+                                                this.activeReview = (this.activeReview + 1) % this.reviews.length;
+                                            },
+                                            prev() {
+                                                this.activeReview = (this.activeReview - 1 + this.reviews.length) % this.reviews.length;
+                                            },
+                                            async init() {
+                                                try {
+                                                    const response = await fetch('/api/reviews');
+                                                    if (!response.ok) throw new Error('API fetch failed');
 
-                        <!-- Orange Square -->
-                        <div class="w-12 h-12 bg-primary mb-10 lg:mb-20"></div>
+                                                    const data = await response.json();
+                                                    // Assuming API returns { reviews: [...] } or just [...]
+                                                    const reviewList = data.reviews || data; 
 
-                        <p class="text-white/80 text-lg lg:text-xl leading-relaxed font-medium">
-                            At Simply Motoring, every vehicle is handled with care, attention, and experience. We focus
-                            on doing the job properly, keeping you informed, and ensuring work is completed to a
-                            standard every time you visit.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews Section -->
-    <section class="bg-white py-10 lg:py-20 relative z-10 w-full overflow-hidden border-b border-black/10">
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-20" x-data="{
-                        activeReview: 0,
-                        isLoading: true,
-                        reviews: [
-                            {
-                                quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
-                                name: 'Jason Adams',
-                                image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
-                                stars: 5,
-                                location: 'Local Customer'
-                            },
-                            {
-                                quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
-                                name: 'Sarah Jenkins',
-                                image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
-                                stars: 5,
-                                location: 'Verified Review'
-                            },
-                            {
-                                quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
-                                name: 'Mike Thompson',
-                                image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
-                                stars: 5,
-                                location: 'Local Customer'
-                            }
-                        ],
-                        next() {
-                            this.activeReview = (this.activeReview + 1) % this.reviews.length;
-                        },
-                        prev() {
-                            this.activeReview = (this.activeReview - 1 + this.reviews.length) % this.reviews.length;
-                        },
-                        async init() {
-                            try {
-                                const response = await fetch('/api/reviews');
-                                if (!response.ok) throw new Error('API fetch failed');
-
-                                const data = await response.json();
-                                // Assuming API returns { reviews: [...] } or just [...]
-                                const reviewList = data.reviews || data; 
-
-                                if (Array.isArray(reviewList) && reviewList.length > 0) {
-                                    this.reviews = reviewList.map(r => ({
-                                        quote: r.text || r.quote || 'No review text provided.',
-                                        name: r.author_name || r.name || 'Anonymous',
-                                        image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
-                                        stars: r.rating || r.stars || 5,
-                                        location: r.relative_time_description || 'Google Review'
-                                    }));
-                                }
-                            } catch (error) {
-                                console.warn('Using static reviews fallback:', error);
-                            } finally {
-                                this.isLoading = false;
-                            }
-                        }
-                    }">
-            <!-- Badge -->
-            <div class="mb-16">
-                <span
-                    class="bg-primary text-white px-5 py-2 rounded-full font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT] inline-block">
-                    Driven By Great Reviews
-                </span>
-            </div>
-
-            <!-- Review Content -->
-            <div class="relative min-h-[400px] flex flex-col justify-between">
-
-                <!-- Quote Icon & Text -->
-                <div class="relative">
-                    <i class="fa-solid fa-quote-left text-black text-[48px] mb-8 block leading-none"></i>
-
-                    <style>
-                        .custom-scrollbar::-webkit-scrollbar {
-                            width: 6px;
-                            background-color: transparent;
-                        }
-
-                        .custom-scrollbar:hover::-webkit-scrollbar {
-                            background-color: #f1f1f1;
-                        }
-
-                        .custom-scrollbar::-webkit-scrollbar-thumb {
-                            background-color: transparent;
-                            border-radius: 9999px;
-                        }
-
-                        .custom-scrollbar:hover::-webkit-scrollbar-thumb {
-                            background-color: #FB5200;
-                        }
-                    </style>
-                    <div class="relative h-[200px] lg:h-[220px] overflow-y-auto custom-scrollbar scroll-smooth pr-4">
-                        <template x-for="(review, index) in reviews" :key="index">
-                            <div x-show="activeReview === index"
-                                x-transition:enter="transition ease-out duration-500 delay-100"
-                                x-transition:enter-start="opacity-0 translate-y-8"
-                                x-transition:enter-end="opacity-100 translate-y-0"
-                                x-transition:leave="transition ease-in duration-300 absolute top-0 w-full"
-                                x-transition:leave-start="opacity-100 translate-y-0"
-                                x-transition:leave-end="opacity-0 -translate-y-8" class="absolute w-full top-0 left-0">
-                                <p class="font-geist font-medium text-[28px] lg:text-[48px] leading-[1.2] tracking-[-0.06em] text-[0A0A0A] max-w-full cursor-default"
-                                    x-text="review.quote">
-                                </p>
+                                                    if (Array.isArray(reviewList) && reviewList.length > 0) {
+                                                        this.reviews = reviewList.map(r => ({
+                                                            quote: r.text || r.quote || 'No review text provided.',
+                                                            name: r.author_name || r.name || 'Anonymous',
+                                                            image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
+                                                            stars: r.rating || r.stars || 5,
+                                                            location: r.relative_time_description || 'Google Review'
+                                                        }));
+                                                    }
+                                                } catch (error) {
+                                                    console.warn('Using static reviews fallback:', error);
+                                                } finally {
+                                                    this.isLoading = false;
+                                                }
+                                            }
+                                        }">
+                            <!-- Badge -->
+                            <div class="mb-8">
+                                <span
+                                    class="bg-primary text-white px-5 py-2 rounded-full font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT] inline-block">
+                                    Driven By Great Reviews
+                                </span>
                             </div>
-                        </template>
-                    </div>
-                </div>
 
-                <!-- Footer: User Info & Navigation -->
-                <div class="flex items-end justify-between mt-8 pt-8 relative z-20">
+                            <!-- Review Content -->
+                            <div class="relative min-h-[400px] flex flex-col justify-between">
+                                <!-- Quote Icon & Text -->
+                                <div class="relative">
+                                    <i class="fa-solid fa-quote-left text-white text-[48px] mb-4 block leading-none"></i>
 
-                    <!-- User Profile -->
-                    <div class="flex lg:flex-row flex-col lg:items-center lg:gap-6 gap-2">
-                        <!-- User Image Container -->
-                        <div class="w-16 h-16 relative rounded-[16px] overflow-hidden bg-gray-100">
-                            <template x-for="(review, index) in reviews" :key="index">
-                                <img x-show="activeReview === index" :src="review.image" alt="Reviewer"
-                                    class="absolute w-full h-full object-cover transition-opacity duration-500"
-                                    x-transition:enter="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
-                                    x-transition:leave="opacity-0 scale-90 absolute">
-                            </template>
-                        </div>
+                                    <style>
+                                        .custom-scrollbar::-webkit-scrollbar {
+                                            width: 6px;
+                                            background-color: transparent;
+                                        }
 
-                        <div class="flex flex-col">
-                            <template x-for="(review, index) in reviews" :key="index">
-                                <div x-show="activeReview === index"
-                                    x-transition:enter="transition ease-out duration-500 delay-100"
-                                    x-transition:enter-start="opacity-0 translate-x-4"
-                                    x-transition:enter-end="opacity-100 translate-x-0" class="flex flex-col">
-                                    <h4 class="font-geist font-bold text-lg text-black mb-1" x-text="review.name"></h4>
-                                    <div class="flex gap-1 text-[#FB5200] text-sm">
-                                        <template x-for="i in 5">
-                                            <i class="fa-solid fa-star text-xs"></i>
+                                        .custom-scrollbar:hover::-webkit-scrollbar {
+                                            background-color: #f1f1f1;
+                                        }
+
+                                        .custom-scrollbar::-webkit-scrollbar-thumb {
+                                            background-color: transparent;
+                                            border-radius: 9999px;
+                                        }
+
+                                        .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+                                            background-color: #FB5200;
+                                        }
+                                    </style>
+                                    <div
+                                        class="relative h-[200px] lg:h-[220px] overflow-y-auto custom-scrollbar scroll-smooth pr-4">
+                                        <template x-for="(review, index) in reviews" :key="index">
+                                            <div x-show="activeReview === index"
+                                                x-transition:enter="transition ease-out duration-500 delay-100"
+                                                x-transition:enter-start="opacity-0 translate-y-8"
+                                                x-transition:enter-end="opacity-100 translate-y-0"
+                                                x-transition:leave="transition ease-in duration-300 absolute top-0 w-full"
+                                                x-transition:leave-start="opacity-100 translate-y-0"
+                                                x-transition:leave-end="opacity-0 -translate-y-8"
+                                                class="absolute w-full top-0 left-0">
+                                                <p class="font-geist font-medium lg:text-[28px] text-[20px] leading-[1.2] tracking-[-0.06em] text-white/90 max-w-full cursor-default"
+                                                    x-text="review.quote">
+                                                </p>
+                                            </div>
                                         </template>
                                     </div>
                                 </div>
-                            </template>
-                        </div>
-                    </div>
 
-                    <!-- Navigation -->
-                    <div class="flex lg:gap-10 gap-4 items-center">
-                        <button @click="prev()"
-                            class="font-geist font-bold text-sm tracking-widest uppercase text-black/40 hover:text-black transition-colors">
-                            Prev
-                        </button>
-                        <button @click="next()"
-                            class="font-geist font-bold text-sm tracking-widest uppercase text-black hover:text-black transition-colors">
-                            Next
-                        </button>
+                                <!-- Footer: User Info & Navigation -->
+                                <div class="flex items-end justify-between mt-4 pt-8 relative z-20">
+
+                                    <!-- User Profile -->
+                                    <div class="flex lg:flex-row flex-col lg:items-center lg:gap-6 gap-2">
+                                        <!-- User Image Container -->
+                                        <div class="w-16 h-16 relative rounded-[50px] overflow-hidden ">
+                                            <template x-for="(review, index) in reviews" :key="index">
+                                                <img x-show="activeReview === index" :src="review.image" alt="Reviewer"
+                                                    class="absolute w-full h-full object-cover transition-opacity duration-500"
+                                                    x-transition:enter="opacity-0 scale-90"
+                                                    x-transition:enter-end="opacity-100 scale-100"
+                                                    x-transition:leave="opacity-0 scale-90 absolute">
+                                            </template>
+                                        </div>
+
+                                        <div class="flex flex-col">
+                                            <template x-for="(review, index) in reviews" :key="index">
+                                                <div x-show="activeReview === index"
+                                                    x-transition:enter="transition ease-out duration-500 delay-100"
+                                                    x-transition:enter-start="opacity-0 translate-x-4"
+                                                    x-transition:enter-end="opacity-100 translate-x-0"
+                                                    class="flex flex-col">
+                                                    <h4 class="font-geist font-bold text-lg text-white/80 mb-1"
+                                                        x-text="review.name"></h4>
+                                                    <div class="flex gap-1 text-[#FB5200] text-sm">
+                                                        <template x-for="i in 5">
+                                                            <i class="fa-solid fa-star text-xs"></i>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+
+                                    <!-- Navigation -->
+                                    <div class="flex lg:gap-10 gap-4 items-center">
+                                        <button @click="prev()"
+                                            class="font-geist font-bold text-sm tracking-widest uppercase text-white/40 hover:text-primary transition-colors">
+                                            Prev
+                                        </button>
+                                        <button @click="next()"
+                                            class="font-geist font-bold text-sm tracking-widest uppercase text-white hover:text-primary transition-colors">
+                                            Next
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -999,33 +1004,156 @@
         </div>
     </section>
 
-    <!-- Partners Section -->
-    <section class="bg-white lg:py-20 py-10 w-full border-b border-black/10">
-        <div class="max-w-[1440px] mx-auto lg:px-4 px-6">
-            <div
-                class="grid grid-cols-2 md:grid-cols-4 gap-x-12 lg:gap-y-12 gap-y-6 items-center justify-items-center transition-all duration-500">
-                <!-- Row 1 -->
-                <img src="/images/partners/139d259a0cfa0e10acaa5b198802930f69a527f4.png" alt="Partner 1"
-                    class="h-[90px] w-auto object-contain hover:scale-105 transition-all duration-300 opacity-40 hover:opacity-100 grayscale hover:grayscale-0">
-                <img src="/images/partners/37be3654173c53b83f5f7104fee74a7056a62058.png" alt="Partner 2"
-                    class="h-[90px] w-auto object-contain hover:scale-105 transition-all duration-300 opacity-40 hover:opacity-100 grayscale hover:grayscale-0">
-                <img src="/images/partners/66b14bc5b51d3fce57b19bb133d26ae265f3b362.png" alt="Partner 3"
-                    class="h-[90px] w-auto object-contain hover:scale-105 transition-all duration-300 opacity-40 hover:opacity-100 grayscale hover:grayscale-0">
-                <img src="/images/partners/76c87e9f0b8a7ff28b44bf159765b78f47b7548a.png" alt="Partner 4"
-                    class="h-[90px] w-auto object-contain hover:scale-105 transition-all duration-300 opacity-40 hover:opacity-100 grayscale hover:grayscale-0">
+    <!-- <section class="bg-white py-10 lg:py-20 relative z-10 w-full overflow-hidden border-b border-black/10">
+                    <div class="max-w-[1440px] mx-auto px-6 lg:px-20" x-data="{
+                                activeReview: 0,
+                                isLoading: true,
+                                reviews: [
+                                    {
+                                        quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
+                                        name: 'Jason Adams',
+                                        image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
+                                        stars: 5,
+                                        location: 'Local Customer'
+                                    },
+                                    {
+                                        quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
+                                        name: 'Sarah Jenkins',
+                                        image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
+                                        stars: 5,
+                                        location: 'Verified Review'
+                                    },
+                                    {
+                                        quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
+                                        name: 'Mike Thompson',
+                                        image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
+                                        stars: 5,
+                                        location: 'Local Customer'
+                                    }
+                                ],
+                                next() {
+                                    this.activeReview = (this.activeReview + 1) % this.reviews.length;
+                                },
+                                prev() {
+                                    this.activeReview = (this.activeReview - 1 + this.reviews.length) % this.reviews.length;
+                                },
+                                async init() {
+                                    try {
+                                        const response = await fetch('/api/reviews');
+                                        if (!response.ok) throw new Error('API fetch failed');
 
-                <!-- Row 2 -->
-                <img src="/images/partners/8646307f9e8a241e53f2525813b627920bcd86e7.png" alt="Partner 5"
-                    class="h-[90px] w-auto object-contain hover:scale-105 transition-all duration-300 opacity-40 hover:opacity-100 grayscale hover:grayscale-0">
-                <img src="/images/partners/95279ac34816d841b2573c342ad986382ba43c77.png" alt="Partner 6"
-                    class="h-[90px] w-auto object-contain hover:scale-105 transition-all duration-300 opacity-40 hover:opacity-100 grayscale hover:grayscale-0">
-                <img src="/images/partners/bd802aa77d6ba5e891e0b2fc7156feef79d5ff26.png" alt="Partner 7"
-                    class="h-[90px] w-auto object-contain hover:scale-105 transition-all duration-300 opacity-40 hover:opacity-100 grayscale hover:grayscale-0">
-                <img src="/images/partners/ddc26cc794a617eaa62bff812b71f3ba209e4d65.png" alt="Partner 8"
-                    class="h-[90px] w-auto object-contain hover:scale-105 transition-all duration-300 opacity-40 hover:opacity-100 grayscale hover:grayscale-0">
-            </div>
-        </div>
-    </section>
+                                        const data = await response.json();
+                                        // Assuming API returns { reviews: [...] } or just [...]
+                                        const reviewList = data.reviews || data; 
+
+                                        if (Array.isArray(reviewList) && reviewList.length > 0) {
+                                            this.reviews = reviewList.map(r => ({
+                                                quote: r.text || r.quote || 'No review text provided.',
+                                                name: r.author_name || r.name || 'Anonymous',
+                                                image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
+                                                stars: r.rating || r.stars || 5,
+                                                location: r.relative_time_description || 'Google Review'
+                                            }));
+                                        }
+                                    } catch (error) {
+                                        console.warn('Using static reviews fallback:', error);
+                                    } finally {
+                                        this.isLoading = false;
+                                    }
+                                }
+                            }">
+                        <div class="mb-16">
+                            <span
+                                class="bg-primary text-white px-5 py-2 rounded-full font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT] inline-block">
+                                Driven By Great Reviews
+                            </span>
+                        </div>
+
+                        <div class="relative min-h-[400px] flex flex-col justify-between">
+
+                            <div class="relative">
+                                <i class="fa-solid fa-quote-left text-black text-[48px] mb-8 block leading-none"></i>
+
+                                <style>
+                                    .custom-scrollbar::-webkit-scrollbar {
+                                        width: 6px;
+                                        background-color: transparent;
+                                    }
+
+                                    .custom-scrollbar:hover::-webkit-scrollbar {
+                                        background-color: #f1f1f1;
+                                    }
+
+                                    .custom-scrollbar::-webkit-scrollbar-thumb {
+                                        background-color: transparent;
+                                        border-radius: 9999px;
+                                    }
+
+                                    .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+                                        background-color: #FB5200;
+                                    }
+                                </style>
+                                <div class="relative h-[200px] lg:h-[220px] overflow-y-auto custom-scrollbar scroll-smooth pr-4">
+                                    <template x-for="(review, index) in reviews" :key="index">
+                                        <div x-show="activeReview === index"
+                                            x-transition:enter="transition ease-out duration-500 delay-100"
+                                            x-transition:enter-start="opacity-0 translate-y-8"
+                                            x-transition:enter-end="opacity-100 translate-y-0"
+                                            x-transition:leave="transition ease-in duration-300 absolute top-0 w-full"
+                                            x-transition:leave-start="opacity-100 translate-y-0"
+                                            x-transition:leave-end="opacity-0 -translate-y-8" class="absolute w-full top-0 left-0">
+                                            <p class="font-geist font-medium text-[28px] lg:text-[48px] leading-[1.2] tracking-[-0.06em] text-[0A0A0A] max-w-full cursor-default"
+                                                x-text="review.quote">
+                                            </p>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <div class="flex items-end justify-between mt-8 pt-8 relative z-20">
+
+                                <div class="flex lg:flex-row flex-col lg:items-center lg:gap-6 gap-2">
+                                    <div class="w-16 h-16 relative rounded-[16px] overflow-hidden bg-gray-100">
+                                        <template x-for="(review, index) in reviews" :key="index">
+                                            <img x-show="activeReview === index" :src="review.image" alt="Reviewer"
+                                                class="absolute w-full h-full object-cover transition-opacity duration-500"
+                                                x-transition:enter="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                                                x-transition:leave="opacity-0 scale-90 absolute">
+                                        </template>
+                                    </div>
+
+                                    <div class="flex flex-col">
+                                        <template x-for="(review, index) in reviews" :key="index">
+                                            <div x-show="activeReview === index"
+                                                x-transition:enter="transition ease-out duration-500 delay-100"
+                                                x-transition:enter-start="opacity-0 translate-x-4"
+                                                x-transition:enter-end="opacity-100 translate-x-0" class="flex flex-col">
+                                                <h4 class="font-geist font-bold text-lg text-black mb-1" x-text="review.name"></h4>
+                                                <div class="flex gap-1 text-[#FB5200] text-sm">
+                                                    <template x-for="i in 5">
+                                                        <i class="fa-solid fa-star text-xs"></i>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+
+                                <div class="flex lg:gap-10 gap-4 items-center">
+                                    <button @click="prev()"
+                                        class="font-geist font-bold text-sm tracking-widest uppercase text-black/40 hover:text-black transition-colors">
+                                        Prev
+                                    </button>
+                                    <button @click="next()"
+                                        class="font-geist font-bold text-sm tracking-widest uppercase text-black hover:text-black transition-colors">
+                                        Next
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
 
     <!-- FAQ Section -->
     <section class="bg-white py-10 lg:py-20 w-full relative overflow-hidden">
@@ -1047,7 +1175,7 @@
                         <div class="flex-1 w-full">
                             <!-- Heading -->
                             <h2
-                                class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.95] tracking-tight text-black lg:mb-16 mb-8 uppercase typewriter-effect">
+                                class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.95] tracking-tight text-black lg:mb-16 mb-8 uppercase">
                                 What Our Client<br>Usually Asks
                             </h2>
 
@@ -1252,7 +1380,7 @@
         <div class="relative z-10 flex flex-col items-center gap-16 max-w-5xl px-4 text-center">
             <!-- Heading -->
             <h2
-                class="font-geist font-bold text-[48px] lg:text-[96px] leading-[0.85] tracking-tighter text-primary uppercase text-center typewriter-effect">
+                class="font-geist font-bold text-[48px] lg:text-[96px] leading-[0.85] tracking-tighter text-primary uppercase text-center">
                 CONVENIENCE THAT PUTS YOU FIRST
             </h2>
 

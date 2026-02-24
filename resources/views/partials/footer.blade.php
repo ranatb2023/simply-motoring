@@ -15,7 +15,7 @@
                 <!-- Newsletter Box -->
                 <div class="bg-primary rounded-xl p-8 lg:p-12 mt-20 lg:mt-0 shadow-lg">
                     <h3
-                        class="font-geist font-bold text-[28px] lg:text-[40px] leading-[1.1] tracking-tight mb-4 text-white typewriter-effect lg:max-w-[80%]">
+                        class="font-geist font-bold text-[28px] lg:text-[40px] leading-[1.1] tracking-tight mb-4 text-white lg:max-w-[80%]">
                         Subscribe to our monthly newsletter
                     </h3>
                     <p class="text-white/90 lg:text-lg text-base mb-8 font-medium">

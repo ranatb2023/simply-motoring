@@ -81,9 +81,10 @@
     <div id="splash-screen"
         class="fixed inset-0 bg-dark flex flex-col justify-end p-8 sm:p-12 transition-opacity duration-700 ease-out"
         style="z-index: 9999;">
-        <div class="flex justify-between items-end w-full max-w-[1440px] mx-auto">
-            <h1 class="text-primary text-6xl sm:text-8xl font-bold tracking-tighter leading-none"
-                style="font-family: 'Geist', sans-serif;">MOT</h1>
+        <div
+            class="flex justify-between lg:items-end w-full max-w-[1440px] mx-auto flex-col md:flex-row gap-4 md:gap-0">
+            <h1 class="text-primary text-6xl sm:text-8xl font-bold tracking-tighter leading-none font-geist uppercase">
+                Simply Motoring</h1>
             <div class="text-primary">
                 <i class="fa-solid fa-tire text-6xl sm:text-8xl" style="animation: spin 10s linear infinite;"></i>
             </div>
@@ -185,83 +186,6 @@
                         submenuContainer.classList.add('opacity-0', 'pointer-events-none');
                     }
                 });
-            });
-        });
-
-        // Typewriter Effect for Headings
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.typewriter-effect');
-            if (elements.length === 0) return;
-
-            // Helper to wrap characters in spans
-            function wrapChars(element) {
-                // Get all child nodes
-                const nodes = Array.from(element.childNodes);
-
-                nodes.forEach(node => {
-                    if (node.nodeType === 3) { // Text node
-                        // Fix for "IN" having space:
-                        // excessive whitespace/newlines (indentation) between elements should be ignored.
-                        // If the node is purely whitespace and contains a newline, it's likely source code indentation.
-                        if (!node.textContent.trim() && node.textContent.includes('\n')) {
-                            node.textContent = '';
-                            return;
-                        }
-
-                        // Normalize remaining whitespace (e.g. spaces between words)
-                        let text = node.textContent.replace(/\s+/g, ' ');
-
-                        if (text.length === 0) return;
-
-                        const fragment = document.createDocumentFragment();
-                        text.split('').forEach(char => {
-                            const span = document.createElement('span');
-                            span.textContent = char;
-                            span.style.opacity = '0';
-                            span.style.transition = 'opacity 0.1s ease'; // Fast fade for crisp type feel
-                            span.classList.add('char-reveal');
-                            fragment.appendChild(span);
-                        });
-                        node.parentNode.replaceChild(fragment, node);
-                    } else if (node.nodeType === 1) { // Element node (e.g. BR, SPANS)
-                        wrapChars(node);
-                    }
-                });
-            }
-
-            // Observer to trigger animation
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const target = entry.target;
-                    const chars = target.querySelectorAll('.char-reveal');
-
-                    if (entry.isIntersecting) {
-                        // Make parent visible
-                        target.classList.remove('opacity-0');
-
-                        // Animate characters
-                        chars.forEach((char, index) => {
-                            // Use a small delay for staggered effect
-                            // Store timeout ID on the element if needed for robust clearing, 
-                            // but basic CSS transition + simple delay usually works fine if reset properly on exit.
-                            setTimeout(() => {
-                                char.style.opacity = '1';
-                            }, index * 40);
-                        });
-                    } else {
-                        // Creating a "reset" effect when scrolling away
-                        target.classList.add('opacity-0');
-                        chars.forEach(char => {
-                            char.style.opacity = '0';
-                        });
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            // Apply to all elements
-            elements.forEach(el => {
-                wrapChars(el);
-                observer.observe(el);
             });
         });
     </script>
