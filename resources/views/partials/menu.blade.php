@@ -8,10 +8,10 @@
         <!-- Menu Header -->
         <div class="flex justify-between items-center mb-16 lg:mb-24 shrink-0">
             <!-- Logo Image (Inverted for black background) -->
-            <div>
+            <a href="{{ route('home') }}" class="block z-50">
                 <img src="{{ asset('images/menu-logo.png') }}" alt="Simply Motoring Logo"
                     class="w-[180px] lg:w-[220px] h-auto object-contain">
-            </div>
+            </a>
 
             <button id="menu-close"
                 class="flex items-center gap-2 bg-white/10 px-5 py-2.5 rounded-full transition-colors hover:bg-primary group">

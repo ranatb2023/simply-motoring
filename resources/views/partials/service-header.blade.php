@@ -2,8 +2,10 @@
 <header
     class="absolute top-0 left-1/2 -translate-x-1/2 max-w-[1440px] w-full mx-auto px-6 lg:pl-[110px] lg:pr-[100px] py-6 lg:py-8 flex justify-between items-center bg-transparent lg:mt-10 z-50">
     <!-- Logo -->
-    <img src="{{ asset('images/menu-logo.png') }}" alt="Simply Motoring Logo"
-        class="w-[180px] lg:w-[220px] h-auto object-contain">
+    <a href="{{ route('home') }}" class="block z-50">
+        <img src="{{ asset('images/menu-logo.png') }}" alt="Simply Motoring Logo"
+            class="w-[180px] lg:w-[220px] h-auto object-contain">
+    </a>
 
     <!-- Menu Trigger -->
     <button id="menu-trigger"
