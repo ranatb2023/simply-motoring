@@ -16,7 +16,7 @@
     <div class="max-w-[1440px] mx-auto p-0 lg:p-6 w-full">
 
         <!-- Hero Section with Rounded Corners and Clip -->
-        <section class="relative w-full h-[100vh] min-h-[700px] overflow-hidden lg:rounded-2xl hero-image-clip">
+        <section class="relative w-full h-[80vh] lg:h-[100vh] overflow-hidden lg:rounded-2xl hero-image-clip">
 
             <!-- Background Image -->
             <div class="absolute inset-0 z-0 bg-black">
@@ -33,7 +33,7 @@
                 <div class="mt-20 lg:mt-10 max-w-5xl">
                     <!-- Heading -->
                     <h1
-                        class="text-white font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.86] tracking-[-0.07em] uppercase mb-4 lg:mb-6 typewriter-effect opacity-0">
+                        class="text-white font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.86] tracking-[-0.07em] uppercase mb-4 lg:mb-6">
                         Brake Fluid<br>Change
                     </h1>
 
@@ -44,20 +44,8 @@
                 </div>
 
                 <!-- Bottom Section -->
-                <div
-                    class="absolute bottom-12 lg:bottom-16 left-0 right-0 px-6 lg:px-20 w-full flex flex-col lg:flex-row justify-between items-end gap-8 lg:gap-0">
+                <div class="absolute bottom-12 lg:bottom-20 left-0 right-0 px-6 lg:px-20 w-full">
 
-                    <!-- Bottom Left Text -->
-                    <div class="flex gap-4 max-w-[500px]">
-                        <div class="w-5 h-5 mt-1.5 bg-primary shrink-0"></div> <!-- Orange Square -->
-                        <p class="text-white/80 text-base lg:text-[20px] leading-[1.3] font-geist font-medium">
-                            Keep your braking system responsive and safe with a professional brake fluid change. Simply
-                            Motoring ensures old, contaminated fluid is replaced, preventing corrosion, reduced braking
-                            performance, and system failure.
-                        </p>
-                    </div>
-
-                    <!-- Bottom Right Button -->
                     <div
                         class="inline-block p-[1px] bg-white/40 hero-btn-clip transform rounded-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group">
                         <a href="#book"
@@ -79,10 +67,10 @@
                 <div class="w-full lg:w-1/2 flex flex-col justify-between">
                     <div>
                         <h2
-                            class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.9] tracking-tight text-black mb-6 uppercase typewriter-effect">
+                            class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.9] tracking-tight text-black mb-6 uppercase">
                             Why Brake Fluid Change Matters
                         </h2>
-                        <p class="text-[#0A0A0A] text-lg lg:text-xl leading-relaxed mb-8 font-medium">
+                        <p class="text-[#0A0A0A] text-lg lg:text-xl leading-relaxed mb-8 font-medium hidden lg:block">
                             Brake fluid is essential for transferring force from your brake pedal to your wheels. Over time,
                             it absorbs moisture, becomes contaminated, and can reduce braking efficiency.
                         </p>
@@ -163,14 +151,15 @@
     <!-- Brake Fluid Types and Selection -->
     <section class="bg-white py-10 lg:py-20 w-full border-t border-black/10">
         <div class="max-w-[1440px] mx-auto px-6">
-            <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 mb-16">
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 lg:mb-16">
                 <!-- Left Content -->
                 <div class="w-full lg:w-1/2">
                     <h2
-                        class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.86] tracking-[-0.06em] text-black mb-6 uppercase typewriter-effect">
+                        class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.86] tracking-[-0.06em] text-black mb-6 uppercase">
                         Brake Fluid Types And Selection
                     </h2>
-                    <p class="text-[#0A0A0A] text-lg lg:text-xl leading-relaxed tracking-[-0.04em] font-medium">
+                    <p
+                        class="text-[#0A0A0A] text-lg lg:text-xl leading-relaxed tracking-[-0.04em] font-medium hidden lg:block">
                         Modern vehicles use specific brake fluids. Choosing the right type is crucial:
                     </p>
                 </div>
@@ -233,7 +222,7 @@
             </div>
 
             <!-- Bottom Text -->
-            <div class="text-center w-full">
+            <div class="lg:text-center w-full">
                 <p class="text-[#0A0A0A] text-lg font-semibold mx-auto">
                     Our technician will select the correct brake fluid to meet your manufacturer's specifications, ensuring
                     safe, reliable braking.
@@ -246,12 +235,12 @@
     <section class="w-full bg-black brake-service-clip lg:rounded-[32px] overflow-hidden">
         <div class="max-w-[1440px] mx-auto text-white px-6 py-10 lg:py-20 relative">
             <!-- Header -->
-            <div class="text-center mb-16 lg:mb-32 max-w-xl mx-auto">
+            <div class="lg:text-center mb-16 lg:mb-32 max-w-xl mx-auto">
                 <h2
-                    class="font-geist font-bold text-[48px] lg:text-[64px] uppercase leading-[0.9] lg:leading-[0.86] tracking-[-0.06em] mb-4 typewriter-effect">
+                    class="font-geist font-bold text-[48px] lg:text-[64px] uppercase leading-[0.9] lg:leading-[0.86] tracking-[-0.06em] mb-4">
                     Our Brake Fluid Services
                 </h2>
-                <p class="text-xl text-white/80 tracking-[-0.04em] font-medium">
+                <p class="text-xl text-white/80 tracking-[-0.04em] font-medium hidden lg:block">
                     Our technicians provide a full brake fluid inspection and change it when required.
                 </p>
             </div>
@@ -288,7 +277,7 @@
             </div>
 
             <!-- Bottom Bar -->
-            <div class="bg-white rounded-xl p-6 text-center w-full">
+            <div class="bg-white rounded-xl p-6 lg:text-center w-full">
                 <p class="text-black font-semibold text-xl leading-[1.3] tracking-[-0.04em]">
                     We follow manufacturer standards to keep your braking system corrosion-free, responsive, and reliable.
                 </p>
@@ -301,12 +290,12 @@
         <div class="max-w-[1440px] mx-auto px-6 relative">
 
             <!-- Heading -->
-            <div class="text-center mb-16 lg:mb-24 max-w-2xl mx-auto">
+            <div class="lg:text-center mb-16 lg:mb-24 max-w-2xl mx-auto">
                 <h2
-                    class="font-geist font-semibold text-[48px] lg:text-[64px] uppercase leading-[0.96] lg:leading-[0.86] tracking-[-0.04em] mb-4 typewriter-effect">
+                    class="font-geist font-semibold text-[48px] lg:text-[64px] uppercase leading-[0.96] lg:leading-[0.86] tracking-[-0.04em] mb-4">
                     Book Your Brake Fluid Change
                 </h2>
-                <p class="text-lg lg:text-xl text-black/80 tracking-[-0.04em] font-medium max-w-lg mx-auto">
+                <p class="text-lg lg:text-xl text-black/80 tracking-[-0.04em] font-medium max-w-lg mx-auto hidden lg:block">
                     Booking with Simply Motoring is simple and transparent:
                 </p>
             </div>

@@ -16,7 +16,7 @@
     <div class="max-w-[1440px] mx-auto p-0 lg:p-6 w-full">
 
         <!-- Hero Section with Rounded Corners and Clip -->
-        <section class="relative w-full h-[100vh] min-h-[700px] overflow-hidden lg:rounded-2xl hero-image-clip">
+        <section class="relative w-full h-[80vh] lg:h-[100vh] overflow-hidden lg:rounded-2xl hero-image-clip">
 
             <!-- Background Image -->
             <div class="absolute inset-0 z-0 bg-black">
@@ -33,7 +33,7 @@
                 <div class="mt-20 lg:mt-10 max-w-5xl">
                     <!-- Heading -->
                     <h1
-                        class="text-white font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.86] tracking-[-0.07em] uppercase mb-4 lg:mb-6 typewriter-effect opacity-0">
+                        class="text-white font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.86] tracking-[-0.07em] uppercase mb-4 lg:mb-6">
                         Brake discs<br>
                         and pads<br>
                         Replacement
@@ -46,19 +46,7 @@
                 </div>
 
                 <!-- Bottom Section -->
-                <div
-                    class="absolute bottom-12 lg:bottom-16 left-0 right-0 px-6 lg:px-20 w-full flex flex-col lg:flex-row justify-between items-end gap-8 lg:gap-0">
-
-                    <!-- Bottom Left Text -->
-                    <div class="flex gap-4 max-w-[500px]">
-                        <div class="w-5 h-5 mt-1.5 bg-primary shrink-0"></div> <!-- Orange Square -->
-                        <p class="text-white/80 text-base lg:text-[20px] leading-[1.3] font-geist font-medium">
-                            Worn brake discs or pads reduce stopping power. Simply Motoring provides professional brake
-                            inspections, replacement, and testing for all makes and models, ensuring reliable performance.
-                        </p>
-                    </div>
-
-                    <!-- Bottom Right Button -->
+                <div class="absolute bottom-12 lg:bottom-20 left-0 right-0 px-6 lg:px-20 w-full">
                     <div
                         class="inline-block p-[1px] bg-white/40 hero-btn-clip transform rounded-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group">
                         <a href="#book"
@@ -80,10 +68,10 @@
                 <div class="w-full lg:w-1/2 flex flex-col justify-between">
                     <div>
                         <h2
-                            class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.9] tracking-tight text-black mb-6 uppercase typewriter-effect">
+                            class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.9] tracking-tight text-black mb-6 uppercase">
                             Why Your Brake<br>System Matters
                         </h2>
-                        <p class="text-[#0A0A0A] text-lg lg:text-xl leading-relaxed mb-8 font-medium">
+                        <p class="text-[#0A0A0A] text-lg lg:text-xl leading-relaxed mb-8 font-medium hidden lg:block">
                             Brakes are one of the most important safety systems in your car. Over time, brake pads wear down
                             due to friction, and brake discs (rotors) become thin, scored, or warped. When either part is
                             compromised, the vehicle takes longer to stop, and braking becomes less predictable.
@@ -172,9 +160,9 @@
     <section class="w-full bg-black brake-service-clip lg:rounded-[32px] overflow-hidden">
         <div class="max-w-[1440px] mx-auto text-white px-6 py-10 lg:py-20 relative">
             <!-- Header -->
-            <div class="text-center mb-16 lg:mb-32 max-w-xl mx-auto">
+            <div class="lg:text-center mb-16 lg:mb-32 max-w-xl mx-auto">
                 <h2
-                    class="font-geist font-bold text-[48px] lg:text-[64px] uppercase leading-[0.9] lg:leading-[0.86] tracking-[-0.06em] mb-4 typewriter-effect">
+                    class="font-geist font-bold text-[48px] lg:text-[64px] uppercase leading-[0.9] lg:leading-[0.86] tracking-[-0.06em] mb-4">
                     Our Trusted Brake Services
                 </h2>
                 <p class="text-xl text-white/80 tracking-[-0.04em] font-medium">
@@ -244,12 +232,12 @@
         <div class="max-w-[1440px] mx-auto px-6 relative">
 
             <!-- Heading -->
-            <div class="text-center mb-16 lg:mb-24 max-w-2xl mx-auto">
+            <div class="lg:text-center mb-16 lg:mb-24 max-w-2xl mx-auto">
                 <h2
-                    class="font-geist font-semibold text-[48px] lg:text-[64px] uppercase leading-[0.96] lg:leading-[0.86] tracking-[-0.04em] mb-4 typewriter-effect">
+                    class="font-geist font-semibold text-[48px] lg:text-[64px] uppercase leading-[0.96] lg:leading-[0.86] tracking-[-0.04em] mb-4">
                     Book Brake Discs & Pads Replacement
                 </h2>
-                <p class="text-lg lg:text-xl text-black/80 tracking-[-0.04em] font-medium max-w-lg mx-auto">
+                <p class="text-lg lg:text-xl text-black/80 tracking-[-0.04em] font-medium max-w-lg mx-auto hidden lg:block">
                     Booking your brake inspection or replacement with Simply Motoring is quick and easy.
                 </p>
             </div>
@@ -356,7 +344,7 @@
                     <div class="w-full lg:w-1/2 flex flex-col items-start justify-between text-left">
                         <div>
                             <h2
-                                class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.83] tracking-[-0.06em] uppercase text-white mb-4 lg:mb-10 typewriter-effect">
+                                class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.83] tracking-[-0.06em] uppercase text-white mb-4 lg:mb-10">
                                 WHY CHOOSE<br>SIMPLY<br>MOTORING
                             </h2>
                             <p class="text-white font-medium text-[20px] lg:text-[20px] leading-[1.3] mb-10">
@@ -452,7 +440,7 @@
                         <div class="flex-1 w-full">
                             <!-- Heading -->
                             <h2
-                                class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.95] tracking-tight text-black lg:mb-16 mb-8 uppercase typewriter-effect">
+                                class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.95] tracking-tight text-black lg:mb-16 mb-8 uppercase">
                                 What Our Client<br>Usually Asks
                             </h2>
 

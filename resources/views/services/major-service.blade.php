@@ -16,7 +16,7 @@
     <div class="max-w-[1440px] mx-auto p-0 lg:p-6 w-full">
 
         <!-- Hero Section with Rounded Corners and Clip -->
-        <section class="relative w-full h-[100vh] min-h-[700px] overflow-hidden lg:rounded-2xl hero-image-clip">
+        <section class="relative w-full h-[80vh] lg:h-[100vh] overflow-hidden lg:rounded-2xl hero-image-clip">
 
             <!-- Background Image -->
             <div class="absolute inset-0 z-0 bg-black">
@@ -33,7 +33,7 @@
                 <div class="mt-20 lg:mt-10 max-w-5xl">
                     <!-- Heading -->
                     <h1
-                        class="text-white font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.86] tracking-[-0.07em] uppercase mb-4 lg:mb-6 typewriter-effect opacity-0">
+                        class="text-white font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.86] tracking-[-0.07em] uppercase mb-4 lg:mb-6">
                         Major Service
                     </h1>
 
@@ -44,20 +44,7 @@
                 </div>
 
                 <!-- Bottom Section -->
-                <div
-                    class="absolute bottom-12 lg:bottom-16 left-0 right-0 px-6 lg:px-20 w-full flex flex-col lg:flex-row justify-between items-end gap-8 lg:gap-0">
-
-                    <!-- Bottom Left Text -->
-                    <div class="flex gap-4 max-w-[500px]">
-                        <div class="w-5 h-5 mt-1.5 bg-primary shrink-0"></div> <!-- Orange Square -->
-                        <p class="text-white/80 text-base lg:text-[20px] leading-[1.3] font-geist font-medium">
-                            A major service from Simply Motoring provides an in-depth inspection and maintenance of all your
-                            vehicle’s systems. From engine and brakes to suspension, steering, and electronics, we identify
-                            and fix potential issues.
-                        </p>
-                    </div>
-
-                    <!-- Bottom Right Button -->
+                <div class="absolute bottom-12 lg:bottom-20 left-0 right-0 px-6 lg:px-20 w-full">
                     <div
                         class="inline-block p-[1px] bg-white/40 hero-btn-clip transform rounded-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group">
                         <a href="#book"
@@ -77,7 +64,7 @@
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 mb-8 lg:mb-16">
                 <div class="w-full lg:w-1/2">
                     <h2
-                        class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.86] tracking-[-0.06em] text-black mb-6 uppercase typewriter-effect">
+                        class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.86] tracking-[-0.06em] text-black mb-6 uppercase">
                         Major Service Includes
                     </h2>
                 </div>
@@ -85,35 +72,35 @@
 
             <!-- Carousel Container -->
             <div x-data="{
-                                active: 0,
-                                cardWidth: 0,
-                                gap: 24,
-                                transitioning: true,
-                                paused: false,
-                                updateWidth() {
-                                    const card = this.$el.querySelector('.service-card');
-                                    if (card) this.cardWidth = card.offsetWidth;
-                                },
-                                init() {
-                                    // Small delay to ensure DOM is ready
-                                    setTimeout(() => this.updateWidth(), 100);
-                                    window.addEventListener('resize', () => this.updateWidth());
-                                    setInterval(() => {
-                                        if (!this.paused) this.next();
-                                    }, 3000);
-                                },
-                                next() {
-                                    this.transitioning = true;
-                                    this.active++;
-                                    if (this.active === 5) {
-                                        setTimeout(() => {
-                                            this.transitioning = false;
-                                            this.active = 0;
-                                        }, 700);
-                                    }
-                                }
-                            }" class="w-[calc(100vw-3rem)] overflow-hidden" @mouseenter="paused = true"
-                @mouseleave="paused = false">
+                                                        active: 0,
+                                                        cardWidth: 0,
+                                                        gap: 24,
+                                                        transitioning: true,
+                                                        paused: false,
+                                                        updateWidth() {
+                                                            const card = this.$el.querySelector('.service-card');
+                                                            if (card) this.cardWidth = card.offsetWidth;
+                                                        },
+                                                        init() {
+                                                            // Small delay to ensure DOM is ready
+                                                            setTimeout(() => this.updateWidth(), 100);
+                                                            window.addEventListener('resize', () => this.updateWidth());
+                                                            setInterval(() => {
+                                                                if (!this.paused) this.next();
+                                                            }, 3000);
+                                                        },
+                                                        next() {
+                                                            this.transitioning = true;
+                                                            this.active++;
+                                                            if (this.active === 5) {
+                                                                setTimeout(() => {
+                                                                    this.transitioning = false;
+                                                                    this.active = 0;
+                                                                }, 700);
+                                                            }
+                                                        }
+                                                    }" class="w-[calc(100vw-3rem)] overflow-hidden"
+                @mouseenter="paused = true" @mouseleave="paused = false">
                 <div class="flex gap-6" :class="transitioning ? 'transition-transform duration-700 ease-in-out' : ''"
                     :style="'transform: translateX(-' + (active * (cardWidth + gap)) + 'px)'">
 
@@ -464,7 +451,7 @@
             </div>
 
             <!-- Bottom Text -->
-            <div class="text-center w-full mt-10">
+            <div class="lg:text-center w-full mt-10">
                 <p class="text-[#0A0A0A] text-lg font-semibold mx-auto">
                     Note: Major service follows manufacturer guidelines and includes detailed checks and replacements to
                     ensure full vehicle safety and performance.
@@ -478,10 +465,10 @@
         <div class="max-w-[1440px] mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row gap-8 lg:items-center mb-12">
                 <h2
-                    class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.9] tracking-tighter text-white uppercase typewriter-effect shrink-0">
-                    SIGNS YOU NEED A<br>MAJOR SERVICE
+                    class="font-geist font-bold max-w-2xl text-[40px] lg:text-[64px] leading-[0.9] tracking-tighter text-white uppercase shrink-0">
+                    SIGNS YOU NEED A MAJOR SERVICE
                 </h2>
-                <p class="text-white/70 text-lg font-medium max-w-sm pb-2 lg:ml-10">
+                <p class="text-white/70 text-lg font-medium max-w-sm pb-2 lg:ml-10 hidden lg:block">
                     A major service is recommended if you notice any of the following or have not had a full check-up in
                     over 12 months:
                 </p>
@@ -552,7 +539,7 @@
             </div>
 
             <!-- Bottom Bar -->
-            <div class="bg-white rounded-xl p-6 text-center w-full mt-12 relative z-10">
+            <div class="bg-white rounded-xl p-6 lg:text-center w-full mt-12 relative z-10">
                 <p class="text-black font-semibold text-lg lg:text-xl leading-tight font-geist">
                     Regular major servicing prevents small problems from becoming expensive repairs and keeps your car fully
                     roadworthy.
@@ -566,18 +553,18 @@
         <div class="max-w-[1440px] mx-auto px-6 relative">
 
             <!-- Heading -->
-            <div class="text-center mb-16 lg:mb-24 max-w-2xl mx-auto">
+            <div class="lg:text-center mb-8 lg:mb-16 max-w-2xl mx-auto">
                 <h2
-                    class="font-geist font-semibold text-[48px] lg:text-[64px] uppercase leading-[0.96] lg:leading-[0.86] tracking-[-0.04em] mb-4 typewriter-effect">
+                    class="font-geist font-semibold text-[48px] lg:text-[64px] uppercase leading-[0.96] lg:leading-[0.86] tracking-[-0.04em] mb-4">
                     Book Your Major Service
                 </h2>
-                <p class="text-lg lg:text-xl text-black/80 tracking-[-0.04em] font-medium max-w-lg mx-auto">
+                <p class="text-lg lg:text-xl text-black/80 tracking-[-0.04em] font-medium max-w-lg mx-auto hidden lg:block">
                     Booking your major service with Simply Motoring is simple:
                 </p>
             </div>
 
             <!-- Steps Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 mb-8 lg:mb-16">
 
                 <!-- Step 1 -->
                 <div class="relative group pt-16">
