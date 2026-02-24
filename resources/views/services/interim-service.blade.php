@@ -72,73 +72,73 @@
 
             <!-- Carousel Container -->
             <div x-data="{
-                                active: 0,
-                                cardWidth: 0,
-                                gap: 24,
-                                transitioning: true,
-                                paused: false,
-                                startX: 0,
-                                currentX: 0,
-                                isDragging: false,
-                                updateWidth() {
-                                    const card = this.$el.querySelector('.service-card');
-                                    if (card) this.cardWidth = card.offsetWidth;
-                                },
-                                init() {
-                                    setTimeout(() => this.updateWidth(), 100);
-                                    window.addEventListener('resize', () => this.updateWidth());
-                                    setInterval(() => {
-                                        if (!this.paused && !this.isDragging) this.next();
-                                    }, 3000);
-                                },
-                                next() {
-                                    if (this.active < 4) {
+                                    active: 0,
+                                    cardWidth: 0,
+                                    gap: 24,
+                                    transitioning: true,
+                                    paused: false,
+                                    startX: 0,
+                                    currentX: 0,
+                                    isDragging: false,
+                                    updateWidth() {
+                                        const card = this.$el.querySelector('.service-card');
+                                        if (card) this.cardWidth = card.offsetWidth;
+                                    },
+                                    init() {
+                                        setTimeout(() => this.updateWidth(), 100);
+                                        window.addEventListener('resize', () => this.updateWidth());
+                                        setInterval(() => {
+                                            if (!this.paused && !this.isDragging) this.next();
+                                        }, 3000);
+                                    },
+                                    next() {
+                                        if (this.active < 4) {
+                                            this.transitioning = true;
+                                            this.active++;
+                                        } else {
+                                            this.transitioning = true;
+                                            this.active = 0;
+                                        }
+                                    },
+                                    prev() {
+                                        if (this.active > 0) {
+                                            this.transitioning = true;
+                                            this.active--;
+                                        } else {
+                                            this.transitioning = true;
+                                            this.active = 4;
+                                        }
+                                    },
+                                    goTo(index) {
                                         this.transitioning = true;
-                                        this.active++;
-                                    } else {
+                                        this.active = index;
+                                    },
+                                    startDrag(e) {
+                                        this.isDragging = true;
+                                        this.transitioning = false;
+                                        this.paused = true;
+                                        this.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+                                    },
+                                    onDrag(e) {
+                                        if (!this.isDragging) return;
+                                        const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                                        this.currentX = x - this.startX;
+                                    },
+                                    endDrag() {
+                                        if (!this.isDragging) return;
+                                        this.isDragging = false;
                                         this.transitioning = true;
-                                        this.active = 0;
-                                    }
-                                },
-                                prev() {
-                                    if (this.active > 0) {
-                                        this.transitioning = true;
-                                        this.active--;
-                                    } else {
-                                        this.transitioning = true;
-                                        this.active = 4;
-                                    }
-                                },
-                                goTo(index) {
-                                    this.transitioning = true;
-                                    this.active = index;
-                                },
-                                startDrag(e) {
-                                    this.isDragging = true;
-                                    this.transitioning = false;
-                                    this.paused = true;
-                                    this.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-                                },
-                                onDrag(e) {
-                                    if (!this.isDragging) return;
-                                    const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-                                    this.currentX = x - this.startX;
-                                },
-                                endDrag() {
-                                    if (!this.isDragging) return;
-                                    this.isDragging = false;
-                                    this.transitioning = true;
-                                    this.paused = false;
+                                        this.paused = false;
 
-                                    if (this.currentX < -50) {
-                                        this.next();
-                                    } else if (this.currentX > 50) {
-                                        this.prev();
-                                    }
+                                        if (this.currentX < -50) {
+                                            this.next();
+                                        } else if (this.currentX > 50) {
+                                            this.prev();
+                                        }
 
-                                    this.currentX = 0;
-                                }
-                            }"
+                                        this.currentX = 0;
+                                    }
+                                }"
                 class="w-[calc(100vw-3rem)] overflow-hidden relative cursor-grab active:cursor-grabbing pb-2"
                 @mouseenter="paused = true" @mouseleave="paused = false; endDrag()" @mousedown="startDrag"
                 @touchstart.passive="startDrag" @mousemove="onDrag" @touchmove.passive="onDrag" @mouseup="endDrag"
@@ -572,7 +572,7 @@
         <div class="max-w-[1440px] mx-auto px-6 relative">
 
             <!-- Heading -->
-            <div class="lg:text-center mb-8 lg:mb-24 max-w-2xl mx-auto">
+            <div class="lg:text-center mb-8 lg:mb-16 max-w-2xl mx-auto">
                 <h2
                     class="font-geist font-semibold text-[48px] lg:text-[64px] uppercase leading-[0.96] lg:leading-[0.86] tracking-[-0.04em] mb-4">
                     Book Your Interim Service

@@ -290,7 +290,7 @@
         <div class="max-w-[1440px] mx-auto px-6 relative">
 
             <!-- Heading -->
-            <div class="lg:text-center mb-16 lg:mb-24 max-w-2xl mx-auto">
+            <div class="lg:text-center mb-16 max-w-2xl mx-auto">
                 <h2
                     class="font-geist font-semibold text-[48px] lg:text-[64px] uppercase leading-[0.96] lg:leading-[0.86] tracking-[-0.04em] mb-4">
                     Book Your Brake Fluid Change
