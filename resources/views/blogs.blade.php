@@ -5,7 +5,7 @@
         <div class="max-w-[1440px] mx-auto px-6 lg:px-10 py-10">
             <!-- Header -->
             <h1
-                class="font-geist font-bold text-[56px] lg:text-[96px] leading-[0.85] tracking-tighter uppercase mb-12 text-black typewriter-effect">
+                class="font-geist font-bold text-[56px] lg:text-[96px] leading-[0.85] tracking-tighter uppercase mb-12 text-black">
                 BLOGS
             </h1>
 
@@ -61,7 +61,7 @@
             <!-- More Blogs Section -->
             @if(isset($posts) && $posts->count() > 0)
                 <h2
-                    class="font-geist font-bold text-[48px] lg:text-[64px] leading-tight tracking-tight uppercase mb-8 text-black typewriter-effect">
+                    class="font-geist font-bold text-[48px] lg:text-[64px] leading-tight tracking-tight uppercase mb-8 text-black">
                     MORE BLOGS
                 </h2>
 

@@ -25,7 +25,7 @@
 
                         <!-- Heading -->
                         <h1
-                            class="text-black font-geist font-bold text-[56px] lg:text-[96px] leading-[0.85] tracking-tighter uppercase mb-8 typewriter-effect">
+                            class="text-black font-geist font-bold text-[56px] lg:text-[96px] leading-[0.85] tracking-tighter uppercase mb-8">
                             YOUR EASE,<br>SIMPLIFIED.
                         </h1>
 
@@ -85,18 +85,18 @@
 
                             <!-- Service Select -->
                             <div class="relative" x-data="{ 
-                                                            open: false, 
-                                                            selected: '', 
-                                                            selectedValue: '',
-                                                            options: [
-                                                                { value: 'brake_discs_pads', label: 'Brake discs & pads' },
-                                                                { value: 'brake_fluid_change', label: 'Brake fluid change' },
-                                                                { value: 'full_service', label: 'Full Service' },
-                                                                { value: 'interim_service', label: 'Interim Service' },
-                                                                { value: 'major_service', label: 'Major Service' },
-                                                                { value: 'mot', label: 'MOT' }
-                                                            ]
-                                                        }">
+                                                                open: false, 
+                                                                selected: '', 
+                                                                selectedValue: '',
+                                                                options: [
+                                                                    { value: 'brake_discs_pads', label: 'Brake discs & pads' },
+                                                                    { value: 'brake_fluid_change', label: 'Brake fluid change' },
+                                                                    { value: 'full_service', label: 'Full Service' },
+                                                                    { value: 'interim_service', label: 'Interim Service' },
+                                                                    { value: 'major_service', label: 'Major Service' },
+                                                                    { value: 'mot', label: 'MOT' }
+                                                                ]
+                                                            }">
                                 <!-- Hidden Input for Form Submission -->
                                 <input type="hidden" name="service" :value="selectedValue">
 
@@ -151,19 +151,19 @@
 
     <!-- Map Section -->
     <div class="w-full h-[400px] lg:h-[600px] relative bg-gray-200 group overflow-hidden" x-data="{ 
-                                                                show: false,
-                                                                init() {
-                                                                    const observer = new IntersectionObserver((entries) => {
-                                                                        entries.forEach(entry => {
-                                                                            if (entry.isIntersecting) {
-                                                                                this.show = true;
-                                                                                observer.disconnect();
-                                                                            }
-                                                                        });
-                                                                    }, { threshold: 0.2 });
-                                                                    observer.observe(this.$el);
-                                                                }
-                                                            }">
+                                                                    show: false,
+                                                                    init() {
+                                                                        const observer = new IntersectionObserver((entries) => {
+                                                                            entries.forEach(entry => {
+                                                                                if (entry.isIntersecting) {
+                                                                                    this.show = true;
+                                                                                    observer.disconnect();
+                                                                                }
+                                                                            });
+                                                                        }, { threshold: 0.2 });
+                                                                        observer.observe(this.$el);
+                                                                    }
+                                                                }">
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2379.794625841755!2d-1.155!3d53.535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879017686526189%3A0x6408226955734204!2sSimply%20Motoring!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk&q=243A+Sprotbrough+Road,+Doncaster,+DN5+8BP"
             width="100%" height="100%" style="border:0; filter: grayscale(100%);" allowfullscreen="" loading="lazy"
