@@ -7,7 +7,7 @@
 
         <!-- Mobile Background Image (Absolute Fullscreen) -->
         <div class="absolute inset-0 z-0 lg:hidden">
-            <img src="{{ asset('images/ab7a55c40020dbf18750f61e6987c734559524fb.png') }}" class="w-full h-full object-cover"
+            <img src="{{ asset('images/2b5fc4a16a2be69d1e5ad4857e90c40c9e061df3.jpg') }}" class="w-full h-full object-cover"
                 alt="Background">
             <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.6);"></div>
         </div>
@@ -23,7 +23,7 @@
                 <div>
                     <!-- Desktop Headline -->
                     <h1
-                        class="font-geist font-semibold text-[56px] xl:text-[96px] leading-[0.83] tracking-tighter text-black uppercase mt-32 text-black hidden lg:block">
+                        class="font-geist font-semibold text-[56px] xl:text-[96px] leading-[0.83] tracking-tighter text-black uppercase hidden lg:block">
                         Keeping
                         Doncaster's
                         <span class="flex items-baseline gap-3 flex-wrap">
@@ -55,7 +55,7 @@
             <!-- Right Image Section (Desktop Only) -->
             <div class="hidden lg:block w-[50%] h-full relative py-[40px] pl-[40px]">
                 <div class="w-full h-full relative overflow-hidden hero-image-clip bg-gray-100 rounded-[20px]">
-                    <img src="{{ asset('images/ab7a55c40020dbf18750f61e6987c734559524fb.png') }}" alt="Mechanic Garage"
+                    <img src="{{ asset('images/2b5fc4a16a2be69d1e5ad4857e90c40c9e061df3.jpg') }}" alt="Mechanic Garage"
                         class="absolute inset-0 w-full h-full object-cover">
                 </div>
             </div>
@@ -122,7 +122,7 @@
                 <div
                     class="flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 flex-1">
                     <!-- Top Half -->
-                    <div class="bg-primary p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
+                    <div style="background: linear-gradient(135deg, #FF6900 0%, #FB5200 100%);" class="p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
                         <div
                             class="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center bg-white/10">
                             <i class="fa-solid fa-gear text-white text-xl"></i>
@@ -170,7 +170,7 @@
                 <div
                     class="flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 flex-1">
                     <!-- Top Half -->
-                    <div class="bg-primary p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
+                    <div style="background: linear-gradient(135deg, #FF6900 0%, #FB5200 100%);" class="p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
                         <div
                             class="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center bg-white/10">
                             <i class="fa-regular fa-clock text-white text-xl"></i>
@@ -221,7 +221,7 @@
                 <div
                     class="flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 flex-1">
                     <!-- Top Half -->
-                    <div class="bg-primary p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
+                    <div style="background: linear-gradient(135deg, #FF6900 0%, #FB5200 100%);" class="p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
                         <div
                             class="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center bg-white/10">
                             <i class="fa-solid fa-wrench text-white text-xl"></i>
@@ -279,7 +279,7 @@
                 class="relative w-full overflow-hidden min-h-[700px] h-auto lg:h-screen flex items-center lg:rounded-3xl lg:[clip-path:polygon(80px_0,100%_0,100%_calc(100%_-_80px),calc(100%_-_80px)_100%,0_100%,0_80px)]">
 
                 <!-- Background Image -->
-                <img src="{{ asset('images/e0658670663b4326043443088ca927f3be988fd4.png') }}"
+                <img src="{{ asset('images/daf42e39ac8480c306d69690cadcd6729cdf6d45.png') }}"
                     class="absolute inset-0 w-full h-full object-cover z-0" alt="Audi RS7 Background">
 
                 <!-- Dark Gradient/Overlay -->

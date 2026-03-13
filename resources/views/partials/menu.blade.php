@@ -9,8 +9,8 @@
         <div class="flex justify-between items-center mb-16 lg:mb-24 shrink-0">
             <!-- Logo Image (Inverted for black background) -->
             <a href="{{ route('home') }}" class="block z-50">
-                <img src="{{ asset('images/menu-logo.png') }}" alt="Simply Motoring Logo"
-                    class="w-[180px] lg:w-[220px] h-auto object-contain">
+                <img src="{{ asset('images/logo-white.png') }}" alt="Simply Motoring Logo"
+                    class="w-[120px] lg:w-[150px] h-auto object-contain">
             </a>
 
             <button id="menu-close"

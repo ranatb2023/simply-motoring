@@ -63,6 +63,6 @@ class User extends Authenticatable
 
     public function holidays()
     {
-        return $this->hasMany(Holiday::class);
+        return $this->hasMany(Holiday::class, 'staff_id');
     }
 }

@@ -76,6 +76,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     })->name('dashboard');
 
     Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class);
+    Route::post('staff/save-wizard', [\App\Http\Controllers\Admin\StaffController::class, 'saveWizardData'])->name('staff.save-wizard');
     Route::resource('staff', \App\Http\Controllers\Admin\StaffController::class);
     Route::resource('bookings', \App\Http\Controllers\Admin\BookingController::class);
     Route::get('/availability', [\App\Http\Controllers\Admin\AvailabilityController::class, 'index'])->name('availability.index');

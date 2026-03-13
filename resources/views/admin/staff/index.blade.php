@@ -1,27 +1,20 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Staff Management') }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Staff Management') }}
+            </h2>
+            <a href="{{ route('admin.staff.create') }}"
+                class="inline-flex items-center px-5 py-2.5 bg-orange-500 border border-transparent rounded-xl font-bold text-xs text-white shadow-md hover:bg-orange-600 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 transition-all duration-300 uppercase tracking-wider">
+                <i class="fa-solid fa-plus mr-2 text-[10px]"></i>
+                Add New Staff
+            </a>
+        </div>
     </x-slot>
 
-    <div class="py-6 bg-gray-50 min-h-screen">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-6 bg-gray-50/50 min-h-screen">
+        <div class="w-full px-6">
 
-            <!-- Page Header -->
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 px-4 sm:px-0 gap-4">
-                <div>
-                    <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Team Members</h1>
-                    <p class="text-sm text-gray-500 mt-0.5">Manage your staff scheduling and permissions.</p>
-                </div>
-                <a href="{{ route('admin.staff.create') }}"
-                    class="inline-flex items-center px-5 py-3 bg-primary border border-transparent rounded-xl font-semibold text-sm text-white shadow-lg hover:bg-orange-600 hover:shadow-xl focus:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200 transform hover:-translate-y-0.5">
-                    <svg class="w-5 h-5 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                    </svg>
-                    Add New Staff
-                </a>
-            </div>
 
             <!-- Notifications -->
             @if ($success = session('success'))
@@ -35,108 +28,84 @@
                 </div>
             @endif
 
-            <!-- Main Content Card -->
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-2xl border border-gray-100">
-
-                <!-- Toolbar -->
-                <div
-                    class="p-5 border-b border-gray-100 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div class="relative w-full max-w-sm group">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="h-5 w-5 text-gray-400 group-focus-within:text-primary transition-colors duration-200"
-                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
+            <div class="space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                    <div class="relative w-full group">
+                        <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-magnifying-glass text-gray-300 group-focus-within:text-orange-500 transition-colors duration-300 text-base"></i>
                         </div>
                         <input type="text" id="staff-search-input"
-                            class="block w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-primary/20 focus:border-primary sm:text-sm transition-all duration-200"
-                            placeholder="Search by name, email or phone...">
+                            class="block w-full pl-14 pr-6 py-4 border-0 rounded-2xl leading-5 bg-white shadow-sm ring-1 ring-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:shadow-xl text-base transition-all duration-300"
+                            placeholder="Type name, email or mobile number to search...">
                     </div>
 
-                    <div class="flex items-center gap-2">
-                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">{{ $staff->count() }}
-                            Members</span>
+                    <div class="flex items-center gap-3 shrink-0">
+                        <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider bg-white px-4 py-2 rounded-full shadow-sm ring-1 ring-gray-100">{{ $staff->count() }} MEMBERS</span>
                     </div>
                 </div>
 
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-100">
+                <div class="w-full">
+                    <table class="w-full border-separate border-spacing-y-2">
                         <thead>
-                            <tr class="bg-gray-50/80">
+                            <tr>
                                 <th scope="col"
-                                    class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                    Member Details</th>
+                                    class="px-8 py-3 text-left text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                                    Member</th>
                                 <th scope="col"
-                                    class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                    Contact Info</th>
+                                    class="px-8 py-3 text-left text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                                    Contact</th>
                                 <th scope="col"
-                                    class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                    class="px-8 py-3 text-left text-[10px] font-bold text-gray-400 uppercase tracking-wider">
                                     Status</th>
                                 <th scope="col"
-                                    class="px-6 py-4 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                    class="px-8 py-3 text-right text-[10px] font-bold text-gray-400 uppercase tracking-wider">
                                     Actions</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-100" id="staff-table-body">
+                        <tbody id="staff-table-body">
                             @forelse ($staff as $person)
-                                <tr class="hover:bg-orange-50/30 transition duration-150 ease-in-out group search-item">
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                <tr class="bg-white hover:bg-orange-50/30 transition-all duration-300 group search-item shadow-sm hover:shadow-xl">
+                                    <td class="px-8 py-4 first:rounded-l-2xl">
                                         <div class="flex items-center">
-                                            <div
-                                                class="flex-shrink-0 h-12 w-12 cursor-pointer transform hover:scale-105 transition-transform duration-200">
+                                            <div class="flex-shrink-0 h-12 w-12">
                                                 <div
-                                                    class="h-12 w-12 rounded-full bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center text-primary font-bold text-lg shadow-sm border-2 border-white ring-2 ring-gray-50">
+                                                    class="h-12 w-12 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-orange-500/20 ring-4 ring-white">
                                                     {{ strtoupper(substr($person->name, 0, 2)) }}
                                                 </div>
                                             </div>
                                             <div class="ml-4">
-                                                <div class="text-sm font-bold text-gray-900 search-name">{{ $person->name }}
-                                                </div>
-                                                <div class="text-xs text-gray-500 mt-0.5">Joined
-                                                    {{ $person->created_at->format('M Y') }}</div>
+                                                <div class="text-base font-bold text-gray-900 search-name leading-tight">{{ $person->name }}</div>
+                                                <div class="text-xs text-gray-400 font-medium mt-0.5">Joined {{ $person->created_at->format('M Y') }}</div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    <td class="px-8 py-4">
                                         <div class="flex flex-col gap-1">
-                                            <div class="flex items-center text-sm text-gray-600 search-email">
-                                                <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                                </svg>
+                                            <div class="flex items-center text-sm text-gray-600 search-email font-medium">
+                                                <i class="fa-regular fa-envelope w-5 text-gray-300"></i>
                                                 {{ $person->email }}
                                             </div>
                                             @if($person->phone)
-                                                <div class="flex items-center text-sm text-gray-600 search-phone">
-                                                    <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                                    </svg>
+                                                <div class="flex items-center text-sm text-gray-600 search-phone font-medium">
+                                                    <i class="fa-solid fa-phone w-5 text-gray-300 text-xs"></i>
                                                     {{ $person->phone }}
                                                 </div>
                                             @endif
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    <td class="px-8 py-4">
                                         <span
-                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200 shadow-sm">
-                                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>
-                                            Active
+                                            class="inline-flex items-center px-4 py-1.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-600 border border-emerald-100 tracking-wider shadow-sm shadow-emerald-500/5">
+                                            <i class="fa-solid fa-circle text-[6px] mr-2 animate-pulse"></i>
+                                            ACTIVE
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <div
-                                            class="flex justify-end gap-2 opacity-60 group-hover:opacity-100 transition-opacity duration-200">
+                                    <td class="px-8 py-4 text-right last:rounded-r-2xl">
+                                        <div class="flex justify-end gap-3">
                                             <a href="{{ route('admin.staff.edit', $person) }}"
-                                                class="p-2 bg-gray-50 rounded-lg text-gray-500 hover:text-primary hover:bg-orange-50 border border-gray-200 hover:border-orange-200 transition-all duration-200"
+                                                class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-50 text-gray-400 hover:text-orange-500 hover:bg-orange-50 hover:shadow-sm transition-all duration-300"
                                                 title="Edit Details">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                                </svg>
+                                                <i class="fa-solid fa-pen-to-square text-sm"></i>
                                             </a>
                                             <form action="{{ route('admin.staff.destroy', $person) }}" method="POST"
                                                 class="inline-block"
@@ -144,14 +113,9 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="p-2 bg-gray-50 rounded-lg text-gray-500 hover:text-red-600 hover:bg-red-50 border border-gray-200 hover:border-red-200 transition-all duration-200"
+                                                    class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-50 text-gray-400 hover:text-red-600 hover:bg-red-50 hover:shadow-sm transition-all duration-300"
                                                     title="Delete Staff">
-                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                    </svg>
+                                                    <i class="fa-solid fa-trash-can text-sm"></i>
                                                 </button>
                                             </form>
                                         </div>
