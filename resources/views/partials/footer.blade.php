@@ -49,14 +49,8 @@
 
                     <!-- Services -->
                     <div class="flex flex-col gap-1">
-                        <a href="{{ route('service.brake-discs-and-pads') }}"
-                            class="font-geist font-medium text-lg hover:text-primary transition-colors">Brake
-                            discs
-                            & Pads</a>
-                        <a href="{{ route('service.brake-fluid-change') }}"
-                            class="font-geist font-medium text-lg hover:text-primary transition-colors">Brake
-                            Fluid
-                            Change</a>
+                        <a href="{{ route('service.mot-test') }}"
+                            class="font-geist font-medium text-lg hover:text-primary transition-colors">MOT Test</a>
                         <a href="{{ route('service.full-service') }}"
                             class="font-geist font-medium text-lg hover:text-primary transition-colors">Full
                             Service</a>

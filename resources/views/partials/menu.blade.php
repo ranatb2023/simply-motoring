@@ -27,11 +27,11 @@
             <!-- Left Column: Main Navigation -->
             <nav class="flex flex-col space-y-0 lg:w-1/2 z-10 pt-4 lg:justify-center relative">
                 <a href="{{ route('home') }}"
-                    class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('home') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block"
+                    class="menu-link text-[48px] lg:text-[64px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('home') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block"
                     data-active="{{ request()->routeIs('home') ? 'true' : 'false' }}">Home</a>
                 <!-- Services Link triggers submenu -->
                 <a href="{{ route('service') }}" id="menu-link-services"
-                    class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('service') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block relative"
+                    class="menu-link text-[48px] lg:text-[64px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('service') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block relative"
                     data-active="{{ request()->routeIs('service') ? 'true' : 'false' }}">Services
                 </a>
 
@@ -52,19 +52,6 @@
                             <span
                                 class="text-white/20 font-bold w-8 lg:w-12 group-hover:text-primary/50 transition-colors text-lg lg:text-xl">01</span>
                             MOT Test
-                        </a>
-
-                        <a href="{{ route('service.brake-discs-and-pads') }}"
-                            class="group flex items-center justify-between lg:justify-start gap-4 lg:gap-8 text-xl lg:text-3xl text-white font-medium hover:text-primary transition-colors">
-                            <span
-                                class="text-white/20 font-bold w-8 lg:w-12 group-hover:text-primary/50 transition-colors text-lg lg:text-xl">02</span>
-                            Brake discs & pads
-                        </a>
-                        <a href="{{ route('service.brake-fluid-change') }}"
-                            class="group flex items-center justify-between lg:justify-start gap-4 lg:gap-8 text-xl lg:text-3xl text-white font-medium hover:text-primary transition-colors">
-                            <span
-                                class="text-white/20 font-bold w-8 lg:w-12 group-hover:text-primary/50 transition-colors text-lg lg:text-xl">03</span>
-                            Brake fluid change
                         </a>
                         <a href="{{ route('service.full-service') }}"
                             class="group flex items-center justify-between lg:justify-start gap-4 lg:gap-8 text-xl lg:text-3xl text-white font-medium hover:text-primary transition-colors">
@@ -88,13 +75,13 @@
                 </div>
 
                 <a href="{{ route('pricing') }}"
-                    class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('pricing') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block mt-2 lg:mt-0"
+                    class="menu-link text-[48px] lg:text-[64px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('pricing') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block mt-2 lg:mt-0"
                     data-active="{{ request()->routeIs('pricing') ? 'true' : 'false' }}">Pricing</a>
                 <a href="{{ route('blogs') }}"
-                    class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('blogs') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block mt-2 lg:mt-0"
+                    class="menu-link text-[48px] lg:text-[64px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('blogs') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block mt-2 lg:mt-0"
                     data-active="{{ request()->routeIs('blogs') ? 'true' : 'false' }}">Blogs</a>
                 <a href="{{ route('contact') }}"
-                    class="menu-link text-[56px] lg:text-[96px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('contact') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block"
+                    class="menu-link text-[48px] lg:text-[64px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('contact') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block"
                     data-active="{{ request()->routeIs('contact') ? 'true' : 'false' }}">Contact Us</a>
             </nav>
 

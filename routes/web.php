@@ -89,6 +89,38 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('bookings', \App\Http\Controllers\Admin\BookingController::class);
     Route::patch('bookings/{booking}/status', [\App\Http\Controllers\Admin\BookingController::class, 'updateStatus'])->name('bookings.update-status');
     Route::get('/availability', [\App\Http\Controllers\Admin\AvailabilityController::class, 'index'])->name('availability.index');
+
+    // ── Mail Test (admin only) ──────────────────────────────────────────────
+    // Visit /admin/mail-test?to=your@email.com to verify SMTP is working on live server
+    Route::get('/mail-test', function (\Illuminate\Http\Request $request) {
+        $to = $request->query('to', env('MAIL_ADMIN_ADDRESS', 'ranatb2023@gmail.com'));
+        try {
+            \Illuminate\Support\Facades\Mail::raw(
+                'This is a test email from Simply Motoring sent at ' . now()->toDateTimeString() . '. If you received this, SMTP is working correctly.',
+                function ($message) use ($to) {
+                    $message->to($to)->subject('Simply Motoring — Mail Test ' . now()->toDateTimeString());
+                }
+            );
+            return response()->json([
+                'status'  => 'sent',
+                'to'      => $to,
+                'mailer'  => config('mail.default'),
+                'host'    => config('mail.mailers.smtp.host'),
+                'port'    => config('mail.mailers.smtp.port'),
+                'from'    => config('mail.from.address'),
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'status'  => 'failed',
+                'to'      => $to,
+                'error'   => $e->getMessage(),
+                'mailer'  => config('mail.default'),
+                'host'    => config('mail.mailers.smtp.host'),
+                'port'    => config('mail.mailers.smtp.port'),
+                'from'    => config('mail.from.address'),
+            ], 500);
+        }
+    })->name('mail.test');
     Route::get('/google-reviews', [\App\Http\Controllers\Admin\GoogleReviewsController::class, 'index'])->name('google-reviews.index');
 
     // Blog Management Routes

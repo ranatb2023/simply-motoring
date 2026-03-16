@@ -92,13 +92,25 @@ class BookingController extends Controller
         try {
             Mail::to($booking->customer_email)
                 ->send(new BookingCancellation($booking, false));
-        } catch (\Throwable) {}
+        } catch (\Throwable $e) {
+            \Log::error('Booking cancellation email (customer) failed', [
+                'booking_id' => $booking->id,
+                'to'         => $booking->customer_email,
+                'error'      => $e->getMessage(),
+            ]);
+        }
 
         // Send cancellation notification to admin (best-effort)
         try {
-            Mail::to('ranatb2023@gmail.com')
+            $adminEmail = env('MAIL_ADMIN_ADDRESS', 'ranatb2023@gmail.com');
+            Mail::to($adminEmail)
                 ->send(new BookingCancellation($booking, true));
-        } catch (\Throwable) {}
+        } catch (\Throwable $e) {
+            \Log::error('Booking cancellation email (admin) failed', [
+                'booking_id' => $booking->id,
+                'error'      => $e->getMessage(),
+            ]);
+        }
 
         $booking->delete();
 

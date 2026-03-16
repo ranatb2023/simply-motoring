@@ -229,13 +229,25 @@ class BookingService
             try {
                 Mail::to($booking->customer_email)
                     ->send(new BookingConfirmation($booking, false));
-            } catch (\Throwable) {}
+            } catch (\Throwable $e) {
+                \Log::error('Booking confirmation email (customer) failed', [
+                    'booking_id' => $booking->id,
+                    'to'         => $booking->customer_email,
+                    'error'      => $e->getMessage(),
+                ]);
+            }
 
             // Send notification email to admin (best-effort)
             try {
-                Mail::to('ranatb2023@gmail.com')
+                $adminEmail = env('MAIL_ADMIN_ADDRESS', 'ranatb2023@gmail.com');
+                Mail::to($adminEmail)
                     ->send(new BookingConfirmation($booking, true));
-            } catch (\Throwable) {}
+            } catch (\Throwable $e) {
+                \Log::error('Booking confirmation email (admin) failed', [
+                    'booking_id' => $booking->id,
+                    'error'      => $e->getMessage(),
+                ]);
+            }
 
             // Add Google Calendar event (best-effort, does not roll back booking on failure)
             $this->addGoogleCalendarEvent($booking, $data);
