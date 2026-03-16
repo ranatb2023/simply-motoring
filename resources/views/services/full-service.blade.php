@@ -810,7 +810,7 @@
                             </h2>
 
                             <!-- Accordion -->
-                            <div x-data="{ active: 1 }" class="space-y-0 border-t border-black/10">
+                            <div x-data="{ active: 1 }" class="space-y-0 border-t border-black/10 z-10 relative">
 
                                 <!-- Item 1 -->
                                 <div class="border-b border-black/10 py-6">

@@ -732,23 +732,27 @@
     window.openBookingModal = openModal;
 
     function attachBookTriggers() {
+        // data-book-trigger attribute (pre-selects a service slug)
         document.querySelectorAll('[data-book-trigger]').forEach(el => {
             if (el._bmAttached) return;
             el._bmAttached = true;
             el.addEventListener('click', e => { e.preventDefault(); openModal(el.dataset.bookTrigger || ''); });
         });
 
+        // <a href="#book"> links
         document.querySelectorAll('a[href="#book"]').forEach(el => {
             if (el._bmAttached) return;
             el._bmAttached = true;
             el.addEventListener('click', e => { e.preventDefault(); openModal(''); });
         });
 
-        document.querySelectorAll('button').forEach(btn => {
-            if (btn._bmAttached || btn.closest('#bookingModal')) return;
-            if ((btn.textContent || '').trim().toLowerCase().includes('book now')) {
-                btn._bmAttached = true;
-                btn.addEventListener('click', e => { e.preventDefault(); openModal(''); });
+        // Any <button> or <a> whose visible text starts with "Book" (case-insensitive)
+        document.querySelectorAll('button, a').forEach(el => {
+            if (el._bmAttached || el.closest('#bookingModal')) return;
+            const text = (el.textContent || '').trim().toLowerCase();
+            if (text.startsWith('book')) {
+                el._bmAttached = true;
+                el.addEventListener('click', e => { e.preventDefault(); openModal(''); });
             }
         });
     }

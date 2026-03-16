@@ -17,6 +17,10 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::get('/pricing', function () {
+    return view('pricing');
+})->name('pricing');
+
 Route::get('/service/brake-discs-and-pads', function () {
     return view('services.brake-discs-and-pads');
 })->name('service.brake-discs-and-pads');
@@ -36,6 +40,10 @@ Route::get('/service/interim-service', function () {
 Route::get('/service/major-service', function () {
     return view('services.major-service');
 })->name('service.major-service');
+
+Route::get('/service/mot-test', function () {
+    return view('services.mot-test');
+})->name('service.mot-test');
 
 Route::get('/blogs', function () {
     $featuredPost = \App\Models\BlogPost::published()
