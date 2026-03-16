@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use App\Models\Schedule;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -22,7 +24,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.services.create');
+        $users = User::role(['staff', 'admin'])->get();
+        $schedules = Schedule::all();
+        return view('admin.services.create', compact('users', 'schedules'));
     }
 
     /**
@@ -31,13 +35,39 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'type' => 'required',
-            'duration_minutes' => 'required|integer',
-            'price' => 'required|numeric',
+            'name'                   => 'required|string|max:100',
+            'description'            => 'nullable|string',
+            'type'                   => 'nullable|string',
+            'duration_minutes'       => 'required|integer|min:1',
+            'price'                  => 'required|numeric|min:0',
+            'schedule_id'            => 'nullable|exists:schedules,id',
+            'buffer_before_minutes'  => 'nullable|integer|min:0',
+            'buffer_after_minutes'   => 'nullable|integer|min:0',
+            'advance_booking_days'   => 'nullable|integer|min:1',
+            'min_notice_hours'       => 'nullable|integer|min:0',
+            'time_increment'         => 'nullable|integer|in:15,30,60',
+            'max_bookings_per_day'   => 'nullable|integer|min:1',
+            'user_ids'               => 'nullable|array',
+            'user_ids.*'             => 'exists:users,id',
         ]);
 
-        Service::create($request->all());
+        $data = $request->only([
+            'name', 'description', 'duration_minutes', 'price', 'schedule_id',
+            'buffer_before_minutes', 'buffer_after_minutes', 'advance_booking_days',
+            'min_notice_hours', 'time_increment', 'max_bookings_per_day',
+        ]);
+
+        $data['type']                     = $request->input('type', 'service');
+        $data['collect_phone']            = $request->boolean('collect_phone');
+        $data['collect_vehicle_reg']      = $request->boolean('collect_vehicle_reg');
+        $data['send_confirmation_email']  = $request->boolean('send_confirmation_email');
+        $data['is_active']                = $request->boolean('is_active');
+
+        $service = Service::create($data);
+
+        if ($request->filled('user_ids')) {
+            $service->staff()->sync($request->user_ids);
+        }
 
         return redirect()->route('admin.services.index')
             ->with('success', 'Service created successfully.');
@@ -56,7 +86,10 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        return view('admin.services.edit', compact('service'));
+        $service->load('staff');
+        $users = User::role(['staff', 'admin'])->get();
+        $schedules = Schedule::all();
+        return view('admin.services.edit', compact('service', 'users', 'schedules'));
     }
 
     /**
@@ -65,13 +98,37 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         $request->validate([
-            'name' => 'required',
-            'type' => 'required',
-            'duration_minutes' => 'required|integer',
-            'price' => 'required|numeric',
+            'name'                   => 'required|string|max:100',
+            'description'            => 'nullable|string',
+            'type'                   => 'nullable|string',
+            'duration_minutes'       => 'required|integer|min:1',
+            'price'                  => 'required|numeric|min:0',
+            'schedule_id'            => 'nullable|exists:schedules,id',
+            'buffer_before_minutes'  => 'nullable|integer|min:0',
+            'buffer_after_minutes'   => 'nullable|integer|min:0',
+            'advance_booking_days'   => 'nullable|integer|min:1',
+            'min_notice_hours'       => 'nullable|integer|min:0',
+            'time_increment'         => 'nullable|integer|in:15,30,60',
+            'max_bookings_per_day'   => 'nullable|integer|min:1',
+            'user_ids'               => 'nullable|array',
+            'user_ids.*'             => 'exists:users,id',
         ]);
 
-        $service->update($request->all());
+        $data = $request->only([
+            'name', 'description', 'duration_minutes', 'price', 'schedule_id',
+            'buffer_before_minutes', 'buffer_after_minutes', 'advance_booking_days',
+            'min_notice_hours', 'time_increment', 'max_bookings_per_day',
+        ]);
+
+        $data['type']                    = $request->input('type', 'service');
+        $data['collect_phone']           = $request->boolean('collect_phone');
+        $data['collect_vehicle_reg']     = $request->boolean('collect_vehicle_reg');
+        $data['send_confirmation_email'] = $request->boolean('send_confirmation_email');
+        $data['is_active']               = $request->boolean('is_active');
+
+        $service->update($data);
+
+        $service->staff()->sync($request->input('user_ids', []));
 
         return redirect()->route('admin.services.index')
             ->with('success', 'Service updated successfully.');

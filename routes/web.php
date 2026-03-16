@@ -79,6 +79,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::post('staff/save-wizard', [\App\Http\Controllers\Admin\StaffController::class, 'saveWizardData'])->name('staff.save-wizard');
     Route::resource('staff', \App\Http\Controllers\Admin\StaffController::class);
     Route::resource('bookings', \App\Http\Controllers\Admin\BookingController::class);
+    Route::patch('bookings/{booking}/status', [\App\Http\Controllers\Admin\BookingController::class, 'updateStatus'])->name('bookings.update-status');
     Route::get('/availability', [\App\Http\Controllers\Admin\AvailabilityController::class, 'index'])->name('availability.index');
     Route::get('/google-reviews', [\App\Http\Controllers\Admin\GoogleReviewsController::class, 'index'])->name('google-reviews.index');
 
@@ -256,5 +257,13 @@ Route::prefix('blog')->name('blog.comments.')->group(function () {
 Route::post('/blog/{post}/share', [BlogController::class, 'share'])->name('blog.share');
 
 Route::get('/api/reviews', [\App\Http\Controllers\Admin\GoogleReviewsController::class, 'getReviews']);
+
+// --- Public Booking API ---
+Route::prefix('api/booking')->group(function () {
+    Route::get('services',     [\App\Http\Controllers\BookingController::class, 'services']);
+    Route::get('closed-dates', [\App\Http\Controllers\BookingController::class, 'closedDates']);
+    Route::get('slots',        [\App\Http\Controllers\BookingController::class, 'slots']);
+    Route::post('store',       [\App\Http\Controllers\BookingController::class, 'store']);
+});
 
 
