@@ -56,19 +56,19 @@
                         <a href="{{ route('service.full-service') }}"
                             class="group flex items-center justify-between lg:justify-start gap-4 lg:gap-8 text-xl lg:text-3xl text-white font-medium hover:text-primary transition-colors">
                             <span
-                                class="text-white/20 font-bold w-8 lg:w-12 group-hover:text-primary/50 transition-colors text-lg lg:text-xl">04</span>
+                                class="text-white/20 font-bold w-8 lg:w-12 group-hover:text-primary/50 transition-colors text-lg lg:text-xl">02</span>
                             Full service
                         </a>
                         <a href="{{ route('service.interim-service') }}"
                             class="group flex items-center justify-between lg:justify-start gap-4 lg:gap-8 text-xl lg:text-3xl text-white font-medium hover:text-primary transition-colors">
                             <span
-                                class="text-white/20 font-bold w-8 lg:w-12 group-hover:text-primary/50 transition-colors text-lg lg:text-xl">05</span>
+                                class="text-white/20 font-bold w-8 lg:w-12 group-hover:text-primary/50 transition-colors text-lg lg:text-xl">03</span>
                             Interim service
                         </a>
                         <a href="{{ route('service.major-service') }}"
                             class="group flex items-center justify-between lg:justify-start gap-4 lg:gap-8 text-xl lg:text-3xl text-white font-medium hover:text-primary transition-colors">
                             <span
-                                class="text-white/20 font-bold w-8 lg:w-12 group-hover:text-primary/50 transition-colors text-lg lg:text-xl">06</span>
+                                class="text-white/20 font-bold w-8 lg:w-12 group-hover:text-primary/50 transition-colors text-lg lg:text-xl">04</span>
                             Major service
                         </a>
                     </div>
