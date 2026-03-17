@@ -509,7 +509,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£120</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£175</span>
                                 </div>
 
                                 <ul class="flex flex-col mt-auto -mx-8">
@@ -603,7 +603,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£10</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£25</span>
                                 </div>
 
                                 <ul class="flex flex-col mt-auto -mx-8">
@@ -646,7 +646,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£120</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£150</span>
                                 </div>
 
                                 <ul class="flex flex-col mt-auto -mx-8">
@@ -701,7 +701,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£120</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£175</span>
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
@@ -775,7 +775,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£10</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£25</span>
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
@@ -809,7 +809,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£120</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£150</span>
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
@@ -1358,7 +1358,7 @@
                                 <div class="border-b border-black/10 py-6">
                                     <button @click="active = (active === 1 ? null : 1)"
                                         class="w-full flex justify-between items-center text-left group">
-                                        <span class="text-xl lg:text-2xl font-medium text-black pr-8">How long does car
+                                        <span class="text-xl lg:text-2xl font-medium text-black pr-8">How long does a car
                                             service
                                             take?</span>
                                         <div class="relative w-10 h-10 flex-shrink-0">
@@ -1389,7 +1389,7 @@
                                         class="w-full flex justify-between items-center text-left group">
                                         <span class="text-xl lg:text-2xl font-medium text-black pr-8">How often should
                                             you
-                                            Service your Car?</span>
+                                            service your car?</span>
                                         <div class="relative w-10 h-10 flex-shrink-0">
                                             <div class="absolute inset-0 rounded-md transition-all duration-300"
                                                 style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
@@ -1416,8 +1416,8 @@
                                 <div class="border-b border-black/10 py-6">
                                     <button @click="active = (active === 3 ? null : 3)"
                                         class="w-full flex justify-between items-center text-left group">
-                                        <span class="text-xl lg:text-2xl font-medium text-black pr-8">What does a Car
-                                            Service
+                                        <span class="text-xl lg:text-2xl font-medium text-black pr-8">What does a car
+                                            service
                                             include?</span>
                                         <div class="relative w-10 h-10 flex-shrink-0">
                                             <div class="absolute inset-0 rounded-md transition-all duration-300"

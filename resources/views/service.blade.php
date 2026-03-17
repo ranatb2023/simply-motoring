@@ -62,11 +62,9 @@
     </div>
 
     <!-- About Section -->
-    <section class="bg-white py-10 lg:py-32 relative z-10">
+    <!-- <section class="bg-white py-10 lg:py-32 relative z-10">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-10">
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-24 items-start">
-
-                <!-- Left Column: Headline -->
                 <div class="flex flex-col gap-6">
                     <span class="text-lg font-semibold uppercase tracking-tight text-[#0A0A0Ac2] font-geist">About
                         Simply Motoring</span>
@@ -77,7 +75,6 @@
                     </h2>
                 </div>
 
-                <!-- Right Column: Content -->
                 <div class="flex flex-col gap-8 text-lg font-medium leading-relaxed text-[#0A0A0A] lg:pt-14">
                     <p class="hidden lg:block">
                         Regular servicing is one of the most effective ways to protect your vehicle and avoid unexpected
@@ -93,7 +90,7 @@
 
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Services Section -->
     <section class="py-10 lg:py-20 bg-white relative z-10 overflow-hidden border-t border-black/10">
@@ -122,7 +119,7 @@
                     <div class="px-8 pt-16 flex-1 flex flex-col">
                         <h3
                             class="font-geist font-semibold text-[24px] lg:text-[32px] leading-[1] uppercase tracking-[-0.04em] mb-4">
-                            Full Services
+                            Full Service
                         </h3>
                         <p class="text-white/90 text-[16px] lg:text-[18px] leading-[1.3] font-medium mb-8 min-h-[50px]">
                             A full service is ideal for annual maintenance, providing a comprehensive inspection.
@@ -600,7 +597,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£120</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£175</span>
                                 </div>
 
                                 <ul class="flex flex-col mt-auto -mx-8">
@@ -694,7 +691,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£10</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£25</span>
                                 </div>
 
                                 <ul class="flex flex-col mt-auto -mx-8">
@@ -737,7 +734,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£120</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£150</span>
                                 </div>
 
                                 <ul class="flex flex-col mt-auto -mx-8">
@@ -792,7 +789,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£120</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£175</span>
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
@@ -866,7 +863,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£10</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£25</span>
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
@@ -900,7 +897,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£120</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£150</span>
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li

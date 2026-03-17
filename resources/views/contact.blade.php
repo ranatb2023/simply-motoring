@@ -31,7 +31,7 @@
 
                         <!-- Description -->
                         <p class="text-black/80 font-medium text-lg lg:text-xl leading-relaxed max-w-md mb-12">
-                            We are here to help with all your car service and MOT needs. Our experienced technicians are
+                            We are here to help with all your car services and MOT needs. Our experienced technicians are
                             dedicated to providing top-notch services and ensuring your complete satisfaction.
                         </p>
                     </div>
