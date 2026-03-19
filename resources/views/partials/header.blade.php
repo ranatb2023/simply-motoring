@@ -1,5 +1,5 @@
 <!-- Global Header -->
-<header class="relative w-full bg-white border-b border-gray-100 z-50">
+<header class="sticky top-0 w-full bg-white border-b border-gray-100 z-50">
     <div class="max-w-[1440px] w-full mx-auto px-6 lg:px-[40px] py-4 lg:py-5 grid grid-cols-3 items-center gap-4 lg:gap-0">
 
         <!-- Left: Menu Trigger -->

@@ -296,9 +296,14 @@
             panel.classList.add('sm:scale-100', 'opacity-100');
         });
         document.body.classList.add('overflow-hidden');
-        if (!state.services.length) loadServices();
+        state._pendingSlug = serviceSlug ? serviceSlug.toLowerCase() : null;
         goToStep(1);
-        if (serviceSlug) state._pendingSlug = serviceSlug.toLowerCase();
+        if (state.services.length) {
+            renderServices();
+            if (state._pendingSlug) autoSelect(state._pendingSlug);
+        } else {
+            loadServices();
+        }
     }
 
     function closeModal() {
@@ -462,7 +467,11 @@
 
     function autoSelect(slug) {
         const match = state.services.find(s => s.name.toLowerCase().includes(slug));
-        if (match) selectService(match.id);
+        if (match) {
+            selectService(match.id);
+            state._pendingSlug = null;
+            goToStep(2);
+        }
     }
 
     // ── Step 2: Calendar ──────────────────────────────────────────────────────
@@ -736,14 +745,28 @@
         document.querySelectorAll('[data-book-trigger]').forEach(el => {
             if (el._bmAttached) return;
             el._bmAttached = true;
-            el.addEventListener('click', e => { e.preventDefault(); openModal(el.dataset.bookTrigger || ''); });
+            el.addEventListener('click', e => {
+                e.preventDefault();
+                let slug = el.dataset.bookTrigger || '';
+                if (!slug) {
+                    const text = (el.textContent || '').trim().toLowerCase();
+                    if (text.includes('mot')) slug = 'mot';
+                }
+                openModal(slug);
+            });
         });
 
         // <a href="#book"> links
         document.querySelectorAll('a[href="#book"]').forEach(el => {
             if (el._bmAttached) return;
             el._bmAttached = true;
-            el.addEventListener('click', e => { e.preventDefault(); openModal(''); });
+            el.addEventListener('click', e => {
+                e.preventDefault();
+                const text = (el.textContent || '').trim().toLowerCase();
+                let slug = '';
+                if (text.includes('mot')) slug = 'mot';
+                openModal(slug);
+            });
         });
 
         // Any <button> or <a> whose visible text starts with "Book" (case-insensitive)
@@ -752,7 +775,10 @@
             const text = (el.textContent || '').trim().toLowerCase();
             if (text.startsWith('book')) {
                 el._bmAttached = true;
-                el.addEventListener('click', e => { e.preventDefault(); openModal(''); });
+                // Detect service from button text to pre-select + skip to date step
+                let slug = '';
+                if (text.includes('mot')) slug = 'mot';
+                el.addEventListener('click', e => { e.preventDefault(); openModal(slug); });
             }
         });
     }
