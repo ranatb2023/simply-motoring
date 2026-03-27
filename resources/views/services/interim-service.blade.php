@@ -72,73 +72,73 @@
 
             <!-- Carousel Container -->
             <div x-data="{
-                                    active: 0,
-                                    cardWidth: 0,
-                                    gap: 24,
-                                    transitioning: true,
-                                    paused: false,
-                                    startX: 0,
-                                    currentX: 0,
-                                    isDragging: false,
-                                    updateWidth() {
-                                        const card = this.$el.querySelector('.service-card');
-                                        if (card) this.cardWidth = card.offsetWidth;
-                                    },
-                                    init() {
-                                        setTimeout(() => this.updateWidth(), 100);
-                                        window.addEventListener('resize', () => this.updateWidth());
-                                        setInterval(() => {
-                                            if (!this.paused && !this.isDragging) this.next();
-                                        }, 3000);
-                                    },
-                                    next() {
-                                        if (this.active < 4) {
+                                        active: 0,
+                                        cardWidth: 0,
+                                        gap: 24,
+                                        transitioning: true,
+                                        paused: false,
+                                        startX: 0,
+                                        currentX: 0,
+                                        isDragging: false,
+                                        updateWidth() {
+                                            const card = this.$el.querySelector('.service-card');
+                                            if (card) this.cardWidth = card.offsetWidth;
+                                        },
+                                        init() {
+                                            setTimeout(() => this.updateWidth(), 100);
+                                            window.addEventListener('resize', () => this.updateWidth());
+                                            setInterval(() => {
+                                                if (!this.paused && !this.isDragging) this.next();
+                                            }, 3000);
+                                        },
+                                        next() {
+                                            if (this.active < 4) {
+                                                this.transitioning = true;
+                                                this.active++;
+                                            } else {
+                                                this.transitioning = true;
+                                                this.active = 0;
+                                            }
+                                        },
+                                        prev() {
+                                            if (this.active > 0) {
+                                                this.transitioning = true;
+                                                this.active--;
+                                            } else {
+                                                this.transitioning = true;
+                                                this.active = 4;
+                                            }
+                                        },
+                                        goTo(index) {
                                             this.transitioning = true;
-                                            this.active++;
-                                        } else {
+                                            this.active = index;
+                                        },
+                                        startDrag(e) {
+                                            this.isDragging = true;
+                                            this.transitioning = false;
+                                            this.paused = true;
+                                            this.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+                                        },
+                                        onDrag(e) {
+                                            if (!this.isDragging) return;
+                                            const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                                            this.currentX = x - this.startX;
+                                        },
+                                        endDrag() {
+                                            if (!this.isDragging) return;
+                                            this.isDragging = false;
                                             this.transitioning = true;
-                                            this.active = 0;
-                                        }
-                                    },
-                                    prev() {
-                                        if (this.active > 0) {
-                                            this.transitioning = true;
-                                            this.active--;
-                                        } else {
-                                            this.transitioning = true;
-                                            this.active = 4;
-                                        }
-                                    },
-                                    goTo(index) {
-                                        this.transitioning = true;
-                                        this.active = index;
-                                    },
-                                    startDrag(e) {
-                                        this.isDragging = true;
-                                        this.transitioning = false;
-                                        this.paused = true;
-                                        this.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-                                    },
-                                    onDrag(e) {
-                                        if (!this.isDragging) return;
-                                        const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-                                        this.currentX = x - this.startX;
-                                    },
-                                    endDrag() {
-                                        if (!this.isDragging) return;
-                                        this.isDragging = false;
-                                        this.transitioning = true;
-                                        this.paused = false;
+                                            this.paused = false;
 
-                                        if (this.currentX < -50) {
-                                            this.next();
-                                        } else if (this.currentX > 50) {
-                                            this.prev();
-                                        }
+                                            if (this.currentX < -50) {
+                                                this.next();
+                                            } else if (this.currentX > 50) {
+                                                this.prev();
+                                            }
 
-                                        this.currentX = 0;
-                                    }
-                                }"
+                                            this.currentX = 0;
+                                        }
+                                    }"
                 class="w-[calc(100vw-3rem)] overflow-hidden relative cursor-grab active:cursor-grabbing pb-2"
                 @mouseenter="paused = true" @mouseleave="paused = false; endDrag()" @mousedown="startDrag"
                 @touchstart.passive="startDrag" @mousemove="onDrag" @touchmove.passive="onDrag" @mouseup="endDrag"
@@ -187,7 +187,7 @@
                             <div class="bg-primary rounded-xl p-8 w-full h-full flex flex-col border border-white/50">
                                 <h3
                                     class="text-white/80 text-2xl lg:text-3xl font-bold font-geist leading-tight mb-8 uppercase">
-                                    BRAKE & SUSPENSION
+                                    Brakes, Suspension, Steering & Tyres
                                 </h3>
                                 <ul class="space-y-6">
                                     <li class="flex items-start gap-4">
@@ -202,7 +202,7 @@
                                             <i class="fa-light fa-tire text-2xl text-white"></i>
                                         </div>
                                         <span class="text-lg lg:text-xl font-medium leading-tight text-white">Inspect
-                                            suspension, steering components, and linkages</span>
+                                            suspension, steering components, & linkages</span>
                                     </li>
                                     <li class="flex items-start gap-4">
                                         <div class="flex items-center justify-center shrink-0 mt-1">
@@ -211,31 +211,12 @@
                                         <span class="text-lg lg:text-xl font-medium leading-tight text-white">Test brake
                                             response and ride quality</span>
                                     </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="service-card h-full shrink-0 w-[calc(100vw-3rem)] lg:w-[400px] max-w-none shrink-0">
-                            <div class="bg-primary rounded-xl p-8 w-full h-full flex flex-col border border-white/50">
-                                <h3
-                                    class="text-white/80 text-2xl lg:text-3xl font-bold font-geist leading-tight mb-8 uppercase">
-                                    STEERING & TYRES
-                                </h3>
-                                <ul class="space-y-6">
                                     <li class="flex items-start gap-4">
                                         <div class="flex items-center justify-center shrink-0 mt-1">
                                             <i class="fa-light fa-tire text-2xl text-white"></i>
                                         </div>
                                         <span class="text-lg lg:text-xl font-medium leading-tight text-white">Check tyre
                                             pressures and tread depth</span>
-                                    </li>
-                                    <li class="flex items-start gap-4">
-                                        <div class="flex items-center justify-center shrink-0 mt-1">
-                                            <i class="fa-light fa-tire text-2xl text-white"></i>
-                                        </div>
-                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Inspect
-                                            wheels, alignment, and the steering system</span>
                                     </li>
                                 </ul>
                             </div>

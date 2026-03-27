@@ -52,6 +52,15 @@
                 </svg>
                 <span>01302 456 406</span>
             </a>
+            <!-- Directions -->
+            <a href="https://www.google.com/maps?rlz=1C1GCEA_enPK1165PK1165&gs_lcrp=EgZjaHJvbWUqDggDEEUYJxg7GIAEGIoFMgYIABBFGDwyBggBEEUYPDIGCAIQRRg5Mg4IAxBFGCcYOxiABBiKBTIGCAQQRRg8MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEIMzY4OWowajeoAgCwAgA&um=1&ie=UTF-8&fb=1&gl=pk&sa=X&geocode=KeHpcNOzDXlIMZljC7MWg4qh&daddr=243A+Sprotbrough+Rd,+Doncaster+DN5+8BP,+United+Kingdom" target="_blank" rel="noopener noreferrer"
+                class="hidden sm:flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-primary transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Click here for directions</span>
+            </a>
         </div>
 
     </div>

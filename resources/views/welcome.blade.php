@@ -3,7 +3,7 @@
 @section('content')
     <!-- Main Wrapper: 1440px max-width, 40px padding -->
     <!-- Hero Section -->
-    <section class="relative w-full h-[90vh] overflow-hidden">
+    <section class="relative w-full min-h-[90vh] flex flex-col overflow-hidden">
 
         <!-- Mobile Background Image (Absolute Fullscreen) -->
         <div class="absolute inset-0 z-0 lg:hidden">
@@ -14,29 +14,41 @@
 
         <!-- Main Content Wrapper -->
         <div
-            class="max-w-[1440px] w-full mx-auto px-6 lg:px-[40px] h-full flex flex-col lg:flex-row gap-8 lg:gap-0 relative z-10">
+            class="max-w-[1440px] w-full mx-auto px-6 lg:px-[40px] flex-1 flex flex-col lg:flex-row gap-8 lg:gap-0 relative z-10">
 
             <!-- Left Side Content -->
-            <div class="w-full lg:w-[50%] flex flex-col lg:justify-between py-10 h-full relative z-10 shrink-0 gap-10">
+            <div class="w-full lg:w-[50%] flex flex-col lg:justify-between py-10 lg:py-16 relative z-10 shrink-0 gap-10">
 
                 <!-- Headlines -->
-                <div>
-                    <!-- Desktop Headline -->
-                    <h1
-                        class="font-geist font-semibold text-[56px] xl:text-[96px] leading-[0.83] tracking-tighter text-black uppercase hidden lg:block">
-                        Keeping
-                        Doncaster's
-                        <span class="flex items-baseline gap-3 flex-wrap">
-                            <span class="text-primary">Motors in </span>
-                            <span class="text-primary">Motion</span>
-                        </span>
-                    </h1>
+                <div class="flex flex-col gap-6 lg:gap-8">
+                    <div>
+                        <!-- Desktop Headline -->
+                        <h1
+                            class="font-geist font-semibold text-[56px] xl:text-[96px] leading-[0.83] tracking-tighter text-black uppercase hidden lg:block">
+                            Keeping
+                            Doncaster's
+                            <span class="flex items-baseline gap-3 flex-wrap">
+                                <span class="text-primary">Motorists in </span>
+                                <span class="text-primary">Motion</span>
+                            </span>
+                        </h1>
 
-                    <!-- Mobile Headline -->
-                    <h1
-                        class="font-geist font-semibold text-[48px] leading-[1.06] tracking-tighter text-white uppercase lg:hidden mt-20">
-                        Keeping Doncaster's<br><span class="text-primary">Motors in Motion</span>
-                    </h1>
+                        <!-- Mobile Headline -->
+                        <h1
+                            class="font-geist font-semibold text-[48px] leading-[1.06] tracking-tighter text-white uppercase lg:hidden mt-20">
+                            Keeping Doncaster's<br><span class="text-primary">Motorists in Motion</span>
+                        </h1>
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <p class="text-primary font-bold text-xl font-geist uppercase tracking-wide">
+                            Drive safely with Simply Motoring
+                        </p>
+                        <p class="text-white lg:text-black/80 text-lg lg:text-xl font-medium leading-relaxed max-w-xl">
+                            Honest pricing. Expert technicians. No jargons. We make car care simple for every driver in
+                            Doncaster and South Yorkshire
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Info Box & CTA (Desktop) -->
@@ -46,15 +58,16 @@
                     <div>
                         <a href="#book"
                             class="inline-flex items-center justify-center bg-black text-white text-sm font-bold uppercase tracking-widest px-10 py-5 hover:bg-primary hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl transition-all duration-300 shadow-lg group relative hero-btn-clip rounded-md">
-                            BOOK YOUR CAR SERVICE
+                            BOOK Here
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- Right Image Section (Desktop Only) -->
-            <div class="hidden lg:block w-[50%] h-full relative py-[40px] pl-[40px]">
-                <div class="w-full h-full relative overflow-hidden hero-image-clip bg-gray-100 rounded-[20px]">
+            <div class="hidden lg:flex w-[50%] relative py-[40px] pl-[40px]">
+                <div
+                    class="w-full relative overflow-hidden hero-image-clip bg-gray-100 rounded-[20px] flex-1 min-h-[400px]">
                     <img src="{{ asset('images/2b5fc4a16a2be69d1e5ad4857e90c40c9e061df3.jpg') }}" alt="Mechanic Garage"
                         class="absolute inset-0 w-full h-full object-cover">
                 </div>
@@ -66,13 +79,11 @@
             <div class="inline-block lg:w-full p-[1px] bg-white/40 hero-btn-clip rounded-md backdrop-blur-sm">
                 <a href="#book"
                     class="inline-flex items-center justify-center lg:w-full bg-black/40 text-white text-sm font-bold uppercase tracking-widest px-8 py-4 hero-btn-clip rounded-md hover:bg-white hover:text-black transition-colors">
-                    BOOK YOUR CAR SERVICE
+                    BOOK Here
                 </a>
             </div>
         </div>
     </section>
-
-    <!-- Fullscreen Menu Overlay -->
 
 
     <!-- Marquee Banner Section -->
@@ -114,17 +125,8 @@
                         class="absolute inset-0 w-full h-full object-cover">
                 </div>
                 <!-- Interactive / Floating Badge -->
-                <div
-                    class="absolute -bottom-6 -right-6 lg:bottom-10 lg:-right-10 bg-primary p-6 lg:p-8 rounded-xl shadow-xl hero-btn-clip z-20 hidden md:block">
-                    <div class="flex items-center gap-4">
-                        <img src="{{ asset('images/game-icons_car-wheel.svg') }}" alt="Car Wheel"
-                            class="w-10 h-10 lg:w-12 lg:h-12 animate-spin-slow">
-                        <div>
-                            <h4 class="text-white font-geist font-bold text-xl lg:text-3xl leading-none mb-1">DVSA</h4>
-                            <p class="text-white/90 text-sm font-medium leading-[1.1]">Approved<br>Testing Station</p>
-                        </div>
-                    </div>
-                </div>
+                <img src="{{ asset('images/dvsa-approved-testing-station.jpg') }}" alt="DVSA Approved Testing Station"
+                    class="absolute -bottom-6 -right-6 lg:bottom-10 lg:-right-10 w-32 lg:w-48 shadow-xl z-20 hidden md:block rounded-xl">
             </div>
 
             <!-- Right Content Side -->
@@ -181,63 +183,14 @@
                     EVERYTHING YOUR CAR NEEDS UNDER ONE ROOF
                 </h2>
                 <p class="text-black text-lg lg:text-xl font-medium mt-6 lg:mt-8 max-w-2xl mx-auto">
-                    From your annual MOT to a full service and everything in
-                    between, Simply Motoring is your local one-stop garage.
+                    Simply Motoring is your local one-stop garage, from your annual MOT to a major service and everything in
+                    between.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
-                <!-- Card 1: Full Service -->
-                <div
-                    class="flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 flex-1">
-                    <!-- Top Half -->
-                    <div style="background: linear-gradient(135deg, #FF6900 0%, #FB5200 100%);"
-                        class="p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
-                        <div
-                            class="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center bg-white/10">
-                            <i class="fa-solid fa-gear text-white text-xl"></i>
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <h3 class="text-white text-[32px] font-bold font-geist tracking-tight">Full Service</h3>
-                            <p class="text-white/90 text-sm">Recommended every 12 months or 12,000 miles</p>
-                        </div>
-                    </div>
-                    <!-- Bottom Half -->
-                    <div class="bg-white p-8 lg:p-10 flex flex-col justify-between flex-1 gap-10">
-                        <ul class="flex flex-col gap-4">
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Air & cabin filter replacement</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Spark plug check/replacement</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Clutch & gearbox inspection</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Timing belt check</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Exhaust & brake fluid check</span>
-                            </li>
-                        </ul>
-
-                        <div class="w-full inline-block">
-                            <a href="{{ route('service.full-service') }}"
-                                class="flex items-center justify-center bg-black text-white text-sm font-bold uppercase tracking-widest px-8 w-full py-5 hover:bg-primary hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl transition-all duration-300 hero-btn-clip rounded-md">
-                                BOOK FULL SERVICE
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2: Interim Service -->
+                <!-- Card 1: Interim Service -->
                 <div
                     class="flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 flex-1">
                     <!-- Top Half -->
@@ -257,7 +210,7 @@
                         <ul class="flex flex-col gap-4">
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Engine oil & filter change</span>
+                                <span class="text-gray-700 text-[15px]">Engine oil & oil filter change</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
@@ -269,8 +222,8 @@
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Fluid top-ups (coolant, brake, screen wash, power
-                                    steering)</span>
+                                <span class="text-gray-700 text-[15px]">Fluid top-ups (Coolant, Brake fluid, Screen wash,
+                                    Power steering fluid)</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
@@ -286,6 +239,48 @@
                                 BOOK INTERIM SERVICE
                             </div>
                         </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Full Service -->
+                <div
+                    class="flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 flex-1">
+                    <!-- Top Half -->
+                    <div style="background: linear-gradient(135deg, #FF6900 0%, #FB5200 100%);"
+                        class="p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
+                        <div
+                            class="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center bg-white/10">
+                            <i class="fa-solid fa-gear text-white text-xl"></i>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <h3 class="text-white text-[32px] font-bold font-geist tracking-tight">Full Service</h3>
+                            <p class="text-white/90 text-sm">Recommended every 12 months or 12,000 miles. Includes all items
+                                from Interim Service, plus:</p>
+                        </div>
+                    </div>
+                    <!-- Bottom Half -->
+                    <div class="bg-white p-8 lg:p-10 flex flex-col justify-between flex-1 gap-10">
+                        <ul class="flex flex-col gap-4">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Air filter replacement</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Spark plug check/replacement</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Timing belt check</span>
+                            </li>
+                        </ul>
+
+                        <div class="w-full inline-block">
+                            <a href="{{ route('service.full-service') }}"
+                                class="flex items-center justify-center bg-black text-white text-sm font-bold uppercase tracking-widest px-8 w-full py-5 hover:bg-primary hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl transition-all duration-300 hero-btn-clip rounded-md">
+                                BOOK FULL SERVICE
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -378,56 +373,58 @@
                     </div>
 
                     <!-- Right Column: Services List -->
-                    <div class="flex flex-col gap-3 lg:gap-2 w-full lg:max-w-xl ml-auto" x-data="{ 
-                                                                                                        active: null, 
-                                                                                                        shown: false,
-                                                                                                        services: [
-                                                                                                            { 
-                                                                                                                id: 1, 
-                                                                                                                title: 'Car Repairs', 
-                                                                                                                desc: 'Need something fixed? Our team can handle most repairs the same day. From worn wipers to more complex mechanical work, we\'ll inspect, provide a clear quote, and get it sorted.', 
-                                                                                                                cta: 'View All Services' 
-                                                                                                            },
-                                                                                                            { 
-                                                                                                                id: 2, 
-                                                                                                                title: 'Brake & Clutch Services', 
-                                                                                                                desc: 'Squeaky brakes? Spongy pedal? Clutch slipping? Don\'t leave it. Faulty brakes and clutches are serious safety issues. Bring your car in for a free brake and clutch assessment.', 
-                                                                                                                cta: 'View All Services' 
-                                                                                                            },
-                                                                                                            { 
-                                                                                                                id: 3, 
-                                                                                                                title: 'Air Conditioning Servicing', 
-                                                                                                                desc: 'A well-maintained air conditioning system keeps you comfortable in summer and helps demist your windscreen in winter. We offer a full air con service to re-gas, clean, and restore your system.', 
-                                                                                                                cta: 'View All Services' 
-                                                                                                            },
-                                                                                                            { 
-                                                                                                                id: 4, 
-                                                                                                                title: 'Free Vehicle Health Check', 
-                                                                                                                desc: 'Dashboard warning light on? Our diagnostic tools reveal fault codes and give a clear picture of your car’s health. Get a free vehicle health check, no booking required.', 
-                                                                                                                cta: 'View All Services ' 
-                                                                                                            }
-                                                                                                        ]
-                                                                                                    }" x-init="
-                                                                                                        const observer = new IntersectionObserver((entries) => {
-                                                                                                            if (entries[0].isIntersecting) {
-                                                                                                                shown = true;
-                                                                                                                if (window.innerWidth >= 1024) {
-                                                                                                                    setTimeout(() => {
-                                                                                                                        if (shown) active = 1;
-                                                                                                                    }, 800);
-                                                                                                                }
-                                                                                                            }
-                                                                                                        }, { threshold: 0.1 });
-                                                                                                        observer.observe($el);
-                                                                                                    ">
+                    <div class="flex flex-col gap-3 lg:gap-2 w-full lg:max-w-xl ml-auto"
+                        x-data="{ 
+                                                                                                                                                                                                        active: null, 
+                                                                                                                                                                                                        shown: false,
+                                                                                                                                                                                                        services: [
+                                                                                                                                                                                                            { 
+                                                                                                                                                                                                                id: 1, 
+                                                                                                                                                                                                                title: 'Car Repairs', 
+                                                                                                                                                                                                                desc: 'Need something fixed? Our team can handle most repairs the same day. From worn wipers to more complex mechanical work, we\'ll inspect, provide a clear quote, and get it sorted.', 
+                                                                                                                                                                                                                cta: 'View All Services' 
+                                                                                                                                                                                                            },
+                                                                                                                                                                                                            { 
+                                                                                                                                                                                                                id: 2, 
+                                                                                                                                                                                                                title: 'Brake & Clutch Services', 
+                                                                                                                                                                                                                desc: 'Squeaky brakes? Spongy pedal? Clutch slipping? Don\'t leave it. Faulty brakes and clutches are serious safety issues. Bring your car in for a free brake and clutch assessment.', 
+                                                                                                                                                                                                                cta: 'View All Services' 
+                                                                                                                                                                                                            },
+                                                                                                                                                                                                            //{ 
+                                                                                                                                                                                                                //id: 3, 
+                                                                                                                                                                                                                //title: 'Air Conditioning Servicing', 
+                                                                                                                                                                                                                //desc: 'A well-maintained air conditioning system keeps you comfortable in summer and helps demist your windscreen in winter. We offer a full air con service to re-gas, clean, and restore your system.', 
+                                                                                                                                                                                                                //cta: 'View All Services' 
+                                                                                                                                                                                                            //},
+                                                                                                                                                                                                            { 
+                                                                                                                                                                                                                id: 3, 
+                                                                                                                                                                                                                title: 'Vehicle Health Check', 
+                                                                                                                                                                                                                desc: 'Dashboard warning light on? Our diagnostic tools reveal fault codes and give a clear picture of your car’s health. Get a vehicle health check, but price on inquiry / discretion at the counter.', 
+                                                                                                                                                                                                                cta: 'View All Services ' 
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                        ]
+                                                                                                                                                                                                    }"
+                        x-init="
+                                                                                                                                                                                                const observer = new IntersectionObserver((entries) => {
+                                                                                                                                                                                                    if (entries[0].isIntersecting) {
+                                                                                                                                                                                                        shown = true;
+                                                                                                                                                                                                        if (window.innerWidth >= 1024) {
+                                                                                                                                                                                                            setTimeout(() => {
+                                                                                                                                                                                                                if (shown) active = 1;
+                                                                                                                                                                                                            }, 800);
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                }, { threshold: 0.1 });
+                                                                                                                                                                                                observer.observe($el);
+                                                                                                                                                                                            ">
                         <template x-for="(service, index) in services" :key="service.id">
                             <div @mouseenter="window.innerWidth >= 1024 ? active = service.id : null"
                                 @click="window.innerWidth < 1024 ? (active === service.id ? active = null : active = service.id) : null"
                                 class="rounded-xl overflow-hidden transition-all duration-700 ease-out border border-white/5 backdrop-blur-md"
                                 :class="[
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    active === service.id ? 'bg-black/40 lg:bg-white/10' : 'bg-white/10 hover:bg-white/20 hover:border-white/10 cursor-pointer',
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ]"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    active === service.id ? 'bg-black/40 lg:bg-white/10' : 'bg-white/10 hover:bg-white/20 hover:border-white/10 cursor-pointer',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ]"
                                 :style="`transition-delay: ${shown ? index * 100 : 0}ms`">
 
                                 <div class="flex items-center px-6 py-5 lg:p-5 transition-all duration-500 ease-in-out"
@@ -487,79 +484,79 @@
 
             <!-- Carousel Container -->
             <div x-data="{
-                                                                                                                                                                                                                    active: 0,
-                                                                                                                                                                                                                    cardWidth: 0,
-                                                                                                                                                                                                                    gap: 24,
-                                                                                                                                                                                                                    transitioning: true,
-                                                                                                                                                                                                                    paused: false,
-                                                                                                                                                                                                                    startX: 0,
-                                                                                                                                                                                                                    currentX: 0,
-                                                                                                                                                                                                                    isDragging: false,
-                                                                                                                                                                                                                    updateWidth() {
-                                                                                                                                                                                                                        const card = this.$el.querySelector('.pricing-card');
-                                                                                                                                                                                                                        if (card) this.cardWidth = card.offsetWidth;
-                                                                                                                                                                                                                    },
-                                                                                                                                                                                                                    init() {
-                                                                                                                                                                                                                        // Small delay to ensure DOM is ready
-                                                                                                                                                                                                                        setTimeout(() => this.updateWidth(), 100);
-                                                                                                                                                                                                                        window.addEventListener('resize', () => this.updateWidth());
-                                                                                                                                                                                                                        setInterval(() => {
-                                                                                                                                                                                                                            if (!this.paused && !this.isDragging) this.next();
-                                                                                                                                                                                                                        }, 3000);
-                                                                                                                                                                                                                    },
-                                                                                                                                                                                                                    next() {
-                                                                                                                                                                                                                        this.transitioning = true;
-                                                                                                                                                                                                                        this.active++;
-                                                                                                                                                                                                                        if (this.active >= 4) {
-                                                                                                                                                                                                                            setTimeout(() => {
-                                                                                                                                                                                                                                this.transitioning = false;
-                                                                                                                                                                                                                                this.active = 0;
-                                                                                                                                                                                                                            }, 700);
-                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                    },
-                                                                                                                                                                                                                    prev() {
-                                                                                                                                                                                                                        if (this.active === 0) {
-                                                                                                                                                                                                                            this.transitioning = false;
-                                                                                                                                                                                                                            this.active = 4;
-                                                                                                                                                                                                                            setTimeout(() => {
-                                                                                                                                                                                                                                this.transitioning = true;
-                                                                                                                                                                                                                                this.active = 3;
-                                                                                                                                                                                                                            }, 50);
-                                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                                            this.transitioning = true;
-                                                                                                                                                                                                                            this.active--;
-                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                    },
-                                                                                                                                                                                                                    goTo(index) {
-                                                                                                                                                                                                                        this.transitioning = true;
-                                                                                                                                                                                                                        this.active = index;
-                                                                                                                                                                                                                    },
-                                                                                                                                                                                                                    startDrag(e) {
-                                                                                                                                                                                                                        this.isDragging = true;
-                                                                                                                                                                                                                        this.transitioning = false;
-                                                                                                                                                                                                                        this.paused = true;
-                                                                                                                                                                                                                        this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-                                                                                                                                                                                                                    },
-                                                                                                                                                                                                                    onDrag(e) {
-                                                                                                                                                                                                                        if (!this.isDragging) return;
-                                                                                                                                                                                                                        const x = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-                                                                                                                                                                                                                        this.currentX = x - this.startX;
-                                                                                                                                                                                                                    },
-                                                                                                                                                                                                                    endDrag() {
-                                                                                                                                                                                                                        if (!this.isDragging) return;
-                                                                                                                                                                                                                        this.isDragging = false;
-                                                                                                                                                                                                                        this.transitioning = true;
-                                                                                                                                                                                                                        this.paused = false;
+                                                                                                                                                                                                                                                                                                                    active: 0,
+                                                                                                                                                                                                                                                                                                                    cardWidth: 0,
+                                                                                                                                                                                                                                                                                                                    gap: 24,
+                                                                                                                                                                                                                                                                                                                    transitioning: true,
+                                                                                                                                                                                                                                                                                                                    paused: false,
+                                                                                                                                                                                                                                                                                                                    startX: 0,
+                                                                                                                                                                                                                                                                                                                    currentX: 0,
+                                                                                                                                                                                                                                                                                                                    isDragging: false,
+                                                                                                                                                                                                                                                                                                                    updateWidth() {
+                                                                                                                                                                                                                                                                                                                        const card = this.$el.querySelector('.pricing-card');
+                                                                                                                                                                                                                                                                                                                        if (card) this.cardWidth = card.offsetWidth;
+                                                                                                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                                                                                                    init() {
+                                                                                                                                                                                                                                                                                                                        // Small delay to ensure DOM is ready
+                                                                                                                                                                                                                                                                                                                        setTimeout(() => this.updateWidth(), 100);
+                                                                                                                                                                                                                                                                                                                        window.addEventListener('resize', () => this.updateWidth());
+                                                                                                                                                                                                                                                                                                                        setInterval(() => {
+                                                                                                                                                                                                                                                                                                                            if (!this.paused && !this.isDragging) this.next();
+                                                                                                                                                                                                                                                                                                                        }, 3000);
+                                                                                                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                                                                                                    next() {
+                                                                                                                                                                                                                                                                                                                        this.transitioning = true;
+                                                                                                                                                                                                                                                                                                                        this.active++;
+                                                                                                                                                                                                                                                                                                                        if (this.active >= 4) {
+                                                                                                                                                                                                                                                                                                                            setTimeout(() => {
+                                                                                                                                                                                                                                                                                                                                this.transitioning = false;
+                                                                                                                                                                                                                                                                                                                                this.active = 0;
+                                                                                                                                                                                                                                                                                                                            }, 700);
+                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                                                                                                    prev() {
+                                                                                                                                                                                                                                                                                                                        if (this.active === 0) {
+                                                                                                                                                                                                                                                                                                                            this.transitioning = false;
+                                                                                                                                                                                                                                                                                                                            this.active = 4;
+                                                                                                                                                                                                                                                                                                                            setTimeout(() => {
+                                                                                                                                                                                                                                                                                                                                this.transitioning = true;
+                                                                                                                                                                                                                                                                                                                                this.active = 3;
+                                                                                                                                                                                                                                                                                                                            }, 50);
+                                                                                                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                                                                                                            this.transitioning = true;
+                                                                                                                                                                                                                                                                                                                            this.active--;
+                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                                                                                                    goTo(index) {
+                                                                                                                                                                                                                                                                                                                        this.transitioning = true;
+                                                                                                                                                                                                                                                                                                                        this.active = index;
+                                                                                                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                                                                                                    startDrag(e) {
+                                                                                                                                                                                                                                                                                                                        this.isDragging = true;
+                                                                                                                                                                                                                                                                                                                        this.transitioning = false;
+                                                                                                                                                                                                                                                                                                                        this.paused = true;
+                                                                                                                                                                                                                                                                                                                        this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+                                                                                                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                                                                                                    onDrag(e) {
+                                                                                                                                                                                                                                                                                                                        if (!this.isDragging) return;
+                                                                                                                                                                                                                                                                                                                        const x = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+                                                                                                                                                                                                                                                                                                                        this.currentX = x - this.startX;
+                                                                                                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                                                                                                    endDrag() {
+                                                                                                                                                                                                                                                                                                                        if (!this.isDragging) return;
+                                                                                                                                                                                                                                                                                                                        this.isDragging = false;
+                                                                                                                                                                                                                                                                                                                        this.transitioning = true;
+                                                                                                                                                                                                                                                                                                                        this.paused = false;
 
-                                                                                                                                                                                                                        if (this.currentX < -50) {
-                                                                                                                                                                                                                            this.next();
-                                                                                                                                                                                                                        } else if (this.currentX > 50) {
-                                                                                                                                                                                                                            this.prev();
-                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                        if (this.currentX < -50) {
+                                                                                                                                                                                                                                                                                                                            this.next();
+                                                                                                                                                                                                                                                                                                                        } else if (this.currentX > 50) {
+                                                                                                                                                                                                                                                                                                                            this.prev();
+                                                                                                                                                                                                                                                                                                                        }
 
-                                                                                                                                                                                                                        this.currentX = 0;
-                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                }"
+                                                                                                                                                                                                                                                                                                                        this.currentX = 0;
+                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                }"
                 class="w-[calc(100vw-3rem)] overflow-hidden relative cursor-grab active:cursor-grabbing pb-2"
                 @mouseenter="paused = true" @mouseleave="paused = false; endDrag()" @mousedown="startDrag"
                 @touchstart.passive="startDrag" @mousemove="onDrag" @touchmove.passive="onDrag" @mouseup="endDrag"
@@ -635,15 +632,15 @@
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
                                         class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        25 point inspection
+                                        DVSA Approved MOT
                                     </li>
                                     <li
                                         class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        Takes 45-60 minutes
+                                        Advice / feedback given on MOT results
                                     </li>
                                     <li
                                         class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        MOT Results
+                                        Free MOT retest within 10 working days
                                     </li>
                                 </ul>
                             </div>
@@ -676,7 +673,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£25</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£30</span>
                                 </div>
 
                                 <ul class="flex flex-col mt-auto -mx-8">
@@ -686,7 +683,7 @@
                                     </li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Takes 30 minutes
+                                        Can take upto 60 minutes
                                     </li>
                                 </ul>
                             </div>
@@ -719,7 +716,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£150</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£190</span>
                                 </div>
 
                                 <ul class="flex flex-col mt-auto -mx-8">
@@ -955,16 +952,16 @@
 
             <!-- Cards Grid -->
             <div x-data="{
-                                                                                                                                                                                                                show: false,
-                                                                                                                                                                                                                init() {
-                                                                                                                                                                                                                    const observer = new IntersectionObserver((entries) => {
-                                                                                                                                                                                                                        entries.forEach(entry => {
-                                                                                                                                                                                                                            this.show = entry.isIntersecting;
-                                                                                                                                                                                                                        });
-                                                                                                                                                                                                                    }, { threshold: 0.2 });
-                                                                                                                                                                                                                    observer.observe(this.$el);
-                                                                                                                                                                                                                }
-                                                                                                                                                                                                            }"
+                                                                                                                                                                                                                                                                                                                show: false,
+                                                                                                                                                                                                                                                                                                                init() {
+                                                                                                                                                                                                                                                                                                                    const observer = new IntersectionObserver((entries) => {
+                                                                                                                                                                                                                                                                                                                        entries.forEach(entry => {
+                                                                                                                                                                                                                                                                                                                            this.show = entry.isIntersecting;
+                                                                                                                                                                                                                                                                                                                        });
+                                                                                                                                                                                                                                                                                                                    }, { threshold: 0.2 });
+                                                                                                                                                                                                                                                                                                                    observer.observe(this.$el);
+                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                            }"
                 class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10 h-full items-stretch">
                 <!-- Card 1: Pick Your Service -->
                 <div class="bg-[#1A103C] rounded-[24px] p-6 lg:p-10 min-h-[200px] lg:min-h-[300px] flex flex-col justify-between group hover:bg-[#241654] transition-all duration-700 ease-out relative overflow-hidden"
@@ -1058,118 +1055,119 @@
                             }
                         </style>
 
-                        <div x-data="{
-                                                    activeReview: 0,
-                                                    isLoading: true,
-                                                    paused: false,
-                                                    startX: 0,
-                                                    currentX: 0,
-                                                    isDragging: false,
-                                                    transitioning: true,
-                                                    isMobile: window.innerWidth < 1024,
-                                                    reviews: [
-                                                        {
-                                                            quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
-                                                            name: 'Jason Adams',
-                                                            image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
-                                                            stars: 5,
-                                                            location: 'Local Customer'
-                                                        },
-                                                        {
-                                                            quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
-                                                            name: 'Sarah Jenkins',
-                                                            image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
-                                                            stars: 5,
-                                                            location: 'Verified Review'
-                                                        },
-                                                        {
-                                                            quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
-                                                            name: 'Mike Thompson',
-                                                            image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
-                                                            stars: 5,
-                                                            location: 'Local Customer'
-                                                        }
-                                                    ],
-                                                    next() {
-                                                        this.transitioning = true;
-                                                        this.activeReview++;
-                                                        const total = this.reviews.length;
-                                                        const visible = this.isMobile ? 1 : 3;
-                                                        if (this.activeReview > total - visible) {
-                                                            setTimeout(() => {
-                                                                this.transitioning = false;
-                                                                this.activeReview = 0;
-                                                            }, 500);
-                                                        }
-                                                    },
-                                                    prev() {
-                                                        this.transitioning = true;
-                                                        const visible = this.isMobile ? 1 : 3;
-                                                        if (this.activeReview === 0) {
-                                                            this.transitioning = false;
-                                                            this.activeReview = this.reviews.length - visible;
-                                                            setTimeout(() => {
-                                                                this.transitioning = true;
-                                                                this.activeReview--;
-                                                            }, 50);
-                                                        } else {
-                                                            this.activeReview--;
-                                                        }
-                                                    },
-                                                    startDrag(e) {
-                                                        this.isDragging = true;
-                                                        this.transitioning = false;
-                                                        this.paused = true;
-                                                        this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-                                                    },
-                                                    onDrag(e) {
-                                                        if (!this.isDragging) return;
-                                                        const x = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-                                                        this.currentX = x - this.startX;
-                                                    },
-                                                    endDrag() {
-                                                        if (!this.isDragging) return;
-                                                        this.isDragging = false;
-                                                        this.transitioning = true;
-                                                        this.paused = false;
-                                                        if (this.currentX < -50) this.next();
-                                                        else if (this.currentX > 50) this.prev();
-                                                        this.currentX = 0;
-                                                    },
-                                                    async init() {
-                                                        window.addEventListener('resize', () => {
-                                                            this.isMobile = window.innerWidth < 1024;
-                                                        });
+                        <div
+                            x-data="{
+                                                                                                                                                    activeReview: 0,
+                                                                                                                                                    isLoading: true,
+                                                                                                                                                    paused: false,
+                                                                                                                                                    startX: 0,
+                                                                                                                                                    currentX: 0,
+                                                                                                                                                    isDragging: false,
+                                                                                                                                                    transitioning: true,
+                                                                                                                                                    isMobile: window.innerWidth < 1024,
+                                                                                                                                                    reviews: [
+                                                                                                                                                        {
+                                                                                                                                                            quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
+                                                                                                                                                            name: 'Jason Adams',
+                                                                                                                                                            image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
+                                                                                                                                                            stars: 5,
+                                                                                                                                                            location: 'Local Customer'
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
+                                                                                                                                                            name: 'Sarah Jenkins',
+                                                                                                                                                            image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
+                                                                                                                                                            stars: 5,
+                                                                                                                                                            location: 'Verified Review'
+                                                                                                                                                        },
+                                                                                                                                                        {
+                                                                                                                                                            quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
+                                                                                                                                                            name: 'Mike Thompson',
+                                                                                                                                                            image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
+                                                                                                                                                            stars: 5,
+                                                                                                                                                            location: 'Local Customer'
+                                                                                                                                                        }
+                                                                                                                                                    ],
+                                                                                                                                                    next() {
+                                                                                                                                                        this.transitioning = true;
+                                                                                                                                                        this.activeReview++;
+                                                                                                                                                        const total = this.reviews.length;
+                                                                                                                                                        const visible = this.isMobile ? 1 : 3;
+                                                                                                                                                        if (this.activeReview > total - visible) {
+                                                                                                                                                            setTimeout(() => {
+                                                                                                                                                                this.transitioning = false;
+                                                                                                                                                                this.activeReview = 0;
+                                                                                                                                                            }, 500);
+                                                                                                                                                        }
+                                                                                                                                                    },
+                                                                                                                                                    prev() {
+                                                                                                                                                        this.transitioning = true;
+                                                                                                                                                        const visible = this.isMobile ? 1 : 3;
+                                                                                                                                                        if (this.activeReview === 0) {
+                                                                                                                                                            this.transitioning = false;
+                                                                                                                                                            this.activeReview = this.reviews.length - visible;
+                                                                                                                                                            setTimeout(() => {
+                                                                                                                                                                this.transitioning = true;
+                                                                                                                                                                this.activeReview--;
+                                                                                                                                                            }, 50);
+                                                                                                                                                        } else {
+                                                                                                                                                            this.activeReview--;
+                                                                                                                                                        }
+                                                                                                                                                    },
+                                                                                                                                                    startDrag(e) {
+                                                                                                                                                        this.isDragging = true;
+                                                                                                                                                        this.transitioning = false;
+                                                                                                                                                        this.paused = true;
+                                                                                                                                                        this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+                                                                                                                                                    },
+                                                                                                                                                    onDrag(e) {
+                                                                                                                                                        if (!this.isDragging) return;
+                                                                                                                                                        const x = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+                                                                                                                                                        this.currentX = x - this.startX;
+                                                                                                                                                    },
+                                                                                                                                                    endDrag() {
+                                                                                                                                                        if (!this.isDragging) return;
+                                                                                                                                                        this.isDragging = false;
+                                                                                                                                                        this.transitioning = true;
+                                                                                                                                                        this.paused = false;
+                                                                                                                                                        if (this.currentX < -50) this.next();
+                                                                                                                                                        else if (this.currentX > 50) this.prev();
+                                                                                                                                                        this.currentX = 0;
+                                                                                                                                                    },
+                                                                                                                                                    async init() {
+                                                                                                                                                        window.addEventListener('resize', () => {
+                                                                                                                                                            this.isMobile = window.innerWidth < 1024;
+                                                                                                                                                        });
 
-                                                        try {
-                                                            const response = await fetch('/api/reviews');
-                                                            if (response.ok) {
-                                                                const data = await response.json();
-                                                                const reviewList = data.reviews || data; 
-                                                                if (Array.isArray(reviewList) && reviewList.length > 0) {
-                                                                    const mapped = reviewList.map(r => ({
-                                                                        quote: r.text || r.quote || 'No review text provided.',
-                                                                        name: r.author_name || r.name || 'Anonymous',
-                                                                        image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
-                                                                        stars: r.rating || r.stars || 5,
-                                                                        location: r.relative_time_description || 'Google Review'
-                                                                    }));
-                                                                    // Duplicate first few for seamless loop
-                                                                    this.reviews = [...mapped, ...mapped.slice(0, 3)];
-                                                                }
-                                                            }
-                                                        } catch (error) {
-                                                            console.warn('Using static reviews fallback:', error);
-                                                            this.reviews = [...this.reviews, ...this.reviews.slice(0, 3)];
-                                                        } finally {
-                                                            this.isLoading = false;
-                                                        }
+                                                                                                                                                        try {
+                                                                                                                                                            const response = await fetch('/api/reviews');
+                                                                                                                                                            if (response.ok) {
+                                                                                                                                                                const data = await response.json();
+                                                                                                                                                                const reviewList = data.reviews || data; 
+                                                                                                                                                                if (Array.isArray(reviewList) && reviewList.length > 0) {
+                                                                                                                                                                    const mapped = reviewList.map(r => ({
+                                                                                                                                                                        quote: r.text || r.quote || 'No review text provided.',
+                                                                                                                                                                        name: r.author_name || r.name || 'Anonymous',
+                                                                                                                                                                        image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
+                                                                                                                                                                        stars: r.rating || r.stars || 5,
+                                                                                                                                                                        location: r.relative_time_description || 'Google Review'
+                                                                                                                                                                    }));
+                                                                                                                                                                    // Duplicate first few for seamless loop
+                                                                                                                                                                    this.reviews = [...mapped, ...mapped.slice(0, 3)];
+                                                                                                                                                                }
+                                                                                                                                                            }
+                                                                                                                                                        } catch (error) {
+                                                                                                                                                            console.warn('Using static reviews fallback:', error);
+                                                                                                                                                            this.reviews = [...this.reviews, ...this.reviews.slice(0, 3)];
+                                                                                                                                                        } finally {
+                                                                                                                                                            this.isLoading = false;
+                                                                                                                                                        }
 
-                                                        setInterval(() => {
-                                                            if (!this.paused && !this.isDragging) this.next();
-                                                        }, 4000);
-                                                    }
-                                                }">
+                                                                                                                                                        setInterval(() => {
+                                                                                                                                                            if (!this.paused && !this.isDragging) this.next();
+                                                                                                                                                        }, 4000);
+                                                                                                                                                    }
+                                                                                                                                                }">
                             <!-- Badge & Nav Header -->
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
                                 <span
@@ -1250,155 +1248,155 @@
     </section>
 
     <!-- <section class="bg-white py-10 lg:py-20 relative z-10 w-full overflow-hidden border-b border-black/10">
-                                                            <div class="max-w-[1440px] mx-auto px-6 lg:px-20" x-data="{
-                                                                        activeReview: 0,
-                                                                        isLoading: true,
-                                                                        reviews: [
-                                                                            {
-                                                                                quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
-                                                                                name: 'Jason Adams',
-                                                                                image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
-                                                                                stars: 5,
-                                                                                location: 'Local Customer'
-                                                                            },
-                                                                            {
-                                                                                quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
-                                                                                name: 'Sarah Jenkins',
-                                                                                image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
-                                                                                stars: 5,
-                                                                                location: 'Verified Review'
-                                                                            },
-                                                                            {
-                                                                                quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
-                                                                                name: 'Mike Thompson',
-                                                                                image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
-                                                                                stars: 5,
-                                                                                location: 'Local Customer'
-                                                                            }
-                                                                        ],
-                                                                        next() {
-                                                                            this.activeReview = (this.activeReview + 1) % this.reviews.length;
-                                                                        },
-                                                                        prev() {
-                                                                            this.activeReview = (this.activeReview - 1 + this.reviews.length) % this.reviews.length;
-                                                                        },
-                                                                        async init() {
-                                                                            try {
-                                                                                const response = await fetch('/api/reviews');
-                                                                                if (!response.ok) throw new Error('API fetch failed');
+                                                                                                                                                            <div class="max-w-[1440px] mx-auto px-6 lg:px-20" x-data="{
+                                                                                                                                                                        activeReview: 0,
+                                                                                                                                                                        isLoading: true,
+                                                                                                                                                                        reviews: [
+                                                                                                                                                                            {
+                                                                                                                                                                                quote: 'Fantastic all around. My Ford Kuga failed its MOT, but they got all the required work done the same day and had me back on the road quickly',
+                                                                                                                                                                                name: 'Jason Adams',
+                                                                                                                                                                                image: 'https://ui-avatars.com/api/?name=Jason+Adams&background=e0e0e0&color=333',
+                                                                                                                                                                                stars: 5,
+                                                                                                                                                                                location: 'Local Customer'
+                                                                                                                                                                            },
+                                                                                                                                                                            {
+                                                                                                                                                                                quote: 'The team at Simply Motoring kept me informed throughout the entire service. Transparent pricing and no hidden costs. Highly recommended!',
+                                                                                                                                                                                name: 'Sarah Jenkins',
+                                                                                                                                                                                image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e0e0&color=333',
+                                                                                                                                                                                stars: 5,
+                                                                                                                                                                                location: 'Verified Review'
+                                                                                                                                                                            },
+                                                                                                                                                                            {
+                                                                                                                                                                                quote: 'Quick, efficient, and friendly. I\'ve been bringing my cars here for years and they always do a top-notch job. The best in the area.',
+                                                                                                                                                                                name: 'Mike Thompson',
+                                                                                                                                                                                image: 'https://ui-avatars.com/api/?name=Mike+Thompson&background=e0e0e0&color=333',
+                                                                                                                                                                                stars: 5,
+                                                                                                                                                                                location: 'Local Customer'
+                                                                                                                                                                            }
+                                                                                                                                                                        ],
+                                                                                                                                                                        next() {
+                                                                                                                                                                            this.activeReview = (this.activeReview + 1) % this.reviews.length;
+                                                                                                                                                                        },
+                                                                                                                                                                        prev() {
+                                                                                                                                                                            this.activeReview = (this.activeReview - 1 + this.reviews.length) % this.reviews.length;
+                                                                                                                                                                        },
+                                                                                                                                                                        async init() {
+                                                                                                                                                                            try {
+                                                                                                                                                                                const response = await fetch('/api/reviews');
+                                                                                                                                                                                if (!response.ok) throw new Error('API fetch failed');
 
-                                                                                const data = await response.json();
-                                                                                // Assuming API returns { reviews: [...] } or just [...]
-                                                                                const reviewList = data.reviews || data; 
+                                                                                                                                                                                const data = await response.json();
+                                                                                                                                                                                // Assuming API returns { reviews: [...] } or just [...]
+                                                                                                                                                                                const reviewList = data.reviews || data; 
 
-                                                                                if (Array.isArray(reviewList) && reviewList.length > 0) {
-                                                                                    this.reviews = reviewList.map(r => ({
-                                                                                        quote: r.text || r.quote || 'No review text provided.',
-                                                                                        name: r.author_name || r.name || 'Anonymous',
-                                                                                        image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
-                                                                                        stars: r.rating || r.stars || 5,
-                                                                                        location: r.relative_time_description || 'Google Review'
-                                                                                    }));
-                                                                                }
-                                                                            } catch (error) {
-                                                                                console.warn('Using static reviews fallback:', error);
-                                                                            } finally {
-                                                                                this.isLoading = false;
-                                                                            }
-                                                                        }
-                                                                    }">
-                                                                <div class="mb-16">
-                                                                    <span
-                                                                        class="bg-primary text-white px-5 py-2 rounded-full font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT] inline-block">
-                                                                        Driven By Great Reviews
-                                                                    </span>
-                                                                </div>
+                                                                                                                                                                                if (Array.isArray(reviewList) && reviewList.length > 0) {
+                                                                                                                                                                                    this.reviews = reviewList.map(r => ({
+                                                                                                                                                                                        quote: r.text || r.quote || 'No review text provided.',
+                                                                                                                                                                                        name: r.author_name || r.name || 'Anonymous',
+                                                                                                                                                                                        image: r.profile_photo_url || r.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(r.author_name || 'A')}&background=e0e0e0&color=333`,
+                                                                                                                                                                                        stars: r.rating || r.stars || 5,
+                                                                                                                                                                                        location: r.relative_time_description || 'Google Review'
+                                                                                                                                                                                    }));
+                                                                                                                                                                                }
+                                                                                                                                                                            } catch (error) {
+                                                                                                                                                                                console.warn('Using static reviews fallback:', error);
+                                                                                                                                                                            } finally {
+                                                                                                                                                                                this.isLoading = false;
+                                                                                                                                                                            }
+                                                                                                                                                                        }
+                                                                                                                                                                    }">
+                                                                                                                                                                <div class="mb-16">
+                                                                                                                                                                    <span
+                                                                                                                                                                        class="bg-primary text-white px-5 py-2 rounded-full font-geist font-medium text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT] inline-block">
+                                                                                                                                                                        Driven By Great Reviews
+                                                                                                                                                                    </span>
+                                                                                                                                                                </div>
 
-                                                                <div class="relative min-h-[400px] flex flex-col justify-between">
+                                                                                                                                                                <div class="relative min-h-[400px] flex flex-col justify-between">
 
-                                                                    <div class="relative">
-                                                                        <i class="fa-solid fa-quote-left text-black text-[48px] mb-8 block leading-none"></i>
+                                                                                                                                                                    <div class="relative">
+                                                                                                                                                                        <i class="fa-solid fa-quote-left text-black text-[48px] mb-8 block leading-none"></i>
 
-                                                                        <style>
-                                                                            .custom-scrollbar::-webkit-scrollbar {
-                                                                                width: 6px;
-                                                                                background-color: transparent;
-                                                                            }
+                                                                                                                                                                        <style>
+                                                                                                                                                                            .custom-scrollbar::-webkit-scrollbar {
+                                                                                                                                                                                width: 6px;
+                                                                                                                                                                                background-color: transparent;
+                                                                                                                                                                            }
 
-                                                                            .custom-scrollbar:hover::-webkit-scrollbar {
-                                                                                background-color: #f1f1f1;
-                                                                            }
+                                                                                                                                                                            .custom-scrollbar:hover::-webkit-scrollbar {
+                                                                                                                                                                                background-color: #f1f1f1;
+                                                                                                                                                                            }
 
-                                                                            .custom-scrollbar::-webkit-scrollbar-thumb {
-                                                                                background-color: transparent;
-                                                                                border-radius: 9999px;
-                                                                            }
+                                                                                                                                                                            .custom-scrollbar::-webkit-scrollbar-thumb {
+                                                                                                                                                                                background-color: transparent;
+                                                                                                                                                                                border-radius: 9999px;
+                                                                                                                                                                            }
 
-                                                                            .custom-scrollbar:hover::-webkit-scrollbar-thumb {
-                                                                                background-color: #FB5200;
-                                                                            }
-                                                                        </style>
-                                                                        <div class="relative h-[200px] lg:h-[220px] overflow-y-auto custom-scrollbar scroll-smooth pr-4">
-                                                                            <template x-for="(review, index) in reviews" :key="index">
-                                                                                <div x-show="activeReview === index"
-                                                                                    x-transition:enter="transition ease-out duration-500 delay-100"
-                                                                                    x-transition:enter-start="opacity-0 translate-y-8"
-                                                                                    x-transition:enter-end="opacity-100 translate-y-0"
-                                                                                    x-transition:leave="transition ease-in duration-300 absolute top-0 w-full"
-                                                                                    x-transition:leave-start="opacity-100 translate-y-0"
-                                                                                    x-transition:leave-end="opacity-0 -translate-y-8" class="absolute w-full top-0 left-0">
-                                                                                    <p class="font-geist font-medium text-[28px] lg:text-[48px] leading-[1.2] tracking-[-0.06em] text-[0A0A0A] max-w-full cursor-default"
-                                                                                        x-text="review.quote">
-                                                                                    </p>
-                                                                                </div>
-                                                                            </template>
-                                                                        </div>
-                                                                    </div>
+                                                                                                                                                                            .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+                                                                                                                                                                                background-color: #FB5200;
+                                                                                                                                                                            }
+                                                                                                                                                                        </style>
+                                                                                                                                                                        <div class="relative h-[200px] lg:h-[220px] overflow-y-auto custom-scrollbar scroll-smooth pr-4">
+                                                                                                                                                                            <template x-for="(review, index) in reviews" :key="index">
+                                                                                                                                                                                <div x-show="activeReview === index"
+                                                                                                                                                                                    x-transition:enter="transition ease-out duration-500 delay-100"
+                                                                                                                                                                                    x-transition:enter-start="opacity-0 translate-y-8"
+                                                                                                                                                                                    x-transition:enter-end="opacity-100 translate-y-0"
+                                                                                                                                                                                    x-transition:leave="transition ease-in duration-300 absolute top-0 w-full"
+                                                                                                                                                                                    x-transition:leave-start="opacity-100 translate-y-0"
+                                                                                                                                                                                    x-transition:leave-end="opacity-0 -translate-y-8" class="absolute w-full top-0 left-0">
+                                                                                                                                                                                    <p class="font-geist font-medium text-[28px] lg:text-[48px] leading-[1.2] tracking-[-0.06em] text-[0A0A0A] max-w-full cursor-default"
+                                                                                                                                                                                        x-text="review.quote">
+                                                                                                                                                                                    </p>
+                                                                                                                                                                                </div>
+                                                                                                                                                                            </template>
+                                                                                                                                                                        </div>
+                                                                                                                                                                    </div>
 
-                                                                    <div class="flex items-end justify-between mt-8 pt-8 relative z-20">
+                                                                                                                                                                    <div class="flex items-end justify-between mt-8 pt-8 relative z-20">
 
-                                                                        <div class="flex lg:flex-row flex-col lg:items-center lg:gap-6 gap-2">
-                                                                            <div class="w-16 h-16 relative rounded-[16px] overflow-hidden bg-gray-100">
-                                                                                <template x-for="(review, index) in reviews" :key="index">
-                                                                                    <img x-show="activeReview === index" :src="review.image" alt="Reviewer"
-                                                                                        class="absolute w-full h-full object-cover transition-opacity duration-500"
-                                                                                        x-transition:enter="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
-                                                                                        x-transition:leave="opacity-0 scale-90 absolute">
-                                                                                </template>
-                                                                            </div>
+                                                                                                                                                                        <div class="flex lg:flex-row flex-col lg:items-center lg:gap-6 gap-2">
+                                                                                                                                                                            <div class="w-16 h-16 relative rounded-[16px] overflow-hidden bg-gray-100">
+                                                                                                                                                                                <template x-for="(review, index) in reviews" :key="index">
+                                                                                                                                                                                    <img x-show="activeReview === index" :src="review.image" alt="Reviewer"
+                                                                                                                                                                                        class="absolute w-full h-full object-cover transition-opacity duration-500"
+                                                                                                                                                                                        x-transition:enter="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                                                                                                                                                                                        x-transition:leave="opacity-0 scale-90 absolute">
+                                                                                                                                                                                </template>
+                                                                                                                                                                            </div>
 
-                                                                            <div class="flex flex-col">
-                                                                                <template x-for="(review, index) in reviews" :key="index">
-                                                                                    <div x-show="activeReview === index"
-                                                                                        x-transition:enter="transition ease-out duration-500 delay-100"
-                                                                                        x-transition:enter-start="opacity-0 translate-x-4"
-                                                                                        x-transition:enter-end="opacity-100 translate-x-0" class="flex flex-col">
-                                                                                        <h4 class="font-geist font-bold text-lg text-black mb-1" x-text="review.name"></h4>
-                                                                                        <div class="flex gap-1 text-[#FB5200] text-sm">
-                                                                                            <template x-for="i in 5">
-                                                                                                <i class="fa-solid fa-star text-xs"></i>
-                                                                                            </template>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </template>
-                                                                            </div>
-                                                                        </div>
+                                                                                                                                                                            <div class="flex flex-col">
+                                                                                                                                                                                <template x-for="(review, index) in reviews" :key="index">
+                                                                                                                                                                                    <div x-show="activeReview === index"
+                                                                                                                                                                                        x-transition:enter="transition ease-out duration-500 delay-100"
+                                                                                                                                                                                        x-transition:enter-start="opacity-0 translate-x-4"
+                                                                                                                                                                                        x-transition:enter-end="opacity-100 translate-x-0" class="flex flex-col">
+                                                                                                                                                                                        <h4 class="font-geist font-bold text-lg text-black mb-1" x-text="review.name"></h4>
+                                                                                                                                                                                        <div class="flex gap-1 text-[#FB5200] text-sm">
+                                                                                                                                                                                            <template x-for="i in 5">
+                                                                                                                                                                                                <i class="fa-solid fa-star text-xs"></i>
+                                                                                                                                                                                            </template>
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                </template>
+                                                                                                                                                                            </div>
+                                                                                                                                                                        </div>
 
-                                                                        <div class="flex lg:gap-10 gap-4 items-center">
-                                                                            <button @click="prev()"
-                                                                                class="font-geist font-bold text-sm tracking-widest uppercase text-black/40 hover:text-black transition-colors">
-                                                                                Prev
-                                                                            </button>
-                                                                            <button @click="next()"
-                                                                                class="font-geist font-bold text-sm tracking-widest uppercase text-black hover:text-black transition-colors">
-                                                                                Next
-                                                                            </button>
-                                                                        </div>
+                                                                                                                                                                        <div class="flex lg:gap-10 gap-4 items-center">
+                                                                                                                                                                            <button @click="prev()"
+                                                                                                                                                                                class="font-geist font-bold text-sm tracking-widest uppercase text-black/40 hover:text-black transition-colors">
+                                                                                                                                                                                Prev
+                                                                                                                                                                            </button>
+                                                                                                                                                                            <button @click="next()"
+                                                                                                                                                                                class="font-geist font-bold text-sm tracking-widest uppercase text-black hover:text-black transition-colors">
+                                                                                                                                                                                Next
+                                                                                                                                                                            </button>
+                                                                                                                                                                        </div>
 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </section> -->
+                                                                                                                                                                    </div>
+                                                                                                                                                                </div>
+                                                                                                                                                            </div>
+                                                                                                                                                        </section> -->
 
     <!-- FAQ Section -->
     <section class="bg-white py-10 lg:py-20 w-full relative overflow-hidden">
@@ -1449,7 +1447,7 @@
                                     </button>
                                     <div x-show="active === 1" x-collapse>
                                         <p class="mt-4 text-[#0A0A0A] lg:text-lg text-base leading-relaxed max-w-lg">
-                                            Typically, a full car service takes 3–4 hours. However, this may vary
+                                            Typically, a full car service takes 2 hours. However, this may vary
                                             depending on
                                             what your car needs help with.
                                         </p>
@@ -1480,7 +1478,7 @@
                                         <p class="mt-4 text-[#0A0A0A] lg:text-lg text-base leading-relaxed max-w-lg">
                                             To avoid major issues, we recommend you get a full car service annually or
                                             after
-                                            every 12,000 miles.
+                                            every 10,000 miles.
                                         </p>
                                     </div>
                                 </div>
@@ -1507,9 +1505,9 @@
                                     </button>
                                     <div x-show="active === 3" x-collapse>
                                         <p class="mt-4 text-[#0A0A0A] lg:text-lg text-base leading-relaxed max-w-lg">
-                                            Our car services can range from inspection of all major parts of your car,
-                                            from the
-                                            brakes to the engine.
+                                            At Simply Motoring, Interim Service from £175 includes MOT plus 77-point
+                                            12,000-mile inspection. Full Service from £190 offers detailed maintenance plus
+                                            standard MOT. Both provide savings when booked together.
                                         </p>
                                     </div>
                                 </div>
@@ -1629,7 +1627,6 @@
                     class="font-geist font-bold text-[48px] lg:text-[96px] leading-[0.85] tracking-tighter text-primary uppercase text-center">
                     Book in Seconds.
                 </h2>
-
                 <h3
                     class="mt-4 font-geist font-bold text-[36px] lg:text-[64px] leading-[0.85] tracking-tighter text-primary uppercase text-center">
                     We'll Handle the Rest.</h3>
@@ -1641,7 +1638,7 @@
                     class="inline-block p-[1px] bg-white/60 hero-btn-clip rounded-md shadow-xl transition-all duration-300 hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl">
                     <a href="#book"
                         class="inline-flex items-center justify-center h-[50px] bg-white text-black text-sm font-bold uppercase tracking-widest px-10 hover:bg-black hover:text-white transition-colors hero-btn-clip rounded-md">
-                        Book a MOT
+                        Book an MOT
                     </a>
                 </div>
                 <div
