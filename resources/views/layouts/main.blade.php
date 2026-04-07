@@ -78,9 +78,7 @@
         }
     </style>
     <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/92041d487f.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="antialiased bg-white">
