@@ -28,15 +28,15 @@
                             Keeping
                             Doncaster's
                             <span class="flex items-baseline gap-3 flex-wrap">
-                                <span class="text-primary">Motorists in </span>
-                                <span class="text-primary">Motion</span>
+                                <span class="text-primary">Motorists </span>
+                                <span class="text-primary">Moving</span>
                             </span>
                         </h1>
 
                         <!-- Mobile Headline -->
                         <h1
                             class="font-geist font-semibold text-[48px] leading-[1.06] tracking-tighter text-white uppercase lg:hidden mt-20">
-                            Keeping Doncaster's<br><span class="text-primary">Motorists in Motion</span>
+                            Keeping Doncaster's<br><span class="text-primary">Motorists Moving</span>
                         </h1>
                     </div>
 
@@ -45,8 +45,8 @@
                             Drive safely with Simply Motoring
                         </p>
                         <p class="text-white lg:text-black/80 text-lg lg:text-xl font-medium leading-relaxed max-w-xl">
-                            Honest pricing. Expert technicians. No jargons. We make car care simple for every driver in
-                            Doncaster and South Yorkshire
+                            Honest pricing. Expert technicians. No jargon. We make car care simple for every driver in
+                            Doncaster and South Yorkshire.
                         </p>
                     </div>
                 </div>
@@ -91,9 +91,9 @@
         <div class="marquee-content">
             @php
                 $marqueeItems = [
-                    'No Hidden Fees',
+                    'Transparent Pricing',
                     'DVSA-APPROVED MOT TESTING',
-                    'Same-day Repairs Available',
+                    'Same-day Repairs',
                     'Free Vehicle Health Check',
                     '5-star Rated'
                 ];
@@ -150,7 +150,7 @@
                             'Steering, suspension, and vehicle structure inspection',
                             'Emissions and exhaust system testing',
                             'Fast service with same-day results',
-                            'Repairs available on-site if needed'
+                            'Repairs available on site if required'
                         ];
                     @endphp
                     @foreach ($motFeatures as $feature)
@@ -222,8 +222,7 @@
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Fluid top-ups (Coolant, Brake fluid, Screen wash,
-                                    Power steering fluid)</span>
+                                <span class="text-gray-700 text-[15px]">Fluid Check and the only one to top up is screen wash</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
@@ -231,14 +230,13 @@
                             </li>
                         </ul>
 
-                        <!-- Outlined button -->
-                        <a href="{{ route('service.interim-service') }}"
-                            class="w-full inline-block p-[1px] bg-black hero-btn-clip rounded-md group hover:bg-primary transition-all duration-300 hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl">
-                            <div
-                                class="flex items-center justify-center bg-white text-black text-sm font-bold uppercase tracking-widest px-8 w-full py-5 group-hover:bg-primary group-hover:text-white transition-all duration-300 hero-btn-clip rounded-md">
-                                BOOK INTERIM SERVICE
-                            </div>
-                        </a>
+                        <div class="w-full inline-block">
+                            <a href="{{ route('service.interim-service') }}"
+                                class="flex items-center justify-center bg-black text-white text-sm font-bold uppercase tracking-widest px-8 w-full py-5 hover:bg-primary hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl transition-all duration-300 hero-btn-clip rounded-md">
+                                BOOK Interim SERVICE
+                            </a>
+                        </div>
+
                     </div>
                 </div>
 
@@ -254,8 +252,7 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <h3 class="text-white text-[32px] font-bold font-geist tracking-tight">Full Service</h3>
-                            <p class="text-white/90 text-sm">Recommended every 12 months or 12,000 miles. Includes all items
-                                from Interim Service, plus:</p>
+                            <p class="text-white/90 text-sm">Recommended every 12 months or 12,000 miles.</p>
                         </div>
                     </div>
                     <!-- Bottom Half -->
@@ -263,11 +260,20 @@
                         <ul class="flex flex-col gap-4">
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Includes all items
+                                from Interim Service, plus</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
                                 <span class="text-gray-700 text-[15px]">Air filter replacement</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Spark plug check/replacement</span>
+                                <span class="text-gray-700 text-[15px]">Fluid top-ups (Coolant, Brake fluid, Screen wash, Power steering fluid)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Spark plug check not replacement</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
@@ -296,7 +302,7 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <h3 class="text-white text-[32px] font-bold font-geist tracking-tight">Major Service</h3>
-                            <p class="text-white/90 text-sm">Recommended for high-mileage or older vehicles</p>
+                            <p class="text-white/90 text-sm">Recommended every 2 years</p>
                         </div>
                     </div>
                     <!-- Bottom Half -->
@@ -304,7 +310,12 @@
                         <ul class="flex flex-col gap-4">
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Comprehensive engine check</span>
+                                <span class="text-gray-700 text-[15px]">Includes all items
+                                from full Service</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Engine check</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
@@ -320,18 +331,21 @@
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Fuel filter change (Diesel Vehicles)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
                                 <span class="text-gray-700 text-[15px]">Manufacturer-specific checks for safety &
                                     efficiency</span>
                             </li>
                         </ul>
 
-                        <a href="{{ route('service.major-service') }}"
-                            class="w-full inline-block p-[1px] bg-black hero-btn-clip rounded-md group hover:bg-primary transition-all duration-300 hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl">
-                            <div
-                                class="flex items-center justify-center bg-white text-black text-sm font-bold uppercase tracking-widest px-8 w-full py-5 group-hover:bg-primary group-hover:text-white transition-all duration-300 hero-btn-clip rounded-md">
-                                BOOK MAJOR SERVICE
-                            </div>
-                        </a>
+                        <div class="w-full inline-block">
+                            <a href="{{ route('service.major-service') }}"
+                                class="flex items-center justify-center bg-black text-white text-sm font-bold uppercase tracking-widest px-8 w-full py-5 hover:bg-primary hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl transition-all duration-300 hero-btn-clip rounded-md">
+                                BOOK Major SERVICE
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -972,7 +986,7 @@
                             Pick Your Service</h3>
                     </div>
                     <p class="text-white/70 text-lg leading-[1.26] mt-auto z-10 relative lg:max-w-[90%] max-w-[100%]">
-                        Choose MOT, interim/full service, or tell us what’s going on. Book online in minutes or call if
+                        Tell us what’s going on or choose MOT, interim/full service. Book online in minutes or call if
                         you’d rather talk it through.
                     </p>
                 </div>
@@ -1000,7 +1014,7 @@
                             Back On The Road</h3>
                     </div>
                     <p class="text-black/70 text-lg leading-[1.26] mt-auto z-10 relative lg:max-w-[90%] max-w-[100%]">
-                        Once it’s sorted, we get the work done and hand your car back ready to drive. Quick turnaround,
+                        We get the work done and hand your car back ready to drive. Quick turnaround,
                         smooth experience, and no unnecessary delays.
                     </p>
                 </div>
@@ -1419,7 +1433,7 @@
                             <!-- Heading -->
                             <h2
                                 class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.95] tracking-tight text-black lg:mb-16 mb-8 uppercase">
-                                What Our Clients<br>Usually Asks
+                                What Our Customers<br>Usually Asks
                             </h2>
 
                             <!-- Accordion -->
@@ -1447,7 +1461,7 @@
                                     </button>
                                     <div x-show="active === 1" x-collapse>
                                         <p class="mt-4 text-[#0A0A0A] lg:text-lg text-base leading-relaxed max-w-lg">
-                                            Typically, a full car service takes 2 hours. However, this may vary
+                                            Typically, a full car service takes upto 2 hours. However, this may vary
                                             depending on
                                             what your car needs help with.
                                         </p>
@@ -1476,9 +1490,7 @@
                                     </button>
                                     <div x-show="active === 2" x-collapse>
                                         <p class="mt-4 text-[#0A0A0A] lg:text-lg text-base leading-relaxed max-w-lg">
-                                            To avoid major issues, we recommend you get a full car service annually or
-                                            after
-                                            every 10,000 miles.
+                                            We recommend you get your car serviced annually or after every 12,000 miles, whichever comes sooner.
                                         </p>
                                     </div>
                                 </div>
@@ -1632,23 +1644,12 @@
                     We'll Handle the Rest.</h3>
             </div>
 
-            <!-- Button (Hero Secondary Style) -->
-            <div class="flex lg:gap-8 gap-4 lg:flex-row flex-col justify-center items-center">
-                <div
-                    class="inline-block p-[1px] bg-white/60 hero-btn-clip rounded-md shadow-xl transition-all duration-300 hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl">
-                    <a href="#book"
-                        class="inline-flex items-center justify-center h-[50px] bg-white text-black text-sm font-bold uppercase tracking-widest px-10 hover:bg-black hover:text-white transition-colors hero-btn-clip rounded-md">
-                        Book an MOT
-                    </a>
-                </div>
-                <div
-                    class="inline-block p-[1px] bg-white/60 hero-btn-clip rounded-md shadow-xl transition-all duration-300 hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl">
-                    <a href="{{ route('service') }}"
-                        class="inline-flex items-center justify-center h-[50px] bg-black text-white text-sm font-bold uppercase tracking-widest px-10 hover:bg-white hover:text-black transition-colors hero-btn-clip rounded-md">
-                        BOOK A CAR SERVICE
-                    </a>
-                </div>
-
+            <div
+                class="inline-block p-[1px] bg-white/60 hero-btn-clip rounded-md shadow-xl transition-all duration-300 hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl">
+                <a href="#book"
+                    class="inline-flex items-center justify-center h-[50px] bg-white text-black text-sm font-bold uppercase tracking-widest px-10 hover:bg-black hover:text-white transition-colors hero-btn-clip rounded-md">
+                    Book Now
+                </a>
             </div>
         </div>
     </section>

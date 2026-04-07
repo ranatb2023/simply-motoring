@@ -205,7 +205,7 @@
                         <p
                             class="font-geist text-white/80 text-[15px] lg:text-[16px] leading-[1.5] tracking-[-0.02em] font-medium">
                             The MOT inspection checks vital safety components such as brakes, tyres, lights, steering, and
-                            suspension to ensure your vehicle is safe to operate on public roads.
+                            suspension to ensure your vehicle is road worthy to operate on public roads.
                         </p>
                     </div>
                 </div>
@@ -375,7 +375,7 @@
 
                     <p
                         class="font-geist text-white/50 text-[16px] leading-[1.6] tracking-[-0.02em] font-medium border-l-2 border-primary/60 pl-4">
-                        This thorough inspection confirms that your car is safe, reliable, and compliant with UK road
+                        This thorough inspection confirms that your car is compliant with UK road
                         regulations.
                     </p>
                 </div>

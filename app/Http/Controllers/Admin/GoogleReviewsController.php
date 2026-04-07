@@ -86,29 +86,32 @@ class GoogleReviewsController extends Controller
             ['value' => $placeId]
         );
 
-        // 2. Fetch Reviews from Google Place Details API
+        // 2. Fetch Reviews using legacy Places API with reviews_sort=newest
         $reviewsData = [];
         if ($apiKey) {
             try {
                 $response = Http::get('https://maps.googleapis.com/maps/api/place/details/json', [
-                    'place_id' => $placeId,
-                    'fields' => 'name,rating,reviews,formatted_address,url,user_ratings_total',
-                    'key' => $apiKey,
+                    'place_id'     => $placeId,
+                    'fields'       => 'name,rating,reviews,formatted_address,user_ratings_total',
+                    'reviews_sort' => 'newest',
+                    'key'          => $apiKey,
                 ]);
 
                 if ($response->successful()) {
                     $result = $response->json()['result'] ?? [];
-                    // Extract only necessary reviews data
                     if (isset($result['reviews'])) {
-                        // Sort by rating (highest first) and take top 20
-                        $reviews = collect($result['reviews'])->sortByDesc('rating')->take(20)->values()->all();
-                        $result['reviews'] = $reviews;
+                        $result['reviews'] = collect($result['reviews'])
+                            ->sortByDesc('time')
+                            ->values()
+                            ->all();
                     }
+                    $result['synced_at'] = now()->toIso8601String();
                     $reviewsData = $result;
+                } else {
+                    Log::error('Google Place Details Error: ' . $response->status() . ' ' . $response->body());
                 }
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 Log::error('Google Place Details Error: ' . $e->getMessage());
-                // Don't fail the save if fetch fails, just ensure we have empty data
             }
         } else {
             // Mock Data if API Key missing

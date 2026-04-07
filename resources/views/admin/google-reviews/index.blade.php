@@ -149,7 +149,7 @@
                                     </div>
                                 </div>
 
-                                <button @click="fetchReviews()" class="w-full flex justify-center items-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors">
+                                <button @click="fetchReviews()" :disabled="isSyncing" class="w-full flex justify-center items-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                                     </svg>
@@ -178,7 +178,7 @@
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden h-full">
                     <div class="px-6 py-4 border-b border-gray-50 flex justify-between items-center">
                         <h4 class="text-lg font-bold text-gray-800">Review Stream</h4>
-                        <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">Last synched: Just now</span>
+                        <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded" x-text="currentBusiness && currentBusiness.synced_at ? 'Last synced: ' + new Date(currentBusiness.synced_at).toLocaleString() : 'Not yet synced'"></span>
                     </div>
 
                     <div class="p-6">
@@ -233,13 +233,19 @@
     </div>
 
     <script>
+        window._bmPlaceId = @json($placeId);
+        window._bmReviewsData = @json($reviewsData);
+    </script>
+    <script>
         function googleReviews() {
             return {
                 searchQuery: '',
                 isSearching: false,
+                isSyncing: false,
                 searchResults: [],
                 errorMessage: '',
-                currentBusiness: @json($reviewsData), // Hydrate from controller
+                currentBusiness: window._bmReviewsData || null,
+                placeId: window._bmPlaceId || null,
                 toasts: [],
 
                 // Toast Logic
@@ -314,6 +320,7 @@
                         const result = await response.json();
                         if (result.success) {
                             this.currentBusiness = result.data;
+                            this.placeId = place.place_id;
                             this.showToast('Success', `Connected to ${result.data.name}!`, 'success');
                         } else {
                             this.showToast('Error', 'Failed to connect business.', 'error');
@@ -327,16 +334,33 @@
                 },
                 
                 async fetchReviews() {
-                    // Logic to re-sync. For now, since we don't have a separate sync endpoint, 
-                    // we can re-trigger the save with the current place_id if known, or just show a message.
-                    // Ideally, we'd have a refresh endpoint.
-                    // For the sake of this UI demo, let's pretend it refreshed.
-                    this.showToast('Sync Started', 'Refetching latest reviews from Google...', 'success');
-                    
-                     // Simulate network delay
-                     setTimeout(() => {
-                        this.showToast('Updated', 'Reviews data is up to date.', 'success');
-                     }, 1500);
+                    if (!this.placeId) {
+                        this.showToast('Error', 'No business connected.', 'error');
+                        return;
+                    }
+                    this.isSyncing = true;
+                    try {
+                        const response = await fetch('/api/admin/google-reviews/save', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                            },
+                            body: JSON.stringify({ place_id: this.placeId })
+                        });
+                        const result = await response.json();
+                        if (result.success) {
+                            this.currentBusiness = result.data;
+                            this.showToast('Synced', 'Latest reviews fetched successfully.', 'success');
+                        } else {
+                            this.showToast('Error', 'Failed to fetch reviews. Please try again.', 'error');
+                        }
+                    } catch (error) {
+                        console.error(error);
+                        this.showToast('Error', 'Network error. Please check your connection.', 'error');
+                    } finally {
+                        this.isSyncing = false;
+                    }
                 }
             }
         }

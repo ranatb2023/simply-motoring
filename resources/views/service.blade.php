@@ -292,37 +292,6 @@
                             class="text-black/80 text-[16px] lg:text-[20px] leading-[1.3] tracking-[-0.06em] font-medium mb-8">
                             Worn brake discs or pads can significantly reduce stopping power and compromise safety.
                         </p>
-
-                        <div class="mb-10">
-                            <a href="#"
-                                class="inline-block border border-black rounded-full px-5 py-2.5 text-[13px] lg:text-[20px] font-semibold uppercase tracking-wider hover:bg-black hover:text-white transition-colors">
-                                What's Included
-                            </a>
-                        </div>
-
-                        <ul class="mt-auto space-y-4">
-                            <li class="flex items-center gap-4">
-                                <span class="shrink-0 pt-1 text-black">
-                                    <i class="fa-solid fa-compact-disc text-[24px]"></i>
-                                </span>
-                                <span class="text-[18px] font-semibold leading-[1.3] tracking-[-0.04em] text-black">Shorter,
-                                    more responsive stopping distances</span>
-                            </li>
-                            <li class="flex items-center gap-4">
-                                <span class="shrink-0 pt-1 text-black">
-                                    <i class="fa-solid fa-compact-disc text-[24px]"></i>
-                                </span>
-                                <span class="text-[18px] font-semibold leading-[1.3] tracking-[-0.04em] text-black">Improved
-                                    control and confidence behind the wheel</span>
-                            </li>
-                            <li class="flex items-center gap-4">
-                                <span class="shrink-0 pt-1 text-black">
-                                    <i class="fa-solid fa-compact-disc text-[24px]"></i>
-                                </span>
-                                <span class="text-[18px] font-semibold leading-[1.3] tracking-[-0.04em] text-black">Reliable
-                                    performance you can count on, mile after mile</span>
-                            </li>
-                        </ul>
                     </div>
 
                     <!-- Right Card: Brake Fluid -->
@@ -333,42 +302,8 @@
                         </h3>
                         <p
                             class="text-white/80 text-[16px] lg:text-[20px] leading-[1.3] tracking-[-0.06em] font-medium mb-8">
-                            Brake fluid can reduce braking efficiency over time. Regular brake fluid changes help maintain
-                            responsive braking and system reliability.
+                            Brake fluid can reduce - Brake fluid is the lifeblood of your stopping system. Over time, contamination can lower its boiling point and cause internal corrosion. By replacing your fluid every two years, you can help protect your vehicle’s ABS system and improve peak braking efficiency.
                         </p>
-
-                        <div class="mb-10">
-                            <a href="#"
-                                class="inline-block border border-white rounded-full px-5 py-2.5 text-[13px] lg:text-[20px] font-semibold uppercase tracking-wider hover:bg-white hover:text-primary transition-colors">
-                                What's Included
-                            </a>
-                        </div>
-
-                        <ul class="mt-auto space-y-4">
-                            <li class="flex items-center gap-4">
-                                <span class="shrink-0 pt-1 text-white">
-                                    <i class="fa-solid fa-compact-disc text-[24px]"></i>
-                                </span>
-                                <span class="text-[18px] font-semibold leading-[1.3] tracking-[-0.04em] text-white">Improves
-                                    braking performance</span>
-                            </li>
-                            <li class="flex items-center gap-4">
-                                <span class="shrink-0 pt-1 text-white">
-                                    <i class="fa-solid fa-compact-disc text-[24px]"></i>
-                                </span>
-                                <span class="text-[18px] font-semibold leading-[1.3] tracking-[-0.04em] text-white">Protects
-                                    internal brake
-                                    components</span>
-                            </li>
-                            <li class="flex items-center gap-4">
-                                <span class="shrink-0 pt-1 text-white">
-                                    <i class="fa-solid fa-compact-disc text-[24px]"></i>
-                                </span>
-                                <span class="text-[18px] font-semibold leading-[1.3] tracking-[-0.04em] text-white">Reduces
-                                    risk of brake
-                                    failure</span>
-                            </li>
-                        </ul>
                     </div>
 
                 </div>
