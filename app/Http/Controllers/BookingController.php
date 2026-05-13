@@ -21,7 +21,8 @@ class BookingController extends Controller
             ->with('schedule.availabilities')
             ->get(['id', 'name', 'duration_minutes', 'price', 'type',
                    'collect_phone', 'collect_vehicle_reg',
-                   'schedule_id', 'min_notice_hours', 'advance_booking_days', 'time_increment']);
+                   'schedule_id', 'min_notice_hours', 'advance_booking_days', 'time_increment',
+                   'options_label', 'options']);
 
         $result = $services->map(function ($service) {
             // Collect day_of_week values that are closed (or have no rule = closed)
@@ -46,6 +47,8 @@ class BookingController extends Controller
                 'min_notice_hours'    => $service->min_notice_hours ?? 4,
                 'advance_booking_days'=> $service->advance_booking_days ?? 60,
                 'time_increment'      => $service->time_increment ?? 30,
+                'options_label'       => $service->options_label,
+                'options'             => is_array($service->options) ? $service->options : null,
                 'closed_days'         => $closedDays, // JS getDay() values: 0=Sun,6=Sat
             ];
         });

@@ -12,6 +12,7 @@ class Service extends Model
         'buffer_before_minutes', 'buffer_after_minutes', 'advance_booking_days',
         'min_notice_hours', 'time_increment', 'max_bookings_per_day',
         'collect_phone', 'collect_vehicle_reg', 'send_confirmation_email', 'is_active',
+        'options_label', 'options',
     ];
 
     protected $casts = [
@@ -19,6 +20,7 @@ class Service extends Model
         'collect_vehicle_reg' => 'boolean',
         'send_confirmation_email' => 'boolean',
         'is_active' => 'boolean',
+        'options' => 'array',
     ];
 
     public function schedule()

@@ -171,6 +171,18 @@
                                     </div>
                                 </div>
 
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Options Label</label>
+                                    <input type="text" name="options_label" value="{{ old('options_label') }}"
+                                        class="field-input" placeholder="e.g. Select Option">
+                                </div>
+
+                                <div>
+                                    <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Options (Comma Separated)</label>
+                                    <input type="text" name="options" value="{{ old('options') }}"
+                                        class="field-input" placeholder="e.g. MOT, MOT &amp; Service">
+                                </div>
+
                                 <div class="md:col-span-2">
                                     <div class="flex items-center justify-between p-5 rounded-2xl bg-gradient-to-r from-gray-50 to-white border border-gray-100">
                                         <div class="flex items-center gap-3">

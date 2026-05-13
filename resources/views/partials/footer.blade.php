@@ -39,12 +39,18 @@
                 <!-- Links -->
                 <div class="flex justify-between lg:justify-end gap-16 lg:gap-32">
                     <!-- Socials -->
-                    <div class="flex flex-col gap-1">
+                    <div class="flex flex-col gap-2">
                         <a href="https://www.facebook.com/simplymotoring?_rdr" target="_blank"
-                            class="font-geist font-medium text-lg hover:text-primary transition-colors">Facebook</a>
+                            class="font-geist font-medium text-lg hover:text-primary transition-colors">
+                            <i class="fa-brands fa-facebook mr-2"></i>Facebook
+                        </a>
                         <a href="https://www.instagram.com/simplymotoring?igsh=dm15MHpxNzF0aHJy" target="_blank"
-                            class="font-geist font-medium text-lg hover:text-primary transition-colors">Instagram</a>
-                        <a href="#" class="font-geist font-medium text-lg hover:text-primary transition-colors">X</a>
+                            class="font-geist font-medium text-lg hover:text-primary transition-colors">
+                            <i class="fa-brands fa-instagram mr-2"></i>Instagram
+                        </a>
+                        <a href="#" class="font-geist font-medium text-lg hover:text-primary transition-colors">
+                            <i class="fa-brands fa-x-twitter mr-2"></i>X
+                        </a>
                     </div>
 
                     <!-- Services -->

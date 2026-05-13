@@ -49,6 +49,8 @@ class ServiceController extends Controller
             'max_bookings_per_day'   => 'nullable|integer|min:1',
             'user_ids'               => 'nullable|array',
             'user_ids.*'             => 'exists:users,id',
+            'options_label'          => 'nullable|string|max:100',
+            'options'                => 'nullable|string',
         ]);
 
         $data = $request->only([
@@ -62,6 +64,13 @@ class ServiceController extends Controller
         $data['collect_vehicle_reg']      = $request->boolean('collect_vehicle_reg');
         $data['send_confirmation_email']  = $request->boolean('send_confirmation_email');
         $data['is_active']                = $request->boolean('is_active');
+        $data['options_label']            = $request->input('options_label');
+        
+        $optionsArray = [];
+        if ($request->filled('options')) {
+            $optionsArray = array_values(array_filter(array_map('trim', explode(',', $request->options))));
+        }
+        $data['options'] = empty($optionsArray) ? null : $optionsArray;
 
         $service = Service::create($data);
 
@@ -112,6 +121,8 @@ class ServiceController extends Controller
             'max_bookings_per_day'   => 'nullable|integer|min:1',
             'user_ids'               => 'nullable|array',
             'user_ids.*'             => 'exists:users,id',
+            'options_label'          => 'nullable|string|max:100',
+            'options'                => 'nullable|string',
         ]);
 
         $data = $request->only([
@@ -125,6 +136,13 @@ class ServiceController extends Controller
         $data['collect_vehicle_reg']     = $request->boolean('collect_vehicle_reg');
         $data['send_confirmation_email'] = $request->boolean('send_confirmation_email');
         $data['is_active']               = $request->boolean('is_active');
+        $data['options_label']           = $request->input('options_label');
+
+        $optionsArray = [];
+        if ($request->filled('options')) {
+            $optionsArray = array_values(array_filter(array_map('trim', explode(',', $request->options))));
+        }
+        $data['options'] = empty($optionsArray) ? null : $optionsArray;
 
         $service->update($data);
 

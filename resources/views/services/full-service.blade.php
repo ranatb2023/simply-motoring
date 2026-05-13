@@ -33,13 +33,14 @@
                 <div class="mt-20 lg:mt-10 max-w-5xl">
                     <!-- Heading -->
                     <h1
-                        class="text-white font-geist font-semibold text-[48px] lg:text-[96px] leading-[0.86] tracking-[-0.07em] uppercase mb-4 lg:mb-6">
-                        Full Service
+                        class="text-white font-geist font-semibold text-[48px] lg:text-[96px] leading-[1] tracking-[-0.07em] uppercase mb-4 lg:mb-6">
+                        Get Full Service & Care For Your Car
                     </h1>
 
                     <!-- Subheading -->
-                    <p class="text-white text-2xl lg:text-[36px] font-medium font-geist tracking-tight lg:mt-4">
-                        Complete care for all models and makes
+                    <p class="text-white text-2xl font-medium font-geist tracking-tight lg:mt-4 leading-[1.2]">
+                        Keep your car running at its best with a comprehensive check covering everything from oil and
+                        filters to brakes, fluids and safety systems.
                     </p>
                 </div>
 
@@ -67,81 +68,77 @@
                         class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.86] tracking-[-0.06em] text-black mb-6 uppercase">
                         Full Vehicle Service Includes
                     </h2>
-                    <p
-                        class="text-[#0A0A0A] text-lg lg:text-xl leading-relaxed tracking-[-0.04em] font-medium hidden lg:block">
-                        Full servicing covers all major vehicle systems to maintain safety, performance, and longevity.
-                    </p>
                 </div>
             </div>
 
             <!-- Carousel Container -->
             <div x-data="{
-                                        active: 0,
-                                        cardWidth: 0,
-                                        gap: 24,
-                                        transitioning: true,
-                                        paused: false,
-                                        startX: 0,
-                                        currentX: 0,
-                                        isDragging: false,
-                                        updateWidth() {
-                                            const card = this.$el.querySelector('.service-card');
-                                            if (card) this.cardWidth = card.offsetWidth;
-                                        },
-                                        init() {
-                                            setTimeout(() => this.updateWidth(), 100);
-                                            window.addEventListener('resize', () => this.updateWidth());
-                                            setInterval(() => {
-                                                if (!this.paused && !this.isDragging) this.next();
-                                            }, 3000);
-                                        },
-                                        next() {
-                                        if (this.active < 4) {
-                                            this.transitioning = true;
-                                            this.active++;
-                                        } else {
-                                            this.transitioning = true;
-                                            this.active = 0;
-                                        }
-                                    },
-                                    prev() {
-                                        if (this.active > 0) {
-                                            this.transitioning = true;
-                                            this.active--;
-                                        } else {
-                                            this.transitioning = true;
-                                            this.active = 4;
-                                        }
-                                    },
-                                    goTo(index) {
-                                            this.transitioning = true;
-                                            this.active = index;
-                                        },
-                                        startDrag(e) {
-                                            this.isDragging = true;
-                                            this.transitioning = false;
-                                            this.paused = true;
-                                            this.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-                                        },
-                                        onDrag(e) {
-                                            if (!this.isDragging) return;
-                                            const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-                                            this.currentX = x - this.startX;
-                                        },
-                                        endDrag() {
-                                            if (!this.isDragging) return;
-                                            this.isDragging = false;
-                                            this.transitioning = true;
-                                            this.paused = false;
+                                                                            active: 0,
+                                                                            cardWidth: 0,
+                                                                            gap: 24,
+                                                                            transitioning: true,
+                                                                            paused: false,
+                                                                            startX: 0,
+                                                                            currentX: 0,
+                                                                            isDragging: false,
+                                                                            updateWidth() {
+                                                                                const card = this.$el.querySelector('.service-card');
+                                                                                if (card) this.cardWidth = card.offsetWidth;
+                                                                            },
+                                                                            init() {
+                                                                                setTimeout(() => this.updateWidth(), 100);
+                                                                                window.addEventListener('resize', () => this.updateWidth());
+                                                                                setInterval(() => {
+                                                                                    if (!this.paused && !this.isDragging) this.next();
+                                                                                }, 3000);
+                                                                            },
+                                                                            next() {
+                                                                            if (this.active < 4) {
+                                                                                this.transitioning = true;
+                                                                                this.active++;
+                                                                            } else {
+                                                                                this.transitioning = true;
+                                                                                this.active = 0;
+                                                                            }
+                                                                        },
+                                                                        prev() {
+                                                                            if (this.active > 0) {
+                                                                                this.transitioning = true;
+                                                                                this.active--;
+                                                                            } else {
+                                                                                this.transitioning = true;
+                                                                                this.active = 4;
+                                                                            }
+                                                                        },
+                                                                        goTo(index) {
+                                                                                this.transitioning = true;
+                                                                                this.active = index;
+                                                                            },
+                                                                            startDrag(e) {
+                                                                                this.isDragging = true;
+                                                                                this.transitioning = false;
+                                                                                this.paused = true;
+                                                                                this.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+                                                                            },
+                                                                            onDrag(e) {
+                                                                                if (!this.isDragging) return;
+                                                                                const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                                                                                this.currentX = x - this.startX;
+                                                                            },
+                                                                            endDrag() {
+                                                                                if (!this.isDragging) return;
+                                                                                this.isDragging = false;
+                                                                                this.transitioning = true;
+                                                                                this.paused = false;
 
-                                            if (this.currentX < -50) {
-                                                this.next();
-                                            } else if (this.currentX > 50) {
-                                                this.prev();
-                                            }
-                                            this.currentX = 0;
-                                        }
-                                    }"
+                                                                                if (this.currentX < -50) {
+                                                                                    this.next();
+                                                                                } else if (this.currentX > 50) {
+                                                                                    this.prev();
+                                                                                }
+                                                                                this.currentX = 0;
+                                                                            }
+                                                                        }"
                 class="w-[calc(100vw-3rem)] overflow-hidden relative cursor-grab active:cursor-grabbing pb-2"
                 @mouseenter="paused = true" @mouseleave="paused = false; endDrag()" @mousedown="startDrag($event)"
                 @touchstart.passive="startDrag($event)" @mousemove="onDrag($event)" @touchmove.passive="onDrag($event)"
@@ -580,7 +577,7 @@
                     Book Your Full Service
                 </h2>
                 <p class="text-lg lg:text-xl text-black/80 tracking-[-0.04em] font-medium max-w-xl mx-auto hidden lg:block">
-                    Booking your full vehicle service with Simply Motoring is easy:
+                    Choose a time that suits you and we'll take care of the rest.
                 </p>
             </div>
 
@@ -688,9 +685,7 @@
                                 class="font-geist font-bold text-[40px] lg:text-[64px] leading-[0.83] tracking-[-0.06em] uppercase text-white mb-4 lg:mb-10">
                                 WHY CHOOSE<br>SIMPLY<br>MOTORING
                             </h2>
-                            <p class="text-white font-medium text-[20px] lg:text-[20px] leading-[1.3] mb-10">
-                                Choosing the right service partner matters.
-                            </p>
+
                         </div>
 
                         <div

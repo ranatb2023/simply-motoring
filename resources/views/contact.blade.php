@@ -65,21 +65,24 @@
                             <p class="text-white/60 text-lg mt-4">Fill in the form below</p>
                         </div>
 
-                        <form action="#" method="POST" class="space-y-4">
+                        <div id="formMessage" class="hidden mb-6 p-4 rounded-lg font-medium border"></div>
+
+                        <form id="contactForm" action="{{ route('contact.submit') }}" method="POST" class="space-y-4">
+                            @csrf
                             <!-- Full Name & Email -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <input type="text" placeholder="Full Name*"
+                                <input type="text" name="name" placeholder="Full Name*" required
                                     class="w-full bg-[#111111] text-white px-5 py-4 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary placeholder-gray-500 border border-white/5 font-medium">
-                                <input type="email" placeholder="Email*"
+                                <input type="email" name="email" placeholder="Email*" required
                                     class="w-full bg-[#111111] text-white px-5 py-4 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary placeholder-gray-500 border border-white/5 font-medium">
                             </div>
 
                             <!-- Phone & Date -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <input type="tel" placeholder="Phone*"
+                                <input type="tel" name="phone" placeholder="Phone*" required
                                     class="w-full bg-[#111111] text-white px-5 py-4 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary placeholder-gray-500 border border-white/5 font-medium">
-                                <input type="text" placeholder="Date*" onfocus="(this.type='date')"
-                                    onblur="(this.type='text')"
+                                <input type="text" name="date" placeholder="Date*" onfocus="(this.type='date')"
+                                    onblur="(this.type='text')" required
                                     class="w-full bg-[#111111] text-white px-5 py-4 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary placeholder-gray-500 border border-white/5 font-medium">
                             </div>
 
@@ -130,7 +133,7 @@
                             </div>
 
                             <!-- Message -->
-                            <textarea placeholder="Message*" rows="4"
+                            <textarea name="message" placeholder="Message*" rows="4" required
                                 class="w-full bg-[#111111] text-white px-5 py-4 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary placeholder-gray-500 border border-white/5 font-medium resize-none"></textarea>
 
                             <!-- Submit Button -->
@@ -142,6 +145,72 @@
                                 </button>
                             </div>
                         </form>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                document.getElementById('contactForm').addEventListener('submit', function(e) {
+                                    e.preventDefault();
+                                    
+                                    let form = this;
+                                    let submitBtn = form.querySelector('button[type="submit"]');
+                                    let originalText = submitBtn.innerHTML;
+                                    let messageBox = document.getElementById('formMessage');
+                                    
+                                    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> SENDING...';
+                                    submitBtn.disabled = true;
+                                    submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                                    
+                                    messageBox.classList.add('hidden');
+                                    messageBox.classList.remove('bg-green-500/20', 'border-green-500/50', 'text-green-400', 'bg-red-500/20', 'border-red-500/50', 'text-red-400');
+                                    
+                                    let formData = new FormData(form);
+                                    
+                                    fetch(form.action, {
+                                        method: 'POST',
+                                        headers: {
+                                            'X-Requested-With': 'XMLHttpRequest',
+                                            'Accept': 'application/json',
+                                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                        },
+                                        body: formData
+                                    })
+                                    .then(async response => {
+                                        const data = await response.json();
+                                        if (!response.ok) {
+                                            let errorMsg = data.message || 'Validation failed. Please check your inputs.';
+                                            if (data.errors) {
+                                                errorMsg = Object.values(data.errors).flat().join('<br>');
+                                            }
+                                            throw new Error(errorMsg);
+                                        }
+                                        return data;
+                                    })
+                                    .then(data => {
+                                        submitBtn.innerHTML = originalText;
+                                        submitBtn.disabled = false;
+                                        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                                        
+                                        messageBox.classList.remove('hidden');
+                                        if(data.success) {
+                                            messageBox.classList.add('bg-green-500/20', 'border-green-500/50', 'text-green-400');
+                                            messageBox.innerHTML = data.message || 'Thank you! Your message has been sent successfully.';
+                                            form.reset();
+                                        } else {
+                                            throw new Error(data.message || 'An error occurred. Please try again.');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        submitBtn.innerHTML = originalText;
+                                        submitBtn.disabled = false;
+                                        submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                                        
+                                        messageBox.classList.remove('hidden');
+                                        messageBox.classList.add('bg-red-500/20', 'border-red-500/50', 'text-red-400');
+                                        messageBox.innerHTML = error.message || 'A network error occurred. Please try again later.';
+                                    });
+                                });
+                            });
+                        </script>
 
                     </div>
                 </div>

@@ -125,6 +125,13 @@ class BookingService
         $timeIncrement = max(15, (int)($service->time_increment ?? 30));
         $interval      = $timeIncrement * 60;
         $availableSlots = [];
+        
+        $tz = Setting::where('key', 'timezone')->value('value') ?: config('app.timezone', 'UTC');
+        $localNow = Carbon::now($tz);
+        $floatingNow = Carbon::createFromFormat('Y-m-d H:i:s', $localNow->format('Y-m-d H:i:s'), config('app.timezone'));
+        
+        $minNoticeHours = $service->min_notice_hours ?? 4;
+        $minTime = $floatingNow->addHours($minNoticeHours)->timestamp;
 
         foreach ($allowedIntervals as $range) {
             $openTime  = $range['start'];
@@ -133,6 +140,10 @@ class BookingService
             for ($time = $openTime; $time + ($durationMinutes * 60) <= $closeTime; $time += $interval) {
                 $slotStart = $time;
                 $slotEnd   = $time + ($durationMinutes * 60);
+
+                if ($slotStart < $minTime) {
+                    continue;
+                }
 
                 if ($useBays) {
                     // Bay-based concurrency check

@@ -33,8 +33,8 @@
     </style>
 
     <!-- ═══════════════════════════════════════════════════════════
-                                 HERO
-                            ═══════════════════════════════════════════════════════════ -->
+                                                 HERO
+                                            ═══════════════════════════════════════════════════════════ -->
     <div class="max-w-[1440px] mx-auto p-0 lg:p-6 w-full">
         <section
             class="relative w-full min-h-[70vh] overflow-hidden lg:rounded-2xl pricing-hero-clip bg-black flex flex-col">
@@ -88,8 +88,8 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════
-                                 FEATURED / MOST POPULAR
-                            ═══════════════════════════════════════════════════════════ -->
+                                                 FEATURED / MOST POPULAR
+                                            ═══════════════════════════════════════════════════════════ -->
     <section class="bg-white py-12 lg:py-20">
         <div class="max-w-[1440px] mx-auto px-6">
             <div class="flex flex-col lg:flex-row gap-4 lg:gap-6 items-end mb-10 lg:mb-14">
@@ -188,8 +188,8 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-                                 FULL PRICE GUIDE
-                            ═══════════════════════════════════════════════════════════ -->
+                                                 FULL PRICE GUIDE
+                                            ═══════════════════════════════════════════════════════════ -->
     <section class="bg-gray-50 py-12 lg:py-20 border-t border-gray-100">
         <div class="max-w-[1440px] mx-auto px-6">
 
@@ -318,8 +318,6 @@
                                 class="flex items-center justify-between rounded-xl px-4 py-3.5 hover:bg-orange-50/50 border border-transparent hover:border-primary/10 transition-all duration-200 group">
                                 <div class="min-w-0">
                                     <p class="font-semibold text-[14px] text-black leading-tight">Interim Service</p>
-                                    <p class="text-[12px] text-gray-400 mt-0.5 truncate">oil, filter, fluid top-ups, safety
-                                        check</p>
                                 </div>
                                 <div class="shrink-0 text-right ml-4 flex flex-col items-end">
                                     <p class="text-[9px] font-bold tracking-[0.1em] text-gray-400 uppercase leading-none">
@@ -430,13 +428,6 @@
                             <div
                                 class="flex items-center justify-between rounded-xl px-4 py-3.5 hover:bg-white/[0.07] border border-transparent hover:border-white/10 transition-all duration-200">
                                 <p class="font-semibold text-[14px] text-white leading-tight">Pre-MOT Inspection</p>
-                                <p
-                                    class="font-geist font-bold text-[18px] text-white leading-none tracking-[-0.04em] ml-4 shrink-0">
-                                    £30</p>
-                            </div>
-                            <div
-                                class="flex items-center justify-between rounded-xl px-4 py-3.5 hover:bg-white/[0.07] border border-transparent hover:border-white/10 transition-all duration-200">
-                                <p class="font-semibold text-[14px] text-white leading-tight">Pre-MOT Check</p>
                                 <p
                                     class="font-geist font-bold text-[18px] text-white leading-none tracking-[-0.04em] ml-4 shrink-0">
                                     £30</p>
@@ -663,7 +654,7 @@
                         <div class="p-3">
                             <div
                                 class="flex items-center justify-between rounded-xl px-4 py-3.5 hover:bg-orange-50/50 border border-transparent hover:border-primary/10 transition-all duration-200">
-                                <p class="font-semibold text-[14px] text-black leading-tight">Clutch & Gearbox Repairs</p>
+                                <p class="font-semibold text-[14px] text-black leading-tight">Clutch Replacement</p>
                                 <div class="shrink-0 text-right ml-4 flex flex-col items-end">
                                     <p class="text-[9px] font-bold tracking-[0.1em] text-gray-400 uppercase leading-none">
                                         from</p>
@@ -702,7 +693,8 @@
                                 <div>
                                     <p class="font-semibold text-[14px] text-black leading-tight">Timing Belt / Cam Belt
                                         Replacement</p>
-                                    <p class="text-[12px] text-gray-400 mt-0.5">Includes belt, tensioner & idler check</p>
+                                    <p class="text-[12px] text-gray-400 mt-0.5">Includes belts, tensioner & water pump (if
+                                        required)</p>
                                 </div>
                                 <div class="shrink-0 text-right ml-4 flex flex-col items-end">
                                     <p class="text-[9px] font-bold tracking-[0.1em] text-gray-400 uppercase leading-none">
@@ -746,7 +738,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £50</p>
+                                        £95</p>
                                 </div>
                             </div>
                         </div>
@@ -938,8 +930,8 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-                                 CTA
-                            ═══════════════════════════════════════════════════════════ -->
+                                                 CTA
+                                            ═══════════════════════════════════════════════════════════ -->
 
     <section class="bg-white py-10 lg:py-20 w-full">
         <div class="max-w-[1440px] mx-auto lg:px-6">

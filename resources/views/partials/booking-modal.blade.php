@@ -202,7 +202,7 @@
                             placeholder="AB12 CDE">
                     </div>
                     <div id="bmSubServiceWrap" class="hidden">
-                        <label class="block text-[11px] font-bold uppercase tracking-[0.12em] text-gray-700 mb-1.5">
+                        <label id="bmSubServiceLabel" class="block text-[11px] font-bold uppercase tracking-[0.12em] text-gray-700 mb-1.5">
                             Select Option <span class="text-[#FF6900]">*</span>
                         </label>
                         <input type="hidden" name="sub_service" id="bmSubService" value="">
@@ -500,7 +500,12 @@
         const advance        = state.selectedService?.advance_booking_days ?? 60;
         const closedWeekdays = state.selectedService?.closed_days ?? [];
         const holidayDates   = state.holidayDates;
-        const minDate        = new Date(today.getTime() + minNotice * 3600000);
+        
+        const now = new Date();
+        const earliestBookingTime = new Date(now.getTime() + minNotice * 3600000);
+        const minDate = new Date(earliestBookingTime);
+        minDate.setHours(0, 0, 0, 0); // Truncate to midnight to compare with calendar dates
+
         const maxDate        = new Date(today.getTime() + advance * 86400000);
 
         grid.innerHTML = '';
@@ -619,13 +624,32 @@
         if (regWrap) regWrap.classList.toggle('hidden', !svc.collect_vehicle_reg);
 
         // Sub-service options — custom card picker
-        const key  = svc.name.toLowerCase();
-        const opts = Object.entries(SUB_OPTIONS).find(([k]) => key.includes(k));
+        let optionsToRender = [];
+        let labelToUse = 'Select Option';
+
+        if (svc.options && Array.isArray(svc.options) && svc.options.length > 0) {
+            optionsToRender = svc.options;
+            if (svc.options_label) {
+                labelToUse = svc.options_label;
+            }
+        } else {
+            const key  = svc.name.toLowerCase();
+            const opts = Object.entries(SUB_OPTIONS).find(([k]) => key.includes(k));
+            if (opts) {
+                optionsToRender = opts[1];
+            }
+        }
+
         const list = document.getElementById('bmSubServiceList');
-        if (opts && list) {
+        const labelEl = document.getElementById('bmSubServiceLabel');
+
+        if (optionsToRender.length > 0 && list) {
+            if (labelEl) {
+                labelEl.innerHTML = `${labelToUse} <span class="text-[#FF6900]">*</span>`;
+            }
             sel.value  = '';
             list.innerHTML = '';
-            opts[1].forEach(o => {
+            optionsToRender.forEach(o => {
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 btn.className = 'bm-opt-btn';
