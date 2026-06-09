@@ -1501,7 +1501,7 @@
                                     </button>
                                     <div x-show="active === 3" x-collapse>
                                         <p class="mt-4 text-[#0A0A0A] lg:text-lg text-base leading-relaxed max-w-lg">
-                                            At Simply Motoring, Interim Service from £170 includes MOT plus 77-point
+                                            At Simply Motoring, Interim Service from £125 includes MOT plus 77-point
                                             12,000-mile inspection. Full Service from £150 offers detailed maintenance plus
                                             standard MOT. Both provide savings when booked together.
                                         </p>
