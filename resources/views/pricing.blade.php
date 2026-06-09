@@ -175,7 +175,7 @@
                     <div class="mt-auto pt-4 border-t border-gray-200 flex items-end justify-between">
                         <div>
                             <p class="text-[10px] font-bold tracking-[0.1em] text-gray-400 uppercase mb-1">From</p>
-                            <p class="font-geist font-bold text-[40px] text-black leading-none tracking-[-0.05em]">£95</p>
+                            <p class="font-geist font-bold text-[40px] text-black leading-none tracking-[-0.05em]">£120</p>
                         </div>
                         <a href="#book"
                             class="inline-flex items-center gap-2 bg-black text-white text-[11px] font-bold uppercase tracking-widest px-5 py-3 rounded-xl hover:bg-gray-800 transition-colors">
@@ -324,7 +324,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £150</p>
+                                        £125</p>
                                 </div>
                             </div>
                             <div
@@ -343,7 +343,7 @@
                                 <p class="font-semibold text-[14px] text-black leading-tight">Major Service</p>
                                 <p
                                     class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] ml-4 shrink-0">
-                                    £300</p>
+                                    £290</p>
                             </div>
                             <div
                                 class="flex items-center justify-between rounded-xl px-4 py-3.5 hover:bg-orange-50/50 border border-transparent hover:border-primary/10 transition-all duration-200">
@@ -360,7 +360,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £35</p>
+                                        £45</p>
                                 </div>
                             </div>
                             <div
@@ -371,7 +371,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £35</p>
+                                        £45</p>
                                 </div>
                             </div>
                             <div
@@ -472,7 +472,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £95</p>
+                                        £120</p>
                                 </div>
                             </div>
                             <div
@@ -494,7 +494,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £70</p>
+                                        £96</p>
                                 </div>
                             </div>
                         </div>
@@ -570,7 +570,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £35</p>
+                                        £54</p>
                                 </div>
                             </div>
                             <div
@@ -578,7 +578,7 @@
                                 <p class="font-semibold text-[14px] text-black leading-tight">Electrical Diagnostics</p>
                                 <p
                                     class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] ml-4 shrink-0">
-                                    £35</p>
+                                    £96</p>
                             </div>
                         </div>
                     </div>
@@ -613,7 +613,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £35</p>
+                                        £54</p>
                                 </div>
                             </div>
                             <div
@@ -701,7 +701,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £450</p>
+                                        £550</p>
                                 </div>
                             </div>
                         </div>
@@ -738,7 +738,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £95</p>
+                                        £96</p>
                                 </div>
                             </div>
                         </div>
@@ -785,7 +785,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £79</p>
+                                        £144</p>
                                 </div>
                             </div>
                         </div>
@@ -822,7 +822,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £70</p>
+                                        £96</p>
                                 </div>
                             </div>
                         </div>
@@ -858,7 +858,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £22</p>
+                                        £30</p>
                                 </div>
                             </div>
                             <div
@@ -869,7 +869,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £50</p>
+                                        £96</p>
                                 </div>
                             </div>
                             <div
