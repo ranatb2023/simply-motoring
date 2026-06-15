@@ -22,6 +22,43 @@ Route::redirect('/5-must-try-recipes-for-summer', '/blogs', 301);
 Route::redirect('/the-future-of-ai-in-modern-business', '/blogs', 301);
 Route::redirect('/the-rise-of-remote-work', '/blogs', 301);
 
+// Dynamic XML sitemap for search engines
+Route::get('/sitemap.xml', function () {
+    $locs = [
+        route('home'),
+        route('service'),
+        route('service.mot-test'),
+        route('service.full-service'),
+        route('service.interim-service'),
+        route('service.major-service'),
+        route('service.brake-discs-and-pads'),
+        route('service.brake-fluid-change'),
+        route('pricing'),
+        route('contact'),
+        route('blogs'),
+    ];
+
+    $urls = array_map(fn ($loc) => ['loc' => $loc, 'lastmod' => null], $locs);
+
+    foreach (\App\Models\BlogPost::published()->latest('published_at')->get() as $post) {
+        $urls[] = ['loc' => $post->url, 'lastmod' => optional($post->updated_at)->toAtomString()];
+    }
+
+    $xml  = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+    foreach ($urls as $u) {
+        $xml .= '  <url>' . "\n";
+        $xml .= '    <loc>' . htmlspecialchars($u['loc'], ENT_XML1) . '</loc>' . "\n";
+        if (!empty($u['lastmod'])) {
+            $xml .= '    <lastmod>' . $u['lastmod'] . '</lastmod>' . "\n";
+        }
+        $xml .= '  </url>' . "\n";
+    }
+    $xml .= '</urlset>';
+
+    return response($xml, 200, ['Content-Type' => 'application/xml']);
+})->name('sitemap');
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
