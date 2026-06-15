@@ -13,8 +13,14 @@ Route::get('/service', function () {
     return view('service');
 })->name('service');
 
-// 301 redirect old/alternate plural URL to the canonical service page
+// 301 redirects for old/external URLs that otherwise 404 via the blog catch-all
 Route::redirect('/services', '/service', 301);
+Route::redirect('/mot-testing', '/service/mot-test', 301);
+Route::redirect('/car-service-centre', '/service', 301);
+// Old/removed demo blog posts -> blog listing
+Route::redirect('/5-must-try-recipes-for-summer', '/blogs', 301);
+Route::redirect('/the-future-of-ai-in-modern-business', '/blogs', 301);
+Route::redirect('/the-rise-of-remote-work', '/blogs', 301);
 
 Route::get('/contact', function () {
     return view('contact');
