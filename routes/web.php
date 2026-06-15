@@ -13,6 +13,9 @@ Route::get('/service', function () {
     return view('service');
 })->name('service');
 
+// 301 redirect old/alternate plural URL to the canonical service page
+Route::redirect('/services', '/service', 301);
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
