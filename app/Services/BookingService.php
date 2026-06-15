@@ -451,8 +451,10 @@ class BookingService
                     "Phone: " . ($data['customer']['phone'] ?? '-'),
                     "Reg: " . ($reg ?? '-'),
                 ])),
-                'start' => ['dateTime' => Carbon::parse($data['start'])->toRfc3339String(), 'timeZone' => $tz],
-                'end'   => ['dateTime' => $booking->end_datetime->toRfc3339String(), 'timeZone' => $tz],
+                // Parse the booking's wall-clock time AS the business timezone so the
+                // RFC3339 offset is correct (otherwise it's read as UTC and lands an hour off).
+                'start' => ['dateTime' => Carbon::parse($data['start'], $tz)->toRfc3339String(), 'timeZone' => $tz],
+                'end'   => ['dateTime' => Carbon::parse($booking->end_datetime->format('Y-m-d H:i:s'), $tz)->toRfc3339String(), 'timeZone' => $tz],
             ];
 
             $response = Http::withToken($token)
