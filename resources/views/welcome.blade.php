@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('meta_description', 'Book trusted MOT testing, car servicing and vehicle repairs in Doncaster. DVSA-approved inspections, transparent pricing and expert technicians.')
+
 @section('content')
     <!-- Main Wrapper: 1440px max-width, 40px padding -->
     <!-- Hero Section -->

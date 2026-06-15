@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('meta_description', 'Book a full car service in Doncaster including oil and filter changes, vehicle inspections and essential maintenance checks.')
+
 @section('content')
     <style>
         .brake-service-clip {

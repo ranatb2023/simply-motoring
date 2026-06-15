@@ -9,6 +9,9 @@
     {{-- Canonical URL — always points to the non-www version so Google treats it as the single source --}}
     <link rel="canonical" href="{{ rtrim(config('app.url'), '/') . request()->getPathInfo() }}">
 
+    {{-- Meta description — each page can override via @section('meta_description', '...') --}}
+    <meta name="description" content="@yield('meta_description', 'Simply Motoring — trusted MOT testing, car servicing and repairs in Doncaster. Book your appointment online today.')">
+
     <title>Simply Motoring UK</title>
 
     <!-- Scripts -->

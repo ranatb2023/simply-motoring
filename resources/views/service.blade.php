@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('meta_description', 'Professional car servicing in Doncaster with interim, full and major service options designed to improve safety and performance.')
+
 @section('content')
     <style>
         .brake-service-clip {

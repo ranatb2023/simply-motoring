@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('meta_description', 'Contact Simply Motoring in Doncaster for MOT testing, vehicle servicing and repairs. Book your appointment with our team today.')
+
 @section('content')
     <style>
         /* Clip path for desktop screens only */
