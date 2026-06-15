@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    {{-- Canonical URL — always points to the non-www version so Google treats it as the single source --}}
+    <link rel="canonical" href="{{ rtrim(config('app.url'), '/') . request()->getPathInfo() }}">
+
     <title>Simply Motoring UK</title>
 
     <!-- Scripts -->
@@ -210,7 +214,7 @@
     <div class="fixed bottom-6 right-6 z-50">
         <div class="relative group">
             <div class="absolute -inset-1 bg-[#25D366] rounded-full opacity-40 animate-ping"></div>
-            <a href="https://wa.me/01302456406" target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/441302456406" target="_blank" rel="noopener noreferrer"
                 class="relative flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
                 aria-label="Chat with us on WhatsApp">
                 <i class="fa-brands fa-whatsapp text-3xl"></i>

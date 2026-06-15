@@ -133,6 +133,9 @@ class BookingService
         $minNoticeHours = $service->min_notice_hours ?? 4;
         $minTime = $floatingNow->addHours($minNoticeHours)->timestamp;
 
+        // Google Calendar busy times — hide slots that clash with events added directly in Google Calendar
+        $googleBusy = $this->getGoogleBusyIntervals($date, $tz);
+
         foreach ($allowedIntervals as $range) {
             $openTime  = $range['start'];
             $closeTime = $range['end'];
@@ -142,6 +145,18 @@ class BookingService
                 $slotEnd   = $time + ($durationMinutes * 60);
 
                 if ($slotStart < $minTime) {
+                    continue;
+                }
+
+                // Skip slots that overlap a busy period in any connected Google Calendar
+                $clashesGoogle = false;
+                foreach ($googleBusy as $b) {
+                    if ($slotStart < $b['end'] && $slotEnd > $b['start']) {
+                        $clashesGoogle = true;
+                        break;
+                    }
+                }
+                if ($clashesGoogle) {
                     continue;
                 }
 
@@ -210,6 +225,93 @@ class BookingService
         });
 
         return $finalSlots;
+    }
+
+    /**
+     * Fetch busy intervals from all connected Google Calendars for a given date.
+     * Returns an array of ['start' => timestamp, 'end' => timestamp] in the same
+     * time frame the slots are computed in, so they can be compared directly.
+     * Best-effort: never throws — returns [] on any failure so booking slots still work.
+     */
+    private function getGoogleBusyIntervals(string $date, string $tz): array
+    {
+        try {
+            $accounts = Setting::where('key', 'google_accounts')->value('value');
+            $accounts = $accounts ? json_decode($accounts, true) : [];
+
+            if (empty($accounts)) {
+                return []; // No Google account connected — nothing to check
+            }
+
+            // Business-day window in the business timezone, as absolute RFC3339 instants
+            $timeMin = Carbon::createFromFormat('Y-m-d H:i:s', $date . ' 00:00:00', $tz)->toRfc3339String();
+            $timeMax = Carbon::createFromFormat('Y-m-d H:i:s', $date . ' 23:59:59', $tz)->toRfc3339String();
+
+            $busy = [];
+
+            foreach ($accounts as $email => $acc) {
+                $token = $this->getRefreshedToken($acc); // updates $acc by value; persisted below if changed
+
+                if (!$token) {
+                    \Log::warning('GCal conflict-check: no valid token', ['account' => $email]);
+                    continue;
+                }
+
+                // Persist refreshed token if it changed
+                if (($accounts[$email]['access_token'] ?? null) !== $token) {
+                    $accounts[$email]['access_token'] = $acc['access_token'];
+                    $accounts[$email]['expires_at']   = $acc['expires_at'] ?? ($accounts[$email]['expires_at'] ?? 0);
+                    Setting::updateOrCreate(['key' => 'google_accounts'], ['value' => json_encode($accounts)]);
+                }
+
+                // List this account's calendars (cached briefly to avoid an extra call on every request)
+                $calIds = \Cache::remember("gcal_ids_{$email}", 600, function () use ($token) {
+                    $listRes = Http::withToken($token)
+                        ->get('https://www.googleapis.com/calendar/v3/users/me/calendarList');
+                    if (!$listRes->successful()) {
+                        return [];
+                    }
+                    return collect($listRes->json()['items'] ?? [])
+                        ->pluck('id')->filter()->values()->all();
+                });
+
+                if (empty($calIds)) {
+                    continue;
+                }
+
+                $fbRes = Http::withToken($token)->post('https://www.googleapis.com/calendar/v3/freeBusy', [
+                    'timeMin' => $timeMin,
+                    'timeMax' => $timeMax,
+                    'items'   => array_map(fn ($id) => ['id' => $id], $calIds),
+                ]);
+
+                if (!$fbRes->successful()) {
+                    \Log::warning('GCal conflict-check: freeBusy failed', [
+                        'account' => $email, 'status' => $fbRes->status(), 'body' => $fbRes->body(),
+                    ]);
+                    continue;
+                }
+
+                foreach (($fbRes->json()['calendars'] ?? []) as $cal) {
+                    foreach (($cal['busy'] ?? []) as $b) {
+                        // Convert Google's absolute time to business-tz wall clock, then re-interpret
+                        // in the app's default tz — mirroring how slot timestamps are built above.
+                        $startWall = Carbon::parse($b['start'])->setTimezone($tz)->format('Y-m-d H:i:s');
+                        $endWall   = Carbon::parse($b['end'])->setTimezone($tz)->format('Y-m-d H:i:s');
+                        $busy[] = [
+                            'start' => Carbon::createFromFormat('Y-m-d H:i:s', $startWall, config('app.timezone'))->timestamp,
+                            'end'   => Carbon::createFromFormat('Y-m-d H:i:s', $endWall, config('app.timezone'))->timestamp,
+                        ];
+                    }
+                }
+            }
+
+            return $busy;
+
+        } catch (\Throwable $e) {
+            \Log::error('GCal conflict-check threw an exception', ['error' => $e->getMessage()]);
+            return []; // Best-effort: don't break the booking form
+        }
     }
 
     public function createBooking($data)
@@ -281,6 +383,7 @@ class BookingService
             $googleAccounts = $googleAccounts ? json_decode($googleAccounts, true) : [];
 
             if (empty($googleAccounts)) {
+                \Log::warning('GCal sync skipped: no Google account connected', ['booking_id' => $booking->id]);
                 return; // No Google account connected at all
             }
 
@@ -303,6 +406,9 @@ class BookingService
             }
 
             if (!isset($googleAccounts[$accountEmail])) {
+                \Log::warning('GCal sync skipped: configured account not found', [
+                    'booking_id' => $booking->id, 'account' => $accountEmail,
+                ]);
                 return;
             }
 
@@ -310,6 +416,12 @@ class BookingService
             $token   = $this->getRefreshedToken($account);
 
             if (!$token) {
+                \Log::error('GCal sync failed: could not obtain/refresh access token (refresh token may be missing, expired, or revoked)', [
+                    'booking_id'    => $booking->id,
+                    'account'       => $accountEmail,
+                    'has_refresh'   => !empty($account['refresh_token']),
+                    'expires_at'    => $account['expires_at'] ?? null,
+                ]);
                 return;
             }
 
@@ -354,11 +466,26 @@ class BookingService
                         'google_event_id'    => $eventId,
                         'google_calendar_id' => $calendarId,
                     ]);
+                    \Log::info('GCal event created', [
+                        'booking_id' => $booking->id, 'event_id' => $eventId,
+                        'account' => $accountEmail, 'calendar' => $calendarId,
+                    ]);
                 }
+            } else {
+                \Log::error('GCal sync failed: Google API rejected the event', [
+                    'booking_id' => $booking->id,
+                    'account'    => $accountEmail,
+                    'calendar'   => $calendarId,
+                    'status'     => $response->status(),
+                    'body'       => $response->body(),
+                ]);
             }
 
         } catch (\Throwable $e) {
-            // Silent fail — booking is already committed
+            \Log::error('GCal sync threw an exception', [
+                'booking_id' => $booking->id ?? null,
+                'error'      => $e->getMessage(),
+            ]);
         }
     }
 
