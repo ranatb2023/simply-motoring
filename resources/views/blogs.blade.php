@@ -2,6 +2,8 @@
 
 @section('meta_description', 'Read expert MOT advice, servicing tips and vehicle maintenance guides from Simply Motoring to keep your car safe and road-ready.')
 
+@section('meta_title', 'Car Maintenance Tips & MOT Advice Blog | Simply Motoring')
+
 @section('content')
     <div class="w-full bg-white min-h-screen">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-10 py-10">

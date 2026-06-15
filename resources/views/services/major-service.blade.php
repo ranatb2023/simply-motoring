@@ -2,6 +2,8 @@
 
 @section('meta_description', 'Choose a major car service in Doncaster with comprehensive maintenance, detailed inspections and replacement of key components.')
 
+@section('meta_title', 'Major Car Service in Doncaster | Simply Motoring')
+
 @section('content')
     <style>
         .brake-service-clip {

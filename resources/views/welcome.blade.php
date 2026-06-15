@@ -2,6 +2,8 @@
 
 @section('meta_description', 'Book trusted MOT testing, car servicing and vehicle repairs in Doncaster. DVSA-approved inspections, transparent pricing and expert technicians.')
 
+@section('meta_title', 'Car MOT Testing & Servicing in Doncaster | Simply Motoring')
+
 @section('content')
     <!-- Main Wrapper: 1440px max-width, 40px padding -->
     <!-- Hero Section -->

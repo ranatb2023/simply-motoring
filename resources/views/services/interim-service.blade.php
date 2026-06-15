@@ -2,6 +2,8 @@
 
 @section('meta_description', 'Keep your car in top condition with an interim service in Doncaster, including oil replacement, safety checks and inspections.')
 
+@section('meta_title', 'Interim Car Service in Doncaster | Simply Motoring')
+
 @section('content')
     <style>
         .brake-service-clip {

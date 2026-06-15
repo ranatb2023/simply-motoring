@@ -2,6 +2,8 @@
 
 @section('meta_description', 'DVSA-approved MOT testing in Doncaster with thorough inspections, honest advice and fast results to keep you road legal.')
 
+@section('meta_title', 'MOT Test in Doncaster | DVSA Approved MOT Centre')
+
 @section('content')
     <style>
         .brake-service-clip {

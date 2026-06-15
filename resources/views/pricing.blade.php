@@ -2,6 +2,8 @@
 
 @section('meta_description', 'View transparent pricing for MOT tests, interim services, full services and major services. No hidden costs, just honest value.')
 
+@section('meta_title', 'MOT & Service Pricing in Doncaster | Simply Motoring')
+
 @section('content')
     <style>
         .pricing-clip {

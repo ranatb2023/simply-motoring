@@ -12,7 +12,8 @@
     {{-- Meta description — each page can override via @section('meta_description', '...') --}}
     <meta name="description" content="@yield('meta_description', 'Simply Motoring — trusted MOT testing, car servicing and repairs in Doncaster. Book your appointment online today.')">
 
-    <title>Simply Motoring UK</title>
+    {{-- Page title — each page can override via @section('meta_title', '...') --}}
+    <title>@yield('meta_title', 'Simply Motoring UK')</title>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
