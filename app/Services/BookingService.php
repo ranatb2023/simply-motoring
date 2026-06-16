@@ -29,6 +29,10 @@ class BookingService
         if (!$service)
             return [];
 
+        // Reflect Google Calendar deletions instantly: if a booking's event was
+        // removed in Google, cancel it now so its slot frees up in this response.
+        $this->syncDeletedGoogleEvents($date);
+
         $durationMinutes = $service->duration_minutes;
         $allowedIntervals = [];
         $isClosedOverride = false;
@@ -527,7 +531,7 @@ class BookingService
      * cancelled directly in Google, cancel the matching booking so its slot
      * becomes bookable again. Returns ['checked' => n, 'cancelled' => n].
      */
-    public function syncDeletedGoogleEvents(): array
+    public function syncDeletedGoogleEvents(?string $onlyDate = null): array
     {
         $checked = 0;
         $cancelled = 0;
@@ -555,11 +559,20 @@ class BookingService
             Setting::updateOrCreate(['key' => 'google_accounts'], ['value' => json_encode($googleAccounts)]);
         }
 
-        // Only check upcoming, still-active bookings that were pushed to a calendar
-        $bookings = Booking::whereNotNull('google_event_id')
+        // Only check upcoming, still-active bookings that were pushed to a calendar.
+        // When $onlyDate is given (booking form), check just that day's bookings — fast.
+        $query = Booking::whereNotNull('google_event_id')
             ->where('status', '!=', 'cancelled')
-            ->where('end_datetime', '>=', Carbon::now()->subDay())
-            ->get();
+            ->where('end_datetime', '>=', Carbon::now()->subDay());
+
+        if ($onlyDate) {
+            $query->whereBetween('start_datetime', [
+                Carbon::parse($onlyDate)->startOfDay(),
+                Carbon::parse($onlyDate)->endOfDay(),
+            ]);
+        }
+
+        $bookings = $query->get();
 
         foreach ($bookings as $booking) {
             $checked++;

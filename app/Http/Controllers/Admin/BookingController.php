@@ -13,8 +13,15 @@ use Carbon\Carbon;
 
 class BookingController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, BookingService $bookingService)
     {
+        // Reflect Google Calendar deletions in the dashboard (throttled to avoid
+        // hammering Google on rapid page navigation/search/filter).
+        \Cache::remember('gcal_delete_sync_admin', 15, function () use ($bookingService) {
+            $bookingService->syncDeletedGoogleEvents();
+            return now();
+        });
+
         $query = Booking::with('service')->orderBy('start_datetime', 'desc');
 
         // Search
