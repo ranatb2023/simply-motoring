@@ -434,7 +434,7 @@
                 </div>
                 <div class="flex-1 min-w-0">
                     <p class="font-bold uppercase tracking-[-0.02em] text-gray-900 text-sm">${s.name}</p>
-                    <p class="text-gray-400 text-xs mt-0.5">${s.duration_minutes} min &nbsp;·&nbsp; From £${parseFloat(s.price ?? 0).toFixed(2)}</p>
+                    <p class="text-gray-400 text-xs mt-0.5">${s.duration_minutes} min &nbsp;·&nbsp; ${(s.options && s.options.length) ? 'From ' : ''}£${parseFloat(s.price ?? 0).toFixed(2)}</p>
                 </div>
                 <div class="bm-radio w-5 h-5 border-2 border-gray-200 rounded-full shrink-0 flex items-center justify-center transition-all"></div>
             </button>
