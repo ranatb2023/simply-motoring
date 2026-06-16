@@ -363,89 +363,35 @@ class GoogleCalendarController extends Controller
             $current = Setting::where('key', 'google_calendar_settings')->value('value');
             $current = $current ? json_decode($current, true) : [];
 
-            $email = $request->input('account_email');
-            $serviceId = $request->input('service_id');
+            // Drop legacy entries keyed by account email (old single-mapping format).
+            // The current format keys each entry by numeric service_id.
+            $current = array_filter($current, fn ($k) => is_numeric($k), ARRAY_FILTER_USE_KEY);
 
-            if ($email && $serviceId) {
-                // IMPORTANT: Clear previous selections from OTHER accounts
-                // This ensures only ONE account has an active service selection at a time
-                foreach ($current as $existingEmail => &$existingSettings) {
-                    if ($existingEmail !== $email) {
-                        unset($existingSettings['service_id']);
-                        unset($existingSettings['service_name']);
-                        unset($existingSettings['google_calendar_id']);
-                    }
-                }
-                unset($existingSettings); // Break reference
+            $serviceId  = $request->input('service_id');
+            $email      = $request->input('account_email');
+            $calendarId = $request->input('calendar_id'); // empty/null = do not add to any calendar
 
-                // Get Service Name from DB
-                $service = \App\Models\Service::find($serviceId);
+            if ($serviceId) {
+                $service     = \App\Models\Service::find($serviceId);
                 $serviceName = $service ? $service->name : null;
 
-                if ($serviceName) {
-                    // Get Account Token
-                    $accounts = Setting::where('key', 'google_accounts')->value('value');
-                    $accounts = $accounts ? json_decode($accounts, true) : [];
+                // Store one mapping per service; does NOT touch other services.
+                $current[(string) $serviceId] = [
+                    'account_email'      => $email ?: null,
+                    'service_name'       => $serviceName,
+                    'google_calendar_id' => $calendarId ?: null,
+                ];
 
-                    if (isset($accounts[$email])) {
-                        $token = $this->getValidToken($accounts[$email]);
-
-                        // Save refreshed token back if changed
-                        if ($token && $token !== $accounts[$email]['access_token']) {
-                            Setting::updateOrCreate(['key' => 'google_accounts'], ['value' => json_encode($accounts)]);
-                        }
-
-                        if ($token) {
-                            $calendarId = null;
-
-                            // 1. List existing calendars
-                            $listRes = Http::withToken($token)->get('https://www.googleapis.com/calendar/v3/users/me/calendarList');
-
-                            if ($listRes->successful()) {
-                                $calendars = $listRes->json()['items'] ?? [];
-                                foreach ($calendars as $cal) {
-                                    $calName = $cal['summaryOverride'] ?? $cal['summary'];
-                                    if (strcasecmp($calName, $serviceName) === 0) {
-                                        $calendarId = $cal['id'];
-                                        break;
-                                    }
-                                }
-                            }
-
-                            // 2. Create calendar if not found
-                            if (!$calendarId) {
-                                $createRes = Http::withToken($token)
-                                    ->post('https://www.googleapis.com/calendar/v3/calendars', [
-                                        'summary' => $serviceName
-                                    ]);
-
-                                if ($createRes->successful()) {
-                                    $newCal = $createRes->json();
-                                    $calendarId = $newCal['id'] ?? null;
-                                }
-                            }
-
-                            // 3. Store in settings
-                            if (!isset($current[$email]))
-                                $current[$email] = [];
-                            $current[$email]['service_id'] = $serviceId;
-                            $current[$email]['service_name'] = $serviceName;
-                            if ($calendarId) {
-                                $current[$email]['google_calendar_id'] = $calendarId;
-                            }
-                        }
-                    }
-                }
+                Setting::updateOrCreate(
+                    ['key' => 'google_calendar_settings'],
+                    ['value' => json_encode((object) $current)]
+                );
             }
 
-            Setting::updateOrCreate(
-                ['key' => 'google_calendar_settings'],
-                ['value' => json_encode($current)]
-            );
             return response()->json(['success' => true]);
         }
 
-        // GET
+        // GET — returns the per-service map: { "<service_id>": { account_email, service_name, google_calendar_id } }
         $settings = Setting::where('key', 'google_calendar_settings')->value('value');
         return response()->json($settings ? json_decode($settings, true) : []);
     }

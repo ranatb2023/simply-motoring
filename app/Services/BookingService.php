@@ -390,17 +390,22 @@ class BookingService
             $calendarId   = null;
             $accountEmail = null;
 
-            // 1. Try to find a specific calendar configured for this service
-            foreach ($calSettings as $email => $settings) {
-                if (isset($settings['service_id']) && (int)$settings['service_id'] === (int)$data['service_id']) {
-                    $calendarId   = $settings['google_calendar_id'] ?? 'primary';
-                    $accountEmail = $email;
-                    break;
-                }
-            }
+            // 1. Per-service calendar mapping (keyed by service_id)
+            $svcKey  = (string) ($data['service_id'] ?? '');
+            $mapping = $calSettings[$svcKey] ?? null;
 
-            // 2. Fallback: use the first connected Google account with primary calendar
-            if (!$accountEmail) {
+            if ($mapping !== null) {
+                // Service explicitly mapped to "no calendar" — skip sync for it
+                if (empty($mapping['google_calendar_id'])) {
+                    \Log::info('GCal sync skipped: service mapped to no calendar', [
+                        'booking_id' => $booking->id, 'service_id' => $svcKey,
+                    ]);
+                    return;
+                }
+                $calendarId   = $mapping['google_calendar_id'];
+                $accountEmail = $mapping['account_email'] ?? array_key_first($googleAccounts);
+            } else {
+                // 2. Fallback: first connected account, primary calendar
                 $accountEmail = array_key_first($googleAccounts);
                 $calendarId   = 'primary';
             }

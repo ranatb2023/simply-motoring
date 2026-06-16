@@ -1,0 +1,41 @@
+{
+  "resources/css/admin.css": {
+    "file": "assets/admin-BWv_erPN.css",
+    "src": "resources/css/admin.css",
+    "isEntry": true,
+    "name": "admin",
+    "names": [
+      "admin.css"
+    ]
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-WQVFGcL9.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/css/staff-wizard.css": {
+    "file": "assets/staff-wizard-D6Kk7pNq.css",
+    "src": "resources/css/staff-wizard.css",
+    "isEntry": true,
+    "name": "staff-wizard",
+    "names": [
+      "staff-wizard.css"
+    ]
+  },
+  "resources/js/admin.js": {
+    "file": "assets/admin-DIzpHyX4.js",
+    "name": "admin",
+    "src": "resources/js/admin.js",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CpKnee6P.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
