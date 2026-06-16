@@ -522,6 +522,79 @@ class BookingService
         }
     }
 
+    /**
+     * Reconcile bookings with Google Calendar: if an event was deleted or
+     * cancelled directly in Google, cancel the matching booking so its slot
+     * becomes bookable again. Returns ['checked' => n, 'cancelled' => n].
+     */
+    public function syncDeletedGoogleEvents(): array
+    {
+        $checked = 0;
+        $cancelled = 0;
+
+        $googleAccounts = Setting::where('key', 'google_accounts')->value('value');
+        $googleAccounts = $googleAccounts ? json_decode($googleAccounts, true) : [];
+
+        if (empty($googleAccounts)) {
+            return ['checked' => 0, 'cancelled' => 0];
+        }
+
+        $accountEmail = array_key_first($googleAccounts);
+        $account      = $googleAccounts[$accountEmail];
+        $oldToken     = $account['access_token'] ?? null;
+        $token        = $this->getRefreshedToken($account); // updates $account by ref
+
+        if (!$token) {
+            \Log::warning('Calendar delete-sync: no valid token', ['account' => $accountEmail]);
+            return ['checked' => 0, 'cancelled' => 0];
+        }
+
+        // Persist refreshed token if it changed
+        if (($account['access_token'] ?? null) !== $oldToken) {
+            $googleAccounts[$accountEmail] = $account;
+            Setting::updateOrCreate(['key' => 'google_accounts'], ['value' => json_encode($googleAccounts)]);
+        }
+
+        // Only check upcoming, still-active bookings that were pushed to a calendar
+        $bookings = Booking::whereNotNull('google_event_id')
+            ->where('status', '!=', 'cancelled')
+            ->where('end_datetime', '>=', Carbon::now()->subDay())
+            ->get();
+
+        foreach ($bookings as $booking) {
+            $checked++;
+            $calendarId = $booking->google_calendar_id ?: 'primary';
+
+            try {
+                $resp = Http::withToken($token)->get(
+                    'https://www.googleapis.com/calendar/v3/calendars/' . urlencode($calendarId)
+                    . '/events/' . urlencode($booking->google_event_id)
+                );
+
+                $deleted = false;
+                if (in_array($resp->status(), [404, 410], true)) {
+                    $deleted = true; // event no longer exists
+                } elseif ($resp->successful() && $resp->json('status') === 'cancelled') {
+                    $deleted = true; // event cancelled in Google
+                }
+
+                if ($deleted) {
+                    $booking->update(['status' => 'cancelled']);
+                    $cancelled++;
+                    \Log::info('Calendar delete-sync: booking cancelled (event removed in Google)', [
+                        'booking_id' => $booking->id, 'event_id' => $booking->google_event_id,
+                    ]);
+                }
+            } catch (\Throwable $e) {
+                \Log::error('Calendar delete-sync: check failed', [
+                    'booking_id' => $booking->id, 'error' => $e->getMessage(),
+                ]);
+            }
+        }
+
+        return ['checked' => $checked, 'cancelled' => $cancelled];
+    }
+
     private function getRefreshedToken(array &$account): ?string
     {
         $accessToken  = $account['access_token'];
