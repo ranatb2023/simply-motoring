@@ -73,8 +73,20 @@
                 @endif
             </div>
 
+            @if($booking->manageUrl())
+            <div style="text-align:center; margin-bottom: 28px;">
+                <a href="{{ $booking->manageUrl() }}"
+                   style="display:inline-block; background:#FF6900; color:#ffffff; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; text-decoration:none; padding:13px 28px; border-radius:8px;">
+                    Manage Your Booking
+                </a>
+                <p style="font-size:12px; color:#9ca3af; margin-top:10px;">
+                    Reschedule, change service, update your details or cancel — no login needed.
+                </p>
+            </div>
+            @endif
+
             <p class="note">
-                If you need to make any changes or have questions, please reply to this email or contact us directly.
+                If you have any questions, please reply to this email or contact us directly.
                 We look forward to seeing you!
             </p>
         </div>

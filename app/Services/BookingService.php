@@ -19,7 +19,7 @@ class BookingService
     /**
      * Replicating gbs_get_slots logic
      */
-    public function getSlots($date, $serviceId)
+    public function getSlots($date, $serviceId, $excludeBookingId = null)
     {
         if (!$date || !$serviceId) {
             throw new \Exception('Date and Service ID required');
@@ -110,6 +110,7 @@ class BookingService
 
         $bookingsQuery = Booking::where('service_id', $service->id)
             ->where('status', '!=', 'cancelled')
+            ->when($excludeBookingId, fn ($q) => $q->where('id', '!=', $excludeBookingId))
             ->where(function ($q) use ($startDay, $endDay) {
                 $q->whereBetween('start_datetime', [$startDay, $endDay])
                   ->orWhereBetween('end_datetime', [$startDay, $endDay])
@@ -335,6 +336,7 @@ class BookingService
                 'customer_email' => $data['customer']['email'],
                 'customer_phone' => $data['customer']['phone'] ?? null,
                 'status'         => 'confirmed',
+                'edit_token'     => \Illuminate\Support\Str::random(48),
             ]);
 
             DB::commit();
@@ -374,6 +376,99 @@ class BookingService
         } catch (\Exception $e) {
             DB::rollBack();
             return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
+
+    /**
+     * Update an existing booking from the customer "manage booking" page:
+     * reschedule (date/time/service), contact details, keeping the Google
+     * Calendar event in sync. Returns ['success'=>bool, 'message'=>?].
+     */
+    public function updateBooking(Booking $booking, array $data): array
+    {
+        try {
+            $newServiceId = $data['service_id'] ?? $booking->service_id;
+            $service = Service::find($newServiceId);
+            if (!$service) {
+                return ['success' => false, 'message' => 'Selected service not found.'];
+            }
+
+            $newStart = $data['start'] ?? $booking->start_datetime->format('Y-m-d H:i:s');
+            $newEnd   = Carbon::parse($newStart)->addMinutes($service->duration_minutes);
+
+            $rescheduled = ((string) $newServiceId !== (string) $booking->service_id)
+                || (Carbon::parse($newStart)->format('Y-m-d H:i:s') !== $booking->start_datetime->format('Y-m-d H:i:s'));
+
+            // If date/time/service changed, confirm the new slot is free (ignoring this booking)
+            if ($rescheduled) {
+                $date   = Carbon::parse($newStart)->format('Y-m-d');
+                $wanted = Carbon::parse($newStart)->format('Y-m-d H:i:s');
+                $slots  = $this->getSlots($date, $newServiceId, $booking->id);
+                if (!collect($slots)->contains(fn ($s) => $s['start'] === $wanted)) {
+                    return ['success' => false, 'message' => 'That time is no longer available. Please pick another slot.'];
+                }
+            }
+
+            DB::beginTransaction();
+            $booking->update([
+                'service_id'     => $newServiceId,
+                'sub_service'    => $data['sub_service'] ?? $booking->sub_service,
+                'start_datetime' => $newStart,
+                'end_datetime'   => $newEnd,
+                'vehicle_reg'    => $data['reg'] ?? $booking->vehicle_reg,
+                'customer_name'  => $data['customer']['name'] ?? $booking->customer_name,
+                'customer_email' => $data['customer']['email'] ?? $booking->customer_email,
+                'customer_phone' => $data['customer']['phone'] ?? $booking->customer_phone,
+                'status'         => 'confirmed',
+            ]);
+            DB::commit();
+
+            $booking->load('service');
+
+            // Keep Google Calendar in sync: remove the old event and create a fresh one
+            $this->deleteGoogleCalendarEvent($booking);
+            $booking->update(['google_event_id' => null]);
+            $this->addGoogleCalendarEvent($booking, [
+                'service_id'  => $booking->service_id,
+                'start'       => $booking->start_datetime->format('Y-m-d H:i:s'),
+                'reg'         => $booking->vehicle_reg,
+                'sub_service' => $booking->sub_service,
+                'customer'    => [
+                    'name'  => $booking->customer_name,
+                    'email' => $booking->customer_email,
+                    'phone' => $booking->customer_phone,
+                ],
+            ]);
+
+            // Resend confirmation reflecting the updated details (best-effort)
+            try {
+                Mail::to($booking->customer_email)->send(new BookingConfirmation($booking, false));
+            } catch (\Throwable $e) {
+                \Log::error('Booking update email failed', ['booking_id' => $booking->id, 'error' => $e->getMessage()]);
+            }
+
+            return ['success' => true];
+
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
+
+    /**
+     * Cancel a booking from the customer "manage booking" page: free the slot,
+     * remove the Google Calendar event, and email the customer.
+     */
+    public function cancelBooking(Booking $booking): void
+    {
+        $booking->load('service');
+        $this->deleteGoogleCalendarEvent($booking);
+        $booking->update(['status' => 'cancelled']);
+
+        try {
+            Mail::to($booking->customer_email)->send(new \App\Mail\BookingCancellation($booking, false));
+        } catch (\Throwable $e) {
+            \Log::error('Booking cancel email failed', ['booking_id' => $booking->id, 'error' => $e->getMessage()]);
         }
     }
 

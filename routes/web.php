@@ -68,6 +68,12 @@ Route::get('/pricing', function () {
     return view('pricing');
 })->name('pricing');
 
+// ── Public "Manage my booking" (token-protected link, no login) ──────────────
+Route::get('/booking/manage/{token}', [\App\Http\Controllers\BookingManageController::class, 'edit'])->name('booking.manage');
+Route::get('/booking/manage/{token}/slots', [\App\Http\Controllers\BookingManageController::class, 'slots']);
+Route::post('/booking/manage/{token}', [\App\Http\Controllers\BookingManageController::class, 'update']);
+Route::post('/booking/manage/{token}/cancel', [\App\Http\Controllers\BookingManageController::class, 'cancel']);
+
 Route::get('/service/brake-discs-and-pads', function () {
     return view('services.brake-discs-and-pads');
 })->name('service.brake-discs-and-pads');
