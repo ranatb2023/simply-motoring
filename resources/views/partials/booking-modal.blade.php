@@ -400,7 +400,7 @@
         if (step === 1) nextBtn.disabled = !state.selectedService;
         if (step === 2) nextBtn.disabled = !state.selectedDate;
         if (step === 3) nextBtn.disabled = !state.selectedSlot;
-        if (step === 4) submitBtn.disabled = false;
+        if (step === 4) setSubmitLoading(false); // reset button to "Confirm" (not stuck on "Booking…")
     }
 
     // ── Step 1: Services ──────────────────────────────────────────────────────
@@ -671,6 +671,7 @@
 
     // ── Submit ────────────────────────────────────────────────────────────────
     submitBtn.addEventListener('click', async () => {
+        if (state.submitting) return; // guard: ignore extra clicks while a booking is in progress
         const form = document.getElementById('bmForm');
         const err  = document.getElementById('bmFormError');
         err.classList.add('hidden');
@@ -728,6 +729,7 @@
     });
 
     function setSubmitLoading(loading) {
+        state.submitting = loading;
         submitBtn.disabled = loading;
         submitBtn.innerHTML = loading
             ? '<i class="fa-solid fa-circle-notch bm-spin text-xs mr-2"></i>Booking…'
