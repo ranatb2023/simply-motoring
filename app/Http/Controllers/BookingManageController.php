@@ -25,15 +25,31 @@ class BookingManageController extends Controller
         $booking->load('service');
 
         $services = Service::where('is_active', true)
-            ->get(['id', 'name', 'duration_minutes', 'price', 'type', 'options_label', 'options'])
-            ->map(fn ($s) => [
-                'id'               => $s->id,
-                'name'             => $s->name,
-                'duration_minutes' => $s->duration_minutes,
-                'price'            => $s->price,
-                'options_label'    => $s->options_label,
-                'options'          => is_array($s->options) ? $s->options : null,
-            ]);
+            ->with('schedule.availabilities')
+            ->get()
+            ->map(function ($s) {
+                $closedDays = [];
+                if ($s->schedule) {
+                    $rules = $s->schedule->availabilities->keyBy('day_of_week');
+                    for ($d = 0; $d <= 6; $d++) {
+                        $rule = $rules->get($d);
+                        if (!$rule || $rule->is_closed) {
+                            $closedDays[] = $d; // 0=Sun ... 6=Sat (JS getDay convention)
+                        }
+                    }
+                }
+                return [
+                    'id'                   => $s->id,
+                    'name'                 => $s->name,
+                    'duration_minutes'     => $s->duration_minutes,
+                    'price'                => $s->price,
+                    'options_label'        => $s->options_label,
+                    'options'              => is_array($s->options) ? $s->options : null,
+                    'min_notice_hours'     => $s->min_notice_hours ?? 4,
+                    'advance_booking_days' => $s->advance_booking_days ?? 60,
+                    'closed_days'          => $closedDays,
+                ];
+            });
 
         return view('booking-manage', compact('booking', 'services'));
     }

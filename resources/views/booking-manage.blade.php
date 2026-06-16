@@ -4,7 +4,15 @@
 @section('meta_description', 'View, edit, reschedule or cancel your Simply Motoring booking.')
 
 @section('content')
-<section class="max-w-2xl mx-auto px-4 py-14 md:py-20">
+<style>
+    .bkm-card { border: 1.5px solid #e5e7eb; background:#fff; border-radius:6px; }
+    .bkm-cal-day { border-radius: 4px; transition: background .15s, color .15s; }
+    .bkm-cal-day:not(:disabled):hover { background:#FF6900; color:#fff; }
+    .bkm-cal-day.sel { background: linear-gradient(135deg,#FF6900,#FB5200) !important; color:#fff !important; font-weight:700; }
+    .bkm-section-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:#374151; }
+</style>
+
+<section class="max-w-3xl mx-auto px-4 py-12 md:py-16">
     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF6900]">Simply Motoring</p>
     <h1 class="text-2xl md:text-3xl font-extrabold text-gray-900 mt-1 mb-2">Manage Your Booking</h1>
     <p class="text-gray-500 text-sm mb-8">Update your details, reschedule, change service, or cancel below.</p>
@@ -16,58 +24,77 @@
             This booking has been <strong>cancelled</strong>. If this was a mistake, please make a new booking.
         </div>
     @else
-        <div id="bkmForm" class="space-y-6">
+        <div id="bkmForm" class="space-y-8">
+
             {{-- Service --}}
             <div>
-                <label class="block text-[11px] font-bold uppercase tracking-[0.12em] text-gray-700 mb-1.5">Service</label>
-                <select id="bkmService" class="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm focus:border-[#FF6900] focus:ring-0"></select>
+                <p class="bkm-section-label mb-2">Service</p>
+                <div id="bkmServiceList" class="grid sm:grid-cols-2 gap-2.5"></div>
             </div>
 
-            {{-- Option (sub-service) --}}
-            <div id="bkmOptionWrap" class="hidden">
-                <label id="bkmOptionLabel" class="block text-[11px] font-bold uppercase tracking-[0.12em] text-gray-700 mb-1.5">Select Option</label>
-                <select id="bkmOption" class="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm focus:border-[#FF6900] focus:ring-0"></select>
+            <div class="grid md:grid-cols-2 gap-8">
+                {{-- Date / Calendar --}}
+                <div>
+                    <p class="bkm-section-label mb-2">Date</p>
+                    <div class="bkm-card overflow-hidden">
+                        <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-gray-50">
+                            <button type="button" id="bkmPrev" class="w-8 h-8 flex items-center justify-center border border-gray-200 hover:border-[#FF6900] hover:text-[#FF6900] text-gray-400 transition bg-white rounded">
+                                <i class="fa-solid fa-chevron-left text-xs"></i>
+                            </button>
+                            <span id="bkmMonth" class="font-bold uppercase tracking-[0.05em] text-gray-800 text-sm"></span>
+                            <button type="button" id="bkmNext" class="w-8 h-8 flex items-center justify-center border border-gray-200 hover:border-[#FF6900] hover:text-[#FF6900] text-gray-400 transition bg-white rounded">
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-7 px-3 pt-3 bg-white">
+                            @foreach(['Mo','Tu','We','Th','Fr','Sa','Su'] as $d)
+                                <div class="text-center text-[10px] font-bold uppercase tracking-[0.08em] text-gray-500 pb-2">{{ $d }}</div>
+                            @endforeach
+                        </div>
+                        <div id="bkmCalGrid" class="grid grid-cols-7 gap-1 px-3 pb-4 bg-white"></div>
+                    </div>
+                </div>
+
+                {{-- Time --}}
+                <div>
+                    <p class="bkm-section-label mb-2">Time <span id="bkmDateLabel" class="text-gray-400 font-semibold normal-case tracking-normal"></span></p>
+                    <div id="bkmSlots" class="grid grid-cols-3 gap-2"></div>
+                    <p id="bkmSlotsMsg" class="text-gray-400 text-xs mt-2"></p>
+                </div>
             </div>
 
-            {{-- Date --}}
-            <div>
-                <label class="block text-[11px] font-bold uppercase tracking-[0.12em] text-gray-700 mb-1.5">Date</label>
-                <input type="date" id="bkmDate" class="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm focus:border-[#FF6900] focus:ring-0">
-            </div>
-
-            {{-- Time slots --}}
-            <div>
-                <label class="block text-[11px] font-bold uppercase tracking-[0.12em] text-gray-700 mb-1.5">Time</label>
-                <div id="bkmSlots" class="grid grid-cols-3 sm:grid-cols-4 gap-2"></div>
-                <p id="bkmSlotsMsg" class="text-gray-400 text-xs mt-2"></p>
+            {{-- Option --}}
+            <div id="bkmOptWrap" class="hidden">
+                <p id="bkmOptLabel" class="bkm-section-label mb-2">Select Option</p>
+                <div id="bkmOptList" class="flex flex-col gap-2 sm:max-w-md"></div>
             </div>
 
             {{-- Details --}}
             <div class="grid sm:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-[11px] font-bold uppercase tracking-[0.12em] text-gray-700 mb-1.5">Full Name</label>
-                    <input type="text" id="bkmName" class="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm focus:border-[#FF6900] focus:ring-0">
+                    <p class="bkm-section-label mb-1.5">Full Name</p>
+                    <input type="text" id="bkmName" class="bm-input w-full px-4 py-3 text-sm">
                 </div>
                 <div>
-                    <label class="block text-[11px] font-bold uppercase tracking-[0.12em] text-gray-700 mb-1.5">Email Address</label>
-                    <input type="email" id="bkmEmail" class="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm focus:border-[#FF6900] focus:ring-0">
+                    <p class="bkm-section-label mb-1.5">Email Address</p>
+                    <input type="email" id="bkmEmail" class="bm-input w-full px-4 py-3 text-sm">
                 </div>
                 <div>
-                    <label class="block text-[11px] font-bold uppercase tracking-[0.12em] text-gray-700 mb-1.5">Phone Number</label>
-                    <input type="text" id="bkmPhone" class="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm focus:border-[#FF6900] focus:ring-0">
+                    <p class="bkm-section-label mb-1.5">Phone Number</p>
+                    <input type="text" id="bkmPhone" class="bm-input w-full px-4 py-3 text-sm">
                 </div>
                 <div>
-                    <label class="block text-[11px] font-bold uppercase tracking-[0.12em] text-gray-700 mb-1.5">Vehicle Registration</label>
-                    <input type="text" id="bkmReg" class="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm uppercase focus:border-[#FF6900] focus:ring-0">
+                    <p class="bkm-section-label mb-1.5">Vehicle Registration</p>
+                    <input type="text" id="bkmReg" class="bm-input w-full px-4 py-3 text-sm uppercase">
                 </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <div class="flex flex-col sm:flex-row gap-3 pt-1">
                 <button type="button" id="bkmSave"
-                    class="flex-1 inline-flex items-center justify-center gap-2 text-white font-bold text-sm uppercase tracking-[0.12em] px-7 py-3 rounded-lg transition disabled:opacity-40"
+                    class="bm-clip flex-1 inline-flex items-center justify-center gap-2 text-white font-bold text-sm uppercase tracking-[0.12em] px-7 py-3.5 transition hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-40"
                     style="background:linear-gradient(135deg,#FF6900 0%,#FB5200 100%)">Save Changes</button>
                 <button type="button" id="bkmCancel"
-                    class="inline-flex items-center justify-center gap-2 font-bold text-sm uppercase tracking-[0.12em] px-7 py-3 rounded-lg border border-red-200 text-red-600 hover:bg-red-50 transition">Cancel Booking</button>
+                    class="inline-flex items-center justify-center gap-2 font-bold text-sm uppercase tracking-[0.12em] px-7 py-3.5 border-[1.5px] border-red-200 text-red-600 hover:bg-red-50 transition rounded">Cancel Booking</button>
             </div>
         </div>
     @endif
@@ -92,169 +119,190 @@
         csrf: document.querySelector('meta[name=csrf-token]')?.content || '',
     };
 
-    let selectedStart = BKM.booking.start; // 'Y-m-d H:i:s'
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    let selectedServiceId = BKM.booking.service_id;
+    let selectedDate  = BKM.booking.date;        // 'Y-m-d'
+    let selectedStart = BKM.booking.start;       // 'Y-m-d H:i:s'
+    let selectedSub   = BKM.booking.sub;
+    let holidayDates  = [];
+    const initD = new Date(BKM.booking.date + 'T00:00:00');
+    let calMonth = initD.getMonth(), calYear = initD.getFullYear();
 
-    const $service = document.getElementById('bkmService');
-    const $optWrap = document.getElementById('bkmOptionWrap');
-    const $opt     = document.getElementById('bkmOption');
-    const $optLbl  = document.getElementById('bkmOptionLabel');
-    const $date    = document.getElementById('bkmDate');
-    const $slots   = document.getElementById('bkmSlots');
-    const $slotsMsg= document.getElementById('bkmSlotsMsg');
-    const $name    = document.getElementById('bkmName');
-    const $email   = document.getElementById('bkmEmail');
-    const $phone   = document.getElementById('bkmPhone');
-    const $reg     = document.getElementById('bkmReg');
-    const $save    = document.getElementById('bkmSave');
-    const $cancel  = document.getElementById('bkmCancel');
-    const $alert   = document.getElementById('bkmAlert');
+    const $ = id => document.getElementById(id);
+    const fmt = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    const svc = () => BKM.services.find(s => s.id == selectedServiceId);
 
     function showAlert(msg, ok) {
-        $alert.className = 'mb-6 rounded-lg px-4 py-3 text-sm ' + (ok ? 'bg-green-50 border border-green-200 text-green-700' : 'bg-red-50 border border-red-200 text-red-700');
-        $alert.textContent = msg;
-        $alert.classList.remove('hidden');
+        const a = $('bkmAlert');
+        a.className = 'mb-6 rounded-lg px-4 py-3 text-sm ' + (ok ? 'bg-green-50 border border-green-200 text-green-700' : 'bg-red-50 border border-red-200 text-red-700');
+        a.textContent = msg;
+        a.classList.remove('hidden');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Populate service dropdown
-    BKM.services.forEach(s => {
-        const o = document.createElement('option');
-        o.value = s.id; o.textContent = s.name;
-        if (s.id == BKM.booking.service_id) o.selected = true;
-        $service.appendChild(o);
-    });
-
-    function currentService() {
-        return BKM.services.find(s => s.id == $service.value);
+    // ── Service cards ──
+    function renderServices() {
+        $('bkmServiceList').innerHTML = BKM.services.map(s => `
+            <button type="button" class="bm-service-card flex items-center gap-3 p-3.5 text-left ${s.id == selectedServiceId ? 'selected' : ''}" data-id="${s.id}">
+                <div class="w-10 h-10 rounded shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,#FF6900,#FB5200)">
+                    <i class="fa-solid fa-wrench text-white text-xs"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-bold uppercase tracking-[-0.02em] text-gray-900 text-sm">${s.name}</p>
+                    <p class="text-gray-400 text-xs mt-0.5">${s.duration_minutes} min &nbsp;·&nbsp; ${(s.options && s.options.length) ? 'From ' : ''}£${parseFloat(s.price ?? 0).toFixed(2)}</p>
+                </div>
+                <div class="bm-radio w-5 h-5 border-2 border-gray-200 rounded-full shrink-0"></div>
+            </button>`).join('');
+        $('bkmServiceList').querySelectorAll('[data-id]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                selectedServiceId = parseInt(btn.dataset.id);
+                selectedSub = '';
+                renderServices(); renderOptions(); fetchClosedDates(); selectedStart = null; drawCalendar(); fetchSlots();
+            });
+        });
     }
 
+    // ── Options ──
     function renderOptions() {
-        const svc = currentService();
-        const opts = (svc && Array.isArray(svc.options)) ? svc.options : [];
+        const s = svc();
+        const opts = (s && Array.isArray(s.options)) ? s.options : [];
+        const wrap = $('bkmOptWrap'), list = $('bkmOptList');
         if (opts.length) {
-            $optLbl.textContent = svc.options_label || 'Select Option';
-            $opt.innerHTML = '<option value="">— Choose —</option>' +
-                opts.map(o => `<option value="${o}">${o}</option>`).join('');
-            $opt.value = BKM.booking.sub && opts.includes(BKM.booking.sub) ? BKM.booking.sub : '';
-            $optWrap.classList.remove('hidden');
-        } else {
-            $opt.innerHTML = '';
-            $optWrap.classList.add('hidden');
-        }
-    }
-
-    async function fetchSlots() {
-        const date = $date.value;
-        const sid  = $service.value;
-        if (!date || !sid) return;
-        $slots.innerHTML = '';
-        $slotsMsg.textContent = 'Loading times…';
-        try {
-            const url = new URL(BKM.base + '/slots');
-            url.searchParams.set('date', date);
-            url.searchParams.set('service_id', sid);
-            const res = await fetch(url);
-            const data = await res.json();
-            $slots.innerHTML = '';
-            if (!Array.isArray(data) || !data.length) {
-                $slotsMsg.textContent = 'No available times on this date — try another day.';
-                return;
-            }
-            $slotsMsg.textContent = '';
-            data.forEach(slot => {
+            $('bkmOptLabel').textContent = s.options_label || 'Select Option';
+            list.innerHTML = '';
+            opts.forEach(o => {
                 const b = document.createElement('button');
                 b.type = 'button';
-                b.dataset.start = slot.start;
-                b.textContent = slot.display;
-                b.className = 'border rounded-lg py-2 text-sm transition';
-                applySlotStyle(b, slot.start === selectedStart);
+                b.className = 'bm-opt-btn' + (o === selectedSub ? ' bm-opt-selected' : '');
+                b.innerHTML = `<span class="bm-opt-radio"></span><span class="bm-opt-label">${o}</span>`;
                 b.addEventListener('click', () => {
-                    selectedStart = slot.start;
-                    [...$slots.children].forEach(c => applySlotStyle(c, c.dataset.start === selectedStart));
+                    selectedSub = o;
+                    list.querySelectorAll('.bm-opt-btn').forEach(x => x.classList.remove('bm-opt-selected'));
+                    b.classList.add('bm-opt-selected');
                 });
-                $slots.appendChild(b);
+                list.appendChild(b);
             });
-            // If the previously-selected time isn't in this list, clear it
-            if (![...$slots.children].some(c => c.dataset.start === selectedStart)) {
-                selectedStart = null;
-            }
-        } catch {
-            $slotsMsg.textContent = 'Could not load times. Please try again.';
+            wrap.classList.remove('hidden');
+        } else {
+            selectedSub = '';
+            wrap.classList.add('hidden');
         }
     }
 
-    function applySlotStyle(el, on) {
-        el.style.cssText = on
-            ? 'background:linear-gradient(135deg,#FF6900,#FB5200);color:#fff;border-color:transparent;'
-            : 'background:#fff;color:#374151;border-color:#e5e7eb;';
+    // ── Calendar ──
+    function drawCalendar() {
+        const s = svc();
+        $('bkmMonth').textContent = `${months[calMonth]} ${calYear}`;
+        const today = new Date(); today.setHours(0,0,0,0);
+        const first = new Date(calYear, calMonth, 1);
+        let dow = first.getDay(); dow = dow === 0 ? 6 : dow - 1;
+        const days = new Date(calYear, calMonth + 1, 0).getDate();
+        const minNotice = s?.min_notice_hours ?? 4;
+        const advance   = s?.advance_booking_days ?? 60;
+        const closed    = s?.closed_days ?? [];
+        const minDate = new Date(Date.now() + minNotice * 3600000); minDate.setHours(0,0,0,0);
+        const maxDate = new Date(today.getTime() + advance * 86400000);
+
+        const grid = $('bkmCalGrid');
+        grid.innerHTML = '';
+        for (let i = 0; i < dow; i++) grid.insertAdjacentHTML('beforeend', '<div></div>');
+        for (let d = 1; d <= days; d++) {
+            const date = new Date(calYear, calMonth, d);
+            const ds = fmt(date);
+            const disabled = date < minDate || date > maxDate || closed.includes(date.getDay()) || holidayDates.includes(ds);
+            const btn = document.createElement('button');
+            btn.type = 'button'; btn.textContent = d;
+            if (disabled) {
+                btn.disabled = true;
+                btn.className = 'bkm-cal-day w-full aspect-square text-xs text-gray-200 cursor-not-allowed';
+            } else if (ds === selectedDate) {
+                btn.className = 'bkm-cal-day sel w-full aspect-square text-xs';
+            } else {
+                btn.className = 'bkm-cal-day w-full aspect-square text-xs font-semibold text-gray-800';
+                btn.addEventListener('click', () => { selectedDate = ds; selectedStart = null; drawCalendar(); fetchSlots(); });
+            }
+            grid.appendChild(btn);
+        }
+        const dObj = new Date(selectedDate + 'T00:00:00');
+        $('bkmDateLabel').textContent = '· ' + dObj.toLocaleDateString('en-GB', {weekday:'short', day:'numeric', month:'short'});
     }
 
-    // Init values
-    $date.min = new Date().toISOString().slice(0, 10);
-    $date.value = BKM.booking.date;
-    $name.value = BKM.booking.name;
-    $email.value = BKM.booking.email;
-    $phone.value = BKM.booking.phone;
-    $reg.value = BKM.booking.reg;
-    renderOptions();
-    fetchSlots();
-
-    $service.addEventListener('change', () => { BKM.booking.sub = ''; renderOptions(); selectedStart = null; fetchSlots(); });
-    $date.addEventListener('change', () => { selectedStart = null; fetchSlots(); });
-
-    $save.addEventListener('click', async () => {
-        if (!$name.value.trim() || !$email.value.trim()) return showAlert('Please fill in your name and email.', false);
-        if (!selectedStart) return showAlert('Please choose an available time.', false);
-        if (!$optWrap.classList.contains('hidden') && !$opt.value) return showAlert('Please select a service option.', false);
-
-        $save.disabled = true;
-        const prev = $save.textContent;
-        $save.textContent = 'Saving…';
+    // ── Slots ──
+    async function fetchSlots() {
+        if (!selectedDate) return;
+        $('bkmSlots').innerHTML = '';
+        $('bkmSlotsMsg').textContent = 'Loading times…';
         try {
-            const res = await fetch(BKM.base, {
+            const url = new URL(BKM.base + '/slots');
+            url.searchParams.set('date', selectedDate);
+            url.searchParams.set('service_id', selectedServiceId);
+            const data = await (await fetch(url)).json();
+            $('bkmSlots').innerHTML = '';
+            if (!Array.isArray(data) || !data.length) { $('bkmSlotsMsg').textContent = 'No available times — try another day.'; return; }
+            $('bkmSlotsMsg').textContent = '';
+            data.forEach(slot => {
+                const b = document.createElement('button');
+                b.type = 'button'; b.className = 'bm-slot py-2.5'; b.dataset.start = slot.start; b.textContent = slot.display;
+                if (slot.start === selectedStart) b.classList.add('selected');
+                b.addEventListener('click', () => {
+                    selectedStart = slot.start;
+                    $('bkmSlots').querySelectorAll('.bm-slot').forEach(x => x.classList.toggle('selected', x.dataset.start === selectedStart));
+                });
+                $('bkmSlots').appendChild(b);
+            });
+            if (![...$('bkmSlots').children].some(c => c.dataset.start === selectedStart)) selectedStart = null;
+        } catch { $('bkmSlotsMsg').textContent = 'Could not load times.'; }
+    }
+
+    async function fetchClosedDates() {
+        holidayDates = [];
+        try {
+            const data = await (await fetch(`/api/booking/closed-dates?service_id=${selectedServiceId}`)).json();
+            if (Array.isArray(data)) holidayDates = data;
+        } catch {}
+        drawCalendar();
+    }
+
+    // ── Init ──
+    $('bkmName').value = BKM.booking.name;
+    $('bkmEmail').value = BKM.booking.email;
+    $('bkmPhone').value = BKM.booking.phone;
+    $('bkmReg').value = BKM.booking.reg;
+    renderServices(); renderOptions(); drawCalendar(); fetchSlots(); fetchClosedDates();
+
+    $('bkmPrev').addEventListener('click', () => { if (--calMonth < 0) { calMonth = 11; calYear--; } drawCalendar(); });
+    $('bkmNext').addEventListener('click', () => { if (++calMonth > 11) { calMonth = 0; calYear++; } drawCalendar(); });
+
+    $('bkmSave').addEventListener('click', async () => {
+        if (!$('bkmName').value.trim() || !$('bkmEmail').value.trim()) return showAlert('Please fill in your name and email.', false);
+        if (!selectedStart) return showAlert('Please choose an available time.', false);
+        if (!$('bkmOptWrap').classList.contains('hidden') && !selectedSub) return showAlert('Please select a service option.', false);
+        const btn = $('bkmSave'); btn.disabled = true; const t = btn.textContent; btn.textContent = 'Saving…';
+        try {
+            const data = await (await fetch(BKM.base, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': BKM.csrf },
                 body: JSON.stringify({
-                    service_id:     $service.value,
-                    start:          selectedStart,
-                    customer_name:  $name.value.trim(),
-                    customer_email: $email.value.trim(),
-                    customer_phone: $phone.value.trim(),
-                    vehicle_reg:    $reg.value.trim(),
-                    sub_service:    $optWrap.classList.contains('hidden') ? '' : $opt.value,
+                    service_id: selectedServiceId, start: selectedStart,
+                    customer_name: $('bkmName').value.trim(), customer_email: $('bkmEmail').value.trim(),
+                    customer_phone: $('bkmPhone').value.trim(), vehicle_reg: $('bkmReg').value.trim(),
+                    sub_service: $('bkmOptWrap').classList.contains('hidden') ? '' : selectedSub,
                 }),
-            });
-            const data = await res.json();
-            if (data.success) {
-                BKM.booking.start = selectedStart;
-                showAlert('Your booking has been updated. A confirmation email is on its way.', true);
-            } else {
-                showAlert(data.message || 'Could not save changes. Please try again.', false);
-            }
-        } catch {
-            showAlert('Network error. Please try again.', false);
-        }
-        $save.disabled = false;
-        $save.textContent = prev;
+            })).json();
+            if (data.success) { BKM.booking.start = selectedStart; showAlert('Your booking has been updated. A confirmation email is on its way.', true); }
+            else showAlert(data.message || 'Could not save changes. Please try again.', false);
+        } catch { showAlert('Network error. Please try again.', false); }
+        btn.disabled = false; btn.textContent = t;
     });
 
-    $cancel.addEventListener('click', async () => {
+    $('bkmCancel').addEventListener('click', async () => {
         if (!confirm('Are you sure you want to cancel this booking? This cannot be undone.')) return;
-        $cancel.disabled = true;
+        const btn = $('bkmCancel'); btn.disabled = true;
         try {
-            const res = await fetch(BKM.base + '/cancel', { method: 'POST', headers: { 'X-CSRF-TOKEN': BKM.csrf } });
-            const data = await res.json();
-            if (data.success) {
-                document.getElementById('bkmForm').style.display = 'none';
-                showAlert('Your booking has been cancelled. A confirmation email has been sent.', true);
-            } else {
-                showAlert('Could not cancel. Please try again.', false);
-                $cancel.disabled = false;
-            }
-        } catch {
-            showAlert('Network error. Please try again.', false);
-            $cancel.disabled = false;
-        }
+            const data = await (await fetch(BKM.base + '/cancel', { method: 'POST', headers: { 'X-CSRF-TOKEN': BKM.csrf } })).json();
+            if (data.success) { $('bkmForm').style.display = 'none'; showAlert('Your booking has been cancelled. A confirmation email has been sent.', true); }
+            else { showAlert('Could not cancel. Please try again.', false); btn.disabled = false; }
+        } catch { showAlert('Network error. Please try again.', false); btn.disabled = false; }
     });
 })();
 </script>
