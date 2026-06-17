@@ -54,6 +54,7 @@
 
                 <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mt-8 mb-4 px-2">Apps</div>
                 <nav class="space-y-1">
+                    @can('manage bookings')
                     <a href="{{ route('admin.bookings.index') }}"
                         class="flex items-center px-2 py-2.5 rounded-lg {{ request()->routeIs('admin.bookings.*') ? 'bg-primary text-white' : 'text-gray-400 hover:text-white hover:bg-gray-900' }} group transition-colors">
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,6 +64,8 @@
                         </svg>
                         Bookings
                     </a>
+                    @endcan
+                    @can('manage services')
                     <a href="{{ route('admin.services.index') }}"
                         class="flex items-center px-2 py-2.5 rounded-lg {{ request()->routeIs('admin.services.*') ? 'bg-primary text-white' : 'text-gray-400 hover:text-white hover:bg-gray-900' }} group transition-colors">
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,6 +75,8 @@
                         </svg>
                         Services
                     </a>
+                    @endcan
+                    @can('manage staff')
                     <a href="{{ route('admin.staff.index') }}"
                         class="flex items-center px-2 py-2.5 rounded-lg {{ request()->routeIs('admin.staff.*') ? 'bg-primary text-white' : 'text-gray-400 hover:text-white hover:bg-gray-900' }} group transition-colors">
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,6 +86,8 @@
                         </svg>
                         Staff
                     </a>
+                    @endcan
+                    @can('manage availability')
                     <a href="{{ route('admin.availability.index') }}"
                         class="flex items-center px-2 py-2.5 rounded-lg {{ request()->routeIs('admin.availability.*') ? 'bg-primary text-white' : 'text-gray-400 hover:text-white hover:bg-gray-900' }} group transition-colors">
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,6 +97,8 @@
                         </svg>
                         Availability
                     </a>
+                    @endcan
+                    @can('manage settings')
                     <a href="{{ route('admin.google-reviews.index') }}"
                         class="flex items-center px-2 py-2.5 rounded-lg {{ request()->routeIs('admin.google-reviews.*') ? 'bg-primary text-white' : 'text-gray-400 hover:text-white hover:bg-gray-900' }} group transition-colors">
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -159,6 +168,7 @@
                         </svg>
                         Settings
                     </a>
+                    @endcan
                 </nav>
             </div>
         </aside>
