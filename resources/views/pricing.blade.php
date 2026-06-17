@@ -126,7 +126,6 @@
                     </div>
                     <div class="mt-auto pt-4 border-t border-white/10 flex items-end justify-between">
                         <div>
-                            <p class="text-[10px] font-bold tracking-[0.1em] text-white/35 uppercase mb-1">Fixed Price</p>
                             <p class="font-geist font-bold text-[40px] text-white leading-none tracking-[-0.05em]">£45</p>
                         </div>
                         <a href="#book"
@@ -422,10 +421,8 @@
                                     <p class="text-[12px] text-white/40 mt-0.5">Annual roadworthiness certificate</p>
                                 </div>
                                 <div class="shrink-0 text-right ml-4 flex flex-col items-end">
-                                    <p class="text-[9px] font-bold tracking-[0.1em] text-white/30 uppercase leading-none">
-                                        fixed price</p>
                                     <p
-                                        class="font-geist font-bold text-[18px] text-primary leading-none tracking-[-0.04em] mt-0.5">
+                                        class="font-geist font-bold text-[18px] text-primary leading-none tracking-[-0.04em]">
                                         £45</p>
                                 </div>
                             </div>
