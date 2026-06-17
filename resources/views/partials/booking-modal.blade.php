@@ -336,11 +336,15 @@
     }
 
     // ── Steps ─────────────────────────────────────────────────────────────────
+    const BM_TITLES = { 1: 'Book Your Service', 2: 'Book Your Date', 3: 'Book Your Time', 4: 'Your Details', 5: 'Booking Confirmed' };
+
     function goToStep(n) {
         state.step = n;
         document.querySelectorAll('[data-step-panel]').forEach(el => {
             el.classList.toggle('hidden', parseInt(el.dataset.stepPanel) !== n);
         });
+        const titleEl = document.getElementById('bm-title');
+        if (titleEl && BM_TITLES[n]) titleEl.textContent = BM_TITLES[n];
         updateStepIndicator(n);
         updateFooter(n);
         if (n === 2) initCalendar();
