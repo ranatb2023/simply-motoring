@@ -472,9 +472,10 @@
     function autoSelect(slug) {
         const match = state.services.find(s => s.name.toLowerCase().includes(slug));
         if (match) {
+            // Pre-select the matching service but stay on the Service step
+            // so the flow always starts at step 1.
             selectService(match.id);
             state._pendingSlug = null;
-            goToStep(2);
         }
     }
 
