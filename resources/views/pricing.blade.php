@@ -346,14 +346,14 @@
                                 <p class="font-semibold text-[14px] text-black leading-tight">Major Service</p>
                                 <p
                                     class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] ml-4 shrink-0">
-                                    £290</p>
+                                    <span class="text-[10px] font-bold uppercase tracking-[0.08em] text-gray-400 mr-1">From</span>£290</p>
                             </div>
                             <div
                                 class="flex items-center justify-between rounded-xl px-4 py-3.5 hover:bg-orange-50/50 border border-transparent hover:border-primary/10 transition-all duration-200">
                                 <p class="font-semibold text-[14px] text-black leading-tight">Oil & Oil Filter Change</p>
                                 <p
                                     class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] ml-4 shrink-0">
-                                    £90</p>
+                                    <span class="text-[10px] font-bold uppercase tracking-[0.08em] text-gray-400 mr-1">From</span>£90</p>
                             </div>
                             <div
                                 class="flex items-center justify-between rounded-xl px-4 py-3.5 hover:bg-orange-50/50 border border-transparent hover:border-primary/10 transition-all duration-200">
@@ -438,7 +438,7 @@
                                 <p class="font-semibold text-[14px] text-white leading-tight">Full Vehicle Health Check</p>
                                 <p
                                     class="font-geist font-bold text-[18px] text-white leading-none tracking-[-0.04em] ml-4 shrink-0">
-                                    £190</p>
+                                    <span class="text-[10px] font-bold uppercase tracking-[0.08em] text-white/40 mr-1">From</span>£190</p>
                             </div>
                         </div>
                     </div>
@@ -579,7 +579,7 @@
                                 <p class="font-semibold text-[14px] text-black leading-tight">Electrical Diagnostics</p>
                                 <p
                                     class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] ml-4 shrink-0">
-                                    £96</p>
+                                    <span class="text-[10px] font-bold uppercase tracking-[0.08em] text-gray-400 mr-1">From</span>£96</p>
                             </div>
                         </div>
                     </div>
