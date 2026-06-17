@@ -66,8 +66,11 @@
         </div>
 
         <div class="footer">
-            &copy; {{ date('Y') }} Simply Motoring &nbsp;·&nbsp;
+            <a href="https://wa.me/441302456406">WhatsApp us</a> &nbsp;·&nbsp;
+            <a href="https://simplymotoring.uk/">simplymotoring.uk</a> &nbsp;·&nbsp;
             <a href="mailto:hello@simplymotoring.uk">hello@simplymotoring.uk</a>
+            <br><br>
+            &copy; {{ date('Y') }} Simply Motoring
         </div>
     </div>
 </body>
