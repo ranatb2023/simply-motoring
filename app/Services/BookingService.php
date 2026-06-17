@@ -541,50 +541,72 @@ class BookingService
             $service  = Service::find($data['service_id']);
             $svcName  = $service ? $service->name : 'Booking';
             $reg      = !empty($data['reg']) ? $data['reg'] : null;
-            $title    = $svcName . ($reg ? ' — ' . strtoupper($reg) : ' — ' . $data['customer']['name']);
-            $subLabel = !empty($data['sub_service']) ? "\nOption: {$data['sub_service']}" : '';
+            $suffix   = $reg ? ' — ' . strtoupper($reg) : ' — ' . $data['customer']['name'];
 
             $tz = Setting::where('key', 'timezone')->value('value') ?: config('app.timezone', 'UTC');
+            // Parse wall-clock times AS the business timezone so the RFC3339 offset is correct.
+            $startC = Carbon::parse($data['start'], $tz);
+            $endC   = Carbon::parse($booking->end_datetime->format('Y-m-d H:i:s'), $tz);
 
-            $event = [
-                'summary'     => $title,
-                'description' => implode("\n", array_filter([
-                    "Service: {$svcName}" . (!empty($data['sub_service']) ? " ({$data['sub_service']})" : ''),
-                    "Customer: {$data['customer']['name']}",
-                    "Email: {$data['customer']['email']}",
-                    "Phone: " . ($data['customer']['phone'] ?? '-'),
-                    "Reg: " . ($reg ?? '-'),
-                ])),
-                // Parse the booking's wall-clock time AS the business timezone so the
-                // RFC3339 offset is correct (otherwise it's read as UTC and lands an hour off).
-                'start' => ['dateTime' => Carbon::parse($data['start'], $tz)->toRfc3339String(), 'timeZone' => $tz],
-                'end'   => ['dateTime' => Carbon::parse($booking->end_datetime->format('Y-m-d H:i:s'), $tz)->toRfc3339String(), 'timeZone' => $tz],
+            // Finds the calendar another active service is mapped to (by exact name)
+            $calForName = function ($name) use ($calSettings) {
+                $s = Service::whereRaw('LOWER(name) = ?', [strtolower($name)])->first();
+                return ($s && !empty($calSettings[(string) $s->id]['google_calendar_id']))
+                    ? $calSettings[(string) $s->id]['google_calendar_id'] : null;
+            };
+
+            // "Service + MOT" is split into two back-to-back events (60 min MOT then
+            // the remaining Service), each going to its own mapped calendar.
+            $nameLower  = strtolower($svcName);
+            $isCombined = (strpos($nameLower, 'mot') !== false && strpos($nameLower, 'service') !== false);
+
+            $parts = [];
+            if ($isCombined) {
+                $mid = (clone $startC)->addMinutes(60);
+                $parts[] = ['label' => 'MOT',     'start' => $startC, 'end' => $mid,  'calendar' => $calForName('MOT')     ?: $calendarId];
+                $parts[] = ['label' => 'Service', 'start' => $mid,    'end' => $endC, 'calendar' => $calForName('Service') ?: $calendarId];
+            } else {
+                $parts[] = ['label' => $svcName, 'start' => $startC, 'end' => $endC, 'calendar' => $calendarId];
+            }
+
+            $descTail = [
+                "Customer: {$data['customer']['name']}",
+                "Email: {$data['customer']['email']}",
+                "Phone: " . ($data['customer']['phone'] ?? '-'),
+                "Reg: " . ($reg ?? '-'),
             ];
 
-            $response = Http::withToken($token)
-                ->post("https://www.googleapis.com/calendar/v3/calendars/" . urlencode($calendarId) . "/events", $event);
+            $created = [];
+            foreach ($parts as $p) {
+                $event = [
+                    'summary'     => $p['label'] . $suffix,
+                    'description' => implode("\n", array_merge(
+                        ["Service: {$svcName}" . (!empty($data['sub_service']) ? " ({$data['sub_service']})" : '')],
+                        $descTail
+                    )),
+                    'start' => ['dateTime' => $p['start']->toRfc3339String(), 'timeZone' => $tz],
+                    'end'   => ['dateTime' => $p['end']->toRfc3339String(),   'timeZone' => $tz],
+                ];
+                $response = Http::withToken($token)
+                    ->post("https://www.googleapis.com/calendar/v3/calendars/" . urlencode($p['calendar']) . "/events", $event);
 
-            // Store event ID on booking for later deletion
-            if ($response->successful()) {
-                $eventId = $response->json('id');
-                if ($eventId) {
-                    $booking->update([
-                        'google_event_id'    => $eventId,
-                        'google_calendar_id' => $calendarId,
-                    ]);
-                    \Log::info('GCal event created', [
-                        'booking_id' => $booking->id, 'event_id' => $eventId,
-                        'account' => $accountEmail, 'calendar' => $calendarId,
+                if ($response->successful() && $response->json('id')) {
+                    $created[] = ['event_id' => $response->json('id'), 'calendar_id' => $p['calendar']];
+                } else {
+                    \Log::error('GCal sync failed: Google API rejected the event', [
+                        'booking_id' => $booking->id, 'calendar' => $p['calendar'],
+                        'status' => $response->status(), 'body' => $response->body(),
                     ]);
                 }
-            } else {
-                \Log::error('GCal sync failed: Google API rejected the event', [
-                    'booking_id' => $booking->id,
-                    'account'    => $accountEmail,
-                    'calendar'   => $calendarId,
-                    'status'     => $response->status(),
-                    'body'       => $response->body(),
+            }
+
+            if (!empty($created)) {
+                $booking->update([
+                    'google_events'      => $created,
+                    'google_event_id'    => $created[0]['event_id'],
+                    'google_calendar_id' => $created[0]['calendar_id'],
                 ]);
+                \Log::info('GCal events created', ['booking_id' => $booking->id, 'count' => count($created)]);
             }
 
         } catch (\Throwable $e) {
@@ -595,10 +617,26 @@ class BookingService
         }
     }
 
+    /**
+     * Normalize a booking's calendar events into a list of [event_id, calendar_id].
+     * Falls back to the single legacy google_event_id for older bookings.
+     */
+    private function bookingEvents(Booking $booking): array
+    {
+        if (is_array($booking->google_events) && !empty($booking->google_events)) {
+            return $booking->google_events;
+        }
+        if ($booking->google_event_id) {
+            return [['event_id' => $booking->google_event_id, 'calendar_id' => $booking->google_calendar_id ?: 'primary']];
+        }
+        return [];
+    }
+
     public function deleteGoogleCalendarEvent(Booking $booking): void
     {
         try {
-            if (!$booking->google_event_id) return;
+            $events = $this->bookingEvents($booking);
+            if (empty($events)) return;
 
             $googleAccounts = Setting::where('key', 'google_accounts')->value('value');
             $googleAccounts = $googleAccounts ? json_decode($googleAccounts, true) : [];
@@ -611,10 +649,13 @@ class BookingService
 
             if (!$token) return;
 
-            $calendarId = $booking->google_calendar_id ?: 'primary';
-
-            Http::withToken($token)
-                ->delete("https://www.googleapis.com/calendar/v3/calendars/" . urlencode($calendarId) . "/events/" . urlencode($booking->google_event_id));
+            foreach ($events as $ev) {
+                if (empty($ev['event_id'])) continue;
+                Http::withToken($token)->delete(
+                    "https://www.googleapis.com/calendar/v3/calendars/" . urlencode($ev['calendar_id'] ?: 'primary')
+                    . "/events/" . urlencode($ev['event_id'])
+                );
+            }
 
         } catch (\Throwable) {
             // Silent fail
@@ -671,26 +712,31 @@ class BookingService
 
         foreach ($bookings as $booking) {
             $checked++;
-            $calendarId = $booking->google_calendar_id ?: 'primary';
+            $events = $this->bookingEvents($booking);
+            if (empty($events)) continue;
 
             try {
-                $resp = Http::withToken($token)->get(
-                    'https://www.googleapis.com/calendar/v3/calendars/' . urlencode($calendarId)
-                    . '/events/' . urlencode($booking->google_event_id)
-                );
-
-                $deleted = false;
-                if (in_array($resp->status(), [404, 410], true)) {
-                    $deleted = true; // event no longer exists
-                } elseif ($resp->successful() && $resp->json('status') === 'cancelled') {
-                    $deleted = true; // event cancelled in Google
+                $anyDeleted = false;
+                foreach ($events as $ev) {
+                    if (empty($ev['event_id'])) continue;
+                    $resp = Http::withToken($token)->get(
+                        'https://www.googleapis.com/calendar/v3/calendars/' . urlencode($ev['calendar_id'] ?: 'primary')
+                        . '/events/' . urlencode($ev['event_id'])
+                    );
+                    if (in_array($resp->status(), [404, 410], true)
+                        || ($resp->successful() && $resp->json('status') === 'cancelled')) {
+                        $anyDeleted = true; // this block was removed in Google
+                        break;
+                    }
                 }
 
-                if ($deleted) {
+                if ($anyDeleted) {
+                    // Remove any remaining blocks from Google, then cancel the booking
+                    $this->deleteGoogleCalendarEvent($booking);
                     $booking->update(['status' => 'cancelled']);
                     $cancelled++;
                     \Log::info('Calendar delete-sync: booking cancelled (event removed in Google)', [
-                        'booking_id' => $booking->id, 'event_id' => $booking->google_event_id,
+                        'booking_id' => $booking->id,
                     ]);
                 }
             } catch (\Throwable $e) {
