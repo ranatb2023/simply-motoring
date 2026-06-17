@@ -272,9 +272,6 @@
         'full service':    ['Health Check', 'Interim Service', 'Full Service'],
         'interim service': ['Health Check', 'Interim Service', 'Full Service'],
         'health check':    ['Health Check', 'Interim Service', 'Full Service'],
-        'mot':             ['MOT', 'MOT & Service'],
-        'mot test':        ['MOT', 'MOT & Service'],
-        'mot and service': ['MOT', 'MOT & Service'],
     };
 
     // ── DOM refs ───────────────────────────────────────────────────────────────
