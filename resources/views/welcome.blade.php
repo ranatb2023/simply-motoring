@@ -589,7 +589,7 @@
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Overall MOT inspection
+                                        A pre-MOT check to help your car pass its MOT the first time.
                                     </li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
@@ -630,15 +630,11 @@
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
                                         class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        DVSA Approved MOT
+                                        Official DVSA MOT Test to ensure your vehicle meets road safety and environmental standards.
                                     </li>
                                     <li
                                         class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        Advice / feedback given on MOT results
-                                    </li>
-                                    <li
-                                        class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        Free MOT retest within 10 working days
+                                        Takes 45–60 minutes
                                     </li>
                                 </ul>
                             </div>
@@ -815,7 +811,7 @@
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Overall MOT inspection</li>
+                                        A pre-MOT check to help your car pass its MOT the first time.</li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
                                         Takes 30 minutes</li>
@@ -847,13 +843,10 @@
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
                                         class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        DVSA Approved MOT</li>
+                                        Official DVSA MOT Test to ensure your vehicle meets road safety and environmental standards.</li>
                                     <li
                                         class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        Advice / feedback given on MOT results</li>
-                                    <li
-                                        class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        Free MOT retest within 10 working days</li>
+                                        Takes 45–60 minutes</li>
                                 </ul>
                             </div>
                             <button
