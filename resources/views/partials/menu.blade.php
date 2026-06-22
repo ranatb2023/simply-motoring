@@ -77,9 +77,9 @@
                 <a href="{{ route('pricing') }}"
                     class="menu-link text-[48px] lg:text-[64px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('pricing') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block mt-2 lg:mt-0"
                     data-active="{{ request()->routeIs('pricing') ? 'true' : 'false' }}">Pricing</a>
-                <a href="{{ route('blogs') }}"
-                    class="menu-link text-[48px] lg:text-[64px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('blogs') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block mt-2 lg:mt-0"
-                    data-active="{{ request()->routeIs('blogs') ? 'true' : 'false' }}">Blogs</a>
+                <a href="{{ route('blog.index') }}"
+                    class="menu-link text-[48px] lg:text-[64px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('blog.*') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block mt-2 lg:mt-0"
+                    data-active="{{ request()->routeIs('blog.*') ? 'true' : 'false' }}">Blogs</a>
                 <a href="{{ route('contact') }}"
                     class="menu-link text-[48px] lg:text-[64px] font-bold leading-[0.9] tracking-tighter {{ request()->routeIs('contact') ? 'text-primary' : 'text-white/20' }} hover:text-primary transition-colors duration-300 uppercase block"
                     data-active="{{ request()->routeIs('contact') ? 'true' : 'false' }}">Contact Us</a>

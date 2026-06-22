@@ -35,7 +35,7 @@ Route::get('/sitemap.xml', function () {
         route('service.brake-fluid-change'),
         route('pricing'),
         route('contact'),
-        route('blogs'),
+        route('blog.index'),
     ];
 
     $urls = array_map(fn ($loc) => ['loc' => $loc, 'lastmod' => null], $locs);
@@ -98,28 +98,9 @@ Route::get('/service/mot-test', function () {
     return view('services.mot-test');
 })->name('service.mot-test');
 
-Route::get('/blogs', function () {
-    $featuredPost = \App\Models\BlogPost::published()
-        ->featured()
-        ->latest('published_at')
-        ->first();
-
-    // If no featured post manually selected, take the very latest one
-    if (!$featuredPost) {
-        $featuredPost = \App\Models\BlogPost::published()
-            ->latest('published_at')
-            ->first();
-    }
-
-    $posts = \App\Models\BlogPost::published()
-        ->when($featuredPost, function ($query) use ($featuredPost) {
-            return $query->where('id', '!=', $featuredPost->id);
-        })
-        ->latest('published_at')
-        ->paginate(9); // 3 columns x 3 rows = 9 posts per page looks good
-
-    return view('blogs', compact('featuredPost', 'posts'));
-})->name('blogs');
+// Old /blogs listing consolidated into the full /blog system (301 redirect).
+// Name kept so any lingering route('blogs') references still resolve.
+Route::redirect('/blogs', '/blog', 301)->name('blogs');
 
 Route::get('/dashboard', function () {
     return redirect()->route('admin.dashboard');

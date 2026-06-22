@@ -1,5 +1,8 @@
 @extends('layouts.main')
 
+@section('meta_title', 'Car Maintenance Tips & MOT Advice Blog | Simply Motoring')
+@section('meta_description', 'Read expert MOT advice, servicing tips and vehicle maintenance guides from Simply Motoring to keep your car safe and road-ready.')
+
 @section('content')
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-br from-gray-900 to-black text-white py-32 overflow-hidden">
