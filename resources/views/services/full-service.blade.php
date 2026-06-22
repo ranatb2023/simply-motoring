@@ -353,7 +353,7 @@
                                             <i class="fa-light fa-tire text-2xl text-white"></i>
                                         </div>
                                         <span class="text-lg lg:text-xl font-medium leading-tight text-white">Check tyre
-                                            tread depth</span>
+                                            condition and tread depth</span>
                                     </li>
                                     <li class="flex items-start gap-4">
                                         <div class="flex items-center justify-center shrink-0 mt-1">
