@@ -245,13 +245,6 @@
                                         <div class="flex items-center justify-center shrink-0 mt-1">
                                             <i class="fa-light fa-tire text-2xl text-white"></i>
                                         </div>
-                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Check battery
-                                            condition and charging system</span>
-                                    </li>
-                                    <li class="flex items-start gap-4">
-                                        <div class="flex items-center justify-center shrink-0 mt-1">
-                                            <i class="fa-light fa-tire text-2xl text-white"></i>
-                                        </div>
                                         <span class="text-lg lg:text-xl font-medium leading-tight text-white">Inspect
                                             wipers, washers, and washer fluid</span>
                                     </li>
@@ -280,13 +273,6 @@
                                         </div>
                                         <span class="text-lg lg:text-xl font-medium leading-tight text-white">Test air
                                             filters, belts, and hoses</span>
-                                    </li>
-                                    <li class="flex items-start gap-4">
-                                        <div class="flex items-center justify-center shrink-0 mt-1">
-                                            <i class="fa-light fa-tire text-2xl text-white"></i>
-                                        </div>
-                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Road test to
-                                            confirm all systems are performing correctly</span>
                                     </li>
                                 </ul>
                             </div>
@@ -399,13 +385,6 @@
                                         <div class="flex items-center justify-center shrink-0 mt-1">
                                             <i class="fa-light fa-tire text-2xl text-white"></i>
                                         </div>
-                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Check battery
-                                            condition and charging system</span>
-                                    </li>
-                                    <li class="flex items-start gap-4">
-                                        <div class="flex items-center justify-center shrink-0 mt-1">
-                                            <i class="fa-light fa-tire text-2xl text-white"></i>
-                                        </div>
                                         <span class="text-lg lg:text-xl font-medium leading-tight text-white">Inspect
                                             wipers, washers, and washer fluid</span>
                                     </li>
@@ -434,13 +413,6 @@
                                         </div>
                                         <span class="text-lg lg:text-xl font-medium leading-tight text-white">Test air
                                             filters, belts, and hoses</span>
-                                    </li>
-                                    <li class="flex items-start gap-4">
-                                        <div class="flex items-center justify-center shrink-0 mt-1">
-                                            <i class="fa-light fa-tire text-2xl text-white"></i>
-                                        </div>
-                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Road test to
-                                            confirm all systems are performing correctly</span>
                                     </li>
                                 </ul>
                             </div>
