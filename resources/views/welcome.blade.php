@@ -513,7 +513,7 @@
                                                                                                                                                                                                                                                                                                                                                                                                     next() {
                                                                                                                                                                                                                                                                                                                                                                                                         this.transitioning = true;
                                                                                                                                                                                                                                                                                                                                                                                                         this.active++;
-                                                                                                                                                                                                                                                                                                                                                                                                        if (this.active >= 4) {
+                                                                                                                                                                                                                                                                                                                                                                                                        if (this.active >= 5) {
                                                                                                                                                                                                                                                                                                                                                                                                             setTimeout(() => {
                                                                                                                                                                                                                                                                                                                                                                                                                 this.transitioning = false;
                                                                                                                                                                                                                                                                                                                                                                                                                 this.active = 0;
@@ -523,10 +523,10 @@
                                                                                                                                                                                                                                                                                                                                                                                                     prev() {
                                                                                                                                                                                                                                                                                                                                                                                                         if (this.active === 0) {
                                                                                                                                                                                                                                                                                                                                                                                                             this.transitioning = false;
-                                                                                                                                                                                                                                                                                                                                                                                                            this.active = 4;
+                                                                                                                                                                                                                                                                                                                                                                                                            this.active = 5;
                                                                                                                                                                                                                                                                                                                                                                                                             setTimeout(() => {
                                                                                                                                                                                                                                                                                                                                                                                                                 this.transitioning = true;
-                                                                                                                                                                                                                                                                                                                                                                                                                this.active = 3;
+                                                                                                                                                                                                                                                                                                                                                                                                                this.active = 4;
                                                                                                                                                                                                                                                                                                                                                                                                             }, 50);
                                                                                                                                                                                                                                                                                                                                                                                                         } else {
                                                                                                                                                                                                                                                                                                                                                                                                             this.transitioning = true;
@@ -589,7 +589,11 @@
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Can take upto 60 minutes
+                                        Overall MOT inspection
+                                    </li>
+                                    <li
+                                        class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
+                                        Takes 30 minutes
                                     </li>
                                 </ul>
                             </div>
@@ -661,27 +665,31 @@
                             <div class="p-8 pb-12 flex-1 flex flex-col">
                                 <div
                                     class="inline-block border text-white/80 border-white rounded-full px-4 py-1.5 text-[16px] font-medium uppercase tracking-[-0.06em] leading-[1.26] mb-8 w-fit">
-                                    Interim Service + MOT Test
+                                    Interim Service
                                 </div>
                                 <div class="flex items-baseline gap-1 mb-10">
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£170</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£125</span>
                                 </div>
 
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        MOT +77 point, 12,000 miles inspection
+                                        Engine oil &amp; oil filter change
                                     </li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        A more detailed maintenance option than an oil and filter change
+                                        Visual tyre inspection
                                     </li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Save when booking together, on the same day or different days
+                                        Visual brake inspection
+                                    </li>
+                                    <li
+                                        class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
+                                        Lights, wipers &amp; bodywork check
                                     </li>
                                 </ul>
                             </div>
@@ -720,19 +728,19 @@
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Standard MOT
+                                        Includes all from Interim Service, plus:
                                     </li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        A more detailed maintenance
+                                        Air filter replacement
                                     </li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Option than an oil and filter change
+                                        Fluid top-ups (Coolant, Brake fluid, Screen wash, Power steering fluid)
                                     </li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Save when booking together
+                                        Spark plug check (not replacement)
                                     </li>
                                 </ul>
                             </div>
@@ -740,6 +748,43 @@
                             <!-- Footer / Button -->
                             <button
                                 class="h-[70px] flex items-stretch border-t border-white/50 hover:bg-black/20 transition-colors cursor-pointer group/btn mt-auto">
+                                <div
+                                    class="flex-1 flex items-center px-8 font-semibold text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT]">
+                                    Book Now
+                                </div>
+                                <div
+                                    class="w-[100px] relative flex items-center justify-center border-l border-white/50 origin-bottom">
+                                    <i
+                                        class="fa-solid fa-arrow-right -rotate-0 group-hover/btn:-rotate-45 transition-transform duration-300 text-lg"></i>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Card 5: Major Service (Black) -->
+                        <div class="flex flex-col bg-black text-white rounded-tr-[16px] rounded-bl-[16px] overflow-hidden relative group h-full shadow-lg hover:shadow-xl transition-shadow duration-300 w-[calc(100vw-3rem)] lg:w-[400px] max-w-none shrink-0"
+                            style="clip-path: polygon(50px 0, 100% 0, 100% calc(100% - 50px), calc(100% - 50px) 100%, 0 100%, 0 50px);">
+                            <div class="p-8 pb-12 flex-1 flex flex-col">
+                                <div
+                                    class="inline-block border text-white/80 border-white rounded-full px-4 py-1.5 text-[16px] font-medium uppercase tracking-[-0.06em] leading-[1.26] mb-8 w-fit bg-transparent">
+                                    Major Service
+                                </div>
+                                <div class="flex items-baseline gap-1 mb-10">
+                                    <span
+                                        class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
+                                    <span
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£290</span>
+                                </div>
+                                <ul class="flex flex-col mt-auto -mx-8">
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Includes all from Full Service, plus:</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Transmission &amp; differential visual inspection</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Suspension &amp; steering check</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Fuel system inspection</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Fuel filter change (diesel vehicles)</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Manufacturer-specific checks for safety &amp; efficiency</li>
+                                </ul>
+                            </div>
+                            <button
+                                class="h-[70px] flex items-stretch border-t border-white/50 hover:bg-white/20 transition-colors cursor-pointer group/btn mt-auto text-white">
                                 <div
                                     class="flex-1 flex items-center px-8 font-semibold text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT]">
                                     Book Now
@@ -764,8 +809,6 @@
                                     class="inline-block border text-white/80 border-white rounded-full px-4 py-1.5 text-[16px] font-medium uppercase tracking-[-0.06em] leading-[1.26] mb-8 w-fit bg-transparent">
                                     Pre-MOT Check</div>
                                 <div class="flex items-baseline gap-1 mb-10">
-                                    <span
-                                        class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
                                         class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£30</span>
                                 </div>
@@ -799,20 +842,18 @@
                                     MOT Test</div>
                                 <div class="flex items-baseline gap-1 mb-10">
                                     <span
-                                        class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
-                                    <span
                                         class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£45</span>
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
                                         class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        25 point inspection</li>
+                                        DVSA Approved MOT</li>
                                     <li
                                         class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        Takes 45-60 minutes</li>
+                                        Advice / feedback given on MOT results</li>
                                     <li
                                         class="py-4 px-8 border-t border-black/10 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-black/80">
-                                        MOT Results</li>
+                                        Free MOT retest within 10 working days</li>
                                 </ul>
                             </div>
                             <button
@@ -834,24 +875,27 @@
                             <div class="p-8 pb-12 flex-1 flex flex-col">
                                 <div
                                     class="inline-block border text-white/80 border-white rounded-full px-4 py-1.5 text-[16px] font-medium uppercase tracking-[-0.06em] leading-[1.26] mb-8 w-fit">
-                                    Interim Service + MOT Test
+                                    Interim Service
                                 </div>
                                 <div class="flex items-baseline gap-1 mb-10">
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£170</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£125</span>
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        MOT +77 point, 12,000 miles inspection</li>
+                                        Engine oil &amp; oil filter change</li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        A more detailed maintenance option than an oil and filter change</li>
+                                        Visual tyre inspection</li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Save when booking together, on the same day or different days</li>
+                                        Visual brake inspection</li>
+                                    <li
+                                        class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
+                                        Lights, wipers &amp; bodywork check</li>
                                 </ul>
                             </div>
                             <button
@@ -882,20 +926,55 @@
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Standard MOT</li>
+                                        Includes all from Interim Service, plus:</li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        A more detailed maintenance</li>
+                                        Air filter replacement</li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Option than an oil and filter change</li>
+                                        Fluid top-ups (Coolant, Brake fluid, Screen wash, Power steering fluid)</li>
                                     <li
                                         class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">
-                                        Save when booking together</li>
+                                        Spark plug check (not replacement)</li>
                                 </ul>
                             </div>
                             <button
                                 class="h-[70px] flex items-stretch border-t border-white/50 hover:bg-black/20 transition-colors cursor-pointer group/btn mt-auto">
+                                <div
+                                    class="flex-1 flex items-center px-8 font-semibold text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT]">
+                                    Book Now</div>
+                                <div
+                                    class="w-[100px] relative flex items-center justify-center border-l border-white/50 origin-bottom">
+                                    <i
+                                        class="fa-solid fa-arrow-right -rotate-0 group-hover/btn:-rotate-45 transition-transform duration-300 text-lg"></i>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Card 5: Major Service (Black) -->
+                        <div class="flex flex-col bg-black text-white rounded-tr-[16px] rounded-bl-[16px] overflow-hidden relative group h-full shadow-lg hover:shadow-xl transition-shadow duration-300 w-[calc(100vw-3rem)] lg:w-[400px] max-w-none shrink-0"
+                            style="clip-path: polygon(50px 0, 100% 0, 100% calc(100% - 50px), calc(100% - 50px) 100%, 0 100%, 0 50px);">
+                            <div class="p-8 pb-12 flex-1 flex flex-col">
+                                <div
+                                    class="inline-block border text-white/80 border-white rounded-full px-4 py-1.5 text-[16px] font-medium uppercase tracking-[-0.06em] leading-[1.26] mb-8 w-fit bg-transparent">
+                                    Major Service</div>
+                                <div class="flex items-baseline gap-1 mb-10">
+                                    <span
+                                        class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
+                                    <span
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£290</span>
+                                </div>
+                                <ul class="flex flex-col mt-auto -mx-8">
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Includes all from Full Service, plus:</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Transmission &amp; differential visual inspection</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Suspension &amp; steering check</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Fuel system inspection</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Fuel filter change (diesel vehicles)</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Manufacturer-specific checks for safety &amp; efficiency</li>
+                                </ul>
+                            </div>
+                            <button
+                                class="h-[70px] flex items-stretch border-t border-white/50 hover:bg-white/20 transition-colors cursor-pointer group/btn mt-auto text-white">
                                 <div
                                     class="flex-1 flex items-center px-8 font-semibold text-[20px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT]">
                                     Book Now</div>
@@ -911,9 +990,9 @@
 
                 <!-- Navigation Dots -->
                 <div class="flex justify-center gap-3 mt-8 pb-4">
-                    <template x-for="i in 4">
+                    <template x-for="i in 5">
                         <button @click="goTo(i - 1)" class="h-2 rounded-sm transition-all duration-300"
-                            :class="(active === 4 ? 0 : active) === (i - 1) ? 'w-10 bg-primary' : 'w-6 bg-gray-300 hover:bg-gray-400'"
+                            :class="(active === 5 ? 0 : active) === (i - 1) ? 'w-10 bg-primary' : 'w-6 bg-gray-300 hover:bg-gray-400'"
                             :aria-label="'Go to slide ' + i">
                         </button>
                     </template>
