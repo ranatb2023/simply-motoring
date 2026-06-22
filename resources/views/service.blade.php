@@ -140,11 +140,10 @@
 
                     <!-- List -->
                     <ul class="flex flex-col mt-auto text-[16px] lg:text-[18px] font-medium leading-[1]">
-                        <li class="px-8 py-4 border-t border-white/30">Engine oil and oil filter replacement</li>
-                        <li class="px-8 py-4 border-t border-white/30">Air filter inspection and replacement</li>
-                        <li class="px-8 py-4 border-t border-white/30">Brake system inspection</li>
-                        <li class="px-8 py-4 border-t border-white/30">Steering/suspension checks</li>
-                        <li class="px-8 py-4 border-t border-white/30 border-b">Fluid level top ups</li>
+                        <li class="px-8 py-4 border-t border-white/30">Includes all from Interim Service, plus:</li>
+                        <li class="px-8 py-4 border-t border-white/30">Air filter replacement</li>
+                        <li class="px-8 py-4 border-t border-white/30">Fluid top-ups (Coolant, Brake fluid, Screen wash, Power steering fluid)</li>
+                        <li class="px-8 py-4 border-t border-white/30 border-b">Spark plug check (not replacement)</li>
                     </ul>
 
                     <!-- Footer -->
@@ -190,10 +189,9 @@
                     <!-- List -->
                     <ul class="flex flex-col mt-auto text-[16px] lg:text-[18px] font-medium leading-[1]">
                         <li class="px-8 py-4 border-t border-black/10">Engine oil and oil filter change</li>
-                        <li class="px-8 py-4 border-t border-black/10">Brake inspection</li>
-                        <li class="px-8 py-4 border-t border-black/10">Tyre and pressure checks</li>
-                        <li class="px-8 py-4 border-t border-black/10">Fluid level assessment</li>
-                        <li class="px-8 py-4 border-t border-black/10">Visual safety checks</li>
+                        <li class="px-8 py-4 border-t border-black/10">Visual tyre inspection</li>
+                        <li class="px-8 py-4 border-t border-black/10">Visual brake inspection</li>
+                        <li class="px-8 py-4 border-t border-black/10">Lights, wipers &amp; bodywork check</li>
                     </ul>
 
                     <!-- Footer -->
@@ -236,10 +234,12 @@
 
                     <!-- List -->
                     <ul class="flex flex-col mt-auto text-[16px] lg:text-[18px] font-medium leading-[1]">
-                        <li class="px-8 py-4 border-t border-white/30">All full service checks</li>
-                        <li class="px-8 py-4 border-t border-white/30">Replacement of multiple filters</li>
-                        <li class="px-8 py-4 border-t border-white/30">Spark plug replacement</li>
-                        <li class="px-8 py-4 border-t border-white/30">Extensive safety and performance inspection
+                        <li class="px-8 py-4 border-t border-white/30">Includes all from Full Service, plus:</li>
+                        <li class="px-8 py-4 border-t border-white/30">Transmission &amp; differential visual inspection</li>
+                        <li class="px-8 py-4 border-t border-white/30">Suspension &amp; steering check</li>
+                        <li class="px-8 py-4 border-t border-white/30">Fuel system inspection</li>
+                        <li class="px-8 py-4 border-t border-white/30">Fuel filter change (diesel vehicles)</li>
+                        <li class="px-8 py-4 border-t border-white/30">Manufacturer-specific checks for safety &amp; efficiency
                         </li>
                     </ul>
 
@@ -294,9 +294,9 @@
                         </h3>
                         <p
                             class="text-black/80 text-[16px] lg:text-[20px] leading-[1.3] tracking-[-0.06em] font-medium mb-8">
-                            Worn brake discs or pads significantly reduce your stopping power and put your safety at risk.
+                            Worn brake discs or pads significantly reduce your stopping ability and put your safety at risk.
                             Getting them checked and replaced on time keeps your braking system performing as it should and
-                            ensures you stay in control on the road.
+                            helps you stay in control on the road.
                         </p>
                     </div>
 
@@ -308,10 +308,9 @@
                         </h3>
                         <p
                             class="text-white/80 text-[16px] lg:text-[20px] leading-[1.3] tracking-[-0.06em] font-medium mb-8">
-                            Brake fluid can reduce - Brake fluid is the lifeblood of your stopping system. Over time,
-                            contamination can lower its boiling point and cause internal corrosion. By replacing your fluid
-                            every two years, you can help protect your vehicle’s ABS system and improve peak braking
-                            efficiency.
+                            Brake fluid is the lifeblood of your stopping system. Over time, contamination can lower its
+                            boiling point and cause internal corrosion. By replacing your fluid regularly, you can help
+                            protect your vehicle’s ABS system and help improve braking efficiency.
                         </p>
                     </div>
 

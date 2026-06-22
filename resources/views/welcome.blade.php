@@ -217,11 +217,11 @@
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Tyre pressure & tread check</span>
+                                <span class="text-gray-700 text-[15px]">Visual tyre inspection</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Brake inspection</span>
+                                <span class="text-gray-700 text-[15px]">Visual brake inspection</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
@@ -274,10 +274,6 @@
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
                                 <span class="text-gray-700 text-[15px]">Spark plug check (not replacement)</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Timing belt check</span>
                             </li>
                         </ul>
 
