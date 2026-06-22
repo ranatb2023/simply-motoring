@@ -531,8 +531,6 @@
                                 </div>
                                 <div class="flex items-baseline gap-1 mb-10">
                                     <span
-                                        class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
-                                    <span
                                         class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£30</span>
                                 </div>
 
@@ -759,8 +757,6 @@
                                     class="inline-block border text-white/80 border-white rounded-full px-4 py-1.5 text-[16px] font-medium uppercase tracking-[-0.06em] leading-[1.26] mb-8 w-fit bg-transparent">
                                     Pre-MOT Check</div>
                                 <div class="flex items-baseline gap-1 mb-10">
-                                    <span
-                                        class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
                                         class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£30</span>
                                 </div>
