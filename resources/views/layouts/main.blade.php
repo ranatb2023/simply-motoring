@@ -102,8 +102,8 @@
         style="z-index: 9999;">
         <div
             class="flex justify-between lg:items-end w-full max-w-[1440px] mx-auto flex-col md:flex-row gap-4 md:gap-0">
-            <h1 class="text-primary text-6xl sm:text-8xl font-bold tracking-tighter leading-none font-geist uppercase">
-                Simply Motoring</h1>
+            <h2 class="text-primary text-6xl sm:text-8xl font-bold tracking-tighter leading-none font-geist uppercase">
+                Simply Motoring</h2>
             <div class="text-primary">
                 <i class="fa-solid fa-tire text-6xl sm:text-8xl" style="animation: spin 10s linear infinite;"></i>
             </div>
