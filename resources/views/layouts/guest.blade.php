@@ -46,7 +46,7 @@
 
             <!-- Right Side: Image -->
             <div class="hidden lg:block w-1/2 relative">
-                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/garage.jpg');">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/garage.webp');">
                 </div>
                 <!-- Dark Overlay -->
                 <div class="absolute inset-0 bg-black/40"></div>

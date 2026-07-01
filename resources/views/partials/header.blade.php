@@ -17,9 +17,9 @@
         <!-- Center: Logo -->
         <div class="flex justify-center">
             <a href="{{ route('home') }}" class="block">
-                <img src="{{ asset('images/18179987ea4d5b1fd71ba5ba4de7e527319e17b9.png') }}" alt="Professional vehicle diagnostics"
+                <img src="{{ asset('images/18179987ea4d5b1fd71ba5ba4de7e527319e17b9.webp') }}" alt="Professional vehicle diagnostics"
                     class="hidden lg:block w-[120px] h-auto object-contain">
-                <img src="{{ asset('images/18179987ea4d5b1fd71ba5ba4de7e527319e17b9.png') }}" alt="Professional vehicle diagnostics"
+                <img src="{{ asset('images/18179987ea4d5b1fd71ba5ba4de7e527319e17b9.webp') }}" alt="Professional vehicle diagnostics"
                     class="w-[120px] h-auto object-contain lg:hidden">
             </a>
         </div>

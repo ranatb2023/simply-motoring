@@ -11,7 +11,7 @@
 
         <!-- Mobile Background Image (Absolute Fullscreen) -->
         <div class="absolute inset-0 z-0 lg:hidden">
-            <img src="{{ asset('images/2b5fc4a16a2be69d1e5ad4857e90c40c9e061df3.jpg') }}" class="w-full h-full object-cover"
+            <img src="{{ asset('images/2b5fc4a16a2be69d1e5ad4857e90c40c9e061df3.webp') }}" class="w-full h-full object-cover"
                 alt="Car servicing at Simply Motoring">
             <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.6);"></div>
         </div>
@@ -72,7 +72,7 @@
             <div class="hidden lg:flex w-[50%] relative py-[40px] pl-[40px]">
                 <div
                     class="w-full relative overflow-hidden hero-image-clip bg-gray-100 rounded-[20px] flex-1 min-h-[400px]">
-                    <img src="{{ asset('images/2b5fc4a16a2be69d1e5ad4857e90c40c9e061df3.jpg') }}" alt="Car servicing at Simply Motoring"
+                    <img src="{{ asset('images/2b5fc4a16a2be69d1e5ad4857e90c40c9e061df3.webp') }}" alt="Car servicing at Simply Motoring"
                         class="absolute inset-0 w-full h-full object-cover">
                 </div>
             </div>
@@ -124,7 +124,7 @@
                 <!-- Main Image -->
                 <div
                     class="w-full h-[400px] lg:h-[600px] relative overflow-hidden hero-image-clip rounded-[20px] shadow-2xl bg-gray-100">
-                    <img src="{{ asset('images/73480c8dd5e350d5690bea4b18319eabd8d0ae11.jpg') }}" alt="Vehicle maintenance service"
+                    <img src="{{ asset('images/73480c8dd5e350d5690bea4b18319eabd8d0ae11.webp') }}" alt="Vehicle maintenance service"
                         class="absolute inset-0 w-full h-full object-cover">
                 </div>
                 <!-- Interactive / Floating Badge -->
@@ -353,7 +353,7 @@
                 class="relative w-full overflow-hidden min-h-[700px] h-auto lg:h-screen flex items-center lg:rounded-3xl lg:[clip-path:polygon(80px_0,100%_0,100%_calc(100%_-_80px),calc(100%_-_80px)_100%,0_100%,0_80px)]">
 
                 <!-- Background Image -->
-                <img src="{{ asset('images/daf42e39ac8480c306d69690cadcd6729cdf6d45.png') }}"
+                <img src="{{ asset('images/daf42e39ac8480c306d69690cadcd6729cdf6d45.webp') }}"
                     class="absolute inset-0 w-full h-full object-cover z-0" alt="Expert car repairs">
 
                 <!-- Dark Gradient/Overlay -->
@@ -1014,7 +1014,7 @@
 
                 <!-- Right Tyre Image -->
                 <div class="absolute right-[-28%] top-[-10%] z-0 h-full w-full pointer-events-none hidden lg:block">
-                    <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.png') }}" alt="MOT testing services"
+                    <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.webp') }}" alt="MOT testing services"
                         class="absolute right-0 top-0 h-[800px] w-auto max-w-none object-contain animate-[spin_40s_linear_infinite]">
                 </div>
 
@@ -1673,7 +1673,7 @@
 
             <!-- Right Image (Absolute) -->
             <div class="hidden lg:block absolute right-[-20%] bottom-[-40%] w-[50%] h-full pointer-events-none z-0">
-                <img src="images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.png" alt="MOT testing services"
+                <img src="images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.webp" alt="MOT testing services"
                     class="absolute right-0 top-0 h-[800px] w-auto max-w-none object-contain animate-[spin_40s_linear_infinite]">
             </div>
         </div>

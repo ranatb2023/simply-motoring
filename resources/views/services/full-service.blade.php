@@ -24,7 +24,7 @@
 
             <!-- Background Image -->
             <div class="absolute inset-0 z-0 bg-black">
-                <img src="{{ asset('images/e1fb2bc84fe01e7d1b967e474c3adf19a7403436.jpg') }}" alt="Car maintenance and repairs"
+                <img src="{{ asset('images/e1fb2bc84fe01e7d1b967e474c3adf19a7403436.webp') }}" alt="Car maintenance and repairs"
                     class="w-full h-full object-cover">
                 <!-- Gradient Overlay -->
                 <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
@@ -513,7 +513,7 @@
 
                 <!-- Right: Tyre Image -->
                 <div class="absolute right-[-28%] top-[0%] z-0 h-full w-full pointer-events-none hidden lg:block">
-                    <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.png') }}" alt="MOT testing services"
+                    <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.webp') }}" alt="MOT testing services"
                         class="absolute right-0 top-0 h-[700px] w-auto max-w-none object-contain animate-[spin_40s_linear_infinite]">
                 </div>
             </div>
@@ -550,7 +550,7 @@
                 <div class="relative group pt-16">
                     <!-- Tire Image -->
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[120px] z-0">
-                        <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.png') }}" alt="MOT testing services"
+                        <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.webp') }}" alt="MOT testing services"
                             class="w-full h-full object-contain animate-[spin_20s_linear_infinite]">
                     </div>
                     <!-- Card -->
@@ -571,7 +571,7 @@
                 <div class="relative group pt-16">
                     <!-- Tire Image -->
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[120px] z-0">
-                        <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.png') }}" alt="MOT testing services"
+                        <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.webp') }}" alt="MOT testing services"
                             class="w-full h-full object-contain animate-[spin_20s_linear_infinite]">
                     </div>
                     <!-- Card -->
@@ -591,7 +591,7 @@
                 <div class="relative group pt-16">
                     <!-- Tire Image -->
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[120px] z-0">
-                        <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.png') }}" alt="MOT testing services"
+                        <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.webp') }}" alt="MOT testing services"
                             class="w-full h-full object-contain animate-[spin_20s_linear_infinite]">
                     </div>
                     <!-- Card -->
@@ -857,7 +857,7 @@
 
             <!-- Right Image (Absolute) -->
             <div class="hidden lg:block absolute right-[-20%] bottom-[-40%] w-[50%] h-full pointer-events-none z-0">
-                <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.png') }}" alt="MOT testing services"
+                <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.webp') }}" alt="MOT testing services"
                     class="absolute right-0 top-0 h-[800px] w-auto max-w-none object-contain animate-[spin_40s_linear_infinite]">
             </div>
         </div>

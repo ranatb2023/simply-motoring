@@ -24,7 +24,7 @@
 
             <!-- Background Image -->
             <div class="absolute inset-0 z-0 bg-black">
-                <img src="{{ asset('images/0dc3fe40d7bdb554314cba94e509be8f0e3be032.png') }}" alt="Vehicle repair services"
+                <img src="{{ asset('images/0dc3fe40d7bdb554314cba94e509be8f0e3be032.webp') }}" alt="Vehicle repair services"
                     class="w-full h-full object-cover">
                 <!-- Gradient Overlay -->
                 <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
