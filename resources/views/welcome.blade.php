@@ -12,7 +12,7 @@
         <!-- Mobile Background Image (Absolute Fullscreen) -->
         <div class="absolute inset-0 z-0 lg:hidden">
             <img src="{{ asset('images/2b5fc4a16a2be69d1e5ad4857e90c40c9e061df3.jpg') }}" class="w-full h-full object-cover"
-                alt="Background">
+                alt="Car servicing at Simply Motoring">
             <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.6);"></div>
         </div>
 
@@ -72,7 +72,7 @@
             <div class="hidden lg:flex w-[50%] relative py-[40px] pl-[40px]">
                 <div
                     class="w-full relative overflow-hidden hero-image-clip bg-gray-100 rounded-[20px] flex-1 min-h-[400px]">
-                    <img src="{{ asset('images/2b5fc4a16a2be69d1e5ad4857e90c40c9e061df3.jpg') }}" alt="Mechanic Garage"
+                    <img src="{{ asset('images/2b5fc4a16a2be69d1e5ad4857e90c40c9e061df3.jpg') }}" alt="Car servicing at Simply Motoring"
                         class="absolute inset-0 w-full h-full object-cover">
                 </div>
             </div>
@@ -107,7 +107,7 @@
                     @foreach ($marqueeItems as $item)
                         <span
                             class="whitespace-nowrap font-geist font-bold text-[20px] lg:text-[24px] leading-[1.26] tracking-[-0.06em] uppercase [leading-trim:CAP_HEIGHT]">{{ $item }}</span>
-                        <img src="{{ asset('images/game-icons_car-wheel.svg') }}" alt="Car Wheel"
+                        <img src="{{ asset('images/game-icons_car-wheel.svg') }}" alt="Car wheel icon"
                             class="w-10 h-10 animate-spin-slow">
                     @endforeach
                 </div>
@@ -124,11 +124,11 @@
                 <!-- Main Image -->
                 <div
                     class="w-full h-[400px] lg:h-[600px] relative overflow-hidden hero-image-clip rounded-[20px] shadow-2xl bg-gray-100">
-                    <img src="{{ asset('images/73480c8dd5e350d5690bea4b18319eabd8d0ae11.jpg') }}" alt="MOT Testing Station"
+                    <img src="{{ asset('images/73480c8dd5e350d5690bea4b18319eabd8d0ae11.jpg') }}" alt="Vehicle maintenance service"
                         class="absolute inset-0 w-full h-full object-cover">
                 </div>
                 <!-- Interactive / Floating Badge -->
-                <img src="{{ asset('images/dvsa-approved-testing-station.jpg') }}" alt="DVSA Approved Testing Station"
+                <img src="{{ asset('images/dvsa-approved-testing-station.jpg') }}" alt="DVSA approved MOT station"
                     class="absolute -bottom-6 -right-6 lg:bottom-10 lg:-right-10 w-32 lg:w-48 shadow-xl z-20 hidden md:block rounded-xl">
             </div>
 
@@ -354,7 +354,7 @@
 
                 <!-- Background Image -->
                 <img src="{{ asset('images/daf42e39ac8480c306d69690cadcd6729cdf6d45.png') }}"
-                    class="absolute inset-0 w-full h-full object-cover z-0" alt="Audi RS7 Background">
+                    class="absolute inset-0 w-full h-full object-cover z-0" alt="Expert car repairs">
 
                 <!-- Dark Gradient/Overlay -->
                 <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10"></div>
@@ -1014,7 +1014,7 @@
 
                 <!-- Right Tyre Image -->
                 <div class="absolute right-[-28%] top-[-10%] z-0 h-full w-full pointer-events-none hidden lg:block">
-                    <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.png') }}" alt="Tyre"
+                    <img src="{{ asset('images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.png') }}" alt="MOT testing services"
                         class="absolute right-0 top-0 h-[800px] w-auto max-w-none object-contain animate-[spin_40s_linear_infinite]">
                 </div>
 
@@ -1673,7 +1673,7 @@
 
             <!-- Right Image (Absolute) -->
             <div class="hidden lg:block absolute right-[-20%] bottom-[-40%] w-[50%] h-full pointer-events-none z-0">
-                <img src="images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.png" alt="Tire"
+                <img src="images/f2f7228f49e6c162f221a17ef06dbce97e4b5b88.png" alt="MOT testing services"
                     class="absolute right-0 top-0 h-[800px] w-auto max-w-none object-contain animate-[spin_40s_linear_infinite]">
             </div>
         </div>

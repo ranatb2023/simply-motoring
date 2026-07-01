@@ -3,7 +3,7 @@
     class="max-w-[1440px] w-full mx-auto px-6 lg:px-[40px] py-6 flex justify-between items-center bg-transparent z-50">
     <!-- Logo -->
     <a href="{{ route('home') }}" class="block z-50">
-        <img src="{{ asset('images/18179987ea4d5b1fd71ba5ba4de7e527319e17b9.png') }}" alt="Simply Motoring Logo"
+        <img src="{{ asset('images/18179987ea4d5b1fd71ba5ba4de7e527319e17b9.png') }}" alt="Professional vehicle diagnostics"
             class="w-[180px] lg:w-[100px] h-auto object-contain">
     </a>
 

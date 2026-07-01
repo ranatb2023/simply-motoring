@@ -249,7 +249,7 @@
             x-transition:enter-end="opacity-100 translate-y-0 scale-100">
             <div
                 class="bg-white p-2 rounded-lg shadow-2xl flex flex-col items-center justify-center border border-gray-100 relative">
-                <img src="{{ asset('images/logo.png') }}" alt="Simply Motoring" class="h-4 w-auto object-contain">
+                <img src="{{ asset('images/logo.png') }}" alt="Simply Motoring logo" class="h-4 w-auto object-contain">
                 <!-- Triangular Pointer -->
                 <div
                     class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 transform border-b border-r border-gray-100 shadow-sm">

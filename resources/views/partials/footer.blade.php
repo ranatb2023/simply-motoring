@@ -8,7 +8,7 @@
                 class="lg:col-span-7 flex flex-col justify-between border-r border-white/10 lg:px-8 px-6 lg:py-20 py-10 lg:gap-32 gap-4">
                 <!-- Logo -->
                 <div>
-                    <img src="{{ asset('images/menu-logo.png') }}" alt="Simply Motoring Logo"
+                    <img src="{{ asset('images/menu-logo.png') }}" alt="Simply Motoring menu logo"
                         class="w-[200px] lg:w-[240px] h-auto object-contain">
                 </div>
 
