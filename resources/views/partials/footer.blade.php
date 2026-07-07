@@ -57,11 +57,11 @@
                     <div class="flex flex-col gap-1">
                         <a href="{{ route('service.mot-test') }}"
                             class="font-geist font-medium text-lg hover:text-primary transition-colors">MOT Test</a>
-                        <a href="{{ route('service.full-service') }}"
-                            class="font-geist font-medium text-lg hover:text-primary transition-colors">Full
-                            Service</a>
                         <a href="{{ route('service.interim-service') }}"
                             class="font-geist font-medium text-lg hover:text-primary transition-colors">Interim
+                            Service</a>
+                        <a href="{{ route('service.full-service') }}"
+                            class="font-geist font-medium text-lg hover:text-primary transition-colors">Full
                             Service</a>
                         <a href="{{ route('service.major-service') }}"
                             class="font-geist font-medium text-lg hover:text-primary transition-colors">Major

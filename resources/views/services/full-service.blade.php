@@ -165,8 +165,26 @@
                                         <div class="flex items-center justify-center shrink-0 mt-1">
                                             <i class="fa-light fa-tire text-2xl text-white"></i>
                                         </div>
-                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Oil change and
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Comprehensive Oil change and
                                             replacement of the oil filter</span>
+                                    </li>
+                                    <li class="flex items-start gap-4">
+                                        <div class="flex items-center justify-center shrink-0 mt-1">
+                                            <i class="fa-light fa-tire text-2xl text-white"></i>
+                                        </div>
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Replacement of the air filter</span>
+                                    </li>
+                                    <li class="flex items-start gap-4">
+                                        <div class="flex items-center justify-center shrink-0 mt-1">
+                                            <i class="fa-light fa-tire text-2xl text-white"></i>
+                                        </div>
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Replacement of the pollen filter</span>
+                                    </li>
+                                    <li class="flex items-start gap-4">
+                                        <div class="flex items-center justify-center shrink-0 mt-1">
+                                            <i class="fa-light fa-tire text-2xl text-white"></i>
+                                        </div>
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Replacement of fuel filter (only for Diesel Vehicles)</span>
                                     </li>
                                     <li class="flex items-start gap-4">
                                         <div class="flex items-center justify-center shrink-0 mt-1">
@@ -270,8 +288,7 @@
                                         <div class="flex items-center justify-center shrink-0 mt-1">
                                             <i class="fa-light fa-tire text-2xl text-white"></i>
                                         </div>
-                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Test air
-                                            filters, belts, and hoses</span>
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Visual inspection of Belt and hoses</span>
                                     </li>
                                 </ul>
                             </div>
@@ -292,8 +309,26 @@
                                         <div class="flex items-center justify-center shrink-0 mt-1">
                                             <i class="fa-light fa-tire text-2xl text-white"></i>
                                         </div>
-                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Oil change and
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Comprehensive Oil change and
                                             replacement of the oil filter</span>
+                                    </li>
+                                    <li class="flex items-start gap-4">
+                                        <div class="flex items-center justify-center shrink-0 mt-1">
+                                            <i class="fa-light fa-tire text-2xl text-white"></i>
+                                        </div>
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Replacement of the air filter</span>
+                                    </li>
+                                    <li class="flex items-start gap-4">
+                                        <div class="flex items-center justify-center shrink-0 mt-1">
+                                            <i class="fa-light fa-tire text-2xl text-white"></i>
+                                        </div>
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Replacement of the pollen filter</span>
+                                    </li>
+                                    <li class="flex items-start gap-4">
+                                        <div class="flex items-center justify-center shrink-0 mt-1">
+                                            <i class="fa-light fa-tire text-2xl text-white"></i>
+                                        </div>
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Replacement of fuel filter (only for Diesel Vehicles)</span>
                                     </li>
                                     <li class="flex items-start gap-4">
                                         <div class="flex items-center justify-center shrink-0 mt-1">
@@ -410,8 +445,7 @@
                                         <div class="flex items-center justify-center shrink-0 mt-1">
                                             <i class="fa-light fa-tire text-2xl text-white"></i>
                                         </div>
-                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Test air
-                                            filters, belts, and hoses</span>
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Visual inspection of Belt and hoses</span>
                                     </li>
                                 </ul>
                             </div>
