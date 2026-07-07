@@ -219,8 +219,7 @@
                                         <div class="flex items-center justify-center shrink-0 mt-1">
                                             <i class="fa-light fa-tire text-2xl text-white"></i>
                                         </div>
-                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Check tyre
-                                            pressures and tread depth</span>
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Visual inspection of tyres</span>
                                     </li>
                                 </ul>
                             </div>
@@ -373,8 +372,7 @@
                                         <div class="flex items-center justify-center shrink-0 mt-1">
                                             <i class="fa-light fa-tire text-2xl text-white"></i>
                                         </div>
-                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Check tyre
-                                            pressures and tread depth</span>
+                                        <span class="text-lg lg:text-xl font-medium leading-tight text-white">Visual inspection of tyres</span>
                                     </li>
                                     <li class="flex items-start gap-4">
                                         <div class="flex items-center justify-center shrink-0 mt-1">
