@@ -235,11 +235,12 @@
                     <!-- List -->
                     <ul class="flex flex-col mt-auto text-[16px] lg:text-[18px] font-medium leading-[1]">
                         <li class="px-8 py-4 border-t border-white/30">Includes all from Full Service, plus:</li>
+                        <li class="px-8 py-4 border-t border-white/30">Fuel filter change (diesel vehicles)</li>
+                        <li class="px-8 py-4 border-t border-white/30">Pollen filter change</li>
                         <li class="px-8 py-4 border-t border-white/30">Transmission &amp; differential visual inspection</li>
                         <li class="px-8 py-4 border-t border-white/30">Suspension &amp; steering check</li>
                         <li class="px-8 py-4 border-t border-white/30">Fuel system inspection</li>
-                        <li class="px-8 py-4 border-t border-white/30">Fuel filter change (diesel vehicles)</li>
-                        <li class="px-8 py-4 border-t border-white/30">Manufacturer-specific checks for safety &amp; efficiency
+                        <li class="px-8 py-4 border-t border-white/30">Manufacturer-specific checks meets minimum requirements for safety &amp; efficiency
                         </li>
                     </ul>
 
@@ -720,11 +721,12 @@
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Includes all from Full Service, plus:</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Fuel filter change (diesel vehicles)</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Pollen filter change</li>
                                     <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Transmission &amp; differential visual inspection</li>
                                     <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Suspension &amp; steering check</li>
                                     <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Fuel system inspection</li>
-                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Fuel filter change (diesel vehicles)</li>
-                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Manufacturer-specific checks for safety &amp; efficiency</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Manufacturer-specific checks meets minimum requirements for safety &amp; efficiency</li>
                                 </ul>
                             </div>
                             <button
@@ -907,11 +909,12 @@
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Includes all from Full Service, plus:</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Fuel filter change (diesel vehicles)</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Pollen filter change</li>
                                     <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Transmission &amp; differential visual inspection</li>
                                     <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Suspension &amp; steering check</li>
                                     <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Fuel system inspection</li>
-                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Fuel filter change (diesel vehicles)</li>
-                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Manufacturer-specific checks for safety &amp; efficiency</li>
+                                    <li class="py-4 px-8 border-t border-white/20 text-[20px] font-medium leading-[1.26] tracking-[-0.06em] text-white/80">Manufacturer-specific checks meets minimum requirements for safety &amp; efficiency</li>
                                 </ul>
                             </div>
                             <button

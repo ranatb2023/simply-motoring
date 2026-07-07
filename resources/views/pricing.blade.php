@@ -241,10 +241,6 @@
                                 class="price-nav-link flex items-center gap-3 text-[13px] font-medium text-gray-500 hover:text-black py-2.5 px-3 rounded-xl hover:bg-white transition-all duration-200"><i
                                     class="fa-solid fa-bolt text-[11px] text-gray-400 w-4 text-center"></i>Battery &
                                 Electrical</a>
-                            <a href="#cat-aircon"
-                                class="price-nav-link flex items-center gap-3 text-[13px] font-medium text-gray-500 hover:text-black py-2.5 px-3 rounded-xl hover:bg-white transition-all duration-200"><i
-                                    class="fa-solid fa-snowflake text-[11px] text-gray-400 w-4 text-center"></i>Air
-                                Conditioning</a>
                             <a href="#cat-wipers"
                                 class="price-nav-link flex items-center gap-3 text-[13px] font-medium text-gray-500 hover:text-black py-2.5 px-3 rounded-xl hover:bg-white transition-all duration-200"><i
                                     class="fa-solid fa-eye text-[11px] text-gray-400 w-4 text-center"></i>Wipers, Lights &
@@ -283,9 +279,6 @@
                             <a href="#cat-battery"
                                 class="inline-flex items-center gap-1.5 bg-white border border-gray-200 text-gray-600 text-[12px] font-bold uppercase tracking-wide px-4 py-2 rounded-full whitespace-nowrap hover:bg-primary hover:text-white hover:border-primary transition-all"><i
                                     class="fa-solid fa-bolt text-[10px]"></i> Battery</a>
-                            <a href="#cat-aircon"
-                                class="inline-flex items-center gap-1.5 bg-white border border-gray-200 text-gray-600 text-[12px] font-bold uppercase tracking-wide px-4 py-2 rounded-full whitespace-nowrap hover:bg-primary hover:text-white hover:border-primary transition-all"><i
-                                    class="fa-solid fa-snowflake text-[10px]"></i> A/C</a>
                         </div>
                     </div>
 
@@ -796,44 +789,7 @@
                         </div>
                     </div>
 
-                    <!-- ── 11 Air Conditioning ── -->
-                    <div id="cat-aircon"
-                        class="price-section scroll-mt-28 bg-white border border-gray-200 rounded-2xl overflow-hidden">
-                        <div class="flex items-center justify-between px-5 py-4 bg-gray-50 border-b border-gray-100">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 bg-primary rounded-xl flex items-center justify-center shrink-0">
-                                    <i class="fa-solid fa-snowflake text-white text-[11px]"></i>
-                                </div>
-                                <div>
-                                    <p
-                                        class="text-[9px] font-bold tracking-[0.2em] text-gray-400 uppercase leading-none mb-0.5">
-                                        11</p>
-                                    <h2
-                                        class="font-geist font-bold text-[15px] lg:text-[17px] leading-none tracking-[-0.03em] text-black uppercase">
-                                        Air Conditioning</h2>
-                                </div>
-                            </div>
-                            <span
-                                class="text-[11px] font-semibold text-gray-400 bg-white border border-gray-200 rounded-full px-3 py-1 shrink-0 hidden sm:block">1
-                                service</span>
-                        </div>
-                        <div class="p-3">
-                            <div
-                                class="flex items-center justify-between rounded-xl px-4 py-3.5 hover:bg-orange-50/50 border border-transparent hover:border-primary/10 transition-all duration-200">
-                                <p class="font-semibold text-[14px] text-black leading-tight">Air Conditioning Service &
-                                    Re-gas</p>
-                                <div class="shrink-0 text-right ml-4 flex flex-col items-end">
-                                    <p class="text-[9px] font-bold tracking-[0.1em] text-gray-400 uppercase leading-none">
-                                        from</p>
-                                    <p
-                                        class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £96</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ── 12 Wipers, Lights & Visibility ── -->
+                    <!-- ── 11 Wipers, Lights & Visibility ── -->
                     <div id="cat-wipers"
                         class="price-section scroll-mt-28 bg-white border border-gray-200 rounded-2xl overflow-hidden">
                         <div class="flex items-center justify-between px-5 py-4 bg-gray-50 border-b border-gray-100">
@@ -844,7 +800,7 @@
                                 <div>
                                     <p
                                         class="text-[9px] font-bold tracking-[0.2em] text-gray-400 uppercase leading-none mb-0.5">
-                                        12</p>
+                                        11</p>
                                     <h2
                                         class="font-geist font-bold text-[15px] lg:text-[17px] leading-none tracking-[-0.03em] text-black uppercase">
                                         Wipers, Lights & Visibility</h2>
@@ -891,7 +847,7 @@
                         </div>
                     </div>
 
-                    <!-- ── 13 Bodywork ── -->
+                    <!-- ── 12 Bodywork ── -->
                     <div id="cat-bodywork"
                         class="price-section scroll-mt-28 bg-white border border-gray-200 rounded-2xl overflow-hidden">
                         <div class="flex items-center justify-between px-5 py-4 bg-gray-50 border-b border-gray-100">
@@ -902,7 +858,7 @@
                                 <div>
                                     <p
                                         class="text-[9px] font-bold tracking-[0.2em] text-gray-400 uppercase leading-none mb-0.5">
-                                        13</p>
+                                        12</p>
                                     <h2
                                         class="font-geist font-bold text-[15px] lg:text-[17px] leading-none tracking-[-0.03em] text-black uppercase">
                                         Bodywork</h2>
