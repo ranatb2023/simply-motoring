@@ -470,8 +470,7 @@
             <!-- Bottom Text -->
             <div class="lg:text-center w-full mt-10">
                 <p class="text-[#0A0A0A] text-lg font-semibold mx-auto">
-                    Note: Interim service is tailored to your vehicle’s mileage and manufacturer guidance, providing a
-                    quicker, focused maintenance option between full services.
+                    Note: Each full service is tailored to your vehicle’s manufacturer's schedule and specifications.
                 </p>
             </div>
         </div>
