@@ -311,6 +311,14 @@
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Fuel filter change (diesel vehicles)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Pollen filter change</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
                                 <span class="text-gray-700 text-[15px]">Transmission & differential visual inspection</span>
                             </li>
                             <li class="flex items-start gap-3">
@@ -320,10 +328,6 @@
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
                                 <span class="text-gray-700 text-[15px]">Fuel system inspection</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
-                                <span class="text-gray-700 text-[15px]">Fuel filter change (diesel vehicles)</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>

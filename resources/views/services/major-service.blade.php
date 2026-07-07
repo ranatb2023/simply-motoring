@@ -93,7 +93,7 @@
                                                                 window.addEventListener('resize', () => this.updateWidth());
                                                                 setInterval(() => {
                                                                     if (!this.paused && !this.isDragging) this.next();
-                                                                }, 5000);
+                                                                }, 10000);
                                                             },
                                                             next() {
                                                                 if (this.active < 4) {
