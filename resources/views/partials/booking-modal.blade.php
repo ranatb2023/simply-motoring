@@ -811,6 +811,33 @@
         });
     }
 
-    document.addEventListener('DOMContentLoaded', attachBookTriggers);
+    // Auto-open the booking popup when arriving via a link that ends in
+    // #book or ?book=1 (e.g. the Google Business Profile "Make appointment" link).
+    // Optionally pre-select a service, e.g. ?book=mot or #book-mot.
+    function autoOpenFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const hash   = (window.location.hash || '').toLowerCase();
+        let shouldOpen = false;
+        let slug = '';
+
+        if (params.has('book')) {
+            shouldOpen = true;
+            slug = (params.get('book') || '').toLowerCase();
+            if (['1', 'true', 'yes', 'on'].includes(slug)) slug = '';
+        } else if (hash === '#book' || hash.startsWith('#book-')) {
+            shouldOpen = true;
+            if (hash.startsWith('#book-')) slug = hash.slice('#book-'.length);
+        }
+
+        if (shouldOpen) {
+            // Small delay so services have a chance to load first.
+            setTimeout(() => openModal(slug), 300);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        attachBookTriggers();
+        autoOpenFromUrl();
+    });
 })();
 </script>
