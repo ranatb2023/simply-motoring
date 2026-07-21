@@ -242,7 +242,7 @@
 
         <!-- Sidebar -->
         <aside class="lg:w-1/3 space-y-8">
-            <!-- Author Box -->
+            {{-- Author Box (hidden)
             <div class="bg-white p-8 border rounded-xl border-gray-100 shadow-sm text-center"
                 style="clip-path: polygon(50px 0, 100% 0, 100% calc(100% - 50px), calc(100% - 50px) 100%, 0 100%, 0 50px);">
                 <div class="relative w-24 h-24 mx-auto mb-4">
@@ -258,6 +258,7 @@
                     <a href="#" class="hover:text-primary transition"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
+            --}}
 
             <!-- CTA Widget -->
             <div class="bg-primary text-white rounded-xl p-8 text-center relative overflow-hidden group"
