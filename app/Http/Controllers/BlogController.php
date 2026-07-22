@@ -158,13 +158,14 @@ class BlogController extends Controller
             ->orderBy('published_at', 'desc')
             ->paginate(12);
 
-        // Get child categories if any
-        $childCategories = $category->children()
-            ->active()
+        // Other categories to explore (the view's "Other Categories" section)
+        $otherCategories = BlogCategory::active()
+            ->where('id', '!=', $category->id)
             ->withCount('posts')
+            ->orderBy('name')
             ->get();
 
-        return view('blog.category', compact('category', 'posts', 'childCategories'));
+        return view('blog.category', compact('category', 'posts', 'otherCategories'));
     }
 
     /**
@@ -183,8 +184,8 @@ class BlogController extends Controller
             ->orderBy('published_at', 'desc')
             ->paginate(12);
 
-        // Get related tags (tags that appear with this tag)
-        $relatedTags = BlogTag::whereHas('posts', function ($query) use ($tag) {
+        // Other tags that appear alongside this tag (the view's "Other Tags" section)
+        $otherTags = BlogTag::whereHas('posts', function ($query) use ($tag) {
             $query->whereHas('tags', function ($q) use ($tag) {
                 $q->where('blog_tags.id', $tag->id);
             });
@@ -193,7 +194,7 @@ class BlogController extends Controller
             ->popular(5)
             ->get();
 
-        return view('blog.tag', compact('tag', 'posts', 'relatedTags'));
+        return view('blog.tag', compact('tag', 'posts', 'otherTags'));
     }
 
     /**
