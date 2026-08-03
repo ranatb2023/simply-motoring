@@ -75,7 +75,7 @@
                                         <div id="quill-editor" class="bg-white prose max-w-none" style="height: 500px; font-size: 16px;"></div>
                                     </div>
                                     
-                                    <textarea name="content" id="content" class="hidden" required>{{ old('content', $post->content ?? '') }}</textarea>
+                                    <textarea name="content" id="content" class="hidden">{{ old('content', $post->content ?? '') }}</textarea>
                                     @error('content')
                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                     @enderror

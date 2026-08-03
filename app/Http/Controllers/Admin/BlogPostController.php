@@ -78,7 +78,7 @@ class BlogPostController extends Controller
             'title' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:blog_posts,slug',
             'excerpt' => 'nullable|string|max:500',
-            'content' => 'required|string',
+            'content' => 'nullable|string',
             'featured_image' => 'nullable|image|max:2048',
             'featured_image_alt' => 'nullable|string|max:255',
             'featured_image_caption' => 'nullable|string|max:255',
@@ -100,9 +100,9 @@ class BlogPostController extends Controller
             'allow_comments' => 'boolean',
             'is_indexed' => 'boolean',
             'is_followed' => 'boolean',
-            'categories' => 'required|array|min:1',
+            'categories' => 'nullable|array',
             'categories.*' => 'exists:blog_categories,id',
-            'primary_category' => 'required|exists:blog_categories,id',
+            'primary_category' => 'nullable|exists:blog_categories,id',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:blog_tags,id',
             'faqs' => 'nullable|array',
@@ -147,8 +147,8 @@ class BlogPostController extends Controller
         }
 
         // Create the post
-        $categories = $validated['categories'];
-        $primaryCategory = $validated['primary_category'];
+        $categories = $validated['categories'] ?? [];
+        $primaryCategory = $validated['primary_category'] ?? null;
         $tags = $validated['tags'] ?? [];
 
         // Process comma-separated tags
@@ -174,7 +174,7 @@ class BlogPostController extends Controller
         unset($validated['categories'], $validated['primary_category'], $validated['tags'], $validated['faqs']);
 
         // Process content images
-        $validated['content'] = $this->processContentImages($validated['content']);
+        $validated['content'] = $this->processContentImages($validated['content'] ?? '');
 
         $post = BlogPost::create($validated);
 
@@ -214,6 +214,13 @@ class BlogPostController extends Controller
     {
         $warnings = [];
         $len = fn ($v) => mb_strlen(trim((string) $v));
+
+        if (mb_strlen(trim(strip_tags((string) $post->content))) === 0) {
+            $warnings[] = 'This post has no content yet — readers will see an empty page.';
+        }
+        if ($post->categories()->count() === 0) {
+            $warnings[] = 'No category selected — the post won\'t appear under any category.';
+        }
 
         if ($len($post->meta_title) === 0) {
             $warnings[] = 'Meta title is empty — Google will fall back to the post title.';
@@ -279,7 +286,7 @@ class BlogPostController extends Controller
             'title' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:blog_posts,slug,' . $post->id,
             'excerpt' => 'nullable|string|max:500',
-            'content' => 'required|string',
+            'content' => 'nullable|string',
             'featured_image' => 'nullable|image|max:2048',
             'featured_image_alt' => 'nullable|string|max:255',
             'featured_image_caption' => 'nullable|string|max:255',
@@ -301,9 +308,9 @@ class BlogPostController extends Controller
             'allow_comments' => 'boolean',
             'is_indexed' => 'boolean',
             'is_followed' => 'boolean',
-            'categories' => 'required|array|min:1',
+            'categories' => 'nullable|array',
             'categories.*' => 'exists:blog_categories,id',
-            'primary_category' => 'required|exists:blog_categories,id',
+            'primary_category' => 'nullable|exists:blog_categories,id',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:blog_tags,id',
             'faqs' => 'nullable|array',
@@ -354,8 +361,8 @@ class BlogPostController extends Controller
         }
 
         // Update the post
-        $categories = $validated['categories'];
-        $primaryCategory = $validated['primary_category'];
+        $categories = $validated['categories'] ?? [];
+        $primaryCategory = $validated['primary_category'] ?? null;
         $tags = $validated['tags'] ?? [];
 
         // Process comma-separated tags
@@ -381,7 +388,7 @@ class BlogPostController extends Controller
         unset($validated['categories'], $validated['primary_category'], $validated['tags'], $validated['faqs']);
 
         // Process content images
-        $validated['content'] = $this->processContentImages($validated['content']);
+        $validated['content'] = $this->processContentImages($validated['content'] ?? '');
 
         // dd('About to update', count($faqs), substr($validated['content'], 0, 500));
         $post->update($validated);
