@@ -141,10 +141,12 @@ class BlogPostController extends Controller
                 ->store('blog/twitter-images', 'public');
         }
 
-        // Auto-generate slug if not provided
-        if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['title']);
-        }
+        // Generate a UNIQUE slug (auto from title if not provided). Without
+        // this, re-creating a post with the same title collides with the
+        // existing slug and throws a duplicate-key 500.
+        $validated['slug'] = $this->uniqueSlug(
+            !empty($validated['slug']) ? $validated['slug'] : Str::slug($validated['title'])
+        );
 
         // Handle published_at based on status
         if ($validated['status'] === 'published' && empty($validated['published_at'])) {
@@ -251,6 +253,30 @@ class BlogPostController extends Controller
         }
 
         return $warnings;
+    }
+
+    /**
+     * Produce a slug that is guaranteed unique across blog posts, appending
+     * -2, -3, ... if needed. Prevents duplicate-key 500s on save.
+     */
+    protected function uniqueSlug(string $slug, $ignoreId = null): string
+    {
+        $base = Str::slug($slug) ?: 'post';
+        $slug = $base;
+        $i = 2;
+
+        // withTrashed(): soft-deleted posts keep their slug and still hold the
+        // UNIQUE index, so they must be considered or the insert 500s.
+        while (
+            BlogPost::withTrashed()
+                ->where('slug', $slug)
+                ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
+                ->exists()
+        ) {
+            $slug = $base . '-' . $i++;
+        }
+
+        return $slug;
     }
 
     /**
@@ -363,6 +389,13 @@ class BlogPostController extends Controller
         // column (which would cause a 500). Publishing always succeeds; the
         // author just gets a warning that the field was shortened.
         $validated = $this->truncateSeoFields($validated);
+
+        // Keep the slug unique (fall back to the existing slug if the field is
+        // cleared, so a published post's URL doesn't change unexpectedly).
+        $slugSource = !empty($validated['slug'])
+            ? $validated['slug']
+            : ($post->slug ?: Str::slug($validated['title']));
+        $validated['slug'] = $this->uniqueSlug($slugSource, $post->id);
 
         // Handle featured image upload
         if ($request->hasFile('featured_image')) {
