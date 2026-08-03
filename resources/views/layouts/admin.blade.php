@@ -321,6 +321,32 @@
                         </div>
                     </div>
                 @endif
+
+                @if (session('success'))
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+                        <div class="rounded-xl border border-green-200 bg-green-50 px-5 py-4 flex items-center gap-2 text-green-800">
+                            <i class="fa-solid fa-circle-check text-green-600"></i>
+                            <span class="font-medium">{{ session('success') }}</span>
+                        </div>
+                    </div>
+                @endif
+
+                @if (session('seo_warnings') && count(session('seo_warnings')))
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+                        <div class="rounded-xl border border-amber-200 bg-amber-50 px-5 py-4 text-amber-800">
+                            <div class="flex items-center gap-2 mb-2 font-semibold">
+                                <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                                SEO suggestions (your post was still saved &amp; published):
+                            </div>
+                            <ul class="list-disc list-inside text-sm space-y-1">
+                                @foreach (session('seo_warnings') as $seoWarning)
+                                    <li>{{ $seoWarning }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                @endif
+
                 {{ $slot }}
             </main>
         </div>

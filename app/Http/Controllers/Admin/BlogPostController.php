@@ -82,16 +82,16 @@ class BlogPostController extends Controller
             'featured_image' => 'nullable|image|max:2048',
             'featured_image_alt' => 'nullable|string|max:255',
             'featured_image_caption' => 'nullable|string|max:255',
-            'meta_title' => 'nullable|string|max:60',
-            'meta_description' => 'nullable|string|max:160',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:500',
             'meta_keywords' => 'nullable|string',
             'canonical_url' => 'nullable|url',
             'focus_keyword' => 'nullable|string|max:100',
-            'og_title' => 'nullable|string|max:60',
-            'og_description' => 'nullable|string|max:160',
+            'og_title' => 'nullable|string|max:255',
+            'og_description' => 'nullable|string|max:500',
             'og_image' => 'nullable|image|max:2048',
-            'twitter_title' => 'nullable|string|max:60',
-            'twitter_description' => 'nullable|string|max:160',
+            'twitter_title' => 'nullable|string|max:255',
+            'twitter_description' => 'nullable|string|max:500',
             'twitter_image' => 'nullable|image|max:2048',
             'status' => 'required|in:draft,published,scheduled,archived',
             'published_at' => 'nullable|date',
@@ -202,7 +202,42 @@ class BlogPostController extends Controller
         $post->save();
 
         return redirect()->route('admin.blog.posts.index')
-            ->with('success', 'Blog post created successfully.');
+            ->with('success', 'Blog post created successfully.')
+            ->with('seo_warnings', $this->seoWarnings($post));
+    }
+
+    /**
+     * Build a list of soft SEO suggestions for a saved post.
+     * These NEVER block saving/publishing — they are shown as friendly tips.
+     */
+    protected function seoWarnings(BlogPost $post): array
+    {
+        $warnings = [];
+        $len = fn ($v) => mb_strlen(trim((string) $v));
+
+        if ($len($post->meta_title) === 0) {
+            $warnings[] = 'Meta title is empty — Google will fall back to the post title.';
+        } elseif ($len($post->meta_title) > 60) {
+            $warnings[] = 'Meta title is ' . $len($post->meta_title) . ' characters — Google usually cuts titles off after about 60.';
+        }
+
+        if ($len($post->meta_description) === 0) {
+            $warnings[] = 'Meta description is empty — adding one improves click-through from search results.';
+        } elseif ($len($post->meta_description) > 160) {
+            $warnings[] = 'Meta description is ' . $len($post->meta_description) . ' characters — Google usually cuts descriptions off after about 160.';
+        }
+
+        if ($len($post->og_title) > 60) {
+            $warnings[] = 'Social (Open Graph) title is over 60 characters and may be truncated when shared.';
+        }
+        if ($len($post->twitter_title) > 60) {
+            $warnings[] = 'Twitter title is over 60 characters and may be truncated when shared.';
+        }
+        if (empty($post->featured_image)) {
+            $warnings[] = 'No featured image set — posts with an image look better in listings and social shares.';
+        }
+
+        return $warnings;
     }
 
     /**
@@ -248,16 +283,16 @@ class BlogPostController extends Controller
             'featured_image' => 'nullable|image|max:2048',
             'featured_image_alt' => 'nullable|string|max:255',
             'featured_image_caption' => 'nullable|string|max:255',
-            'meta_title' => 'nullable|string|max:60',
-            'meta_description' => 'nullable|string|max:160',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:500',
             'meta_keywords' => 'nullable|string',
             'canonical_url' => 'nullable|url',
             'focus_keyword' => 'nullable|string|max:100',
-            'og_title' => 'nullable|string|max:60',
-            'og_description' => 'nullable|string|max:160',
+            'og_title' => 'nullable|string|max:255',
+            'og_description' => 'nullable|string|max:500',
             'og_image' => 'nullable|image|max:2048',
-            'twitter_title' => 'nullable|string|max:60',
-            'twitter_description' => 'nullable|string|max:160',
+            'twitter_title' => 'nullable|string|max:255',
+            'twitter_description' => 'nullable|string|max:500',
             'twitter_image' => 'nullable|image|max:2048',
             'status' => 'required|in:draft,published,scheduled,archived',
             'published_at' => 'nullable|date',
@@ -374,7 +409,8 @@ class BlogPostController extends Controller
         $post->save();
 
         return redirect()->route('admin.blog.posts.index')
-            ->with('success', 'Blog post updated successfully.');
+            ->with('success', 'Blog post updated successfully.')
+            ->with('seo_warnings', $this->seoWarnings($post));
     }
 
     /**
