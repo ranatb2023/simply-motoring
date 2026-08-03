@@ -118,6 +118,11 @@ class BlogPostController extends Controller
 
         $validated = $validator->validated();
 
+        // Trim SEO meta fields so an over-long value can never overflow a DB
+        // column (which would cause a 500). Publishing always succeeds; the
+        // author just gets a warning that the field was shortened.
+        $validated = $this->truncateSeoFields($validated);
+
         // Handle featured image upload
         if ($request->hasFile('featured_image')) {
             $validated['featured_image'] = $request->file('featured_image')
@@ -203,14 +208,14 @@ class BlogPostController extends Controller
 
         return redirect()->route('admin.blog.posts.index')
             ->with('success', 'Blog post created successfully.')
-            ->with('seo_warnings', $this->seoWarnings($post));
+            ->with('seo_warnings', $this->seoWarnings($post, $request));
     }
 
     /**
      * Build a list of soft SEO suggestions for a saved post.
      * These NEVER block saving/publishing — they are shown as friendly tips.
      */
-    protected function seoWarnings(BlogPost $post): array
+    protected function seoWarnings(BlogPost $post, Request $request): array
     {
         $warnings = [];
         $len = fn ($v) => mb_strlen(trim((string) $v));
@@ -222,29 +227,56 @@ class BlogPostController extends Controller
             $warnings[] = 'No category selected — the post won\'t appear under any category.';
         }
 
-        if ($len($post->meta_title) === 0) {
+        // Meta length warnings use the ORIGINAL submitted values (before trimming).
+        if ($len($request->input('meta_title')) === 0) {
             $warnings[] = 'Meta title is empty — Google will fall back to the post title.';
-        } elseif ($len($post->meta_title) > 60) {
-            $warnings[] = 'Meta title is ' . $len($post->meta_title) . ' characters — Google usually cuts titles off after about 60.';
+        } elseif ($len($request->input('meta_title')) > 60) {
+            $warnings[] = 'Meta title was ' . $len($request->input('meta_title')) . ' characters and has been shortened to 60 (Google cuts titles off after about 60).';
         }
 
-        if ($len($post->meta_description) === 0) {
+        if ($len($request->input('meta_description')) === 0) {
             $warnings[] = 'Meta description is empty — adding one improves click-through from search results.';
-        } elseif ($len($post->meta_description) > 160) {
-            $warnings[] = 'Meta description is ' . $len($post->meta_description) . ' characters — Google usually cuts descriptions off after about 160.';
+        } elseif ($len($request->input('meta_description')) > 160) {
+            $warnings[] = 'Meta description was ' . $len($request->input('meta_description')) . ' characters and has been shortened to 160 (Google cuts descriptions off after about 160).';
         }
 
-        if ($len($post->og_title) > 60) {
-            $warnings[] = 'Social (Open Graph) title is over 60 characters and may be truncated when shared.';
+        if ($len($request->input('og_title')) > 60) {
+            $warnings[] = 'Social (Open Graph) title was over 60 characters and has been shortened.';
         }
-        if ($len($post->twitter_title) > 60) {
-            $warnings[] = 'Twitter title is over 60 characters and may be truncated when shared.';
+        if ($len($request->input('twitter_title')) > 60) {
+            $warnings[] = 'Twitter title was over 60 characters and has been shortened.';
         }
         if (empty($post->featured_image)) {
             $warnings[] = 'No featured image set — posts with an image look better in listings and social shares.';
         }
 
         return $warnings;
+    }
+
+    /**
+     * Trim SEO meta fields to lengths that safely fit their DB columns.
+     * This guarantees a save never fails with a "data too long" DB error,
+     * so publishing always succeeds regardless of the field lengths entered.
+     */
+    protected function truncateSeoFields(array $data): array
+    {
+        $limits = [
+            'meta_title'          => 60,
+            'meta_description'    => 160,
+            'og_title'            => 60,
+            'og_description'      => 160,
+            'twitter_title'       => 60,
+            'twitter_description' => 160,
+            'focus_keyword'       => 255,
+        ];
+
+        foreach ($limits as $field => $limit) {
+            if (!empty($data[$field]) && mb_strlen($data[$field]) > $limit) {
+                $data[$field] = mb_substr($data[$field], 0, $limit);
+            }
+        }
+
+        return $data;
     }
 
     /**
@@ -326,6 +358,11 @@ class BlogPostController extends Controller
         }
 
         $validated = $validator->validated();
+
+        // Trim SEO meta fields so an over-long value can never overflow a DB
+        // column (which would cause a 500). Publishing always succeeds; the
+        // author just gets a warning that the field was shortened.
+        $validated = $this->truncateSeoFields($validated);
 
         // Handle featured image upload
         if ($request->hasFile('featured_image')) {
@@ -417,7 +454,7 @@ class BlogPostController extends Controller
 
         return redirect()->route('admin.blog.posts.index')
             ->with('success', 'Blog post updated successfully.')
-            ->with('seo_warnings', $this->seoWarnings($post));
+            ->with('seo_warnings', $this->seoWarnings($post, $request));
     }
 
     /**
