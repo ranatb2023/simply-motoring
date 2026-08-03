@@ -14,6 +14,22 @@
                     @method('PUT')
                 @endif
 
+                @if ($errors->any())
+                    <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-triangle-exclamation text-red-600"></i>
+                            <h3 class="font-semibold text-red-800">
+                                Post not saved — please fix the following {{ $errors->count() }} issue(s):
+                            </h3>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-red-700 space-y-1">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     <!-- Main Content (Left, 8 Cols) -->
                     <div class="lg:col-span-8 space-y-8">
