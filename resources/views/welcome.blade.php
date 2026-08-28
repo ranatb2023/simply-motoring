@@ -191,7 +191,7 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
                 <!-- Card 1: Interim Service -->
                 <div
@@ -340,6 +340,59 @@
                             <a href="{{ route('service.major-service') }}"
                                 class="flex items-center justify-center bg-black text-white text-sm font-bold uppercase tracking-widest px-8 w-full py-5 hover:bg-primary hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl transition-all duration-300 hero-btn-clip rounded-md">
                                 BOOK Major SERVICE
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Electric Vehicle Service -->
+                <div
+                    class="flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 flex-1">
+                    <!-- Top Half -->
+                    <div style="background: linear-gradient(135deg, #FF6900 0%, #FB5200 100%);"
+                        class="p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
+                        <div
+                            class="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center bg-white/10">
+                            <i class="fa-solid fa-charging-station text-white text-xl"></i>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <h3 class="text-white text-[32px] font-bold font-geist tracking-tight">EV Service</h3>
+                            <p class="text-white/90 text-sm">Recommended every 12 months or 12,000 miles</p>
+                        </div>
+                    </div>
+                    <!-- Bottom Half -->
+                    <div class="bg-white p-8 lg:p-10 flex flex-col justify-between flex-1 gap-10">
+                        <ul class="flex flex-col gap-4">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">High-voltage battery & charging system check</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Brake fluid & full brake inspection</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Pollen / cabin filter replacement</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Tyre condition, pressure & tread check</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Steering, suspension & drive system check</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-green-500 mt-1 text-sm"></i>
+                                <span class="text-gray-700 text-[15px]">Reset service light & stamp service book</span>
+                            </li>
+                        </ul>
+
+                        <div class="w-full inline-block">
+                            <a href="#book"
+                                class="flex items-center justify-center bg-black text-white text-sm font-bold uppercase tracking-widest px-8 w-full py-5 hover:bg-primary hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl transition-all duration-300 hero-btn-clip rounded-md">
+                                BOOK EV SERVICE
                             </a>
                         </div>
                     </div>
