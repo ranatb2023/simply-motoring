@@ -1,5 +1,8 @@
 @extends('layouts.main')
 
+@section('meta_title', $post->meta_title)
+@section('meta_description', $post->meta_description)
+
 @section('content')
     <!-- Blog Post Header -->
     <section class="relative bg-dark text-white py-6 lg:py-20">
