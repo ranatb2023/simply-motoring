@@ -426,14 +426,36 @@
                     </div>
                 </div>
 
-                <!-- Card carousel dots -->
-                <div class="flex justify-center items-center gap-3 mt-8">
-                    <template x-for="i in (maxIndex() + 1)" :key="i">
-                        <button @click="active = i - 1"
-                            class="h-2 rounded-sm transition-all duration-300"
-                            :class="active === (i - 1) ? 'w-10 bg-primary' : 'w-6 bg-gray-300 hover:bg-gray-400'"
-                            :aria-label="'Go to slide ' + i"></button>
-                    </template>
+                <!-- Card carousel arrows + dots -->
+                <div class="flex justify-center items-center gap-4 mt-8">
+                    <button @click="prev()"
+                        class="flex items-center justify-center w-11 h-11 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors shrink-0"
+                        aria-label="Previous slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="flex items-center gap-3">
+                        <template x-for="i in (maxIndex() + 1)" :key="i">
+                            <button @click="active = i - 1"
+                                class="h-2 rounded-sm transition-all duration-300"
+                                :class="active === (i - 1) ? 'w-10 bg-primary' : 'w-6 bg-gray-300 hover:bg-gray-400'"
+                                :aria-label="'Go to slide ' + i"></button>
+                        </template>
+                    </div>
+
+                    <button @click="next()"
+                        class="flex items-center justify-center w-11 h-11 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors shrink-0"
+                        aria-label="Next slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
