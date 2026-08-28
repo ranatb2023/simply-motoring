@@ -25,11 +25,19 @@ class FixBlogImageAlt extends Command
         $updated = 0;
 
         foreach (BlogPost::all() as $post) {
-            $content = (string) $post->content;
-            if ($content === '') {
-                continue;
+            $changed = false;
+
+            // 1) Featured image (stored at blog/images/...): alt lives in the
+            //    featured_image_alt column, not in the content HTML.
+            foreach ($this->map as $file => $alt) {
+                if (str_contains((string) $post->featured_image, $file) && $post->featured_image_alt !== $alt) {
+                    $post->featured_image_alt = $alt;
+                    $changed = true;
+                }
             }
 
+            // 2) Inline content images (stored at blog/content-images/...).
+            $content = (string) $post->content;
             $original = $content;
 
             foreach ($this->map as $file => $alt) {
@@ -57,6 +65,10 @@ class FixBlogImageAlt extends Command
 
             if ($content !== $original) {
                 $post->content = $content;
+                $changed = true;
+            }
+
+            if ($changed) {
                 $post->save();
                 $updated++;
                 $this->line("  Updated post #{$post->id}: {$post->title}");
