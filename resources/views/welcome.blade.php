@@ -191,11 +191,37 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div x-data="{
+                active: 0,
+                gap: 16,
+                cardW: 0,
+                perView: 3,
+                paused: false,
+                total: 4,
+                setPerView() { const w = window.innerWidth; this.perView = w < 768 ? 1 : (w < 1024 ? 2 : 3); },
+                maxIndex() { return Math.max(0, this.total - this.perView); },
+                measure() {
+                    this.setPerView();
+                    const card = this.$el.querySelector('.svc-card');
+                    if (card) this.cardW = card.offsetWidth;
+                    if (this.active > this.maxIndex()) this.active = this.maxIndex();
+                },
+                next() { this.active = this.active >= this.maxIndex() ? 0 : this.active + 1; },
+                prev() { this.active = this.active <= 0 ? this.maxIndex() : this.active - 1; },
+                init() {
+                    this.$nextTick(() => this.measure());
+                    setTimeout(() => this.measure(), 200);
+                    window.addEventListener('resize', () => this.measure());
+                    setInterval(() => { if (!this.paused) this.next(); }, 4000);
+                }
+            }" @mouseenter="paused = true" @mouseleave="paused = false" class="relative">
+                <div class="overflow-hidden pb-1">
+                    <div class="flex gap-4 transition-transform duration-700 ease-in-out"
+                        :style="`transform: translateX(-${active * (cardW + gap)}px)`">
 
                 <!-- Card 1: Interim Service -->
                 <div
-                    class="flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 flex-1">
+                    class="svc-card flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 shrink-0 w-full md:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]">
                     <!-- Top Half -->
                     <div style="background: linear-gradient(135deg, #FF6900 0%, #FB5200 100%);"
                         class="p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
@@ -241,7 +267,7 @@
 
                 <!-- Card 2: Full Service -->
                 <div
-                    class="flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 flex-1">
+                    class="svc-card flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 shrink-0 w-full md:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]">
                     <!-- Top Half -->
                     <div style="background: linear-gradient(135deg, #FF6900 0%, #FB5200 100%);"
                         class="p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
@@ -288,7 +314,7 @@
 
                 <!-- Card 3: Major Service -->
                 <div
-                    class="flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 flex-1">
+                    class="svc-card flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 shrink-0 w-full md:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]">
                     <!-- Top Half -->
                     <div style="background: linear-gradient(135deg, #FF6900 0%, #FB5200 100%);"
                         class="p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
@@ -347,7 +373,7 @@
 
                 <!-- Card 4: Electric Vehicle Service -->
                 <div
-                    class="flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 flex-1">
+                    class="svc-card flex flex-col rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-100 shrink-0 w-full md:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]">
                     <!-- Top Half -->
                     <div style="background: linear-gradient(135deg, #FF6900 0%, #FB5200 100%);"
                         class="p-8 lg:p-10 flex flex-col gap-6 items-start h-[240px]">
@@ -397,7 +423,18 @@
                         </div>
                     </div>
                 </div>
+                    </div>
+                </div>
 
+                <!-- Card carousel dots -->
+                <div class="flex justify-center items-center gap-3 mt-8">
+                    <template x-for="i in (maxIndex() + 1)" :key="i">
+                        <button @click="active = i - 1"
+                            class="h-2 rounded-sm transition-all duration-300"
+                            :class="active === (i - 1) ? 'w-10 bg-primary' : 'w-6 bg-gray-300 hover:bg-gray-400'"
+                            :aria-label="'Go to slide ' + i"></button>
+                    </template>
+                </div>
             </div>
         </div>
     </section>
