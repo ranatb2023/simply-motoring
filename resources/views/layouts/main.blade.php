@@ -223,7 +223,7 @@
     <div class="fixed bottom-6 right-6 z-50">
         <div class="relative group">
             <div class="absolute -inset-1 bg-[#25D366] rounded-full opacity-40 animate-ping"></div>
-            <a href="https://wa.me/441302456406" target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/441302456406" target="_blank" rel="noopener noreferrer nofollow"
                 class="relative flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
                 aria-label="Chat with us on WhatsApp">
                 <i class="fa-brands fa-whatsapp text-3xl"></i>
