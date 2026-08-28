@@ -9,6 +9,20 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+// ── Scheduled tasks via external cron ────────────────────────────────────────
+// This host has no server cron / SSH, so an external cron service (e.g.
+// cron-job.org) hits this secret URL hourly to send due booking reminders.
+// The key falls back to a fixed secret; override it by setting CRON_SECRET in .env.
+Route::get('/cron/reminders', function (\Illuminate\Http\Request $request) {
+    $secret = env('CRON_SECRET', '0351818e760c54a9aab8289f1297c3024e041e77');
+    abort_unless(hash_equals($secret, (string) $request->query('key')), 403);
+
+    \Illuminate\Support\Facades\Artisan::call('bookings:send-reminders');
+
+    return response(\Illuminate\Support\Facades\Artisan::output() ?: 'done', 200)
+        ->header('Content-Type', 'text/plain');
+})->name('cron.reminders');
+
 Route::get('/service', function () {
     return view('service');
 })->name('service');
