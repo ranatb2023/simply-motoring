@@ -722,7 +722,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£150</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£190</span>
                                 </div>
 
                                 <ul class="flex flex-col mt-auto -mx-8">
@@ -919,7 +919,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£150</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£190</span>
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
@@ -1580,7 +1580,7 @@
                                     <div x-show="active === 3" x-collapse>
                                         <p class="mt-4 text-[#0A0A0A] lg:text-lg text-base leading-relaxed max-w-lg">
                                             At Simply Motoring, Interim Service from £125 includes MOT plus 77-point
-                                            12,000-mile inspection. Full Service from £150 offers detailed maintenance plus
+                                            12,000-mile inspection. Full Service from £190 offers detailed maintenance plus
                                             standard MOT. Both provide savings when booked together.
                                         </p>
                                     </div>

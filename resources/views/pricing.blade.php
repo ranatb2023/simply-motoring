@@ -152,7 +152,7 @@
                     <div class="mt-auto pt-4 border-t border-white/20 flex items-end justify-between">
                         <div>
                             <p class="text-[10px] font-bold tracking-[0.1em] text-white/60 uppercase mb-1">From</p>
-                            <p class="font-geist font-bold text-[40px] text-white leading-none tracking-[-0.05em]">£150</p>
+                            <p class="font-geist font-bold text-[40px] text-white leading-none tracking-[-0.05em]">£190</p>
                         </div>
                         <a href="#book"
                             class="inline-flex items-center gap-2 bg-black text-white text-[11px] font-bold uppercase tracking-widest px-5 py-3 rounded-xl hover:bg-black/80 transition-colors">
@@ -331,7 +331,7 @@
                                         from</p>
                                     <p
                                         class="font-geist font-bold text-[18px] text-black leading-none tracking-[-0.04em] mt-0.5">
-                                        £150</p>
+                                        £190</p>
                                 </div>
                             </div>
                             <div

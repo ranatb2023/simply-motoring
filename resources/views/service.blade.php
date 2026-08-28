@@ -667,7 +667,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£150</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£190</span>
                                 </div>
 
                                 <ul class="flex flex-col mt-auto -mx-8">
@@ -864,7 +864,7 @@
                                     <span
                                         class="text-[16px] font-medium tracking-[-0.06em] leading-[0.83] uppercase">From</span>
                                     <span
-                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£150</span>
+                                        class="text-[64px] font-semibold uppercase leading-[0.83] tracking-[-0.06em]">£190</span>
                                 </div>
                                 <ul class="flex flex-col mt-auto -mx-8">
                                     <li
