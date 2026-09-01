@@ -11,6 +11,11 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon-192.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
 
+    {{-- Keep the staging subdomain out of Google (never affects the live site) --}}
+    @if (str_contains(request()->getHost(), 'staging'))
+        <meta name="robots" content="noindex, nofollow">
+    @endif
+
     {{-- Canonical URL — always points to the non-www version so Google treats it as the single source --}}
     <link rel="canonical" href="{{ rtrim(config('app.url'), '/') . request()->getPathInfo() }}">
 
