@@ -20,8 +20,8 @@ class ContactController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Send to admin
-        Mail::to('info@simplymotoring.uk')->send(new ContactFormSubmitted($validated));
+        // Send to admin (uses the mailbox configured in .env — info@ does not exist)
+        Mail::to(env('MAIL_ADMIN_ADDRESS', 'hello@simplymotoring.uk'))->send(new ContactFormSubmitted($validated));
 
         // Send to user
         Mail::to($validated['email'])->send(new ContactFormThankYou($validated));
