@@ -11,9 +11,16 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon-192.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
 
-    {{-- Keep the staging subdomain out of Google (never affects the live site) --}}
-    @if (str_contains(request()->getHost(), 'staging'))
-        <meta name="robots" content="noindex, nofollow">
+    {{-- Robots: a page can opt out of indexing via @section('robots', 'noindex, nofollow').
+         The staging subdomain is always noindexed (never affects the live site). --}}
+    @php
+        $__robots = trim($__env->yieldContent('robots'));
+        if (str_contains(request()->getHost(), 'staging')) {
+            $__robots = 'noindex, nofollow';
+        }
+    @endphp
+    @if ($__robots)
+        <meta name="robots" content="{{ $__robots }}">
     @endif
 
     {{-- Canonical URL — always points to the non-www version so Google treats it as the single source --}}

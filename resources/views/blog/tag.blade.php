@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('robots', 'noindex, nofollow')
+
 @section('content')
     <!-- Tag Header -->
     <section class="relative bg-dark text-white py-20">
