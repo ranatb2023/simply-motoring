@@ -148,9 +148,13 @@ class BlogPostController extends Controller
             !empty($validated['slug']) ? $validated['slug'] : Str::slug($validated['title'])
         );
 
-        // Handle published_at based on status
-        if ($validated['status'] === 'published' && empty($validated['published_at'])) {
-            $validated['published_at'] = now();
+        // A "published" post must be visible now — never future-dated (that is
+        // what the "scheduled" status is for). Set/cap the date to now if it is
+        // empty or in the future, so the post isn't accidentally hidden.
+        if ($validated['status'] === 'published') {
+            if (empty($validated['published_at']) || \Illuminate\Support\Carbon::parse($validated['published_at'])->isFuture()) {
+                $validated['published_at'] = now();
+            }
         }
 
         // Create the post
@@ -425,9 +429,14 @@ class BlogPostController extends Controller
                 ->store('blog/twitter-images', 'public');
         }
 
-        // Handle published_at based on status
-        if ($validated['status'] === 'published' && empty($post->published_at)) {
-            $validated['published_at'] = now();
+        // A "published" post must be visible now — never future-dated. Use the
+        // submitted date, but set/cap it to now if empty or in the future so the
+        // post isn't accidentally hidden by the published_at <= now() filter.
+        $newPublishedAt = $validated['published_at'] ?? $post->published_at;
+        if ($validated['status'] === 'published') {
+            if (empty($newPublishedAt) || \Illuminate\Support\Carbon::parse($newPublishedAt)->isFuture()) {
+                $validated['published_at'] = now();
+            }
         }
 
         // Update the post
