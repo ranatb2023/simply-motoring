@@ -205,7 +205,10 @@
                     </span>
                     <a href="{{ route('admin.bookings.export', request()->query()) }}"
                         title="{{ request('date') ? 'Download bookings for the selected date' : 'Download all bookings' }}"
-                        class="flex items-center gap-2 px-4 py-[9px] rounded-2xl bg-green-600 text-white text-sm font-semibold shadow-sm hover:bg-green-700 transition-all whitespace-nowrap">
+                        class="flex items-center gap-2 px-4 py-[9px] rounded-2xl text-sm font-semibold shadow-sm transition-all whitespace-nowrap"
+                        style="background-color:#16a34a; color:#ffffff;"
+                        onmouseover="this.style.backgroundColor='#15803d'"
+                        onmouseout="this.style.backgroundColor='#16a34a'">
                         <i class="fa-solid fa-download text-xs"></i>
                         Download{{ request('date') ? ' (' . \Illuminate\Support\Carbon::parse(request('date'))->format('j M') . ')' : '' }}
                     </a>
