@@ -185,7 +185,12 @@
                         </div>
                     </div>
 
-                    @if(request('search') || $activeStatus !== '' || $activeDateFilter !== 'all')
+                    {{-- Specific date (calendar) filter --}}
+                    <input type="date" name="date" value="{{ request('date') }}" title="Show bookings on a specific date"
+                        onchange="document.getElementById('hiddenDateFilter').value='all'; document.getElementById('filterForm').submit();"
+                        class="shrink-0 px-3 py-[11px] border rounded-2xl bg-white shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all {{ request('date') ? 'border-orange-300 text-orange-600 font-semibold' : 'border-gray-200 text-gray-500' }}">
+
+                    @if(request('search') || $activeStatus !== '' || $activeDateFilter !== 'all' || request('date'))
                         <a href="{{ route('admin.bookings.index') }}"
                             class="flex items-center gap-1.5 px-4 py-[11px] rounded-2xl bg-white border border-gray-200 shadow-sm text-sm text-gray-400 hover:text-red-500 hover:border-red-200 transition-all whitespace-nowrap">
                             <i class="fa-solid fa-xmark text-xs"></i> Clear
@@ -193,11 +198,17 @@
                     @endif
                 </form>
 
-                {{-- Count badge --}}
-                <div class="flex items-center shrink-0">
+                {{-- Count badge + Download --}}
+                <div class="flex items-center gap-3 shrink-0">
                     <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider bg-white px-4 py-2 rounded-full shadow-sm ring-1 ring-gray-100">
                         {{ $bookings->total() }} {{ Str::plural('booking', $bookings->total()) }}
                     </span>
+                    <a href="{{ route('admin.bookings.export', request()->query()) }}"
+                        title="{{ request('date') ? 'Download bookings for the selected date' : 'Download all bookings' }}"
+                        class="flex items-center gap-2 px-4 py-[9px] rounded-2xl bg-green-600 text-white text-sm font-semibold shadow-sm hover:bg-green-700 transition-all whitespace-nowrap">
+                        <i class="fa-solid fa-download text-xs"></i>
+                        Download{{ request('date') ? ' (' . \Illuminate\Support\Carbon::parse(request('date'))->format('j M') . ')' : '' }}
+                    </a>
                 </div>
             </div>
 

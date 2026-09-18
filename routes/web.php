@@ -134,6 +134,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class);
     Route::post('staff/save-wizard', [\App\Http\Controllers\Admin\StaffController::class, 'saveWizardData'])->name('staff.save-wizard');
     Route::resource('staff', \App\Http\Controllers\Admin\StaffController::class);
+    Route::get('bookings/export', [\App\Http\Controllers\Admin\BookingController::class, 'export'])->name('bookings.export');
     Route::resource('bookings', \App\Http\Controllers\Admin\BookingController::class);
     Route::patch('bookings/{booking}/status', [\App\Http\Controllers\Admin\BookingController::class, 'updateStatus'])->name('bookings.update-status');
     Route::get('/availability', [\App\Http\Controllers\Admin\AvailabilityController::class, 'index'])->name('availability.index');

@@ -22,6 +22,26 @@ class BookingController extends Controller
             return now();
         });
 
+        $bookings = $this->filteredBookingsQuery($request)->paginate(20)->withQueryString();
+
+        // Stats
+        $stats = [
+            'total'     => Booking::count(),
+            'today'     => Booking::whereDate('start_datetime', Carbon::today())->count(),
+            'upcoming'  => Booking::where('start_datetime', '>=', Carbon::now())->where('status', '!=', 'cancelled')->count(),
+            'confirmed' => Booking::where('status', 'confirmed')->count(),
+            'cancelled' => Booking::where('status', 'cancelled')->count(),
+        ];
+
+        return view('admin.bookings.index', compact('bookings', 'stats'));
+    }
+
+    /**
+     * Build the bookings query with the current search / status / date filters
+     * applied. Shared by the list view and the CSV export.
+     */
+    private function filteredBookingsQuery(Request $request)
+    {
         $query = Booking::with('service')->orderBy('start_datetime', 'desc');
 
         // Search
@@ -38,28 +58,55 @@ class BookingController extends Controller
             $query->where('status', $status);
         }
 
-        // Date filter
-        $dateFilter = $request->get('date_filter', 'all');
-        if ($dateFilter === 'today') {
-            $query->whereDate('start_datetime', Carbon::today());
-        } elseif ($dateFilter === 'upcoming') {
-            $query->where('start_datetime', '>=', Carbon::now());
-        } elseif ($dateFilter === 'past') {
-            $query->where('start_datetime', '<', Carbon::today());
+        // A specific calendar date takes precedence over the named date filter.
+        if ($date = $request->get('date')) {
+            $query->whereDate('start_datetime', $date);
+        } else {
+            $dateFilter = $request->get('date_filter', 'all');
+            if ($dateFilter === 'today') {
+                $query->whereDate('start_datetime', Carbon::today());
+            } elseif ($dateFilter === 'upcoming') {
+                $query->where('start_datetime', '>=', Carbon::now());
+            } elseif ($dateFilter === 'past') {
+                $query->where('start_datetime', '<', Carbon::today());
+            }
         }
 
-        $bookings = $query->paginate(20)->withQueryString();
+        return $query;
+    }
 
-        // Stats
-        $stats = [
-            'total'     => Booking::count(),
-            'today'     => Booking::whereDate('start_datetime', Carbon::today())->count(),
-            'upcoming'  => Booking::where('start_datetime', '>=', Carbon::now())->where('status', '!=', 'cancelled')->count(),
-            'confirmed' => Booking::where('status', 'confirmed')->count(),
-            'cancelled' => Booking::where('status', 'cancelled')->count(),
-        ];
+    /**
+     * Download the (filtered) bookings as a CSV. With no date selected it
+     * exports every booking; with a date it exports just that day's.
+     */
+    public function export(Request $request)
+    {
+        $bookings = $this->filteredBookingsQuery($request)->get();
 
-        return view('admin.bookings.index', compact('bookings', 'stats'));
+        $date = $request->get('date');
+        $filename = 'bookings-' . ($date ?: 'all') . '-' . now()->format('Ymd-His') . '.csv';
+
+        return response()->streamDownload(function () use ($bookings) {
+            $out = fopen('php://output', 'w');
+            // UTF-8 BOM so Excel shows accents/£ correctly
+            fwrite($out, "\xEF\xBB\xBF");
+            fputcsv($out, ['ID', 'Customer', 'Email', 'Phone', 'Vehicle Reg', 'Service', 'Sub Service', 'Date', 'Time', 'Status']);
+            foreach ($bookings as $b) {
+                fputcsv($out, [
+                    $b->id,
+                    $b->customer_name,
+                    $b->customer_email,
+                    $b->customer_phone,
+                    strtoupper((string) $b->vehicle_reg),
+                    $b->service->name ?? '',
+                    $b->sub_service,
+                    optional($b->start_datetime)->format('Y-m-d'),
+                    optional($b->start_datetime)->format('H:i'),
+                    ucfirst((string) $b->status),
+                ]);
+            }
+            fclose($out);
+        }, $filename, ['Content-Type' => 'text/csv; charset=UTF-8']);
     }
 
     public function create()
