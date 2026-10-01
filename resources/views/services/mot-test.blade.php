@@ -91,6 +91,20 @@
                         Whether it’s worn tyres, faulty lights, or braking concerns, our team ensures your vehicle is
                         thoroughly checked and ready for the road.
                     </p>
+
+                    <!-- Class 4 vehicles notice -->
+                    <div class="w-full rounded-xl p-5" style="border-left:4px solid #FF6900; background:#fff7f2;">
+                        <h3 class="font-geist font-bold text-black text-lg mb-1.5 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info" style="color:#FF6900"></i>
+                            MOT Testing for Class 4 Vehicles
+                        </h3>
+                        <p class="text-gray-700 text-[15px] leading-relaxed">
+                            We test Class 4 cars and vans. If you're booking a van and you're unsure whether it's Class 4
+                            or Class 7, please
+                            <a href="tel:01302456406" class="font-semibold hover:underline" style="color:#FF6900">give us a call</a>
+                            and we'll be happy to help.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Right Content: Stacked Cards -->
