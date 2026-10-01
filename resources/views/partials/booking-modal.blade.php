@@ -725,8 +725,9 @@
             const data = await res.json();
 
             if (data.success) {
-                buildSummary(payload);
-                goToStep(5);
+                // Redirect to the thank-you page (used for Google Ads conversion tracking).
+                window.location.href = '/thank-you';
+                return;
             } else {
                 err.textContent = data.message || 'Booking failed. Please try again.';
                 err.classList.remove('hidden');
@@ -782,6 +783,7 @@
         document.querySelectorAll('[data-book-trigger]').forEach(el => {
             if (el._bmAttached) return;
             el._bmAttached = true;
+            el.classList.add('book-now-btn');
             el.addEventListener('click', e => {
                 e.preventDefault();
                 let slug = el.dataset.bookTrigger || '';
@@ -797,6 +799,7 @@
         document.querySelectorAll('a[href="#book"]').forEach(el => {
             if (el._bmAttached) return;
             el._bmAttached = true;
+            el.classList.add('book-now-btn');
             el.addEventListener('click', e => {
                 e.preventDefault();
                 const text = (el.textContent || '').trim().toLowerCase();
@@ -812,6 +815,7 @@
             const text = (el.textContent || '').trim().toLowerCase();
             if (text.startsWith('book')) {
                 el._bmAttached = true;
+                el.classList.add('book-now-btn');
                 // Detect service from button text to pre-select + skip to date step
                 let slug = '';
                 if (text.includes('mot')) slug = 'mot';

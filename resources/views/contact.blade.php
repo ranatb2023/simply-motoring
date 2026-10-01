@@ -194,12 +194,12 @@
                                         submitBtn.disabled = false;
                                         submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
                                         
-                                        messageBox.classList.remove('hidden');
                                         if(data.success) {
-                                            messageBox.classList.add('bg-green-500/20', 'border-green-500/50', 'text-green-400');
-                                            messageBox.innerHTML = data.message || 'Thank you! Your message has been sent successfully.';
-                                            form.reset();
+                                            // Redirect to the thank-you page (Google Ads conversion tracking).
+                                            window.location.href = '/thank-you';
+                                            return;
                                         } else {
+                                            messageBox.classList.remove('hidden');
                                             throw new Error(data.message || 'An error occurred. Please try again.');
                                         }
                                     })

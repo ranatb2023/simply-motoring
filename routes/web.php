@@ -82,6 +82,12 @@ Route::get('/pricing', function () {
     return view('pricing');
 })->name('pricing');
 
+// Thank-you page shown after a booking or contact form submission (used for
+// Google Ads conversion tracking — the URL contains "thank-you").
+Route::get('/thank-you', function () {
+    return view('thank-you');
+})->name('thank-you');
+
 // ── Public "Manage my booking" (token-protected link, no login) ──────────────
 Route::get('/booking/manage/{token}', [\App\Http\Controllers\BookingManageController::class, 'edit'])->name('booking.manage');
 Route::get('/booking/manage/{token}/slots', [\App\Http\Controllers\BookingManageController::class, 'slots']);
