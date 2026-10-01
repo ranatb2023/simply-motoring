@@ -126,6 +126,15 @@
 
             {{-- Step 1: Select Service --}}
             <div data-step-panel="1" class="p-6">
+                {{-- Class 4 vehicles notice --}}
+                <div class="mb-5 px-4 py-3 rounded-sm" style="border-left:4px solid #FF6900; background:#fff7f2;">
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        <span class="font-bold text-gray-900">Please note:</span> We only test <strong>Class 4</strong>
+                        vehicles. If you're booking a van and are unsure whether it is Class 4 or Class 7, please
+                        <a href="tel:01302456406" class="font-semibold hover:underline" style="color:#FF6900">contact us</a>
+                        before booking.
+                    </p>
+                </div>
                 <p class="text-gray-600 text-xs mb-5 uppercase tracking-[0.1em] font-semibold">Choose a service to get started</p>
                 <div id="bmServiceList" class="flex flex-col gap-2.5">
                     @for($i = 0; $i < 2; $i++)

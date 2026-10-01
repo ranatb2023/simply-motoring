@@ -166,6 +166,20 @@
                     @endforeach
                 </ul>
 
+                <!-- Class 4 vehicles notice -->
+                <div class="w-full rounded-xl border-l-4 border-primary bg-primary/5 p-5">
+                    <h3 class="font-geist font-bold text-black text-lg lg:text-xl mb-1.5 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-primary"></i>
+                        MOT Testing for Class 4 Vehicles
+                    </h3>
+                    <p class="text-gray-700 text-[15px] lg:text-base leading-relaxed">
+                        We test Class 4 cars and vans. If you're booking a van and you're unsure whether it's Class 4 or
+                        Class 7, please
+                        <a href="tel:01302456406" class="text-primary font-semibold hover:underline">give us a call</a>
+                        and we'll be happy to help.
+                    </p>
+                </div>
+
                 <div class="mt-2 inline-block">
                     <a href="#book"
                         class="inline-flex items-center justify-center bg-black text-white text-sm lg:text-base font-bold uppercase tracking-widest px-8 py-5 hover:bg-primary hover:-translate-y-2 hover:translate-x-2 hover:shadow-2xl transition-all duration-300 shadow-lg hero-btn-clip rounded-md relative z-20">
