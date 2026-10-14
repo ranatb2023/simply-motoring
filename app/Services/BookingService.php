@@ -336,6 +336,7 @@ class BookingService
                 'customer_email' => $data['customer']['email'],
                 'customer_phone' => $data['customer']['phone'] ?? null,
                 'status'         => 'confirmed',
+                'source'         => $data['source'] ?? 'online',
                 'edit_token'     => \Illuminate\Support\Str::random(48),
             ]);
 

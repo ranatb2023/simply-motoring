@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    protected $fillable = ['vehicle_reg', 'service_id', 'sub_service', 'bay_id', 'start_datetime', 'end_datetime', 'customer_name', 'customer_email', 'customer_phone', 'status', 'edit_token', 'google_event_id', 'google_calendar_id', 'google_events', 'reminder_week_sent_at', 'reminder_day_sent_at'];
+    protected $fillable = ['vehicle_reg', 'service_id', 'sub_service', 'bay_id', 'start_datetime', 'end_datetime', 'customer_name', 'customer_email', 'customer_phone', 'status', 'source', 'edit_token', 'google_event_id', 'google_calendar_id', 'google_events', 'reminder_week_sent_at', 'reminder_day_sent_at'];
 
     protected $casts = [
         'start_datetime' => 'datetime',

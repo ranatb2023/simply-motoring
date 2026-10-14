@@ -249,7 +249,15 @@
                                             {{ strtoupper(substr($booking->customer_name, 0, 2)) }}
                                         </div>
                                         <div class="min-w-0">
-                                            <p class="text-sm font-bold text-gray-900 truncate">{{ $booking->customer_name }}</p>
+                                            <p class="text-sm font-bold text-gray-900 truncate">
+                                                {{ $booking->customer_name }}
+                                                @if($booking->source && $booking->source !== 'online')
+                                                    <span class="inline-block align-middle ml-1 text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded"
+                                                        style="background:#fff7ed;color:#c2410c;">
+                                                        {{ $booking->source === 'walk-in' ? 'Walk-in' : 'Phone' }}
+                                                    </span>
+                                                @endif
+                                            </p>
                                             <p class="text-xs text-gray-400 truncate">{{ $booking->customer_email }}</p>
                                             @if($booking->customer_phone)
                                                 <p class="text-xs text-gray-400">{{ $booking->customer_phone }}</p>

@@ -90,7 +90,7 @@ class BookingController extends Controller
             $out = fopen('php://output', 'w');
             // UTF-8 BOM so Excel shows accents/£ correctly
             fwrite($out, "\xEF\xBB\xBF");
-            fputcsv($out, ['ID', 'Customer', 'Email', 'Phone', 'Vehicle Reg', 'Service', 'Sub Service', 'Date', 'Time', 'Status']);
+            fputcsv($out, ['ID', 'Customer', 'Email', 'Phone', 'Vehicle Reg', 'Service', 'Sub Service', 'Date', 'Time', 'Status', 'Source']);
             foreach ($bookings as $b) {
                 fputcsv($out, [
                     $b->id,
@@ -103,6 +103,7 @@ class BookingController extends Controller
                     optional($b->start_datetime)->format('Y-m-d'),
                     optional($b->start_datetime)->format('H:i'),
                     ucfirst((string) $b->status),
+                    ucfirst((string) ($b->source ?: 'online')),
                 ]);
             }
             fclose($out);
@@ -111,12 +112,47 @@ class BookingController extends Controller
 
     public function create()
     {
-        return view('admin.bookings.create');
+        $services = \App\Models\Service::orderBy('name')->get();
+        return view('admin.bookings.create', compact('services'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, BookingService $bookingService)
     {
-        //
+        $validated = $request->validate([
+            'service_id'     => 'required|exists:services,id',
+            'date'           => 'required|date',
+            'time'           => 'required',
+            'customer_name'  => 'required|string|max:100',
+            'customer_email' => 'nullable|email|max:100',
+            'customer_phone' => 'nullable|string|max:20',
+            'vehicle_reg'    => 'nullable|string|max:20',
+            'source'         => 'nullable|in:phone,walk-in,online',
+        ]);
+
+        $service = \App\Models\Service::findOrFail($validated['service_id']);
+        $start   = Carbon::parse($validated['date'] . ' ' . $validated['time']);
+
+        $result = $bookingService->createBooking([
+            'service_id'  => $service->id,
+            'bay_id'      => \App\Models\Bay::value('id'),
+            'start'       => $start->toDateTimeString(),
+            'duration'    => $service->duration_minutes,
+            'reg'         => $validated['vehicle_reg'] ?? null,
+            'source'      => $validated['source'] ?? 'phone',
+            'customer'    => [
+                'name'  => $validated['customer_name'],
+                'email' => $validated['customer_email'] ?: null,
+                'phone' => $validated['customer_phone'] ?: null,
+            ],
+        ]);
+
+        if (! empty($result['success'])) {
+            return redirect()->route('admin.bookings.index')
+                ->with('success', 'Booking added successfully.');
+        }
+
+        return back()->withInput()
+            ->with('error', $result['message'] ?? 'Could not create the booking. Please try again.');
     }
 
     public function show(Booking $booking)
