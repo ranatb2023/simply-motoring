@@ -49,7 +49,7 @@
                 {{-- Service --}}
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Service <span class="text-red-500">*</span></label>
-                    <select name="service_id" required
+                    <select name="service_id" id="bkService" required
                         class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
                         <option value="">Select a service…</option>
                         @foreach ($services as $service)
@@ -61,17 +61,20 @@
                     </select>
                 </div>
 
-                {{-- Date + Time --}}
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Date <span class="text-red-500">*</span></label>
-                        <input type="date" name="date" value="{{ old('date') }}" required
-                            class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Time <span class="text-red-500">*</span></label>
-                        <input type="time" name="time" value="{{ old('time') }}" required
-                            class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
+                {{-- Date --}}
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Date <span class="text-red-500">*</span></label>
+                    <input type="date" id="bkDate" value="{{ old('date') }}" min="{{ now()->format('Y-m-d') }}"
+                        class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+
+                {{-- Available time slots (loaded from the same availability as the public form) --}}
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Available time <span class="text-red-500">*</span></label>
+                    <input type="hidden" name="start" id="bkStart" value="{{ old('start') }}">
+                    <input type="hidden" name="bay_id" id="bkBay" value="{{ old('bay_id') }}">
+                    <div id="bkSlots" class="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                        <p class="col-span-full text-sm text-gray-400">Select a service and date to see available times.</p>
                     </div>
                 </div>
 
@@ -124,4 +127,60 @@
             </form>
         </div>
     </div>
+
+    <script>
+        (function () {
+            const svc    = document.getElementById('bkService');
+            const date   = document.getElementById('bkDate');
+            const box    = document.getElementById('bkSlots');
+            const start  = document.getElementById('bkStart');
+            const bay    = document.getElementById('bkBay');
+            const form   = svc.closest('form');
+
+            const msg = (t) => { box.innerHTML = '<p class="col-span-full text-sm text-gray-400">' + t + '</p>'; };
+
+            function loadSlots() {
+                start.value = ''; bay.value = '';
+                if (!svc.value || !date.value) { msg('Select a service and date to see available times.'); return; }
+                msg('Loading available times…');
+                fetch(`/api/booking/slots?date=${date.value}&service_id=${svc.value}`)
+                    .then(r => r.json())
+                    .then(slots => {
+                        if (!Array.isArray(slots) || !slots.length) {
+                            msg('No available times for this date. Please try another date.');
+                            return;
+                        }
+                        box.innerHTML = slots.map(s =>
+                            `<button type="button" class="bk-slot px-2 py-2 text-sm font-semibold rounded-lg border border-gray-200 text-gray-700 hover:border-orange-400 hover:text-orange-600 transition-colors"
+                                data-start="${s.start}" data-bay="${s.bay_id}">${s.display}</button>`
+                        ).join('');
+                        box.querySelectorAll('.bk-slot').forEach(b => {
+                            b.addEventListener('click', () => {
+                                box.querySelectorAll('.bk-slot').forEach(x => {
+                                    x.style.background = ''; x.style.color = ''; x.style.borderColor = '#e5e7eb';
+                                });
+                                b.style.background = '#ea580c'; b.style.color = '#fff'; b.style.borderColor = '#ea580c';
+                                start.value = b.dataset.start;
+                                bay.value   = b.dataset.bay;
+                            });
+                        });
+                    })
+                    .catch(() => msg('Could not load times. Please try again.'));
+            }
+
+            svc.addEventListener('change', loadSlots);
+            date.addEventListener('change', loadSlots);
+
+            form.addEventListener('submit', (e) => {
+                if (!start.value) {
+                    e.preventDefault();
+                    msg('Please select an available time.');
+                    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+
+            // Restore slots if the form came back with old() values
+            if (svc.value && date.value) loadSlots();
+        })();
+    </script>
 </x-admin-layout>

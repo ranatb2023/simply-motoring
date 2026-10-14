@@ -120,22 +120,23 @@ class BookingController extends Controller
     {
         $validated = $request->validate([
             'service_id'     => 'required|exists:services,id',
-            'date'           => 'required|date',
-            'time'           => 'required',
+            'start'          => 'required|date',
+            'bay_id'         => 'nullable|integer',
             'customer_name'  => 'required|string|max:100',
             'customer_email' => 'nullable|email|max:100',
             'customer_phone' => 'nullable|string|max:20',
             'vehicle_reg'    => 'nullable|string|max:20',
             'source'         => 'nullable|in:phone,walk-in,online',
+        ], [
+            'start.required' => 'Please select an available time slot.',
         ]);
 
         $service = \App\Models\Service::findOrFail($validated['service_id']);
-        $start   = Carbon::parse($validated['date'] . ' ' . $validated['time']);
 
         $result = $bookingService->createBooking([
             'service_id'  => $service->id,
-            'bay_id'      => \App\Models\Bay::value('id'),
-            'start'       => $start->toDateTimeString(),
+            'bay_id'      => $validated['bay_id'] ?? \App\Models\Bay::value('id'),
+            'start'       => $validated['start'],
             'duration'    => $service->duration_minutes,
             'reg'         => $validated['vehicle_reg'] ?? null,
             'source'      => $validated['source'] ?? 'phone',
